@@ -1,0 +1,17 @@
+{
+  "name": "hexagonmisfit_site",
+  "version": "1.0.0",
+  "description": "Site for hexagonmis.fit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alex Erickson",
+  "license": "ISC",
+  "devDependencies": {
+    "@drazik/normalize.scss": "^4.1.1",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-watch": "^4.3.11"
+  }
+}
