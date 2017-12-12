@@ -30,6 +30,6 @@ gulp.task('watch', function() {
     gulp.watch(['src/assets/**/*'], ['devAssets']);
 });
 
-gulp.task('devBuild', ['devHtml', 'devSass', 'devJs', 'devAssets']);
+gulp.task('devBuild', ['devSass', 'devJs', 'devAssets', 'devHtml',]);
 
 gulp.task('devWatch', ['devSass', 'devJs', 'devHtml', 'devAssets', 'watch']);
