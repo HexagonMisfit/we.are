@@ -368,11 +368,11 @@ html {
   height: 100%;
   padding: 0;
   margin: 0;
-  font-size: 26px;
+  font-size: 20px;
   overflow-y: scroll;
   -ms-overflow-style: none;
   overflow: -moz-scrollbars-none; }
-  @media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  @media only screen and (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
     html {
       font-size: 28px; } }
   @media screen and (max-width: 767px) {
@@ -407,6 +407,38 @@ canvas {
   right: 0;
   z-index: 1; }
 
+.one-half {
+  width: 50%;
+  padding: 3em 1em 0 1em; }
+  .one-half h1 {
+    margin-top: 0; }
+  @media screen and (max-width: 900px) {
+    .one-half {
+      width: 100%; } }
+  @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1.5) {
+    .one-half {
+      padding: 10%; } }
+
+h3 {
+  margin: 0 0 1em; }
+
+.light-text {
+  color: #fafafa; }
+
+.column {
+  display: flex;
+  flex-direction: column; }
+
+.row {
+  display: flex;
+  flex-direction: row; }
+  @media screen and (max-width: 900px) {
+    .row {
+      flex-direction: column; } }
+
+.zazz {
+  border-bottom: #FFE919 1px solid; }
+
 .container {
   height: 100%;
   width: 100%;
@@ -418,14 +450,14 @@ canvas {
   width: 100%;
   justify-content: flex-end;
   height: 33%;
-  padding: 8% 19%; }
+  padding: 6% 19%; }
   .navigation ul {
     list-style: none;
     display: flex;
     height: 1.5em; }
     .navigation ul:hover {
       cursor: pointer; }
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1000px) {
     .navigation {
       padding: 1em;
       height: 5em;
@@ -495,7 +527,6 @@ canvas {
   background-color: #14ACCC;
   min-height: 100%;
   height: 100%;
-  display: block;
   border-top: 2px solid #FFE919;
   padding: 10% 20%; }
   @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1.5) {
@@ -514,39 +545,35 @@ canvas {
     outline: none; }
 
 .contact-textarea {
+  overflow: hidden;
+  resize: none; }
+
+.project {
+  height: 100%;
+  background-color: #FFE919;
+  z-index: 1;
+  position: relative;
   overflow: hidden; }
 
-::placeholder {
-  color: #fafafa; }
+.background-image-transition {
+  z-index: 5;
+  position: relative;
+  height: 100%; }
 
-.one-half {
-  width: 50%;
-  padding: 3em 1em 0 1em; }
-  .one-half h1 {
-    margin-top: 0; }
-  @media screen and (max-width: 900px) {
-    .one-half {
-      width: 100%; } }
-  @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1.5) {
-    .one-half {
-      padding: 10%; } }
-
-h3 {
-  margin: 0 0 1em; }
-
-.light-text {
-  color: #fafafa; }
-
-.column {
+.project-panel {
+  z-index: 10;
+  background-color: #B21252;
+  width: 20em;
+  height: 30em;
+  margin: 3em;
+  padding: 2em;
   display: flex;
-  flex-direction: column; }
+  justify-content: center; }
+  .project-panel h2 {
+    margin: 1em 0; }
 
-.row {
-  display: flex;
-  flex-direction: row; }
-  @media screen and (max-width: 900px) {
-    .row {
-      flex-direction: column; } }
-
-.zazz {
-  border-bottom: #FFE919 1px solid; }
+.more-info {
+  display: inline-block;
+  padding: 1em 1em 1em 0; }
+  .more-info p {
+    display: inline-block; }
