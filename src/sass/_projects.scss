@@ -1,0 +1,72 @@
+.project {
+    height: 100%;
+    background-color: $bright-yellow;
+    position: relative;
+    overflow: hidden;
+    @media screen and (max-width: 500px) {
+        border-top: solid 1px $bright-yellow;
+    }
+}
+
+.project-container {
+    height: 100%;
+}
+
+.project-panel-container {
+    padding-left: 2em;
+}
+
+.project-video-container {
+    padding: 0 2em;
+}
+
+.project-panel-container, .project-video-container {
+    @media screen and (max-width: 900px) {
+        padding: 1em;
+    }
+    @media screen and (max-width: 500px) {
+        padding: 0;
+    }
+}
+
+.project-panel-container, .project-video-container {
+    justify-content: center;
+    height: 100%;
+}
+
+.project-panel {
+    z-index: 10;
+    background-color: $magenta-dark;
+    width: 100%;
+    min-height: 30em;
+    opacity: 0.95;
+    padding: 2em;
+    display: flex;
+    justify-content: center;
+    h2 {
+        margin: 1em 0;
+    }
+    @media screen and (max-width: 900px) {
+        min-height: 10em;
+    }
+}
+
+.project-video {
+    background-color: $near-black;
+    justify-content: center;
+    height: 20em;
+    z-index: 5;
+}
+
+.project-video-text {
+    width: 100%;
+    text-align: center;
+}
+
+.more-info {
+    display: inline-block;
+    padding: 1em 1em 1em 0;
+    p {
+        display: inline-block;
+    }
+}
