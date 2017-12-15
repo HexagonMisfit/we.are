@@ -36,10 +36,12 @@ p {
 
 .one-third {
     width: 33%;
+    min-width: 22em;
 }
 
 .one-half {
     width: 50%;
+    justify-content: center;
 }
 
 .two-thirds {
@@ -70,6 +72,9 @@ h3 {
     flex-direction: row;
     @media screen and (max-width: 900px) {
         flex-direction: column;
+        nav.row {
+            flex-direction: row;
+        }
     }
 }
 
