@@ -364,62 +364,6 @@ textarea {
   font: inherit;
   /* 2 */ }
 
-canvas {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1; }
-
-.navigation {
-  width: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 10;
-  height: 10em;
-  padding: 3em 10em; }
-  .navigation ul {
-    width: 100%;
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    height: 1.5em; }
-    .navigation ul:hover {
-      cursor: pointer; }
-  @media screen and (max-width: 1400px) {
-    .navigation {
-      padding: 3em 7em; } }
-  @media screen and (max-width: 900px) {
-    .navigation ul {
-      justify-content: space-around; } }
-  @media screen and (max-width: 767px) {
-    .navigation {
-      padding: 1em;
-      height: 5em; }
-      .navigation ul {
-        width: 100%; }
-        .navigation ul div {
-          justify-content: center; } }
-  @media screen and (max-width: 475px) {
-    .navigation {
-      padding: 1em 5px;
-      font-size: 0.8em; }
-      .navigation ul {
-        justify-content: center; } }
-
-.nav-link {
-  margin-right: 2em;
-  border-bottom: 1px solid #FF0066;
-  background-color: #FF0066;
-  padding: 3px 6px; }
-  .nav-link:hover {
-    border-bottom: 1px solid #FFE919; }
-  @media screen and (max-width: 767px) {
-    .nav-link {
-      padding: 1em;
-      margin-right: 0; } }
-
 .hero {
   display: flex;
   width: 100%;
@@ -455,7 +399,6 @@ canvas {
   z-index: 5; }
 
 .contact {
-  background-color: #14ACCC;
   min-height: 100%;
   height: 100%;
   padding: 0 10em; }
@@ -464,7 +407,6 @@ canvas {
       padding: 0 7em; } }
   @media screen and (max-width: 900px) {
     .contact {
-      border-top: 2px solid #FFE919;
       padding: 3em;
       justify-content: center; } }
   @media screen and (max-width: 500px) {
@@ -506,7 +448,6 @@ canvas {
 
 .project {
   height: 100%;
-  background-color: #FFE919;
   position: relative;
   overflow: hidden; }
   @media screen and (max-width: 500px) {
@@ -614,9 +555,64 @@ body {
   padding: 0;
   margin: 0;
   height: 100%;
-  overflow-y: scroll;
+  overflow-y: hidden;
   position: relative;
-  background-color: #FF0066; }
+  background-color: transparent;
+  touch-action: none; }
+
+.fixed-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+.navigation {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  height: 10em;
+  padding: 3em 10em; }
+  .navigation ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    height: 1.5em; }
+    .navigation ul:hover {
+      cursor: pointer; }
+  @media screen and (max-width: 1400px) {
+    .navigation {
+      padding: 3em 7em; } }
+  @media screen and (max-width: 900px) {
+    .navigation ul {
+      justify-content: space-around; } }
+  @media screen and (max-width: 767px) {
+    .navigation {
+      padding: 1em;
+      height: 5em; }
+      .navigation ul {
+        width: 100%; }
+        .navigation ul div {
+          justify-content: center; } }
+  @media screen and (max-width: 475px) {
+    .navigation {
+      padding: 1em 5px;
+      font-size: 0.8em; }
+      .navigation ul {
+        justify-content: center; } }
+
+.nav-link {
+  margin-right: 2em;
+  padding: 3px 6px; }
+  .nav-link:hover {
+    border-bottom: 1px solid #FFE919; }
+  @media screen and (max-width: 767px) {
+    .nav-link {
+      padding: 1em;
+      margin-right: 0; } }
 
 p {
   line-height: 1.4em; }
@@ -670,3 +666,6 @@ h3 {
 @media screen and (max-width: 900px) {
   .hidden-narrow {
     display: none; } }
+
+.transparent-background {
+  background-color: transparent; }
