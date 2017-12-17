@@ -25,9 +25,75 @@ body {
     padding: 0;
     margin: 0;
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: hidden;
     position: relative;
-    background-color: $magenta-light;
+    background-color: rgba(0,0,0,0);
+    touch-action: none;
+}
+
+.fixed-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.navigation {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    height: 10em;
+    padding: 3em 10em;
+    ul {
+        width: 100%;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        height: 1.5em;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    @media screen and (max-width: 1400px) {
+        padding: 3em 7em;
+    }
+    @media screen and (max-width: 900px) {
+        ul {
+            justify-content: space-around;
+        }
+    }
+    @media screen and (max-width: 767px) {
+        padding: 1em;
+        height: 5em;
+        ul {
+            width: 100%;
+            div {
+                justify-content: center;
+            }
+        }
+    }
+    @media screen and (max-width: 475px) {
+        padding: 1em 5px;
+        font-size: 0.8em;
+        ul {
+            justify-content: center;
+        }
+    }
+}
+
+.nav-link {
+    margin-right: 2em;
+    padding: 3px 6px;
+    &:hover {
+        border-bottom: 1px solid $bright-yellow;
+    }
+    @media screen and (max-width: 767px) {
+        padding: 1em;
+        margin-right: 0;
+    }
 }
 
 p {
@@ -98,4 +164,8 @@ h3 {
     @media screen and (max-width: 900px) {
         display: none;
     }
+}
+
+.transparent-background {
+    background-color: rgba(0,0,0,0);
 }
