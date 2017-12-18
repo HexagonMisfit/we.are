@@ -9,6 +9,9 @@ html {
     overflow-y: scroll;
     -ms-overflow-style: none;
     overflow: -moz-scrollbars-none;
+    @media screen and (max-width: 375px) {
+        font-size: 18px;
+    }
 }
 
 html::-webkit-scrollbar { width: 0 !important }
@@ -28,7 +31,6 @@ body {
     overflow-y: hidden;
     position: relative;
     background-color: rgba(0,0,0,0);
-    touch-action: none;
 }
 
 .fixed-canvas {
