@@ -540,6 +540,9 @@ html {
   overflow-y: scroll;
   -ms-overflow-style: none;
   overflow: -moz-scrollbars-none; }
+  @media screen and (max-width: 375px) {
+    html {
+      font-size: 18px; } }
 
 html::-webkit-scrollbar {
   width: 0 !important; }
@@ -557,8 +560,7 @@ body {
   height: 100%;
   overflow-y: hidden;
   position: relative;
-  background-color: transparent;
-  touch-action: none; }
+  background-color: transparent; }
 
 .fixed-canvas {
   position: fixed;
