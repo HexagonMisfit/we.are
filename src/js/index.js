@@ -1,4 +1,7 @@
 $(function () {
+    /***********/
+    /* Theming */
+    /***********/
     var brandColors = {
         magentaLight: 0xFF0066,
         magentaDark: 0xB21252,
@@ -8,9 +11,9 @@ $(function () {
         nearWhite: 0xfafafa,
         nearBlack: 0x060606
     }
-
-    //THREE.JS code initialize scene, draw basic floating blueLight cube
-
+    /**********************************************************************/
+    /* THREE.JS code initialize scene, draw basic floating blueLight cube */
+    /**********************************************************************/
     var scene = new THREE.Scene();
     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
@@ -18,7 +21,8 @@ $(function () {
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
-    //cube
+    // Cube
+    // TODO: make a cool geometry and animate it. Maybe an extruded hexagon with a cloud-ring of cubes orbiting it.
 
     var cubeGeometry = new THREE.BoxGeometry(3, 3, 3);
     var cubeMaterial = new THREE.MeshBasicMaterial({ color: brandColors.blueLight });
@@ -31,34 +35,40 @@ $(function () {
     cube.rotation.x = 0.5;
     cube.rotation.y = 0.5;
 
-    //background planes
+    // Background plane
 
     var planeGeometry = new THREE.PlaneGeometry(50, 50, 32);
     var planeMaterial = new THREE.MeshBasicMaterial({ color: brandColors.magentaLight, side: THREE.DoubleSide });
     var pinkPlane = new THREE.Mesh(planeGeometry, planeMaterial);
     pinkPlane.position.z = -10;
     pinkPlane.name = '0';
-    console.log('pink plane', pinkPlane);
 
     scene.add(pinkPlane);
 
+    // Camera
+
     camera.position.z = 5;
+
+    // Animate the scene
 
     var animate = function () {
         requestAnimationFrame(animate);
-
         cube.rotation.y += 0.001;
-
         renderer.render(scene, camera);
     };
 
     animate();
 
-    $('canvas').addClass('fixed-canvas');
-    console.log('fixedCanvas', $('.fixed-canvas'));
+    // Draw it on a canvas fixed behind everything in the site
 
-    //GSAP UI animations
-    //Check if user is using iPhone; if so, use iOS default scrolling behavior
+    $('canvas').addClass('fixed-canvas');
+
+    /**************/
+    /* UI Stuff */
+    /**************/
+
+    // Check if user is using iPhone; if so, use iOS default scrolling behavior for now
+    // TODO: Dopify mobile experience by 50%
 
     function isMobile() {
         var Uagent = navigator.userAgent || navigator.vendor || window.opera;
@@ -69,6 +79,13 @@ $(function () {
         console.log('mobile')
         TweenMax.to('#1', 0, { backgroundColor: brandColors.blueLight });
     }
+
+    /**************/
+    /* Navigation */
+    /**************/
+
+    // Store info about the various pages. This will be a single page application, 
+    // so all pages except for the active one will need to be hidden.
 
     var pages = {
         home: {
@@ -87,63 +104,53 @@ $(function () {
             sections: ['vr'],
             name: 'vr'
         }
-    }
+    };
 
     var activePage = pages.home;
 
     var viewSection = 0;
     var backgroundPlane;
-    var nextBackgroundPlane;
 
-    function setActivePage (name) {
+    _.forIn(pages, function(page) {
+        TweenMax.to($('#' + page.name + '-container'), 0, {autoAlpha: 0});
+        TweenMax.to('.navigation', 0.25, {autoAlpha: 1, ease: Power3.easeIn});
+        TweenMax.to($('#' + activePage.name + '-container'), 0.25, {autoAlpha: 1, ease: Power3.easeIn});
+    });
+
+    // Navigate between pages and animate page transitions
+
+    function navigateTo(name) {
+        var navArray = _.keys(pages);
+
+        var currentPageContainer = $('#' + activePage.name + '-container');
+        var nextPageContainer = $('#' + name + '-container');
+
+        console.log('currentPageContainer', currentPageContainer);
+        console.log('nextPageContainer', nextPageContainer);
+
+        // Determine index of active page and next page in navArray. 
+
+        // If index of next page > index of active page, 
+        // set next page's autoAlpha to 1, set its position to right of current page, and slide it into view
+
+        if (_.indexOf(navArray, name) > _.indexOf(navArray, activePage.name)) {
+            TweenMax.to(nextPageContainer, 0.1, {xPercent: '100', autoAlpha: 1});
+            TweenMax.staggerTo([currentPageContainer, nextPageContainer], 0.5, {xPercent: '-=100', ease: Power3.easeOut}, 0);
+            TweenMax.to(currentPageContainer, 0.1, {autoAlpha: 0})
+        }
+
+        // If index of next page < index of active page, do the converse
+
+        if ( _.indexOf(navArray, name) < _.indexOf(navArray, activePage.name)) {
+            TweenMax.to(nextPageContainer, 0.1, {xPercent: '-100', autoAlpha: 1});
+            TweenMax.staggerTo([currentPageContainer, nextPageContainer], 0.5, {xPercent: '+=100', ease: Power3.easeOut}, 0);
+        }
+
+        // Set active page to next page and we're done!
+
         activePage = pages[name];
-        console.log('active page is', activePage);
+
     }
-
-    function scrollToSection() {
-        TweenMax.to('.'+ activePage.name + '-container', 0.5, { scrollTo: { y: "#" + viewSection.toString(), autoKill: false }, ease: Power3.easeOut });
-    }
-
-    function nextSection() {
-        if (viewSection < activePage.sections.length - 1) {
-            viewSection++;
-            scrollToSection();
-        }
-    }
-
-    function prevSection() {
-        if (viewSection > 0) {
-            viewSection--;
-            scrollToSection();
-        }
-    }
-
-    //capture user scroll
-
-    // var startY = 0;
-    var startTime;
-
-    $(window).on('keydown', _.throttle(function (event) {
-        if (event.keyCode === 40) {
-            nextSection();
-        } else if (event.keyCode === 38) {
-            prevSection();
-        }
-    }, 500));
-
-    console.log("LOG NEW TEST");
-
-    $('body').on('wheel', _.throttle(function (event) {
-
-        console.log('debug wheel event', event);
-        if (event.originalEvent.deltaY > 0) {
-            console.log('next');
-            nextSection();
-        } else if (event.originalEvent.deltaY < 0) {
-            console.log('prev');
-            prevSection();
-        }
-    }, 500));
 
     var navLink = $('.nav-link');
 
@@ -173,18 +180,18 @@ $(function () {
             });
         });
 
-    navLink.click(function() {
-        if(this.id === 'home-button') {
-            setActivePage('home');
+    navLink.click(function () {
+        if (this.id === 'home-button') {
+            navigateTo('home');
         }
-        if(this.id === 'work-button') {
-            setActivePage('work');
+        if (this.id === 'work-button') {
+            navigateTo('work');
         }
-        if(this.id === 'team-button') {
-            setActivePage('team');
+        if (this.id === 'team-button') {
+            navigateTo('team');
         }
-        if(this.id === 'vr-button') {
-            setActivePage('vr');
+        if (this.id === 'vr-button') {
+            navigateTo('vr');
         }
     })
 
@@ -202,4 +209,56 @@ $(function () {
                 borderBottom: 'none'
             });
         });
+
+    $(window).on('keydown', _.throttle(function (event) {
+
+        //TODO: Figure out capturing keydown input for different pages, i.e. not on window object
+
+        if (activePage.name === 'home') {
+            if (event.keyCode === 40) {
+                nextSection();
+            } else if (event.keyCode === 38) {
+                prevSection();
+            }
+        } else {
+
+            //Disable key-based scrolling on pages other than home for now
+
+            event.preventDefault();
+        }
+    }, 200));
+
+    /**********************/
+    /* Home page UI stuff */
+    /**********************/
+
+    function homeScrollToSection() {
+        TweenMax.to('#' + activePage.name + '-container', 0.5, { scrollTo: { y: "#" + viewSection.toString(), autoKill: false }, ease: Power3.easeOut });
+    }
+
+    function homeNextSection() {
+        if (viewSection < activePage.sections.length - 1) {
+            viewSection++;
+            homeScrollToSection();
+        }
+    }
+
+    function homePrevSection() {
+        if (viewSection > 0) {
+            viewSection--;
+            homeScrollToSection();
+        }
+    }
+
+    $('#home-container').on('wheel', _.throttle(function (event) {
+
+        console.log('debug wheel event', event);
+        if (event.originalEvent.deltaY > 0) {
+            console.log('next');
+            homeNextSection();
+        } else if (event.originalEvent.deltaY < 0) {
+            console.log('prev');
+            homePrevSection();
+        }
+    }, 200));
 });
