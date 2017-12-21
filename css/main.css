@@ -539,7 +539,8 @@ textarea {
     display: inline-block; }
 
 html {
-  height: 100vh;
+  height: 100%;
+  overflow: hidden;
   padding: 0;
   margin: 0;
   font-size: 20px; }
@@ -565,17 +566,17 @@ html::-webkit-scrollbar {
 body {
   padding: 0;
   margin: 0;
-  height: 100vh;
+  height: 100%;
+  overflow: hidden;
   -webkit-overflow-scrolling: touch;
   overflow: -moz-scrollbars-none;
   position: relative;
   background-color: transparent; }
 
 .container {
-  height: 100vh;
-  overflow-y: scroll;
+  height: 100%;
+  overflow: hidden;
   width: 100%;
-  display: block;
   position: relative;
   z-index: 2;
   overflow: -moz-scrollbars-none; }
@@ -628,7 +629,6 @@ body {
     .navigation {
       padding: 1em 5px;
       font-size: 0.8em;
-      background-color: #FF0066;
       height: 3em; }
       .navigation ul {
         justify-content: center; } }
@@ -636,12 +636,17 @@ body {
 .nav-link {
   margin-right: 2em;
   padding: 3px 6px; }
-  .nav-link:hover {
-    border-bottom: 1px solid #FFE919; }
   @media screen and (max-width: 767px) {
     .nav-link {
       padding: 0.8em;
       margin-right: 0; } }
+
+.nav-link.nav-link-active {
+  background-color: #fafafa;
+  color: #FF0066; }
+
+.nav-link.nav-link-clicked {
+  background-color: #FFE919; }
 
 p {
   line-height: 1.4em; }
