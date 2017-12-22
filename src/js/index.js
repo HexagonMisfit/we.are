@@ -1,68 +1,14 @@
+import '../../node_modules/jquery/dist/jquery.min.js';
+import '../../node_modules/lodash/lodash.min.js';
+import '../../node_modules/gsap/TweenMax.js';
+import '../../node_modules/gsap/ScrollToPlugin.js';
+import './anim.js';
+import '../sass/main.scss';
+
+var $ = require('jquery');
+var _ = require('lodash');
+
 $(function () {
-
-    /***********/
-    /* Theming */
-    /***********/
-    var brandColors = {
-        magentaLight: 0xFF0066,
-        magentaDark: 0xB21252,
-        blueLight: 0x14ACCC,
-        blueDark: 0x0995B2,
-        brightYellow: 0xFFE919,
-        nearWhite: 0xfafafa,
-        nearBlack: 0x060606
-    }
-    /**********************************************************************/
-    /* THREE.JS code initialize scene, draw basic floating blueLight cube */
-    /**********************************************************************/
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
-
-    // Cube
-    // TODO: make a cool geometry and animate it. Maybe an extruded hexagon with a cloud-ring of cubes orbiting it.
-
-    var cubeGeometry = new THREE.BoxGeometry(3, 3, 3);
-    var cubeMaterial = new THREE.MeshBasicMaterial({ color: brandColors.blueLight });
-    var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
-
-    scene.background = new THREE.Color(0xFFFFFF);
-    scene.add(cube);
-
-
-    cube.rotation.x = 0.5;
-    cube.rotation.y = 0.5;
-
-    // Background plane
-
-    var planeGeometry = new THREE.PlaneGeometry(50, 50, 32);
-    var planeMaterial = new THREE.MeshBasicMaterial({ color: brandColors.magentaLight, side: THREE.DoubleSide });
-    var pinkPlane = new THREE.Mesh(planeGeometry, planeMaterial);
-    pinkPlane.position.z = -10;
-    pinkPlane.name = '0';
-
-    scene.add(pinkPlane);
-
-    // Camera
-
-    camera.position.z = 5;
-
-    // Animate the scene
-
-    var animate = function () {
-        requestAnimationFrame(animate);
-        cube.rotation.y += 0.001;
-        renderer.render(scene, camera);
-    };
-
-    animate();
-
-    // Draw it on a canvas fixed behind everything in the site
-
-    $('canvas').addClass('fixed-canvas');
 
     /**************/
     /* UI Stuff */
@@ -204,27 +150,12 @@ $(function () {
         TweenMax.to(this, 0.1, {className: '-= nav-link-clicked'});
     });
 
-    // navLink.bind('touchstart',
-    //     function (event) {
-    //         event.preventDefault();
-    //         TweenMax.to(this, 0.1, {
-    //             backgroundColor: brandColors.nearWhite,
-    //             color: brandColors.magentaLight,
-    //         });
-    //     }).bind('touchend', function () {
-    //         TweenMax.to(this, 0.3, {
-    //             color: brandColors.nearWhite,
-    //             backgroundColor: 'rgba(0,0,0,0)',
-    //             borderBottom: 'none'
-    //         });
-    //     });
-
     /**********************/
     /* Home page UI stuff */
     /**********************/
 
     function homeScrollToSection() {
-        TweenMax.to('#home-container', 0.75, { scrollTo: { y: "#" + viewSection.toString(), autoKill: false }, ease: Power3.easeOut });
+        TweenMax.to('#home-container', 0.75, { scrollTo: { y: "#section" + viewSection.toString(), autoKill: false }, ease: Power3.easeOut });
     }
 
     function homeNextSection() {

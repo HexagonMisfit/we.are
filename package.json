@@ -4,14 +4,27 @@
   "description": "Site for hexagonmis.fit",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "webpack --watch"
   },
   "author": "Alex Erickson",
   "license": "ISC",
   "devDependencies": {
     "@drazik/normalize.scss": "^4.1.1",
-    "gulp": "^3.9.1",
-    "gulp-sass": "^3.1.0",
-    "gulp-watch": "^4.3.11"
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^2.30.1",
+    "jquery": "^3.2.1",
+    "lodash": "^4.17.4",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.1",
+    "webpack": "^3.10.0"
+  },
+  "dependencies": {
+    "gsap": "^1.20.3",
+    "scrollmagic": "^2.0.5",
+    "three": "^0.89.0"
   }
 }

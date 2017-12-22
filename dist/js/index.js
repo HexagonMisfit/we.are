@@ -22,6 +22,8 @@ $(function () {
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
+    scene.background = new THREE.Color(0xFFFFFF);
+
     // Cube
     // TODO: make a cool geometry and animate it. Maybe an extruded hexagon with a cloud-ring of cubes orbiting it.
 
@@ -29,9 +31,12 @@ $(function () {
     var cubeMaterial = new THREE.MeshBasicMaterial({ color: brandColors.blueLight });
     var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
 
-    scene.background = new THREE.Color(0xFFFFFF);
     scene.add(cube);
 
+    var loader = new THREE.ColladaLoader();
+    loader.load('../assets/3d_models/hexagon.dae', function(hexagon) {
+        console.log('debug hexagon', hexagon);
+    })
 
     cube.rotation.x = 0.5;
     cube.rotation.y = 0.5;
