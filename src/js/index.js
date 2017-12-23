@@ -53,71 +53,98 @@ $(function () {
     var viewSection = 0;
     var backgroundPlane;
 
-    _.forIn(pages, function (page) {
-        TweenMax.to($('#' + page.name + '-container'), 0, { autoAlpha: 0 });
-        TweenMax.to('.navigation', 0.25, { autoAlpha: 1, ease: Power3.easeIn });
-        TweenMax.to($('#' + activePage.name + '-container'), 0.25, { autoAlpha: 1, ease: Power3.easeIn });
-        TweenMax.to($('#' + activePage.name + '-button'), 0.1, { className: '+= nav-link-active' })
-    });
+    function initHome() {
+        _.forIn(pages, function (page) {
+            TweenMax.to($('#' + page.name + '-container'), 0, { autoAlpha: 0 });
+            TweenMax.to('.navigation', 0.25, { autoAlpha: 1, ease: Power3.easeIn });
+            TweenMax.to($('#' + activePage.name + '-container'), 0.25, { autoAlpha: 1, ease: Power3.easeIn });
+            TweenMax.to($('#' + activePage.name + '-button'), 0.1, { className: '+= nav-link-active' })
+        });
+    }
+
+    initHome();
 
     // Navigate between pages and animate page transitions
 
-    function navigateTo(name) {
+    function navigateTo(name, navAlt) {
         var navArray = _.keys(pages);
+        
+        if(navAlt) {
+            console.log('nav alt class');
+            addNavAltClass();
+        }
 
-        removeActiveNavClass(activePage.name);
+        if(!navAlt) {
+            console.log('remove nav alt class');
+            removeNavAltClass();
+        }
+
+        // Apply active nav button class to next active nav, remove it from current one
+
+        var currentActiveNavButton = $('#' + activePage.name + '-button');
+        var nextActiveNavButton = $('#' + name + '-button');
+
+        removeActiveNavClass(currentActiveNavButton);
+        addActiveNavClass(nextActiveNavButton);
 
         var currentPageContainer = $('#' + activePage.name + '-container');
         var nextPageContainer = $('#' + name + '-container');
 
-        console.log('currentPageContainer', currentPageContainer);
-        console.log('nextPageContainer', nextPageContainer);
-
         // Determine index of active page and next page in navArray. 
 
-        // If index of next page > index of active page, 
-        // set next page's autoAlpha to 1, set its position to right of current page, and slide it into view
+        TweenMax.to(nextPageContainer, 0.5, {autoAlpha: 1, ease: Power2.easeIn});
+        TweenMax.to(currentPageContainer, 0.5, { autoAlpha: 0, ease: Power2.easeIn });
 
         if (_.indexOf(navArray, name) > _.indexOf(navArray, activePage.name)) {
-            TweenMax.to(nextPageContainer, 0.1, { xPercent: '100', autoAlpha: 1 });
-            TweenMax.staggerTo([currentPageContainer, nextPageContainer], 0.75, { xPercent: '-=100', ease: Power2.easeInOut }, 0);
-            TweenMax.to(currentPageContainer, 1, { autoAlpha: 0, ease: Power4.easeIn })
+            // TweenMax.to(nextPageContainer, 0.1, { xPercent: '100', autoAlpha: 1 });
+            // TweenMax.staggerTo([currentPageContainer, nextPageContainer], 0.75, { xPercent: '-=100', ease: Power2.easeInOut }, 0);
+            // TweenMax.to(currentPageContainer, 1, { autoAlpha: 0, ease: Power4.easeIn });
+            
         }
 
         // If index of next page < index of active page, do the converse
 
         if (_.indexOf(navArray, name) < _.indexOf(navArray, activePage.name)) {
-            TweenMax.to(nextPageContainer, 0.1, { xPercent: '-100', autoAlpha: 1 });
-            TweenMax.staggerTo([currentPageContainer, nextPageContainer], 0.75, { xPercent: '+=100', ease: Power2.easeInOut }, 0);
-            TweenMax.to(currentPageContainer, 1, { autoAlpha: 0, ease: Power4.easeIn })
+            // TweenMax.to(nextPageContainer, 0.1, { xPercent: '-100', autoAlpha: 1 });
+            // TweenMax.staggerTo([currentPageContainer, nextPageContainer], 0.75, { xPercent: '+=100', ease: Power2.easeInOut }, 0);
+            // TweenMax.to(currentPageContainer, 1, { autoAlpha: 0, ease: Power4.easeIn });
         }
 
         // Set active page to next page and we're done!
 
         activePage = pages[name];
+        console.log('debug activePage', activePage);
 
     }
 
     var navLink = $('.nav-link');
 
-    function removeActiveNavClass(name) {
-        TweenMax.to($('#' + name + '-button'), 0.5, { className: '-= nav-link-active' });
+    function addActiveNavClass(element) {
+        element.addClass('nav-link-active');
+    }
+
+    function removeActiveNavClass(element) {
+        element.removeClass('nav-link-active');
+    }
+
+    function addNavAltClass() {
+        navLink.addClass('nav-link-alt');
+    }
+
+    function removeNavAltClass() {
+        navLink.removeClass('nav-link-alt');
     }
 
     navLink.hover(function () {
 
-        console.log('hover this', this);
-
         if (this.id !== activePage.name + '-button') {
-            TweenMax.to(this, 0.3, {
-                className: '+= nav-link-active'
-            });
+            var element = $('#' + this.id);
+            addActiveNavClass(element);
         }
     }, function () {
         if (this.id !== activePage.name + '-button') {
-            TweenMax.to(this, 0.3, {
-                className: '-= nav-link-active'
-            });
+            var element = $('#' + this.id);
+            removeActiveNavClass(element);
         }
     });
 
@@ -131,23 +158,19 @@ $(function () {
             navigateTo('work');
         }
         if (this.id === 'team-button') {
-            navigateTo('team');
+            navigateTo('team', true);
         }
         if (this.id === 'vr-button') {
             navigateTo('vr');
         }
-
-        TweenMax.to(this, 0.2, {
-            className: '-= nav-link-clicked'
-        });
     });
 
     navLink.mousedown(function() {
-        TweenMax.to(this, 0.1, {className: '+= nav-link-clicked'});
+        this.add
     });
 
     navLink.mouseup(function() {
-        TweenMax.to(this, 0.1, {className: '-= nav-link-clicked'});
+        TweenMax.to(this, 0.1, {className: '-=nav-link-clicked'});
     });
 
     /**********************/

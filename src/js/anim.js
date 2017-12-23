@@ -1,7 +1,6 @@
-// import '../../node_modules/three/build/three.js';
-// var THREE = require('three');
-import '../../node_modules/three/examples/js/loaders/ColladaLoader.js';
+import '../../node_modules/lodash/lodash.js';
 import '../../node_modules/jquery/dist/jquery.min.js';
+import '../../node_modules/gsap/TweenMax.js';
 
 var $ = require('jquery');
 
@@ -22,47 +21,74 @@ var brandColors = {
 /**********************************************************************/
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.z = 5;
+var mouse = {
+    z: -20
+};
+
+window.addEventListener('mousemove', _.throttle(onMouseMove, 150));
+
+var startRotation = new THREE.Euler().copy(camera.rotation);
+
+function onMouseMove(event) {
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = (event.clientY / window.innerHeight) * 2 - 1;
+    TweenMax.to(camera.rotation, 5, {x: startRotation.y - mouse.y/10, y: startRotation.x - mouse.x/10});
+}
+
+// revert to original rotation
+camera.rotation.copy(startRotation);
+
+// Tween
+
 
 var renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setClearColor(brandColors.magentaDark, 1);
 document.body.appendChild(renderer.domElement);
 
-scene.background = new THREE.Color(0xFFFFFF);
-
-// Cube
-// TODO: make a cool geometry and animate it. Maybe an extruded hexagon with a cloud-ring of cubes orbiting it.
-
-var loader = new THREE.ColladaLoader();
-console.log('loader', loader);
-
 var cubeGeometry = new THREE.BoxGeometry(3, 3, 3);
-var cubeMaterial = new THREE.MeshBasicMaterial({ color: brandColors.blueLight });
-var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
 
-scene.add(cube);
+for (var i = 0; i < 100; i++) {
 
-cube.rotation.x = 0.5;
-cube.rotation.y = 0.5;
+    var cubeMaterial = new THREE.MeshBasicMaterial({ color: brandColors.blueLight });
+    var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
 
-// Background plane
+    cube.position.x = (Math.random() * 20) - 10;
+    cube.position.y = (Math.random() * 20) - 10;
+    cube.position.z = (Math.random() * 8) - 4;
 
-var planeGeometry = new THREE.PlaneGeometry(50, 50, 32);
-var planeMaterial = new THREE.MeshBasicMaterial({ color: brandColors.magentaLight, side: THREE.DoubleSide });
-var pinkPlane = new THREE.Mesh(planeGeometry, planeMaterial);
-pinkPlane.position.z = -10;
-pinkPlane.name = '0';
+    var cubeScale = Math.random() / 3 + 0.05;
 
-scene.add(pinkPlane);
+    cube.scale.x = cubeScale;
+    cube.scale.y = cubeScale;
+    cube.scale.z = cubeScale;
 
-// Camera
+    cube.rotation.y = Math.random();
+    cube.rotation.x = Math.random();
 
-camera.position.z = 5;
+    cube.yVelocity = 0.0001 - Math.random() / 1000;
+    cube.xVelocity = 0.0001 - Math.random() / 1000;
+
+    cube.name = 'cube' + i;
+
+    scene.add(cube);
+}
 
 // Animate the scene
 
 var animate = function () {
     requestAnimationFrame(animate);
-    cube.rotation.y += 0.001;
+    _.forEach(scene.children, function (object) {
+        object.position.z -= 0.0003;
+        object.position.x += object.xVelocity;
+        object.position.y += object.yVelocity;
+        object.rotation.x += Math.random() / 400;
+        object.rotation.y += Math.random() / 400;
+    });
+
+    var startRotation = new THREE.Euler().copy(camera.rotation);
+
     renderer.render(scene, camera);
 };
 

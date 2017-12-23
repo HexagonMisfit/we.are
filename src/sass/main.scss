@@ -1,4 +1,4 @@
-@import 'variables', 'normalize', 'home', 'projects';
+@import 'variables', 'normalize', 'home', 'projects', 'team';
 
 html {
     height: 100%;
@@ -37,7 +37,7 @@ body {
     overflow: -moz-scrollbars-none;
     // touch-action: none;
     position: relative;
-    background-color: rgba(0,0,0,0);
+    background-color: $magenta-light;
 }
 
 .container {
@@ -73,7 +73,8 @@ body {
     z-index: 10;
     height: 10em;
     padding: 3em 10em;
-    opacity: 0;
+    background-color:inherit;
+    // opacity: 0;
     ul {
         width: 100vw;
         list-style: none;
@@ -121,13 +122,17 @@ body {
     }
 }
 
-.nav-link.nav-link-active {
+.nav-link.nav-link-active, .nav-link.nav-link-active.nav-link-alt {
     background-color: $near-white;
     color: $magenta-light;
 }
 
 .nav-link.nav-link-clicked {
     background-color: $bright-yellow;
+}
+
+.nav-link.nav-link-alt {
+    color: $near-black;
 }
 
 p {

@@ -2,8 +2,6 @@
     height: 100vh;
     width: 100vw;
     position: absolute;
-    left: 100%;
-    opacity: 0;
     display: hidden;
 }
 
@@ -58,7 +56,7 @@
 }
 
 .project-panel {
-    z-index: 10;
+    z-index: 5;
     background-color: $magenta-dark;
     width: 100%;
     min-height: 30em;
@@ -67,7 +65,7 @@
     padding: 2em;
     display: flex;
     justify-content: center;
-    border: 2px solid $blue-light;
+    border-top: 2px solid $blue-light;
     h2 {
         margin: 1em 0;
     }

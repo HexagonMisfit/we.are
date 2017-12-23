@@ -10,7 +10,7 @@
     width: 100%;
     height: 100vh;
     justify-content: center;
-    padding: 0 10em;
+    padding: 0 14em;
     z-index: 10;
     @media screen and (max-width: 1400px) {
         padding: 0 7em;
@@ -24,8 +24,10 @@
 .hero-text {
     display: inline-block;
     width: 50%;
+    min-width: 30em;
     @media screen and (max-width: 1024px) {
         width: 100%;
+        min-width: 0;
     }
     h1 {
         display: inline-block;
@@ -39,7 +41,7 @@
 .contact {
     min-height: 100vh;
     padding: 0 10em;
-    background-color: $blue-light;
+    justify-content: center;
     @media screen and (max-width: 1400px) {
         padding: 0 7em;
     }
@@ -52,28 +54,34 @@
     }
 }
 
+.contact-row {
+    width: 100%;
+    max-width: 60em;
+}
+
 .contact-container {
     @media screen and (max-width: 900px) {
         align-items: center;
-    }
-}
-
-.contact-text-container {
-    @media screen and (min-width: 901px) {
-        padding-left: 3em;
-    }
-}
-
-.contact-input-container {
-    @media screen and (min-width: 901px) {
-        padding-left: 3em;
+        padding: 0 2em;
     }
 }
 
 .contact-text-container, .contact-input-container {
-    max-width: 27em;
+    height: 20em;
+    background-color: $blue-light;
+    justify-content: center;
+    h1 {
+        margin-top: 0;
+    }
+    .name {
+        margin-top: 0;
+    }
+    @media screen and (min-width: 901px) {
+        padding: 0 2em;
+    }
     @media screen and (max-width: 900px) {
         width: 100%;
+        padding: 0 1em;
     }
 }
 
