@@ -628,7 +628,7 @@ body {
   -webkit-overflow-scrolling: touch;
   overflow: -moz-scrollbars-none;
   position: relative;
-  background-color: #FF0066; }
+  background-color: #B21252; }
 
 .container {
   height: 100%;
@@ -637,6 +637,9 @@ body {
   position: relative;
   z-index: 2;
   overflow: -moz-scrollbars-none; }
+
+#home-container, #work-container, #team-container, #vr-container {
+  z-index: 3; }
 
 .fixed-canvas, .mobile-canvas {
   top: 0;
@@ -700,7 +703,7 @@ body {
 
 .nav-link.nav-link-active, .nav-link.nav-link-active.nav-link-alt {
   background-color: #fafafa;
-  color: #FF0066; }
+  color: #B21252; }
 
 .nav-link.nav-link-clicked {
   background-color: #FFE919; }
@@ -763,3 +766,19 @@ h3 {
 
 .transparent-background {
   background-color: transparent; }
+
+.nav-transition-text-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  align-items: center;
+  justify-content: center;
+  z-index: 1; }
+
+.ultra-big-text {
+  font-size: 10em;
+  font-weight: 700;
+  margin: 0;
+  padding: 0; }
