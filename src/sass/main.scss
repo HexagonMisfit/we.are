@@ -37,7 +37,7 @@ body {
     overflow: -moz-scrollbars-none;
     // touch-action: none;
     position: relative;
-    background-color: $magenta-light;
+    background-color: $magenta-dark;
 }
 
 .container {
@@ -47,6 +47,10 @@ body {
     position: relative;
     z-index: 2;
     overflow: -moz-scrollbars-none;
+}
+
+#home-container, #work-container, #team-container, #vr-container {
+    z-index: 3;
 }
 
 .fixed-canvas, .mobile-canvas {
@@ -124,7 +128,7 @@ body {
 
 .nav-link.nav-link-active, .nav-link.nav-link-active.nav-link-alt {
     background-color: $near-white;
-    color: $magenta-light;
+    color: $magenta-dark;
 }
 
 .nav-link.nav-link-clicked {
@@ -207,4 +211,22 @@ h3 {
 
 .transparent-background {
     background-color: rgba(0,0,0,0);
+}
+
+.nav-transition-text-container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.ultra-big-text {
+    font-size: 10em;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
 }

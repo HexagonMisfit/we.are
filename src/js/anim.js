@@ -1,21 +1,8 @@
-import '../../node_modules/lodash/lodash.js';
-import '../../node_modules/jquery/dist/jquery.min.js';
-import '../../node_modules/gsap/TweenMax.js';
-
+import { TweenMax } from '../../node_modules/gsap/TweenMax.js';
+import { brandColors } from './theming.js';
 var $ = require('jquery');
+var _ = require('lodash');
 
-/***********/
-/* Theming */
-/***********/
-var brandColors = {
-    magentaLight: 0xFF0066,
-    magentaDark: 0xB21252,
-    blueLight: 0x14ACCC,
-    blueDark: 0x0995B2,
-    brightYellow: 0xFFE919,
-    nearWhite: 0xfafafa,
-    nearBlack: 0x060606
-}
 /**********************************************************************/
 /* THREE.JS code initialize scene, draw basic floating blueLight cube */
 /**********************************************************************/
@@ -28,21 +15,20 @@ var mouse = {
 
 window.addEventListener('mousemove', _.throttle(onMouseMove, 150));
 
+// copy initial camera rotation so we can tween from it to a new one in slo mo based on mouse movement
+
 var startRotation = new THREE.Euler().copy(camera.rotation);
 
 function onMouseMove(event) {
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = (event.clientY / window.innerHeight) * 2 - 1;
-    TweenMax.to(camera.rotation, 5, {x: startRotation.y - mouse.y/10, y: startRotation.x - mouse.x/10});
+
+    // set a camera rotation value to tween to
+
+    TweenMax.to(camera.rotation, 7.5, { x: startRotation.y - mouse.y / 5, y: startRotation.x - mouse.x / 5 });
 }
 
-// revert to original rotation
-camera.rotation.copy(startRotation);
-
-// Tween
-
-
-var renderer = new THREE.WebGLRenderer();
+var renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setClearColor(brandColors.magentaDark, 1);
 document.body.appendChild(renderer.domElement);
@@ -67,8 +53,11 @@ for (var i = 0; i < 100; i++) {
     cube.rotation.y = Math.random();
     cube.rotation.x = Math.random();
 
-    cube.yVelocity = 0.0001 - Math.random() / 1000;
-    cube.xVelocity = 0.0001 - Math.random() / 1000;
+    cube.yVelocity = (0.5 - Math.random()) / 1000;
+    cube.xVelocity = (0.5 - Math.random()) / 1000;
+
+    cube.xRotationRate = Math.random() / 400;
+    cube.yRotationRate = Math.random() / 400;
 
     cube.name = 'cube' + i;
 
@@ -80,11 +69,11 @@ for (var i = 0; i < 100; i++) {
 var animate = function () {
     requestAnimationFrame(animate);
     _.forEach(scene.children, function (object) {
-        object.position.z -= 0.0003;
+        object.position.z -= 0.0001;
         object.position.x += object.xVelocity;
         object.position.y += object.yVelocity;
-        object.rotation.x += Math.random() / 400;
-        object.rotation.y += Math.random() / 400;
+        object.rotation.x += object.xRotationRate;
+        object.rotation.y += object.yRotationRate;;
     });
 
     var startRotation = new THREE.Euler().copy(camera.rotation);

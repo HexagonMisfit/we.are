@@ -1,12 +1,13 @@
-import '../../node_modules/jquery/dist/jquery.min.js';
-import '../../node_modules/lodash/lodash.min.js';
-import '../../node_modules/gsap/TweenMax.js';
-import '../../node_modules/gsap/ScrollToPlugin.js';
-import './anim.js';
-import '../sass/main.scss';
-
+// vendor js files
 var $ = require('jquery');
 var _ = require('lodash');
+import { brandColors } from './theming.js';
+import { TweenMax, TimelineLite } from '../../node_modules/gsap/TweenMax.js';
+import '../../node_modules/gsap/ScrollToPlugin.js';
+
+// our scripts
+import './anim.js';
+import '../sass/main.scss';
 
 $(function () {
 
@@ -32,19 +33,27 @@ $(function () {
     var pages = {
         home: {
             sections: ['hero', 'contact'],
-            name: 'home'
+            name: 'home',
+            backgroundColor: brandColors.magentaDark,
+            transitionTextColor: brandColors.nearWhite
         },
         work: {
             sections: ['project1'],
-            name: 'work'
+            name: 'work',
+            backgroundColor: brandColors.nearBlack,
+            transitionTextColor: brandColors.brightYellow
         },
         team: {
             sections: ['team'],
-            name: 'team'
+            name: 'team',
+            backgroundColor: brandColors.magentaLight,
+            transitionTextColor: brandColors.blueLight
         },
         vr: {
             sections: ['vr'],
-            name: 'vr'
+            name: 'vr',
+            backgroundColor: brandColors.brightYellow,
+            transitionTextColor: brandColors.magentaLight
         }
     };
 
@@ -56,9 +65,10 @@ $(function () {
     function initHome() {
         _.forIn(pages, function (page) {
             TweenMax.to($('#' + page.name + '-container'), 0, { autoAlpha: 0 });
+            TweenMax.to($('#' + page.name + '-flash-text'), 0, {autoAlpha: 0});
             TweenMax.to('.navigation', 0.25, { autoAlpha: 1, ease: Power3.easeIn });
             TweenMax.to($('#' + activePage.name + '-container'), 0.25, { autoAlpha: 1, ease: Power3.easeIn });
-            TweenMax.to($('#' + activePage.name + '-button'), 0.1, { className: '+= nav-link-active' })
+            TweenMax.to($('#' + activePage.name + '-button'), 0.1, { className: '+= nav-link-active' });
         });
     }
 
@@ -67,54 +77,71 @@ $(function () {
     // Navigate between pages and animate page transitions
 
     function navigateTo(name, navAlt) {
+
+        var currentPageContainer = $('#' + activePage.name + '-container');
+        var nextPageContainer = $('#' + name + '-container');
+
+        var currentActiveNavButton = $('#' + activePage.name + '-button');
+        var nextActiveNavButton = $('#' + name + '-button');
+
         var navArray = _.keys(pages);
-        
-        if(navAlt) {
-            console.log('nav alt class');
+
+        function flashNextSection() {
+            var activeFlashSection = $('#' + name + '-flash');
+            var activeFlashText = $('#' + name + '-flash-text');
+
+            console.log(activeFlashSection);
+            console.log(activeFlashText);
+
+            var tl = new TimelineLite();
+
+            // set flash container background color and text color
+
+            tl.to(activeFlashSection, 0, { backgroundColor: activePage.backgroundColor })
+                .to(activeFlashText, 0, { color: activePage.transitionTextColor })
+
+                // show flash container and hide current page/nav
+
+                .to(currentPageContainer, 0, { autoAlpha: 0 }, 0)
+                .to(activeFlashSection, 0, { autoAlpha: 1 }, 0)
+                .to(activeFlashText, 0, { autoAlpha: 1}, 0)
+                .to('.home-nav', 0, {autoAlpha: 0}, 0)
+
+                // flash through some different colors
+
+                .to(activeFlashSection, 0, {backgroundColor: activePage.transitionTextColor}, 0.5)
+                .to(activeFlashText, 0, {color: activePage.backgroundColor}, 0.5)
+                .to(activeFlashSection, 0, {backgroundColor: pages[name].backgroundColor}, 1)
+                .to(activeFlashText, 0, {color: pages[name].transitionTextColor}, 1)
+                
+                // hide flash section, show next section
+                
+                .to(activeFlashSection, 0, {autoAlpha: 0}, 1.5)
+                .to(activeFlashText, 0, {autoAlpha: 0}, 1.5)
+                .to(nextPageContainer, 0, {autoAlpha: 1}, 1.5)
+                .to('.home-nav', 0, {autoAlpha: 1}, 1.5);
+        }
+
+        if (navAlt) {
             addNavAltClass();
         }
 
-        if(!navAlt) {
-            console.log('remove nav alt class');
+        if (!navAlt) {
             removeNavAltClass();
         }
 
         // Apply active nav button class to next active nav, remove it from current one
 
-        var currentActiveNavButton = $('#' + activePage.name + '-button');
-        var nextActiveNavButton = $('#' + name + '-button');
-
         removeActiveNavClass(currentActiveNavButton);
         addActiveNavClass(nextActiveNavButton);
 
-        var currentPageContainer = $('#' + activePage.name + '-container');
-        var nextPageContainer = $('#' + name + '-container');
+        // Determine index of active page and next page in navArray.
+        // TweenMax.to(currentPageContainer, 0, { autoAlpha: 0 });
+        // TweenMax.to(nextPageContainer, 0.5, { autoAlpha: 1, ease: Power2.easeIn });
+        flashNextSection();
 
-        // Determine index of active page and next page in navArray. 
-
-        TweenMax.to(nextPageContainer, 0.5, {autoAlpha: 1, ease: Power2.easeIn});
-        TweenMax.to(currentPageContainer, 0.5, { autoAlpha: 0, ease: Power2.easeIn });
-
-        if (_.indexOf(navArray, name) > _.indexOf(navArray, activePage.name)) {
-            // TweenMax.to(nextPageContainer, 0.1, { xPercent: '100', autoAlpha: 1 });
-            // TweenMax.staggerTo([currentPageContainer, nextPageContainer], 0.75, { xPercent: '-=100', ease: Power2.easeInOut }, 0);
-            // TweenMax.to(currentPageContainer, 1, { autoAlpha: 0, ease: Power4.easeIn });
-            
-        }
-
-        // If index of next page < index of active page, do the converse
-
-        if (_.indexOf(navArray, name) < _.indexOf(navArray, activePage.name)) {
-            // TweenMax.to(nextPageContainer, 0.1, { xPercent: '-100', autoAlpha: 1 });
-            // TweenMax.staggerTo([currentPageContainer, nextPageContainer], 0.75, { xPercent: '+=100', ease: Power2.easeInOut }, 0);
-            // TweenMax.to(currentPageContainer, 1, { autoAlpha: 0, ease: Power4.easeIn });
-        }
-
-        // Set active page to next page and we're done!
 
         activePage = pages[name];
-        console.log('debug activePage', activePage);
-
     }
 
     var navLink = $('.nav-link');
@@ -165,12 +192,12 @@ $(function () {
         }
     });
 
-    navLink.mousedown(function() {
+    navLink.mousedown(function () {
         this.add
     });
 
-    navLink.mouseup(function() {
-        TweenMax.to(this, 0.1, {className: '-=nav-link-clicked'});
+    navLink.mouseup(function () {
+        TweenMax.to(this, 0.1, { className: '-=nav-link-clicked' });
     });
 
     /**********************/
@@ -213,9 +240,11 @@ $(function () {
 
         if (activePage.name === 'home') {
             if (event.keyCode === 40) {
-                nextSection();
+                viewSection++;
+                homeScrollToSection();
             } else if (event.keyCode === 38) {
-                prevSection();
+                viewSection--;
+                homeScrollToSection();
             }
         } else {
 
