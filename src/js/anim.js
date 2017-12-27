@@ -1,5 +1,6 @@
-import { TweenMax } from '../../node_modules/gsap/TweenMax.js';
 import { brandColors } from './theming.js';
+import { TweenMax } from '../../node_modules/gsap/TweenMax';
+var TWEEN = require('@tweenjs/tween.js');
 var $ = require('jquery');
 var _ = require('lodash');
 
@@ -8,24 +9,22 @@ var _ = require('lodash');
 /**********************************************************************/
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+var cubes = [];
 camera.position.z = 5;
-var mouse = {
-    z: -20
-};
+var lookAtPosition = new THREE.Vector3();
+var mousePos = new THREE.Vector3();
 
-window.addEventListener('mousemove', _.throttle(onMouseMove, 150));
+window.addEventListener('mousemove', _.throttle(onMouseMove, 100));
+var width = window.innerWidth;
+var height = window.innerHeight;
 
 // copy initial camera rotation so we can tween from it to a new one in slo mo based on mouse movement
 
 var startRotation = new THREE.Euler().copy(camera.rotation);
 
 function onMouseMove(event) {
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = (event.clientY / window.innerHeight) * 2 - 1;
-
-    // set a camera rotation value to tween to
-
-    TweenMax.to(camera.rotation, 7.5, { x: startRotation.y - mouse.y / 5, y: startRotation.x - mouse.x / 5 });
+    TweenMax.to(mousePos, 5, {x: (event.clientX / width) * 2 - 1});
+    TweenMax.to(mousePos, 5, {y: -((event.clientY / height) * 2 - 1)});
 }
 
 var renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -59,8 +58,7 @@ for (var i = 0; i < 100; i++) {
     cube.xRotationRate = Math.random() / 400;
     cube.yRotationRate = Math.random() / 400;
 
-    cube.name = 'cube' + i;
-
+    cubes.push(cube);
     scene.add(cube);
 }
 
@@ -68,16 +66,16 @@ for (var i = 0; i < 100; i++) {
 
 var animate = function () {
     requestAnimationFrame(animate);
-    _.forEach(scene.children, function (object) {
-        object.position.z -= 0.0001;
-        object.position.x += object.xVelocity;
-        object.position.y += object.yVelocity;
-        object.rotation.x += object.xRotationRate;
-        object.rotation.y += object.yRotationRate;;
-    });
-
-    var startRotation = new THREE.Euler().copy(camera.rotation);
-
+    lookAtPosition.x = mousePos.x;
+    lookAtPosition.y = mousePos.y;
+    for (var i = 0; i < cubes.length; i++) {
+        cubes[i].position.z -= 0.0001;
+        cubes[i].position.x += cubes[i].xVelocity;
+        cubes[i].position.y += cubes[i].yVelocity;
+        cubes[i].rotation.x += cubes[i].xRotationRate;
+        cubes[i].rotation.y += cubes[i].yRotationRate;;
+    }
+    camera.lookAt(lookAtPosition);
     renderer.render(scene, camera);
 };
 
