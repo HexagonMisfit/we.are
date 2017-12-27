@@ -22,8 +22,13 @@ var height = window.innerHeight;
 var startRotation = new THREE.Euler().copy(camera.rotation);
 
 function onMouseMove(event) {
-    TweenMax.to(mousePos, 5, {x: (event.clientX / width) * 2 - 1});
-    TweenMax.to(mousePos, 5, {y: -((event.clientY / height) * 2 - 1)});
+    TweenMax.to(mousePos, 5, {
+        x: (event.clientX / width) * 2 - 1, 
+        y: -((event.clientY / height) * 2 - 1),
+        onUpdate: function() {
+            camera.lookAt(mousePos);
+        }
+    });
 }
 
 var renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -74,7 +79,6 @@ var animate = function () {
         cubes[i].rotation.x += cubes[i].xRotationRate;
         cubes[i].rotation.y += cubes[i].yRotationRate;;
     }
-    camera.lookAt(lookAtPosition);
     renderer.render(scene, camera);
 };
 
