@@ -37970,5 +37970,4 @@ $('canvas').addClass('fixed-canvas');
 // removed by extract-text-webpack-plugin
 
 /***/ })
-/******/ ]);***/ })
 /******/ ]);
