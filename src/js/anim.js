@@ -1,6 +1,5 @@
 import { brandColors } from './theming.js';
 import { TweenMax } from '../../node_modules/gsap/TweenMax';
-var TWEEN = require('@tweenjs/tween.js');
 var $ = require('jquery');
 var _ = require('lodash');
 
