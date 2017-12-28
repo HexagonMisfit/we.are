@@ -3,7 +3,8 @@ var $ = require('jquery');
 var _ = require('lodash');
 import { brandColors } from './theming.js';
 import { TweenMax, TimelineLite } from '../../node_modules/gsap/TweenMax.js';
-import '../../node_modules/gsap/ScrollToPlugin.js';
+import ScrollMagic from 'ScrollMagic';
+import '../../node_modules/scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min.js';
 
 // our scripts
 import './anim.js';
@@ -34,7 +35,7 @@ $(function () {
         home: {
             sections: ['hero', 'contact'],
             name: 'home',
-            backgroundColor: brandColors.magentaDark,
+            backgroundColor: brandColors.blueDark,
             transitionTextColor: brandColors.nearWhite
         },
         work: {
@@ -62,11 +63,21 @@ $(function () {
     var viewSection = 0;
     var backgroundPlane;
 
+    var scrollControl = new ScrollMagic.Controller();
+    var scrollScene = new ScrollMagic.Scene({
+        triggerElement: '#main-nav',
+        triggerHook: 0,
+        reverse: false
+    })
+    .setClassToggle("#main-nav", "fixed-nav")
+        // .addIndicators()
+        .addTo(scrollControl);
+
     function initHome() {
         _.forIn(pages, function (page) {
             TweenMax.to($('#' + page.name + '-container'), 0, { autoAlpha: 0 });
-            TweenMax.to($('#' + page.name + '-flash-text'), 0, {autoAlpha: 0});
-            TweenMax.to('.navigation', 0.25, { autoAlpha: 1, ease: Power3.easeIn });
+            TweenMax.to($('#' + page.name + '-flash-text'), 0, { autoAlpha: 0 });
+            TweenMax.to('.navigation', 0.25, { autoAlpha: 0.97, ease: Power3.easeIn });
             TweenMax.to($('#' + activePage.name + '-container'), 0.25, { autoAlpha: 1, ease: Power3.easeIn });
             TweenMax.to($('#' + activePage.name + '-button'), 0.1, { className: '+= nav-link-active' });
         });
@@ -76,7 +87,7 @@ $(function () {
 
     // Navigate between pages and animate page transitions
 
-    function navigateTo(name, navAlt) {
+    function navigateTo(name) {
 
         var currentPageContainer = $('#' + activePage.name + '-container');
         var nextPageContainer = $('#' + name + '-container');
@@ -104,30 +115,22 @@ $(function () {
 
                 .to(currentPageContainer, 0, { autoAlpha: 0 }, 0)
                 .to(activeFlashSection, 0, { autoAlpha: 1 }, 0)
-                .to(activeFlashText, 0, { autoAlpha: 1}, 0)
-                .to('.home-nav', 0, {autoAlpha: 0}, 0)
+                .to(activeFlashText, 0, { autoAlpha: 1 }, 0)
+                .to('.home-nav', 0, { autoAlpha: 0 }, 0)
 
                 // flash through some different colors
 
-                .to(activeFlashSection, 0, {backgroundColor: activePage.transitionTextColor}, 0.5)
-                .to(activeFlashText, 0, {color: activePage.backgroundColor}, 0.5)
-                .to(activeFlashSection, 0, {backgroundColor: pages[name].backgroundColor}, 1)
-                .to(activeFlashText, 0, {color: pages[name].transitionTextColor}, 1)
-                
+                .to(activeFlashSection, 0, { backgroundColor: activePage.transitionTextColor }, 0.5)
+                .to(activeFlashText, 0, { color: activePage.backgroundColor }, 0.5)
+                .to(activeFlashSection, 0, { backgroundColor: pages[name].backgroundColor }, 1)
+                .to(activeFlashText, 0, { color: pages[name].transitionTextColor }, 1)
+
                 // hide flash section, show next section
-                
-                .to(activeFlashSection, 0, {autoAlpha: 0}, 1.5)
-                .to(activeFlashText, 0, {autoAlpha: 0}, 1.5)
-                .to(nextPageContainer, 0, {autoAlpha: 1}, 1.5)
-                .to('.home-nav', 0, {autoAlpha: 1}, 1.5);
-        }
 
-        if (navAlt) {
-            addNavAltClass();
-        }
-
-        if (!navAlt) {
-            removeNavAltClass();
+                .to(activeFlashSection, 0, { autoAlpha: 0 }, 1.5)
+                .to(activeFlashText, 0, { autoAlpha: 0 }, 1.5)
+                .to(nextPageContainer, 0, { autoAlpha: 1 }, 1.5)
+                .to('.home-nav', 0, { autoAlpha: 0.95 }, 1.5);
         }
 
         // Apply active nav button class to next active nav, remove it from current one
@@ -154,27 +157,6 @@ $(function () {
         element.removeClass('nav-link-active');
     }
 
-    function addNavAltClass() {
-        navLink.addClass('nav-link-alt');
-    }
-
-    function removeNavAltClass() {
-        navLink.removeClass('nav-link-alt');
-    }
-
-    navLink.hover(function () {
-
-        if (this.id !== activePage.name + '-button') {
-            var element = $('#' + this.id);
-            addActiveNavClass(element);
-        }
-    }, function () {
-        if (this.id !== activePage.name + '-button') {
-            var element = $('#' + this.id);
-            removeActiveNavClass(element);
-        }
-    });
-
     navLink.click(function () {
         console.log('clicked navLink', this.id);
 
@@ -185,7 +167,7 @@ $(function () {
             navigateTo('work');
         }
         if (this.id === 'team-button') {
-            navigateTo('team', true);
+            navigateTo('team');
         }
         if (this.id === 'vr-button') {
             navigateTo('vr');
@@ -203,55 +185,5 @@ $(function () {
     /**********************/
     /* Home page UI stuff */
     /**********************/
-
-    function homeScrollToSection() {
-        TweenMax.to('#home-container', 0.75, { scrollTo: { y: "#section" + viewSection.toString(), autoKill: false }, ease: Power3.easeOut });
-    }
-
-    function homeNextSection() {
-        if (viewSection < activePage.sections.length - 1) {
-            viewSection++;
-            homeScrollToSection();
-        }
-    }
-
-    function homePrevSection() {
-        if (viewSection > 0) {
-            viewSection--;
-            homeScrollToSection();
-        }
-    }
-
-    $('#home-container').on('wheel', _.throttle(function (event) {
-
-        console.log('debug wheel event', event);
-        if (event.originalEvent.deltaY > 0) {
-            console.log('next');
-            homeNextSection();
-        } else if (event.originalEvent.deltaY < 0) {
-            console.log('prev');
-            homePrevSection();
-        }
-    }, 200));
-
-    $(window).on('keydown', _.throttle(function (event) {
-
-        //TODO: Figure out capturing keydown input for different pages, i.e. not on window object
-
-        if (activePage.name === 'home') {
-            if (event.keyCode === 40) {
-                viewSection++;
-                homeScrollToSection();
-            } else if (event.keyCode === 38) {
-                viewSection--;
-                homeScrollToSection();
-            }
-        } else {
-
-            //Disable key-based scrolling on pages other than home for now
-
-            event.preventDefault();
-        }
-    }, 200));
 
 });

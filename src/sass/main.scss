@@ -37,7 +37,7 @@ body {
     overflow: -moz-scrollbars-none;
     // touch-action: none;
     position: relative;
-    background-color: $magenta-dark;
+    background-color: $blue-dark;
 }
 
 .container {
@@ -57,7 +57,7 @@ body {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 95vh;
 }
 
 .fixed-canvas {
@@ -71,26 +71,21 @@ body {
 
 .navigation {
     width: 100vw;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 10;
-    height: 10em;
-    padding: 3em 10em;
-    background-color:inherit;
-    // opacity: 0;
+    z-index: 11;
+    padding: 1em 10em;
+    position: relative;
+    background-color: $near-white;
+    border-bottom: 1px solid $button-darken;
     ul {
         width: 100vw;
         list-style: none;
         display: flex;
         justify-content: space-between;
-        height: 1.5em;
-        &:hover {
-            cursor: pointer;
-        }
+        align-items: center;
+        height: 100%;
     }
     @media screen and (max-width: 1400px) {
-        padding: 3em 7em;
+        padding: 1em 7em;
     }
     @media screen and (max-width: 900px) {
         ul {
@@ -99,7 +94,6 @@ body {
     }
     @media screen and (max-width: 767px) {
         padding: 1em;
-        height: 5em;
         ul {
             width: 100vw;
             div {
@@ -117,26 +111,32 @@ body {
     }
 }
 
+.hero-container {
+    height: 100vh;
+}
+
+.fixed-nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
 .nav-link {
-    margin-right: 2em;
-    padding: 3px 6px;
+    padding: 1em 1.5em;
+    &:hover {
+        cursor: pointer;
+        background-color: rgb(240,240,240);
+    }
     @media screen and (max-width: 767px) {
         padding: 0.8em;
         margin-right: 0;
     }
 }
 
-.nav-link.nav-link-active, .nav-link.nav-link-active.nav-link-alt {
-    background-color: $near-white;
-    color: $magenta-dark;
-}
-
-.nav-link.nav-link-clicked {
-    background-color: $bright-yellow;
-}
-
-.nav-link.nav-link-alt {
-    color: $near-black;
+.nav-link.nav-link-active {
+   span {
+       color: $magenta-dark;
+   }
 }
 
 p {
@@ -225,8 +225,12 @@ h3 {
 }
 
 .ultra-big-text {
-    font-size: 10em;
+    font-size: 5em;
     font-weight: 700;
     margin: 0;
     padding: 0;
+}
+
+.section-header {
+    margin: 1em 0;
 }

@@ -371,22 +371,23 @@ textarea {
   overflow-y: scroll; }
 
 .hero {
+  height: 100vh;
+  justify-content: center; }
+
+.hero, .home-section {
   display: flex;
   width: 100%;
-  height: 100vh;
-  justify-content: center;
   padding: 0 14em;
   z-index: 10; }
   @media screen and (max-width: 1400px) {
-    .hero {
+    .hero, .home-section {
       padding: 0 7em; } }
   @media only screen and (max-width: 767px) {
-    .hero {
+    .hero, .home-section {
       padding: 2em; } }
 
 .hero-text {
   display: inline-block;
-  width: 50%;
   min-width: 30em; }
   @media screen and (max-width: 1024px) {
     .hero-text {
@@ -398,6 +399,30 @@ textarea {
     @media screen and (max-width: 1024px) {
       .hero-text h1 {
         line-height: 1em; } }
+
+.home-projects-container {
+  justify-content: flex-start;
+  flex-wrap: wrap; }
+
+.home-project {
+  width: 15em;
+  padding: 0;
+  margin-bottom: 1em;
+  margin-right: 1em;
+  background-color: white;
+  box-shadow: 1px 1px 2px #adadad; }
+
+.home-project-img {
+  width: 15em; }
+  .home-project-img img {
+    width: 15em; }
+
+.home-project-title {
+  padding: 1em;
+  justify-content: space-around; }
+
+#work-home, #about-home, #team-home, #contact-home {
+  background-color: #fafafa; }
 
 .contact {
   min-height: 100vh;
@@ -453,6 +478,9 @@ textarea {
 .contact-textarea {
   overflow: hidden;
   resize: none; }
+
+.section-header-wrapper {
+  padding: 61px; }
 
 #work-container {
   height: 100vh;
@@ -628,7 +656,7 @@ body {
   -webkit-overflow-scrolling: touch;
   overflow: -moz-scrollbars-none;
   position: relative;
-  background-color: #B21252; }
+  background-color: #0995B2; }
 
 .container {
   height: 100%;
@@ -645,7 +673,7 @@ body {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh; }
+  height: 95vh; }
 
 .fixed-canvas {
   position: fixed;
@@ -656,31 +684,27 @@ body {
 
 .navigation {
   width: 100vw;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 10;
-  height: 10em;
-  padding: 3em 10em;
-  background-color: inherit; }
+  z-index: 11;
+  padding: 1em 10em;
+  position: relative;
+  background-color: #fafafa;
+  border-bottom: 1px solid rgba(130, 130, 130, 0.1); }
   .navigation ul {
     width: 100vw;
     list-style: none;
     display: flex;
     justify-content: space-between;
-    height: 1.5em; }
-    .navigation ul:hover {
-      cursor: pointer; }
+    align-items: center;
+    height: 100%; }
   @media screen and (max-width: 1400px) {
     .navigation {
-      padding: 3em 7em; } }
+      padding: 1em 7em; } }
   @media screen and (max-width: 900px) {
     .navigation ul {
       justify-content: space-around; } }
   @media screen and (max-width: 767px) {
     .navigation {
-      padding: 1em;
-      height: 5em; }
+      padding: 1em; }
       .navigation ul {
         width: 100vw; }
         .navigation ul div {
@@ -693,23 +717,26 @@ body {
       .navigation ul {
         justify-content: center; } }
 
+.hero-container {
+  height: 100vh; }
+
+.fixed-nav {
+  position: fixed;
+  left: 0;
+  top: 0; }
+
 .nav-link {
-  margin-right: 2em;
-  padding: 3px 6px; }
+  padding: 1em 1.5em; }
+  .nav-link:hover {
+    cursor: pointer;
+    background-color: #f0f0f0; }
   @media screen and (max-width: 767px) {
     .nav-link {
       padding: 0.8em;
       margin-right: 0; } }
 
-.nav-link.nav-link-active, .nav-link.nav-link-active.nav-link-alt {
-  background-color: #fafafa;
+.nav-link.nav-link-active span {
   color: #B21252; }
-
-.nav-link.nav-link-clicked {
-  background-color: #FFE919; }
-
-.nav-link.nav-link-alt {
-  color: #060606; }
 
 p {
   line-height: 1.4em; }
@@ -778,7 +805,10 @@ h3 {
   z-index: 1; }
 
 .ultra-big-text {
-  font-size: 10em;
+  font-size: 5em;
   font-weight: 700;
   margin: 0;
   padding: 0; }
+
+.section-header {
+  margin: 1em 0; }

@@ -5,5 +5,6 @@ export const brandColors = {
     blueDark: 0x0995B2,
     brightYellow: 0xFFE919,
     nearWhite: 0xfafafa,
-    nearBlack: 0x060606
+    nearBlack: 0x060606,
+    buttonDarken: 0xf7f7f7
 };
