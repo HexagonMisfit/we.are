@@ -51,6 +51,7 @@ body {
 
 #home-container, #work-container, #team-container, #vr-container {
     z-index: 3;
+    width: 100%;
 }
 
 .fixed-canvas, .mobile-canvas {
@@ -76,6 +77,9 @@ body {
     position: relative;
     background-color: $near-white;
     border-bottom: 1px solid $button-darken;
+    position: fixed;
+    left: 0;
+    top: 0;
     ul {
         width: 100vw;
         list-style: none;
@@ -87,7 +91,11 @@ body {
     @media screen and (max-width: 1400px) {
         padding: 1em 7em;
     }
+    @media screen and (max-width: 1000px) {
+        padding: 1em 4em;
+    }
     @media screen and (max-width: 900px) {
+        padding: 1em;
         ul {
             justify-content: space-around;
         }
@@ -101,9 +109,9 @@ body {
             }
         }
     }
-    @media screen and (max-width: 475px) {
+    @media screen and (max-width: 675px) {
         padding: 1em 5px;
-        font-size: 0.8em;
+        font-size: 0.7em;
         height: 3em;
         ul {
             justify-content: center;
@@ -113,12 +121,6 @@ body {
 
 .hero-container {
     height: 100vh;
-}
-
-.fixed-nav {
-    position: fixed;
-    left: 0;
-    top: 0;
 }
 
 .nav-link {
@@ -187,6 +189,14 @@ h3 {
     }
 }
 
+.link {
+    font-weight: bold;
+    &:hover {
+        color: $magenta-dark;
+        cursor: pointer;
+    }
+}
+
 .background-image-transition {
     z-index: 5;
     position: relative;
@@ -194,7 +204,7 @@ h3 {
 }
 
 .zazz {
-    border-bottom: $bright-yellow 1px solid;
+    color: $bright-yellow;
 }
 
 .hidden-wide {
@@ -229,8 +239,13 @@ h3 {
     font-weight: 700;
     margin: 0;
     padding: 0;
-}
-
-.section-header {
-    margin: 1em 0;
+    @media screen and (max-width: 960px) {
+        font-size: 4em;
+    }
+    @media screen and (max-width: 750px) {
+        font-size: 3.5em;
+    }
+    @media screen and (max-width: 600px) {
+        font-size: 2em;
+    }
 }

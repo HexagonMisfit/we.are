@@ -5,9 +5,9 @@ var _ = require('lodash');
 
 $(document).ready(function () {
 
-/**********************************************************************/
-/* THREE.JS code initialize scene, draw basic floating blueLight cube */
-/**********************************************************************/
+    /**********************************************************************/
+    /* THREE.JS code initialize scene, draw basic floating blueLight cube */
+    /**********************************************************************/
 
     //init variables
     var scene = new THREE.Scene();
@@ -17,8 +17,18 @@ $(document).ready(function () {
     var lookAtPosition = new THREE.Vector3();
     var mousePos = new THREE.Vector3();
 
+    window.addEventListener('resize', onWindowResize, false);
 
-    document.addEventListener('mousemove', _.throttle(onMouseMove, 100));
+    function onWindowResize() {
+
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+    }
+
+    $('.hero-container').mousemove(_.throttle(onMouseMove, 100));
     var width = window.innerWidth;
     var height = window.innerHeight;
 
@@ -69,7 +79,7 @@ $(document).ready(function () {
         cube.xRotationRate = Math.random() / 400;
         cube.yRotationRate = Math.random() / 400;
 
-        cube.rotate = function() {
+        cube.rotate = function () {
             this.rotation.x += this.xRotationRate;
             this.rotation.y += this.yRotationRate;
         }

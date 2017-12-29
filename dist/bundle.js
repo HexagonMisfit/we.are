@@ -65,33 +65,6 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10351,7 +10324,7 @@ return jQuery;
 
 
 /***/ }),
-/* 2 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -27440,7 +27413,34 @@ return jQuery;
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(7)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(7)(module)))
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
 
 /***/ }),
 /* 3 */
@@ -35427,375 +35427,10 @@ if (_gsScope._gsDefine) { _gsScope._gsQueue.pop()(); } //necessary in case Tween
 		_tickerActive = false; //ensures that the first official animation forces a ticker.tick() to update the time when it is instantiated
 
 })((typeof(module) !== "undefined" && module.exports && typeof(global) !== "undefined") ? global : this || window, "TweenMax");
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 5 */,
-/* 6 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__theming_js__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax_js__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ScrollMagic__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ScrollMagic___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_ScrollMagic__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__node_modules_scrollmagic_scrollmagic_minified_plugins_debug_addIndicators_min_js__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__node_modules_scrollmagic_scrollmagic_minified_plugins_debug_addIndicators_min_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__node_modules_scrollmagic_scrollmagic_minified_plugins_debug_addIndicators_min_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__anim_js__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__sass_main_scss__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__sass_main_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__sass_main_scss__);
-// vendor js files
-var $ = __webpack_require__(1);
-var _ = __webpack_require__(2);
-
-
-
-
-
-// our scripts
-
-
-
-$(function () {
-
-    /**************/
-    /* UI Stuff */
-    /**************/
-
-    // Check if user is using iPhone; if so, use iOS default scrolling behavior for now
-    // TODO: Dopify mobile experience by 50%
-
-    function isMobile() {
-        var Uagent = navigator.userAgent || navigator.vendor || window.opera;
-        return (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(Uagent) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(Uagent.substr(0, 4)));
-    };
-
-    /**************/
-    /* Navigation */
-    /**************/
-
-    // Store info about the various pages. This will be a single page application, 
-    // so all pages except for the active one will need to be hidden.
-
-    var pages = {
-        home: {
-            sections: ['hero', 'contact'],
-            name: 'home',
-            backgroundColor: __WEBPACK_IMPORTED_MODULE_0__theming_js__["a" /* brandColors */].blueDark,
-            transitionTextColor: __WEBPACK_IMPORTED_MODULE_0__theming_js__["a" /* brandColors */].nearWhite
-        },
-        work: {
-            sections: ['project1'],
-            name: 'work',
-            backgroundColor: __WEBPACK_IMPORTED_MODULE_0__theming_js__["a" /* brandColors */].nearBlack,
-            transitionTextColor: __WEBPACK_IMPORTED_MODULE_0__theming_js__["a" /* brandColors */].brightYellow
-        },
-        team: {
-            sections: ['team'],
-            name: 'team',
-            backgroundColor: __WEBPACK_IMPORTED_MODULE_0__theming_js__["a" /* brandColors */].magentaLight,
-            transitionTextColor: __WEBPACK_IMPORTED_MODULE_0__theming_js__["a" /* brandColors */].blueLight
-        },
-        vr: {
-            sections: ['vr'],
-            name: 'vr',
-            backgroundColor: __WEBPACK_IMPORTED_MODULE_0__theming_js__["a" /* brandColors */].brightYellow,
-            transitionTextColor: __WEBPACK_IMPORTED_MODULE_0__theming_js__["a" /* brandColors */].magentaLight
-        }
-    };
-
-    var activePage = pages.home;
-
-    var viewSection = 0;
-    var backgroundPlane;
-
-    var scrollControl = new __WEBPACK_IMPORTED_MODULE_2_ScrollMagic___default.a.Controller();
-    var scrollScene = new __WEBPACK_IMPORTED_MODULE_2_ScrollMagic___default.a.Scene({
-        triggerElement: '#main-nav',
-        triggerHook: 0,
-        reverse: false
-    })
-    .setClassToggle("#main-nav", "fixed-nav")
-        // .addIndicators()
-        .addTo(scrollControl);
-
-    function initHome() {
-        _.forIn(pages, function (page) {
-            __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax_js__["TweenMax"].to($('#' + page.name + '-container'), 0, { autoAlpha: 0 });
-            __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax_js__["TweenMax"].to($('#' + page.name + '-flash-text'), 0, { autoAlpha: 0 });
-            __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax_js__["TweenMax"].to('.navigation', 0.25, { autoAlpha: 0.97, ease: Power3.easeIn });
-            __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax_js__["TweenMax"].to($('#' + activePage.name + '-container'), 0.25, { autoAlpha: 1, ease: Power3.easeIn });
-            __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax_js__["TweenMax"].to($('#' + activePage.name + '-button'), 0.1, { className: '+= nav-link-active' });
-        });
-    }
-
-    initHome();
-
-    // Navigate between pages and animate page transitions
-
-    function navigateTo(name) {
-
-        var currentPageContainer = $('#' + activePage.name + '-container');
-        var nextPageContainer = $('#' + name + '-container');
-
-        var currentActiveNavButton = $('#' + activePage.name + '-button');
-        var nextActiveNavButton = $('#' + name + '-button');
-
-        var navArray = _.keys(pages);
-
-        function flashNextSection() {
-            var activeFlashSection = $('#' + name + '-flash');
-            var activeFlashText = $('#' + name + '-flash-text');
-
-            console.log(activeFlashSection);
-            console.log(activeFlashText);
-
-            var tl = new __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax_js__["TimelineLite"]();
-
-            // set flash container background color and text color
-
-            tl.to(activeFlashSection, 0, { backgroundColor: activePage.backgroundColor })
-                .to(activeFlashText, 0, { color: activePage.transitionTextColor })
-
-                // show flash container and hide current page/nav
-
-                .to(currentPageContainer, 0, { autoAlpha: 0 }, 0)
-                .to(activeFlashSection, 0, { autoAlpha: 1 }, 0)
-                .to(activeFlashText, 0, { autoAlpha: 1 }, 0)
-                .to('.home-nav', 0, { autoAlpha: 0 }, 0)
-
-                // flash through some different colors
-
-                .to(activeFlashSection, 0, { backgroundColor: activePage.transitionTextColor }, 0.5)
-                .to(activeFlashText, 0, { color: activePage.backgroundColor }, 0.5)
-                .to(activeFlashSection, 0, { backgroundColor: pages[name].backgroundColor }, 1)
-                .to(activeFlashText, 0, { color: pages[name].transitionTextColor }, 1)
-
-                // hide flash section, show next section
-
-                .to(activeFlashSection, 0, { autoAlpha: 0 }, 1.5)
-                .to(activeFlashText, 0, { autoAlpha: 0 }, 1.5)
-                .to(nextPageContainer, 0, { autoAlpha: 1 }, 1.5)
-                .to('.home-nav', 0, { autoAlpha: 0.95 }, 1.5);
-        }
-
-        // Apply active nav button class to next active nav, remove it from current one
-
-        removeActiveNavClass(currentActiveNavButton);
-        addActiveNavClass(nextActiveNavButton);
-
-        // Determine index of active page and next page in navArray.
-        // TweenMax.to(currentPageContainer, 0, { autoAlpha: 0 });
-        // TweenMax.to(nextPageContainer, 0.5, { autoAlpha: 1, ease: Power2.easeIn });
-        flashNextSection();
-
-
-        activePage = pages[name];
-    }
-
-    var navLink = $('.nav-link');
-
-    function addActiveNavClass(element) {
-        element.addClass('nav-link-active');
-    }
-
-    function removeActiveNavClass(element) {
-        element.removeClass('nav-link-active');
-    }
-
-    navLink.click(function () {
-        console.log('clicked navLink', this.id);
-
-        if (this.id === 'home-button') {
-            navigateTo('home');
-        }
-        if (this.id === 'work-button') {
-            navigateTo('work');
-        }
-        if (this.id === 'team-button') {
-            navigateTo('team');
-        }
-        if (this.id === 'vr-button') {
-            navigateTo('vr');
-        }
-    });
-
-    navLink.mousedown(function () {
-        this.add
-    });
-
-    navLink.mouseup(function () {
-        __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax_js__["TweenMax"].to(this, 0.1, { className: '-=nav-link-clicked' });
-    });
-
-    /**********************/
-    /* Home page UI stuff */
-    /**********************/
-
-});
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-module.exports = function(module) {
-	if(!module.webpackPolyfill) {
-		module.deprecate = function() {};
-		module.paths = [];
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
-/* 8 */,
-/* 9 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__theming_js__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax__);
-
-
-var $ = __webpack_require__(1);
-var _ = __webpack_require__(2);
-
-$(document).ready(function () {
-
-/**********************************************************************/
-/* THREE.JS code initialize scene, draw basic floating blueLight cube */
-/**********************************************************************/
-
-    //init variables
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    var cubes = [];
-    camera.position.z = 5;
-    var lookAtPosition = new THREE.Vector3();
-    var mousePos = new THREE.Vector3();
-
-
-    document.addEventListener('mousemove', _.throttle(onMouseMove, 100));
-    var width = window.innerWidth;
-    var height = window.innerHeight;
-
-    // copy initial camera rotation so we can tween from it to a new one in slo mo based on mouse movement
-
-    var startRotation = new THREE.Euler().copy(camera.rotation);
-
-    function onMouseMove(event) {
-        __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax__["TweenMax"].to(mousePos, 5, {
-            x: (event.clientX / width) * 2 - 1,
-            y: -((event.clientY / height) * 2 - 1),
-            onUpdate: function () {
-                camera.lookAt(mousePos);
-            }
-        });
-    }
-
-    var renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(__WEBPACK_IMPORTED_MODULE_0__theming_js__["a" /* brandColors */].blueLight, 1);
-    document.body.appendChild(renderer.domElement);
-
-    var cubeGeometry = new THREE.BoxGeometry(3, 3, 3);
-
-    for (var i = 0; i < 50; i++) {
-
-        var cubeMaterial = new THREE.MeshBasicMaterial({ color: __WEBPACK_IMPORTED_MODULE_0__theming_js__["a" /* brandColors */].magentaDark });
-        var cubeMesh = new THREE.Mesh(cubeGeometry, cubeMaterial);
-        var cube = new THREE.Object3D();
-        cube.add(cubeMesh);
-
-        cube.position.x = (Math.random() * 20) - 10;
-        cube.position.y = (Math.random() * 20) - 10;
-        cube.position.z = (Math.random() * 8) - 4;
-
-        var cubeScale = Math.random() / 3 + 0.25;
-
-        cube.scale.x = cubeScale;
-        cube.scale.y = cubeScale;
-        cube.scale.z = cubeScale;
-
-        cube.rotation.y = Math.random();
-        cube.rotation.x = Math.random();
-
-        cube.yVelocity = (0.5 - Math.random()) / 1000;
-        cube.xVelocity = (0.5 - Math.random()) / 1000;
-
-        cube.xRotationRate = Math.random() / 400;
-        cube.yRotationRate = Math.random() / 400;
-
-        cube.rotate = function() {
-            this.rotation.x += this.xRotationRate;
-            this.rotation.y += this.yRotationRate;
-        }
-
-        cubes.push(cube);
-        scene.add(cube);
-    }
-
-    // Animate the scene
-
-    var animate = function () {
-        requestAnimationFrame(animate);
-        lookAtPosition.x = mousePos.x;
-        lookAtPosition.y = mousePos.y;
-        for (var i = 0; i < cubes.length; i++) {
-            cubes[i].rotate();
-        }
-        renderer.render(scene, camera);
-    };
-
-    animate();
-
-    // Draw it on a canvas fixed behind everything in the site
-
-    $('canvas').addClass('fixed-canvas');
-});
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! ScrollMagic v2.0.5 | (c) 2015 Jan Paepke (@janpaepke) | license & info: http://scrollmagic.io */
-
-!function(e,r){ true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(17)], __WEBPACK_AMD_DEFINE_FACTORY__ = (r),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):r("object"==typeof exports?require("scrollmagic"):e.ScrollMagic||e.jQuery&&e.jQuery.ScrollMagic)}(this,function(e){"use strict";var r="0.85em",t="9999",i=15,o=e._util,n=0;e.Scene.extend(function(){var e,r=this;r.addIndicators=function(t){if(!e){var i={name:"",indent:0,parent:void 0,colorStart:"green",colorEnd:"red",colorTrigger:"blue"};t=o.extend({},i,t),n++,e=new s(r,t),r.on("add.plugin_addIndicators",e.add),r.on("remove.plugin_addIndicators",e.remove),r.on("destroy.plugin_addIndicators",r.removeIndicators),r.controller()&&e.add()}return r},r.removeIndicators=function(){return e&&(e.remove(),this.off("*.plugin_addIndicators"),e=void 0),r}}),e.Controller.addOption("addIndicators",!1),e.Controller.extend(function(){var r=this,t=r.info(),n=t.container,s=t.isDocument,d=t.vertical,a={groups:[]};this._indicators=a;var g=function(){a.updateBoundsPositions()},p=function(){a.updateTriggerGroupPositions()};return n.addEventListener("resize",p),s||(window.addEventListener("resize",p),window.addEventListener("scroll",p)),n.addEventListener("resize",g),n.addEventListener("scroll",g),this._indicators.updateBoundsPositions=function(e){for(var r,t,s,g=e?[o.extend({},e.triggerGroup,{members:[e]})]:a.groups,p=g.length,u={},c=d?"left":"top",l=d?"width":"height",f=d?o.get.scrollLeft(n)+o.get.width(n)-i:o.get.scrollTop(n)+o.get.height(n)-i;p--;)for(s=g[p],r=s.members.length,t=o.get[l](s.element.firstChild);r--;)u[c]=f-t,o.css(s.members[r].bounds,u)},this._indicators.updateTriggerGroupPositions=function(e){for(var t,g,p,u,c,l=e?[e]:a.groups,f=l.length,m=s?document.body:n,h=s?{top:0,left:0}:o.get.offset(m,!0),v=d?o.get.width(n)-i:o.get.height(n)-i,b=d?"width":"height",G=d?"Y":"X";f--;)t=l[f],g=t.element,p=t.triggerHook*r.info("size"),u=o.get[b](g.firstChild.firstChild),c=p>u?"translate"+G+"(-100%)":"",o.css(g,{top:h.top+(d?p:v-t.members[0].options.indent),left:h.left+(d?v-t.members[0].options.indent:p)}),o.css(g.firstChild.firstChild,{"-ms-transform":c,"-webkit-transform":c,transform:c})},this._indicators.updateTriggerGroupLabel=function(e){var r="trigger"+(e.members.length>1?"":" "+e.members[0].options.name),t=e.element.firstChild.firstChild,i=t.textContent!==r;i&&(t.textContent=r,d&&a.updateBoundsPositions())},this.addScene=function(t){this._options.addIndicators&&t instanceof e.Scene&&t.controller()===r&&t.addIndicators(),this.$super.addScene.apply(this,arguments)},this.destroy=function(){n.removeEventListener("resize",p),s||(window.removeEventListener("resize",p),window.removeEventListener("scroll",p)),n.removeEventListener("resize",g),n.removeEventListener("scroll",g),this.$super.destroy.apply(this,arguments)},r});var s=function(e,r){var t,i,s=this,a=d.bounds(),g=d.start(r.colorStart),p=d.end(r.colorEnd),u=r.parent&&o.get.elements(r.parent)[0];r.name=r.name||n,g.firstChild.textContent+=" "+r.name,p.textContent+=" "+r.name,a.appendChild(g),a.appendChild(p),s.options=r,s.bounds=a,s.triggerGroup=void 0,this.add=function(){i=e.controller(),t=i.info("vertical");var r=i.info("isDocument");u||(u=r?document.body:i.info("container")),r||"static"!==o.css(u,"position")||o.css(u,{position:"relative"}),e.on("change.plugin_addIndicators",l),e.on("shift.plugin_addIndicators",c),G(),h(),setTimeout(function(){i._indicators.updateBoundsPositions(s)},0)},this.remove=function(){if(s.triggerGroup){if(e.off("change.plugin_addIndicators",l),e.off("shift.plugin_addIndicators",c),s.triggerGroup.members.length>1){var r=s.triggerGroup;r.members.splice(r.members.indexOf(s),1),i._indicators.updateTriggerGroupLabel(r),i._indicators.updateTriggerGroupPositions(r),s.triggerGroup=void 0}else b();m()}};var c=function(){h()},l=function(e){"triggerHook"===e.what&&G()},f=function(){var e=i.info("vertical");o.css(g.firstChild,{"border-bottom-width":e?1:0,"border-right-width":e?0:1,bottom:e?-1:r.indent,right:e?r.indent:-1,padding:e?"0 8px":"2px 4px"}),o.css(p,{"border-top-width":e?1:0,"border-left-width":e?0:1,top:e?"100%":"",right:e?r.indent:"",bottom:e?"":r.indent,left:e?"":"100%",padding:e?"0 8px":"2px 4px"}),u.appendChild(a)},m=function(){a.parentNode.removeChild(a)},h=function(){a.parentNode!==u&&f();var r={};r[t?"top":"left"]=e.triggerPosition(),r[t?"height":"width"]=e.duration(),o.css(a,r),o.css(p,{display:e.duration()>0?"":"none"})},v=function(){var n=d.trigger(r.colorTrigger),a={};a[t?"right":"bottom"]=0,a[t?"border-top-width":"border-left-width"]=1,o.css(n.firstChild,a),o.css(n.firstChild.firstChild,{padding:t?"0 8px 3px 8px":"3px 4px"}),document.body.appendChild(n);var g={triggerHook:e.triggerHook(),element:n,members:[s]};i._indicators.groups.push(g),s.triggerGroup=g,i._indicators.updateTriggerGroupLabel(g),i._indicators.updateTriggerGroupPositions(g)},b=function(){i._indicators.groups.splice(i._indicators.groups.indexOf(s.triggerGroup),1),s.triggerGroup.element.parentNode.removeChild(s.triggerGroup.element),s.triggerGroup=void 0},G=function(){var r=e.triggerHook(),t=1e-4;if(!(s.triggerGroup&&Math.abs(s.triggerGroup.triggerHook-r)<t)){for(var o,n=i._indicators.groups,d=n.length;d--;)if(o=n[d],Math.abs(o.triggerHook-r)<t)return s.triggerGroup&&(1===s.triggerGroup.members.length?b():(s.triggerGroup.members.splice(s.triggerGroup.members.indexOf(s),1),i._indicators.updateTriggerGroupLabel(s.triggerGroup),i._indicators.updateTriggerGroupPositions(s.triggerGroup))),o.members.push(s),s.triggerGroup=o,void i._indicators.updateTriggerGroupLabel(o);if(s.triggerGroup){if(1===s.triggerGroup.members.length)return s.triggerGroup.triggerHook=r,void i._indicators.updateTriggerGroupPositions(s.triggerGroup);s.triggerGroup.members.splice(s.triggerGroup.members.indexOf(s),1),i._indicators.updateTriggerGroupLabel(s.triggerGroup),i._indicators.updateTriggerGroupPositions(s.triggerGroup),s.triggerGroup=void 0}v()}}},d={start:function(e){var r=document.createElement("div");r.textContent="start",o.css(r,{position:"absolute",overflow:"visible","border-width":0,"border-style":"solid",color:e,"border-color":e});var t=document.createElement("div");return o.css(t,{position:"absolute",overflow:"visible",width:0,height:0}),t.appendChild(r),t},end:function(e){var r=document.createElement("div");return r.textContent="end",o.css(r,{position:"absolute",overflow:"visible","border-width":0,"border-style":"solid",color:e,"border-color":e}),r},bounds:function(){var e=document.createElement("div");return o.css(e,{position:"absolute",overflow:"visible","white-space":"nowrap","pointer-events":"none","font-size":r}),e.style.zIndex=t,e},trigger:function(e){var i=document.createElement("div");i.textContent="trigger",o.css(i,{position:"relative"});var n=document.createElement("div");o.css(n,{position:"absolute",overflow:"visible","border-width":0,"border-style":"solid",color:e,"border-color":e}),n.appendChild(i);var s=document.createElement("div");return o.css(s,{position:"fixed",overflow:"visible","white-space":"nowrap","pointer-events":"none","font-size":r}),s.style.zIndex=t,s.appendChild(n),s}}});
-
-/***/ }),
-/* 17 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -38582,6 +38217,369 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 	return ScrollMagic;
 }));
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__theming_js__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax_js__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ScrollMagic__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ScrollMagic___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_ScrollMagic__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__node_modules_scrollmagic_scrollmagic_minified_plugins_debug_addIndicators_min_js__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__node_modules_scrollmagic_scrollmagic_minified_plugins_debug_addIndicators_min_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__node_modules_scrollmagic_scrollmagic_minified_plugins_debug_addIndicators_min_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__anim_js__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__sass_main_scss__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__sass_main_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__sass_main_scss__);
+// vendor js files
+var $ = __webpack_require__(0);
+var _ = __webpack_require__(1);
+
+
+
+
+
+// our scripts
+
+
+
+$(function () {
+
+    /**************/
+    /* UI Stuff */
+    /**************/
+
+    // Check if user is using iPhone; if so, use iOS default scrolling behavior for now
+    // TODO: Dopify mobile experience by 50%
+
+    function isMobile() {
+        var Uagent = navigator.userAgent || navigator.vendor || window.opera;
+        return (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(Uagent) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(Uagent.substr(0, 4)));
+    };
+
+    /**************/
+    /* Navigation */
+    /**************/
+
+    // Store info about the various pages. This will be a single page application, 
+    // so all pages except for the active one will need to be hidden.
+
+    var pages = {
+        home: {
+            sections: ['hero', 'contact'],
+            name: 'home',
+            backgroundColor: __WEBPACK_IMPORTED_MODULE_0__theming_js__["a" /* brandColors */].blueDark,
+            transitionTextColor: __WEBPACK_IMPORTED_MODULE_0__theming_js__["a" /* brandColors */].nearWhite
+        },
+        work: {
+            sections: ['project1'],
+            name: 'work',
+            backgroundColor: __WEBPACK_IMPORTED_MODULE_0__theming_js__["a" /* brandColors */].nearBlack,
+            transitionTextColor: __WEBPACK_IMPORTED_MODULE_0__theming_js__["a" /* brandColors */].brightYellow
+        },
+        team: {
+            sections: ['team'],
+            name: 'team',
+            backgroundColor: __WEBPACK_IMPORTED_MODULE_0__theming_js__["a" /* brandColors */].magentaLight,
+            transitionTextColor: __WEBPACK_IMPORTED_MODULE_0__theming_js__["a" /* brandColors */].blueLight
+        },
+        vr: {
+            sections: ['vr'],
+            name: 'vr',
+            backgroundColor: __WEBPACK_IMPORTED_MODULE_0__theming_js__["a" /* brandColors */].brightYellow,
+            transitionTextColor: __WEBPACK_IMPORTED_MODULE_0__theming_js__["a" /* brandColors */].magentaLight
+        }
+    };
+
+    var activePage = pages.home;
+
+    var viewSection = 0;
+    var backgroundPlane;
+
+    var scrollControl = new __WEBPACK_IMPORTED_MODULE_2_ScrollMagic___default.a.Controller();
+    var scrollScene = new __WEBPACK_IMPORTED_MODULE_2_ScrollMagic___default.a.Scene({
+        triggerElement: '',
+        triggerHook: 0,
+        reverse: false
+    })
+    .addTo(scrollControl);
+    function initHome() {
+        _.forIn(pages, function (page) {
+            __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax_js__["TweenMax"].to($('#' + page.name + '-container'), 0, { autoAlpha: 0 });
+            __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax_js__["TweenMax"].to($('#' + page.name + '-flash-text'), 0, { autoAlpha: 0 });
+            __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax_js__["TweenMax"].to('.navigation', 0.25, { autoAlpha: 0.97, ease: Power3.easeIn });
+            __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax_js__["TweenMax"].to($('#' + activePage.name + '-container'), 0.25, { autoAlpha: 1, ease: Power3.easeIn });
+            __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax_js__["TweenMax"].to($('#' + activePage.name + '-button'), 0.1, { className: '+= nav-link-active' });
+        });
+    }
+
+    initHome();
+
+    // Navigate between pages and animate page transitions
+
+    function navigateTo(name) {
+
+        var currentPageContainer = $('#' + activePage.name + '-container');
+        var nextPageContainer = $('#' + name + '-container');
+
+        var currentActiveNavButton = $('#' + activePage.name + '-button');
+        var nextActiveNavButton = $('#' + name + '-button');
+
+        var navArray = _.keys(pages);
+
+        function flashNextSection() {
+            var activeFlashSection = $('#' + name + '-flash');
+            var activeFlashText = $('#' + name + '-flash-text');
+
+            console.log(activeFlashSection);
+            console.log(activeFlashText);
+
+            var tl = new __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax_js__["TimelineLite"]();
+
+            // set flash container background color and text color
+
+            tl.to(activeFlashSection, 0, { backgroundColor: activePage.backgroundColor })
+                .to(activeFlashText, 0, { color: activePage.transitionTextColor })
+
+                // show flash container and hide current page/nav
+
+                .to(currentPageContainer, 0, { autoAlpha: 0 }, 0)
+                .to(activeFlashSection, 0, { autoAlpha: 1 }, 0)
+                .to(activeFlashText, 0, { autoAlpha: 1 }, 0)
+
+                // flash through some different colors
+
+                .to(activeFlashSection, 0, { backgroundColor: activePage.transitionTextColor }, 0.5)
+                .to(activeFlashText, 0, { color: activePage.backgroundColor }, 0.5)
+                .to(activeFlashSection, 0, { backgroundColor: pages[name].backgroundColor }, 1)
+                .to(activeFlashText, 0, { color: pages[name].transitionTextColor }, 1)
+
+                // hide flash section, show next section
+
+                .to(activeFlashSection, 0, { autoAlpha: 0 }, 1.5)
+                .to(activeFlashText, 0, { autoAlpha: 0 }, 1.5)
+                .to(nextPageContainer, 0, { autoAlpha: 1 }, 1.5);
+        }
+
+        // Apply active nav button class to next active nav, remove it from current one
+
+        removeActiveNavClass(currentActiveNavButton);
+        addActiveNavClass(nextActiveNavButton);
+
+        // Determine index of active page and next page in navArray.
+        // TweenMax.to(currentPageContainer, 0, { autoAlpha: 0 });
+        // TweenMax.to(nextPageContainer, 0.5, { autoAlpha: 1, ease: Power2.easeIn });
+        flashNextSection();
+
+
+        activePage = pages[name];
+    }
+
+    var navLink = $('.nav-link');
+
+    function addActiveNavClass(element) {
+        element.addClass('nav-link-active');
+    }
+
+    function removeActiveNavClass(element) {
+        element.removeClass('nav-link-active');
+    }
+
+    navLink.click(function () {
+        console.log('clicked navLink', this.id);
+
+        if (this.id === 'home-button') {
+            navigateTo('home');
+        }
+        if (this.id === 'work-button') {
+            navigateTo('work');
+        }
+        if (this.id === 'team-button') {
+            navigateTo('team');
+        }
+        if (this.id === 'vr-button') {
+            navigateTo('vr');
+        }
+    });
+
+    navLink.mousedown(function () {
+        this.add
+    });
+
+    navLink.mouseup(function () {
+        __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax_js__["TweenMax"].to(this, 0.1, { className: '-=nav-link-clicked' });
+    });
+
+    /**********************/
+    /* Home page UI stuff */
+    /**********************/
+
+});
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+module.exports = function(module) {
+	if(!module.webpackPolyfill) {
+		module.deprecate = function() {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if(!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! ScrollMagic v2.0.5 | (c) 2015 Jan Paepke (@janpaepke) | license & info: http://scrollmagic.io */
+
+!function(e,r){ true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(5)], __WEBPACK_AMD_DEFINE_FACTORY__ = (r),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):r("object"==typeof exports?require("scrollmagic"):e.ScrollMagic||e.jQuery&&e.jQuery.ScrollMagic)}(this,function(e){"use strict";var r="0.85em",t="9999",i=15,o=e._util,n=0;e.Scene.extend(function(){var e,r=this;r.addIndicators=function(t){if(!e){var i={name:"",indent:0,parent:void 0,colorStart:"green",colorEnd:"red",colorTrigger:"blue"};t=o.extend({},i,t),n++,e=new s(r,t),r.on("add.plugin_addIndicators",e.add),r.on("remove.plugin_addIndicators",e.remove),r.on("destroy.plugin_addIndicators",r.removeIndicators),r.controller()&&e.add()}return r},r.removeIndicators=function(){return e&&(e.remove(),this.off("*.plugin_addIndicators"),e=void 0),r}}),e.Controller.addOption("addIndicators",!1),e.Controller.extend(function(){var r=this,t=r.info(),n=t.container,s=t.isDocument,d=t.vertical,a={groups:[]};this._indicators=a;var g=function(){a.updateBoundsPositions()},p=function(){a.updateTriggerGroupPositions()};return n.addEventListener("resize",p),s||(window.addEventListener("resize",p),window.addEventListener("scroll",p)),n.addEventListener("resize",g),n.addEventListener("scroll",g),this._indicators.updateBoundsPositions=function(e){for(var r,t,s,g=e?[o.extend({},e.triggerGroup,{members:[e]})]:a.groups,p=g.length,u={},c=d?"left":"top",l=d?"width":"height",f=d?o.get.scrollLeft(n)+o.get.width(n)-i:o.get.scrollTop(n)+o.get.height(n)-i;p--;)for(s=g[p],r=s.members.length,t=o.get[l](s.element.firstChild);r--;)u[c]=f-t,o.css(s.members[r].bounds,u)},this._indicators.updateTriggerGroupPositions=function(e){for(var t,g,p,u,c,l=e?[e]:a.groups,f=l.length,m=s?document.body:n,h=s?{top:0,left:0}:o.get.offset(m,!0),v=d?o.get.width(n)-i:o.get.height(n)-i,b=d?"width":"height",G=d?"Y":"X";f--;)t=l[f],g=t.element,p=t.triggerHook*r.info("size"),u=o.get[b](g.firstChild.firstChild),c=p>u?"translate"+G+"(-100%)":"",o.css(g,{top:h.top+(d?p:v-t.members[0].options.indent),left:h.left+(d?v-t.members[0].options.indent:p)}),o.css(g.firstChild.firstChild,{"-ms-transform":c,"-webkit-transform":c,transform:c})},this._indicators.updateTriggerGroupLabel=function(e){var r="trigger"+(e.members.length>1?"":" "+e.members[0].options.name),t=e.element.firstChild.firstChild,i=t.textContent!==r;i&&(t.textContent=r,d&&a.updateBoundsPositions())},this.addScene=function(t){this._options.addIndicators&&t instanceof e.Scene&&t.controller()===r&&t.addIndicators(),this.$super.addScene.apply(this,arguments)},this.destroy=function(){n.removeEventListener("resize",p),s||(window.removeEventListener("resize",p),window.removeEventListener("scroll",p)),n.removeEventListener("resize",g),n.removeEventListener("scroll",g),this.$super.destroy.apply(this,arguments)},r});var s=function(e,r){var t,i,s=this,a=d.bounds(),g=d.start(r.colorStart),p=d.end(r.colorEnd),u=r.parent&&o.get.elements(r.parent)[0];r.name=r.name||n,g.firstChild.textContent+=" "+r.name,p.textContent+=" "+r.name,a.appendChild(g),a.appendChild(p),s.options=r,s.bounds=a,s.triggerGroup=void 0,this.add=function(){i=e.controller(),t=i.info("vertical");var r=i.info("isDocument");u||(u=r?document.body:i.info("container")),r||"static"!==o.css(u,"position")||o.css(u,{position:"relative"}),e.on("change.plugin_addIndicators",l),e.on("shift.plugin_addIndicators",c),G(),h(),setTimeout(function(){i._indicators.updateBoundsPositions(s)},0)},this.remove=function(){if(s.triggerGroup){if(e.off("change.plugin_addIndicators",l),e.off("shift.plugin_addIndicators",c),s.triggerGroup.members.length>1){var r=s.triggerGroup;r.members.splice(r.members.indexOf(s),1),i._indicators.updateTriggerGroupLabel(r),i._indicators.updateTriggerGroupPositions(r),s.triggerGroup=void 0}else b();m()}};var c=function(){h()},l=function(e){"triggerHook"===e.what&&G()},f=function(){var e=i.info("vertical");o.css(g.firstChild,{"border-bottom-width":e?1:0,"border-right-width":e?0:1,bottom:e?-1:r.indent,right:e?r.indent:-1,padding:e?"0 8px":"2px 4px"}),o.css(p,{"border-top-width":e?1:0,"border-left-width":e?0:1,top:e?"100%":"",right:e?r.indent:"",bottom:e?"":r.indent,left:e?"":"100%",padding:e?"0 8px":"2px 4px"}),u.appendChild(a)},m=function(){a.parentNode.removeChild(a)},h=function(){a.parentNode!==u&&f();var r={};r[t?"top":"left"]=e.triggerPosition(),r[t?"height":"width"]=e.duration(),o.css(a,r),o.css(p,{display:e.duration()>0?"":"none"})},v=function(){var n=d.trigger(r.colorTrigger),a={};a[t?"right":"bottom"]=0,a[t?"border-top-width":"border-left-width"]=1,o.css(n.firstChild,a),o.css(n.firstChild.firstChild,{padding:t?"0 8px 3px 8px":"3px 4px"}),document.body.appendChild(n);var g={triggerHook:e.triggerHook(),element:n,members:[s]};i._indicators.groups.push(g),s.triggerGroup=g,i._indicators.updateTriggerGroupLabel(g),i._indicators.updateTriggerGroupPositions(g)},b=function(){i._indicators.groups.splice(i._indicators.groups.indexOf(s.triggerGroup),1),s.triggerGroup.element.parentNode.removeChild(s.triggerGroup.element),s.triggerGroup=void 0},G=function(){var r=e.triggerHook(),t=1e-4;if(!(s.triggerGroup&&Math.abs(s.triggerGroup.triggerHook-r)<t)){for(var o,n=i._indicators.groups,d=n.length;d--;)if(o=n[d],Math.abs(o.triggerHook-r)<t)return s.triggerGroup&&(1===s.triggerGroup.members.length?b():(s.triggerGroup.members.splice(s.triggerGroup.members.indexOf(s),1),i._indicators.updateTriggerGroupLabel(s.triggerGroup),i._indicators.updateTriggerGroupPositions(s.triggerGroup))),o.members.push(s),s.triggerGroup=o,void i._indicators.updateTriggerGroupLabel(o);if(s.triggerGroup){if(1===s.triggerGroup.members.length)return s.triggerGroup.triggerHook=r,void i._indicators.updateTriggerGroupPositions(s.triggerGroup);s.triggerGroup.members.splice(s.triggerGroup.members.indexOf(s),1),i._indicators.updateTriggerGroupLabel(s.triggerGroup),i._indicators.updateTriggerGroupPositions(s.triggerGroup),s.triggerGroup=void 0}v()}}},d={start:function(e){var r=document.createElement("div");r.textContent="start",o.css(r,{position:"absolute",overflow:"visible","border-width":0,"border-style":"solid",color:e,"border-color":e});var t=document.createElement("div");return o.css(t,{position:"absolute",overflow:"visible",width:0,height:0}),t.appendChild(r),t},end:function(e){var r=document.createElement("div");return r.textContent="end",o.css(r,{position:"absolute",overflow:"visible","border-width":0,"border-style":"solid",color:e,"border-color":e}),r},bounds:function(){var e=document.createElement("div");return o.css(e,{position:"absolute",overflow:"visible","white-space":"nowrap","pointer-events":"none","font-size":r}),e.style.zIndex=t,e},trigger:function(e){var i=document.createElement("div");i.textContent="trigger",o.css(i,{position:"relative"});var n=document.createElement("div");o.css(n,{position:"absolute",overflow:"visible","border-width":0,"border-style":"solid",color:e,"border-color":e}),n.appendChild(i);var s=document.createElement("div");return o.css(s,{position:"fixed",overflow:"visible","white-space":"nowrap","pointer-events":"none","font-size":r}),s.style.zIndex=t,s.appendChild(n),s}}});
+
+/***/ }),
+/* 9 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__theming_js__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax__);
+
+
+var $ = __webpack_require__(0);
+var _ = __webpack_require__(1);
+
+$(document).ready(function () {
+
+    /**********************************************************************/
+    /* THREE.JS code initialize scene, draw basic floating blueLight cube */
+    /**********************************************************************/
+
+    //init variables
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    var cubes = [];
+    camera.position.z = 5;
+    var lookAtPosition = new THREE.Vector3();
+    var mousePos = new THREE.Vector3();
+
+    window.addEventListener('resize', onWindowResize, false);
+
+    function onWindowResize() {
+
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+    }
+
+    $('.hero-container').mousemove(_.throttle(onMouseMove, 100));
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+
+    // copy initial camera rotation so we can tween from it to a new one in slo mo based on mouse movement
+
+    var startRotation = new THREE.Euler().copy(camera.rotation);
+
+    function onMouseMove(event) {
+        __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax__["TweenMax"].to(mousePos, 5, {
+            x: (event.clientX / width) * 2 - 1,
+            y: -((event.clientY / height) * 2 - 1),
+            onUpdate: function () {
+                camera.lookAt(mousePos);
+            }
+        });
+    }
+
+    var renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(__WEBPACK_IMPORTED_MODULE_0__theming_js__["a" /* brandColors */].blueLight, 1);
+    document.body.appendChild(renderer.domElement);
+
+    var cubeGeometry = new THREE.BoxGeometry(3, 3, 3);
+
+    for (var i = 0; i < 50; i++) {
+
+        var cubeMaterial = new THREE.MeshBasicMaterial({ color: __WEBPACK_IMPORTED_MODULE_0__theming_js__["a" /* brandColors */].magentaDark });
+        var cubeMesh = new THREE.Mesh(cubeGeometry, cubeMaterial);
+        var cube = new THREE.Object3D();
+        cube.add(cubeMesh);
+
+        cube.position.x = (Math.random() * 20) - 10;
+        cube.position.y = (Math.random() * 20) - 10;
+        cube.position.z = (Math.random() * 8) - 4;
+
+        var cubeScale = Math.random() / 3 + 0.25;
+
+        cube.scale.x = cubeScale;
+        cube.scale.y = cubeScale;
+        cube.scale.z = cubeScale;
+
+        cube.rotation.y = Math.random();
+        cube.rotation.x = Math.random();
+
+        cube.yVelocity = (0.5 - Math.random()) / 1000;
+        cube.xVelocity = (0.5 - Math.random()) / 1000;
+
+        cube.xRotationRate = Math.random() / 400;
+        cube.yRotationRate = Math.random() / 400;
+
+        cube.rotate = function () {
+            this.rotation.x += this.xRotationRate;
+            this.rotation.y += this.yRotationRate;
+        }
+
+        cubes.push(cube);
+        scene.add(cube);
+    }
+
+    // Animate the scene
+
+    var animate = function () {
+        requestAnimationFrame(animate);
+        lookAtPosition.x = mousePos.x;
+        lookAtPosition.y = mousePos.y;
+        for (var i = 0; i < cubes.length; i++) {
+            cubes[i].rotate();
+        }
+        renderer.render(scene, camera);
+    };
+
+    animate();
+
+    // Draw it on a canvas fixed behind everything in the site
+
+    $('canvas').addClass('fixed-canvas');
+});
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

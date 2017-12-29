@@ -65,14 +65,11 @@ $(function () {
 
     var scrollControl = new ScrollMagic.Controller();
     var scrollScene = new ScrollMagic.Scene({
-        triggerElement: '#main-nav',
+        triggerElement: '',
         triggerHook: 0,
         reverse: false
     })
-    .setClassToggle("#main-nav", "fixed-nav")
-        // .addIndicators()
-        .addTo(scrollControl);
-
+    .addTo(scrollControl);
     function initHome() {
         _.forIn(pages, function (page) {
             TweenMax.to($('#' + page.name + '-container'), 0, { autoAlpha: 0 });
@@ -116,7 +113,6 @@ $(function () {
                 .to(currentPageContainer, 0, { autoAlpha: 0 }, 0)
                 .to(activeFlashSection, 0, { autoAlpha: 1 }, 0)
                 .to(activeFlashText, 0, { autoAlpha: 1 }, 0)
-                .to('.home-nav', 0, { autoAlpha: 0 }, 0)
 
                 // flash through some different colors
 
@@ -129,8 +125,7 @@ $(function () {
 
                 .to(activeFlashSection, 0, { autoAlpha: 0 }, 1.5)
                 .to(activeFlashText, 0, { autoAlpha: 0 }, 1.5)
-                .to(nextPageContainer, 0, { autoAlpha: 1 }, 1.5)
-                .to('.home-nav', 0, { autoAlpha: 0.95 }, 1.5);
+                .to(nextPageContainer, 0, { autoAlpha: 1 }, 1.5);
         }
 
         // Apply active nav button class to next active nav, remove it from current one
