@@ -1,14 +1,32 @@
 // vendor js files
 var $ = require('jquery');
 var _ = require('lodash');
-import { brandColors } from './theming.js';
 import { TweenMax, TimelineLite } from '../../node_modules/gsap/TweenMax.js';
 import ScrollMagic from 'ScrollMagic';
+
+// DEV-ONLY
 import '../../node_modules/scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min.js';
 
 // our scripts
+import { brandColors } from './theming.js';
 import './anim.js';
+import './projectsCarousel.js';
+
+// images
+
+// import * as mariposaChandelier from '../assets/img/mariposa_1280x720.jpg';
+
+// import our scss last
 import '../sass/main.scss';
+
+// set images on elements
+
+// console.log('debug mariposaImage', mariposaChandelier);
+
+// var slide1Img = $('#slide-1-img');
+// slide1Img.src = mariposaChandelier;
+
+// console.log('slide1Img', slide1Img);
 
 $(function () {
 
@@ -16,8 +34,7 @@ $(function () {
     /* UI Stuff */
     /**************/
 
-    // Check if user is using iPhone; if so, use iOS default scrolling behavior for now
-    // TODO: Dopify mobile experience by 50%
+    // check if user is using a mobile device
 
     function isMobile() {
         var Uagent = navigator.userAgent || navigator.vendor || window.opera;

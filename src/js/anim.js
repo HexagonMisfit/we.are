@@ -34,8 +34,6 @@ $(document).ready(function () {
 
     // copy initial camera rotation so we can tween from it to a new one in slo mo based on mouse movement
 
-    var startRotation = new THREE.Euler().copy(camera.rotation);
-
     function onMouseMove(event) {
         TweenMax.to(mousePos, 5, {
             x: (event.clientX / width) * 2 - 1,
@@ -53,7 +51,7 @@ $(document).ready(function () {
 
     var cubeGeometry = new THREE.BoxGeometry(3, 3, 3);
 
-    for (var i = 0; i < 50; i++) {
+    for (var i = 0; i < 20; i++) {
 
         var cubeMaterial = new THREE.MeshBasicMaterial({ color: brandColors.magentaDark });
         var cubeMesh = new THREE.Mesh(cubeGeometry, cubeMaterial);
@@ -62,9 +60,9 @@ $(document).ready(function () {
 
         cube.position.x = (Math.random() * 20) - 10;
         cube.position.y = (Math.random() * 20) - 10;
-        cube.position.z = (Math.random() * 8) - 4;
+        cube.position.z = (Math.random() * 8) - 9;
 
-        var cubeScale = Math.random() / 3 + 0.25;
+        var cubeScale = Math.random() / 3 + 0.35;
 
         cube.scale.x = cubeScale;
         cube.scale.y = cubeScale;

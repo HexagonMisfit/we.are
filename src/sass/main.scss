@@ -1,4 +1,4 @@
-@import 'variables', 'normalize', 'home', 'projects', 'team';
+@import 'variables', 'normalize', 'home', 'projectSlider', 'projects', 'team';
 
 html {
     height: 100%;
@@ -6,7 +6,7 @@ html {
     padding: 0;
     margin: 0;
     font-size: 20px;
-    background-color: $magenta-light;
+    background-color: $blue-light;
     @media screen and (max-width: 375px) {
         font-size: 18px;
     }
@@ -49,7 +49,27 @@ body {
     overflow: -moz-scrollbars-none;
 }
 
-#home-container, #work-container, #team-container, #vr-container {
+.hero-padding-responsive {
+    padding: 0 10em;
+    @media screen and (min-width: 1600px) {
+        padding: 0 18%;
+    }
+    @media screen and (max-width: 1400px) {
+        padding: 0 7em;
+    }
+    @media only screen 
+    and (max-width: 768px){
+        padding: 0 4em;
+    }
+    @media screen and (max-width: 600px) {
+        padding: 0 3em;
+    }
+    @media screen and (max-width: 400px) {
+        padding: 0 1.75em;
+    }
+}
+
+#home-container, #team-container, #vr-container {
     z-index: 3;
     width: 100%;
 }
@@ -58,7 +78,7 @@ body {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 95vh;
+    height: 100vh;
 }
 
 .fixed-canvas {
@@ -181,18 +201,12 @@ h3 {
 .row {
     display: flex;
     flex-direction: row;
-    @media screen and (max-width: 900px) {
-        flex-direction: column;
-        nav.row {
-            flex-direction: row;
-        }
-    }
 }
 
 .link {
     font-weight: bold;
     &:hover {
-        color: $magenta-dark;
+        color: $bright-yellow;
         cursor: pointer;
     }
 }

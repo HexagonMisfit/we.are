@@ -1,0 +1,147 @@
+// Projects slider
+
+// @import url('../assets/img/mariposa_1280x720.jpg');
+
+.home-projects-container {
+    overflow: hidden;
+    display: block;
+    background: $blue-light;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 100%;
+}
+
+.projects-slider-header {
+    position: absolute;
+    top: 1em;
+    left: 13%;
+    z-index: 10;
+    @media screen and (max-width: 500px) {
+        top: 0.25em;
+        left: 1em;
+    }
+}
+
+.full-width {
+  .slick-prev {
+    margin-left: 40px;
+    @media screen and (max-width: 400px) {
+      margin-left: 28px;
+    }
+  }
+  
+  .slick-next {
+    margin-right: 40px;
+    @media screen and (max-width: 400px) {
+      margin-right: 28px;
+    }
+  }
+  .slide {
+    width: 100%;
+    opacity: 1;
+  }
+
+  .slick-track, .slick-list,  div.slick-slide > div, .slide, .slide-container, .slide-content {
+    height: 100%;
+  }
+
+  .slick-arrow, .slick-next, .slick-prev, .slick-next:before, .slick-prev:before {
+    z-index: 10;
+    font-size: 30px;
+    height: 30px;
+    width: 30px;
+    @media screen and (max-width: 400px) {
+      height: 20px;
+      width: 20px;
+      font-size: 20px;
+    }
+  }
+
+  .slick-next:before, .slick-prev:before {
+    color: rgba(8,8,8,0.85);
+  }
+
+  .slide-content {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    position: relative;
+    width: 100%;
+  }
+
+  .slide-info {
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 27em;
+    z-index: 10;
+    padding: 2em 1em;
+    background-color: $near-black;
+    opacity: 0.9;
+    h2, h4 {
+      margin-bottom: 1em;
+    }
+  }
+
+  .slide-img-container, .slide-img {
+    position: absolute;
+  }
+
+  .slide-img-container{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 8;
+  }
+
+  .slide-img {
+    z-index: 9;
+    left: 38%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+    
+  #slide-1 {
+    background: $blue-dark;
+  }
+
+  #slide-2 {
+    background: $near-white;
+  }
+
+  #slide-3 {
+    background: $red-bright;
+  }
+
+  #slide-4 {
+    background: $seafoam-green;
+  }
+
+  .slick-dots {
+    bottom: 30px;
+    color: $near-black;
+
+  }
+
+  #slide-1-img {
+    background-image: url('../assets/img/mariposa_1280x720.jpg');
+  }
+
+  #slide-2-img {
+    background-image: url('../assets/img/mariposa_1280x720.jpg');
+  }
+
+  #slide-3-img {
+    background-image: url('../assets/img/mariposa_1280x720.jpg');
+  }
+
+  #slide-4-img {
+    background-image: url('../assets/img/mariposa_1280x720.jpg');
+  }
+}
