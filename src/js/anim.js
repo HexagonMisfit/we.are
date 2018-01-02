@@ -17,17 +17,6 @@ $(document).ready(function () {
     var lookAtPosition = new THREE.Vector3();
     var mousePos = new THREE.Vector3();
 
-    window.addEventListener('resize', onWindowResize, false);
-
-    function onWindowResize() {
-
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-
-        renderer.setSize(window.innerWidth, window.innerHeight);
-
-    }
-
     $('.hero-container').mousemove(_.throttle(onMouseMove, 100));
     var width = window.innerWidth;
     var height = window.innerHeight;
@@ -46,20 +35,20 @@ $(document).ready(function () {
 
     var renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setClearColor(brandColors.blueLight, 1);
-    document.body.appendChild(renderer.domElement);
 
     var cubeGeometry = new THREE.BoxGeometry(3, 3, 3);
 
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 30; i++) {
 
         var cubeMaterial = new THREE.MeshBasicMaterial({ color: brandColors.magentaDark });
         var cubeMesh = new THREE.Mesh(cubeGeometry, cubeMaterial);
         var cube = new THREE.Object3D();
         cube.add(cubeMesh);
 
-        cube.position.x = (Math.random() * 20) - 10;
-        cube.position.y = (Math.random() * 20) - 10;
+        cube.position.x = (Math.random() * 26) - 13;
+        cube.position.y = (Math.random() * 26) - 13;
         cube.position.z = (Math.random() * 8) - 9;
 
         var cubeScale = Math.random() / 3 + 0.35;
@@ -100,7 +89,19 @@ $(document).ready(function () {
 
     animate();
 
-    // Draw it on a canvas fixed behind everything in the site
+    // Draw it in the dom and add resize event listener
 
-    $('canvas').addClass('fixed-canvas');
+    $('#home-home').prepend(renderer.domElement);
+
+    window.addEventListener('resize', onWindowResize, false);
+    window.addEventListener('deviceorientation', onWindowResize, false);
+
+    function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.render(scene, camera);
+    }
+
+    $('canvas').addClass('header-canvas');
 });

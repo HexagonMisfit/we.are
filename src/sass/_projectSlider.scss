@@ -1,16 +1,14 @@
 // Projects slider
 
-// @import url('../assets/img/mariposa_1280x720.jpg');
+@import '../../node_modules/venobox/venobox/venobox.css';
 
-.home-projects-container {
+#home-projects-container {
     overflow: hidden;
     display: block;
-    background: $blue-light;
     position: absolute;
     left: 0;
     top: 0;
     right: 0;
-    height: 100%;
 }
 
 .projects-slider-header {
@@ -24,7 +22,7 @@
     }
 }
 
-.full-width {
+.slider-full-width {
   .slick-prev {
     margin-left: 40px;
     @media screen and (max-width: 400px) {
@@ -59,10 +57,6 @@
     }
   }
 
-  .slick-next:before, .slick-prev:before {
-    color: rgba(8,8,8,0.85);
-  }
-
   .slide-content {
     display: flex;
     align-items: center;
@@ -79,9 +73,19 @@
     padding: 2em 1em;
     background-color: $near-black;
     opacity: 0.9;
-    h2, h4 {
+    h2, p {
       margin-bottom: 1em;
     }
+  }
+
+  .play-link {
+    align-items: center;
+  }
+
+  .play-button {
+    height: 2em;
+    width: 2em;
+    margin-right: 1em;
   }
 
   .slide-img-container, .slide-img {
@@ -106,27 +110,10 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
-    
-  #slide-1 {
-    background: $blue-dark;
-  }
-
-  #slide-2 {
-    background: $near-white;
-  }
-
-  #slide-3 {
-    background: $red-bright;
-  }
-
-  #slide-4 {
-    background: $seafoam-green;
-  }
 
   .slick-dots {
     bottom: 30px;
     color: $near-black;
-
   }
 
   #slide-1-img {
@@ -144,4 +131,13 @@
   #slide-4-img {
     background-image: url('../assets/img/mariposa_1280x720.jpg');
   }
+}
+
+#lightbox {
+    position:fixed; /* keeps the lightbox window in the current viewport */
+    top:0; 
+    left:0; 
+    width:100%; 
+    height:100%; 
+    background: rgba(0,0,0,0.87);
 }

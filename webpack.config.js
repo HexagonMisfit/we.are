@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
+var webpack = require("webpack");
 
 module.exports = {
     context: __dirname + '/src',
@@ -20,7 +20,7 @@ module.exports = {
                 })
             },
             {
-                test: /.(ttf|svg|otf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
+                test: /.(ttf|otf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
                 use: [{
                     loader: 'file-loader',
                     options: {
@@ -29,12 +29,13 @@ module.exports = {
                 }]
             },
             {
-                test: /\.(png|jpg|gif)$/,
+                test: /\.(png|svg|jpg|jpeg|gif)$/,
                 use: [
                     {
                         loader: 'url-loader',
                         options: {
-                            limit: 0
+                            limit: 8000,
+                            name: '[hash]-[name].[ext]'
                         }
                     }
                 ]
@@ -43,6 +44,10 @@ module.exports = {
     },
     plugins: [
         new ExtractTextPlugin('style.css'),
-        new HtmlWebpackPlugin({ template: './index.html' })
+        new HtmlWebpackPlugin({ template: './index.html' }),
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery"
+        })
     ]
 };

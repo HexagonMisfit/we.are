@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HexagonMis.fit</title>
     <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
@@ -11,33 +11,33 @@
 </head>
 
 <body>
+    <nav class="navigation home-nav row" id="main-nav">
+        <ul>
+            <div>
+                <a class="nav-link" id="home-button">
+                    <span>HexagonMis.fit</span>
+                </a>
+            </div>
+            <div>
+                <a class="nav-link" id="work-button">
+                    <span>Work</span>
+                </a>
+                <a class="nav-link" id="team-button">
+                    <span>Team</span>
+                </a>
+                <a class="nav-link" id="vr-button">
+                    <span>VR</span>
+                </a>
+                <a class="nav-link" id="contact-button">
+                    <span>Contact</span>
+                </a>
+            </div>
+        </ul>
+    </nav>
     <div class="container">
-        <nav class="navigation home-nav row" id="main-nav">
-            <ul>
-                <div>
-                    <a class="nav-link" id="home-button">
-                        <span>HexagonMis.fit</span>
-                    </a>
-                </div>
-                <div>
-                    <a class="nav-link" id="work-button">
-                        <span>Work</span>
-                    </a>
-                    <a class="nav-link" id="team-button">
-                        <span>Team</span>
-                    </a>
-                    <a class="nav-link" id="vr-button">
-                        <span>VR</span>
-                    </a>
-                    <a class="nav-link" id="contact-button">
-                        <span>Contact</span>
-                    </a>
-                </div>
-            </ul>
-        </nav>
         <div id="home-container">
-            <div class="hero-container">
-                <header class="hero hero-padding-responsive column space-around" id="section0">
+            <div id="home-home" class="hero-container home-section-container">
+                <header class="hero hero-padding-responsive column space-around full-height" id="section0">
                     <div class="home-text-container row">
                         <div class="hero-text column">
                             <h1 class="light-text ultra-big-text">HEXAGONMIS.FIT</h1>
@@ -48,19 +48,22 @@
                     </div>
                 </header>
             </div>
-            <section id="work-home" class="home-section">
+            <section id="work-home" class="home-section full-height">
                 <!-- <h1 class="projects-slider-header light-text">Projects</h1> -->
-                <div class="home-projects-container full-width">
+                <div id="home-projects-container" class="home-section-container slider-full-width">
                     <!-- Slider #1 -->
                     <div id="slide-1" class="slide">
                         <div class="slide-container">
                             <div class="slide-content hero-padding-responsive row">
                                 <div class="slide-info column">
                                     <h2 class="light-text">Mariposa Chandelier</h4>
-                                        <h4 class="light-text">This project attempts to make taking the stairs more appealing than the elevator,
+                                        <p class="light-text">This project attempts to make taking the stairs more appealing than the elevator,
                                             promoting health and engaging viewers by allowing them to trigger animations
-                                            and sounds that flow throughout the entire installation.</h2>
-                                    <a class="link light-text">See more</a>
+                                            and sounds that flow throughout the entire installation.</p>
+                                        <a class="link play-link venobox row" title="Mariposa Chandelier" data-autoplay="true" data-vbtype="video" href="https://vimeo.com/116297443">
+                                            <img class="play-button" />
+                                            <span class="light-text">Play Video</span>
+                                        </a>
                                 </div>
                                 <div id="slide-1-img-container" class="slide-img-container">
                                     <div id="slide-1-img" class="slide-img"></div>
@@ -75,10 +78,9 @@
                             <div class="slide-content hero-padding-responsive row">
                                 <div class="slide-info column">
                                     <h2 class="light-text">Coachella VIP Party</h4>
-                                        <h4 class="light-text">Using the Intel Realsense 3D Camera and Unity, we worked with 
-                                            Phantogram and Republic Records to create live audio reactive 
-                                            visuals for their VIP Party at Coachella.</h2>
-                                    <a class="link light-text">See more</a>
+                                        <p class="light-text">Using the Intel Realsense 3D Camera and Unity, we worked with Phantogram and Republic
+                                            Records to create live audio reactive visuals for their VIP Party at Coachella.</p>
+                                        <a class="link light-text">See more</a>
                                 </div>
                                 <div class="slide-img-container">
                                     <div id="slide-2-img" class="slide-img"></div>
@@ -93,10 +95,10 @@
                             <div class="slide-content hero-padding-responsive row">
                                 <div class="slide-info column">
                                     <h2 class="light-text">Mariposa Chandelier</h4>
-                                        <h4 class="light-text">This project attempts to make taking the stairs more appealing than the elevator,
+                                        <p class="light-text">This project attempts to make taking the stairs more appealing than the elevator,
                                             promoting health and engaging viewers by allowing them to trigger animations
-                                            and sounds that flow throughout the entire installation.</h2>
-                                    <a class="link light-text">See more</a>
+                                            and sounds that flow throughout the entire installation.</p>
+                                        <a class="link light-text">See more</a>
                                 </div>
                                 <div class="slide-img-container">
                                     <div id="slide-3-img" class="slide-img"></div>
@@ -111,10 +113,10 @@
                             <div class="slide-content hero-padding-responsive row">
                                 <div class="slide-info column">
                                     <h2 class="light-text">Mariposa Chandelier</h4>
-                                        <h4 class="light-text">This project attempts to make taking the stairs more appealing than the elevator,
+                                        <p class="light-text">This project attempts to make taking the stairs more appealing than the elevator,
                                             promoting health and engaging viewers by allowing them to trigger animations
-                                            and sounds that flow throughout the entire installation.</h2>
-                                    <a class="link light-text">See more</a>
+                                            and sounds that flow throughout the entire installation.</p>
+                                        <a class="link light-text">See more</a>
                                 </div>
                                 <div class="slide-img-container">
                                     <div id="slide-4-img" class="slide-img"></div>
@@ -124,60 +126,205 @@
                     </div>
                 </div>
             </section>
-            <section id="about-home" class="home-section column">
-                <div class="column">
+            <section id="team-home">
+                <div class="home-team-container home-section-container">
+                    <div class="home-team-info-container hero-padding-responsive">
+                        <div class="section-header-wrapper column">
+                            <h1 class="section-header">Who Are We?</h1>
+                        </div>
+                        <p>
+                            Based in rainy Seattle, Washington, we are an interaction design studio that uses technology to build experiences that astonish
+                            and delight. Our specialty is that we all have different specialties! Hit us up if you wanna
+                            collaborate on something dope.
+                        </p>
+                        <h2 class="section-header">
+                            Meet The Team
+                        </h2>
+                    </div>
+                    <div id="team-slider-container">
+                        <div id="team-slider">
+                            <div class="team-card-container column">
+                                <div class="team-card">
+                                    <div id="chris-r-img" class="team-prof-pic"></div>
+                                    <div class="team-card-title">
+                                        <h3 class="team-card-name">
+                                            Chris Rojas
+                                        </h3>
+                                        <div class="team-card-info">
+                                            <p>Visual Artist, VR/AR/MR Developer, Climber. Experienced with rapid prototyping
+                                                and close-to-the-metal programming. There is room for about this much copy
+                                                in this paragraph.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-card-container column">
+                                <div class="team-card">
+                                    <div id="chris-r-img" class="team-prof-pic"></div>
+                                    <div class="team-card-title">
+                                        <h3 class="team-card-name">
+                                            Chris Rojas
+                                        </h3>
+                                        <div class="team-card-info">
+                                            <p>Visual Artist, VR/AR/MR Developer, Climber. Experienced with rapid prototyping
+                                                and close-to-the-metal programming. There is room for about this much copy
+                                                in this paragraph.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-card-container column">
+                                <div class="team-card">
+                                    <div id="chris-r-img" class="team-prof-pic"></div>
+                                    <div class="team-card-title">
+                                        <h3 class="team-card-name">
+                                            Chris Rojas
+                                        </h3>
+                                        <div class="team-card-info">
+                                            <p>Visual Artist, VR/AR/MR Developer, Climber. Experienced with rapid prototyping
+                                                and close-to-the-metal programming. There is room for about this much copy
+                                                in this paragraph.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-card-container column">
+                                <div class="team-card">
+                                    <div id="chris-r-img" class="team-prof-pic"></div>
+                                    <div class="team-card-title">
+                                        <h3 class="team-card-name">
+                                            Chris Rojas
+                                        </h3>
+                                        <div class="team-card-info">
+                                            <p>Visual Artist, VR/AR/MR Developer, Climber. Experienced with rapid prototyping
+                                                and close-to-the-metal programming. There is room for about this much copy
+                                                in this paragraph.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-card-container column">
+                                <div class="team-card">
+                                    <div id="chris-r-img" class="team-prof-pic"></div>
+                                    <div class="team-card-title">
+                                        <h3 class="team-card-name">
+                                            Chris Rojas
+                                        </h3>
+                                        <div class="team-card-info">
+                                            <p>Visual Artist, VR/AR/MR Developer, Climber. Experienced with rapid prototyping
+                                                and close-to-the-metal programming. There is room for about this much copy
+                                                in this paragraph.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-card-container column">
+                                <div class="team-card">
+                                    <div id="chris-r-img" class="team-prof-pic"></div>
+                                    <div class="team-card-title">
+                                        <h3 class="team-card-name">
+                                            Chris Rojas
+                                        </h3>
+                                        <div class="team-card-info">
+                                            <p>Visual Artist, VR/AR/MR Developer, Climber. Experienced with rapid prototyping
+                                                and close-to-the-metal programming. There is room for about this much copy
+                                                in this paragraph.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-card-container column">
+                                <div class="team-card">
+                                    <div id="chris-r-img" class="team-prof-pic"></div>
+                                    <div class="team-card-title">
+                                        <h3 class="team-card-name">
+                                            Chris Rojas
+                                        </h3>
+                                        <div class="team-card-info">
+                                            <p>Visual Artist, VR/AR/MR Developer, Climber. Experienced with rapid prototyping
+                                                and close-to-the-metal programming. There is room for about this much copy
+                                                in this paragraph.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-card-container column">
+                                <div class="team-card">
+                                    <div id="chris-r-img" class="team-prof-pic"></div>
+                                    <div class="team-card-title">
+                                        <h3 class="team-card-name">
+                                            Chris Rojas
+                                        </h3>
+                                        <div class="team-card-info">
+                                            <p>Visual Artist, VR/AR/MR Developer, Climber. Experienced with rapid prototyping
+                                                and close-to-the-metal programming. There is room for about this much copy
+                                                in this paragraph.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-card-container column">
+                                <div class="team-card">
+                                    <div id="chris-r-img" class="team-prof-pic"></div>
+                                    <div class="team-card-title">
+                                        <h3 class="team-card-name">
+                                            Chris Rojas
+                                        </h3>
+                                        <div class="team-card-info">
+                                            <p>Visual Artist, VR/AR/MR Developer, Climber. Experienced with rapid prototyping
+                                                and close-to-the-metal programming. There is room for about this much copy
+                                                in this paragraph.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="contact-home" class="home-section">
+                <div class="home-contact-container home-section-container hero-padding-responsive">
                     <div class="section-header-wrapper column">
-                        <h1 class="section-header">Who Are We?</h1>
+                        <h1 class="light-text section-header">Get In Touch</h1>
                     </div>
-                    <p>
-                        Based in rainy Seattle, Washington, we are an interaction design studio that uses technology to build experiences that astonish
-                        and delight. Our specialty is that we all have different specialties! Hit us up if you wanna collaborate
-                        on something dope.
-                    </p>
-                </div>
-                <div class="section-footer"></div>
-            </section>
-            <section id="team-home" class="row home-section">
-
-            </section>
-            <section id="contact-home" class="row home-section">
-                <div class="contact-row row">
-                    <div class="one-half column">
-                        <div class="contact-container column">
-                            <div class="contact-text-container column">
-                                <h1 class="light-text">Questions?</h1>
-                                <h3 class="light-text">
-                                    We weren't kidding when we said to hit us up!
-                                </h3>
-                                <ul class="contact-list">
-                                    <p class="light-text">
-                                        310 NW 40th St. Seattle, WA 98107
-                                    </p>
-                                    <p class="light-text">
-                                        sup@hexagonmis.fit
-                                    </p>
-                                    <p class="light-text">555-555-5555</p>
-                                </ul>
+                    <div class="contact-row row">
+                        <div class="one-half column">
+                            <div class="contact-container column">
+                                <div class="contact-text-container column">
+                                    <h3 class="light-text">
+                                        We weren't kidding when we said to hit us up!
+                                    </h3>
+                                    <ul class="contact-list">
+                                        <p class="light-text">
+                                            310 NW 40th St. Seattle, WA 98107
+                                        </p>
+                                        <p class="light-text">
+                                            sup@hexagonmis.fit
+                                        </p>
+                                        <p class="light-text">555-555-5555</p>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="one-half column">
-                        <div class="contact-container column">
-                            <div class="contact-input-container column">
-                                <input class="contact-input name" placeholder="Name">
-                                <input class="contact-input" placeholder="Email">
-                                <textarea class="contact-textarea" placeholder="What's on your mind?" rows=5></textarea>
+                        <div class="one-half column">
+                            <div class="contact-container column">
+                                <div class="contact-input-container column">
+                                    <input class="contact-input name" placeholder="Name">
+                                    <input class="contact-input" placeholder="Email">
+                                    <textarea class="contact-textarea" placeholder="What's on your mind?" rows=5></textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            <footer id="footer">
+            <footer id="footer" class="hero-padding-responsive">
                 <p>Copyright 2018 HexagonMix.fit</p>
                 <p>Site design by Al</p>
             </footer>
         </div>
-        <div id="work-container">
+        <!--<div id="work-container">
             <section class="project column">
                 <div class="project-video-container column hidden-narrow">
                     <div class="project-video-text">
@@ -278,7 +425,7 @@
             VR
         </h1>
     </div>
-    </div>
+    </div>-->
 </body>
 
 </html>

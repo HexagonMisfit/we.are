@@ -1,7 +1,8 @@
 // vendor js files
-var $ = require('jquery');
+window.$ = window.jQuery = require('jquery');
 var _ = require('lodash');
 import { TweenMax, TimelineLite } from '../../node_modules/gsap/TweenMax.js';
+import ScrollToPlugin from 'gsap/ScrollToPlugin'
 import ScrollMagic from 'ScrollMagic';
 
 // DEV-ONLY
@@ -10,11 +11,14 @@ import '../../node_modules/scrollmagic/scrollmagic/minified/plugins/debug.addInd
 // our scripts
 import { brandColors } from './theming.js';
 import './anim.js';
-import './projectsCarousel.js';
+import './slickCarousels.js';
 
 // images
 
-// import * as mariposaChandelier from '../assets/img/mariposa_1280x720.jpg';
+// import * as playButton from '../assets/img/play_svg.svg';
+// $('.play-button')[0].src = playButton;
+// console.log('debug play-button', playButton);
+// console.log('debug play button element', $('.play-button'));
 
 // import our scss last
 import '../sass/main.scss';
@@ -48,37 +52,37 @@ $(function () {
     // Store info about the various pages. This will be a single page application, 
     // so all pages except for the active one will need to be hidden.
 
-    var pages = {
-        home: {
-            sections: ['hero', 'contact'],
-            name: 'home',
-            backgroundColor: brandColors.blueDark,
-            transitionTextColor: brandColors.nearWhite
-        },
-        work: {
-            sections: ['project1'],
-            name: 'work',
-            backgroundColor: brandColors.nearBlack,
-            transitionTextColor: brandColors.brightYellow
-        },
-        team: {
-            sections: ['team'],
-            name: 'team',
-            backgroundColor: brandColors.magentaLight,
-            transitionTextColor: brandColors.blueLight
-        },
-        vr: {
-            sections: ['vr'],
-            name: 'vr',
-            backgroundColor: brandColors.brightYellow,
-            transitionTextColor: brandColors.magentaLight
-        }
-    };
+    // var pages = {
+    //     home: {
+    //         sections: ['hero', 'contact'],
+    //         name: 'home',
+    //         backgroundColor: brandColors.blueDark,
+    //         transitionTextColor: brandColors.nearWhite
+    //     },
+    //     work: {
+    //         sections: ['project1'],
+    //         name: 'work',
+    //         backgroundColor: brandColors.nearBlack,
+    //         transitionTextColor: brandColors.brightYellow
+    //     },
+    //     team: {
+    //         sections: ['team'],
+    //         name: 'team',
+    //         backgroundColor: brandColors.magentaLight,
+    //         transitionTextColor: brandColors.blueLight
+    //     },
+    //     vr: {
+    //         sections: ['vr'],
+    //         name: 'vr',
+    //         backgroundColor: brandColors.brightYellow,
+    //         transitionTextColor: brandColors.magentaLight
+    //     }
+    // };
 
-    var activePage = pages.home;
+    // var activePage = pages.home;
 
-    var viewSection = 0;
-    var backgroundPlane;
+    // var viewSection = 0;
+    // var backgroundPlane;
 
     var scrollControl = new ScrollMagic.Controller();
     var scrollScene = new ScrollMagic.Scene({
@@ -87,76 +91,83 @@ $(function () {
         reverse: false
     })
     .addTo(scrollControl);
-    function initHome() {
-        _.forIn(pages, function (page) {
-            TweenMax.to($('#' + page.name + '-container'), 0, { autoAlpha: 0 });
-            TweenMax.to($('#' + page.name + '-flash-text'), 0, { autoAlpha: 0 });
-            TweenMax.to('.navigation', 0.25, { autoAlpha: 0.97, ease: Power3.easeIn });
-            TweenMax.to($('#' + activePage.name + '-container'), 0.25, { autoAlpha: 1, ease: Power3.easeIn });
-            TweenMax.to($('#' + activePage.name + '-button'), 0.1, { className: '+= nav-link-active' });
-        });
-    }
+    // function initHome() {
+    //     _.forIn(pages, function (page) {
+    //         TweenMax.to($('#' + page.name + '-container'), 0, { autoAlpha: 0 });
+    //         TweenMax.to($('#' + page.name + '-flash-text'), 0, { autoAlpha: 0 });
+    //         TweenMax.to('.navigation', 0.25, { autoAlpha: 0.97, ease: Power3.easeIn });
+    //         TweenMax.to($('#' + activePage.name + '-container'), 0.25, { autoAlpha: 1, ease: Power3.easeIn });
+    //         TweenMax.to($('#' + activePage.name + '-button'), 0.1, { className: '+= nav-link-active' });
+    //     });
+    // }
 
-    initHome();
+    // initHome();
 
     // Navigate between pages and animate page transitions
 
-    function navigateTo(name) {
+    // function navigateTo(name) {
 
-        var currentPageContainer = $('#' + activePage.name + '-container');
-        var nextPageContainer = $('#' + name + '-container');
+    //     var currentPageContainer = $('#' + activePage.name + '-container');
+    //     var nextPageContainer = $('#' + name + '-container');
 
-        var currentActiveNavButton = $('#' + activePage.name + '-button');
-        var nextActiveNavButton = $('#' + name + '-button');
+    //     var currentActiveNavButton = $('#' + activePage.name + '-button');
+    //     var nextActiveNavButton = $('#' + name + '-button');
 
-        var navArray = _.keys(pages);
+    //     var navArray = _.keys(pages);
 
-        function flashNextSection() {
-            var activeFlashSection = $('#' + name + '-flash');
-            var activeFlashText = $('#' + name + '-flash-text');
+    //     function flashNextSection() {
+    //         var activeFlashSection = $('#' + name + '-flash');
+    //         var activeFlashText = $('#' + name + '-flash-text');
 
-            console.log(activeFlashSection);
-            console.log(activeFlashText);
+    //         console.log(activeFlashSection);
+    //         console.log(activeFlashText);
 
-            var tl = new TimelineLite();
+    //         var tl = new TimelineLite();
 
-            // set flash container background color and text color
+    //         // set flash container background color and text color
 
-            tl.to(activeFlashSection, 0, { backgroundColor: activePage.backgroundColor })
-                .to(activeFlashText, 0, { color: activePage.transitionTextColor })
+    //         tl.to(activeFlashSection, 0, { backgroundColor: activePage.backgroundColor })
+    //             .to(activeFlashText, 0, { color: activePage.transitionTextColor })
 
-                // show flash container and hide current page/nav
+    //             // show flash container and hide current page/nav
 
-                .to(currentPageContainer, 0, { autoAlpha: 0 }, 0)
-                .to(activeFlashSection, 0, { autoAlpha: 1 }, 0)
-                .to(activeFlashText, 0, { autoAlpha: 1 }, 0)
+    //             .to(currentPageContainer, 0, { autoAlpha: 0 }, 0)
+    //             .to(activeFlashSection, 0, { autoAlpha: 1 }, 0)
+    //             .to(activeFlashText, 0, { autoAlpha: 1 }, 0)
 
-                // flash through some different colors
+    //             // flash through some different colors
 
-                .to(activeFlashSection, 0, { backgroundColor: activePage.transitionTextColor }, 0.5)
-                .to(activeFlashText, 0, { color: activePage.backgroundColor }, 0.5)
-                .to(activeFlashSection, 0, { backgroundColor: pages[name].backgroundColor }, 1)
-                .to(activeFlashText, 0, { color: pages[name].transitionTextColor }, 1)
+    //             .to(activeFlashSection, 0, { backgroundColor: activePage.transitionTextColor }, 0.5)
+    //             .to(activeFlashText, 0, { color: activePage.backgroundColor }, 0.5)
+    //             .to(activeFlashSection, 0, { backgroundColor: pages[name].backgroundColor }, 1)
+    //             .to(activeFlashText, 0, { color: pages[name].transitionTextColor }, 1)
 
-                // hide flash section, show next section
+    //             // hide flash section, show next section
 
-                .to(activeFlashSection, 0, { autoAlpha: 0 }, 1.5)
-                .to(activeFlashText, 0, { autoAlpha: 0 }, 1.5)
-                .to(nextPageContainer, 0, { autoAlpha: 1 }, 1.5);
-        }
+    //             .to(activeFlashSection, 0, { autoAlpha: 0 }, 1.5)
+    //             .to(activeFlashText, 0, { autoAlpha: 0 }, 1.5)
+    //             .to(nextPageContainer, 0, { autoAlpha: 1 }, 1.5);
+    //     }
 
-        // Apply active nav button class to next active nav, remove it from current one
+    //     // Apply active nav button class to next active nav, remove it from current one
 
-        removeActiveNavClass(currentActiveNavButton);
-        addActiveNavClass(nextActiveNavButton);
+    //     removeActiveNavClass(currentActiveNavButton);
+    //     addActiveNavClass(nextActiveNavButton);
 
-        // Determine index of active page and next page in navArray.
-        // TweenMax.to(currentPageContainer, 0, { autoAlpha: 0 });
-        // TweenMax.to(nextPageContainer, 0.5, { autoAlpha: 1, ease: Power2.easeIn });
-        flashNextSection();
+    //     // Determine index of active page and next page in navArray.
+    //     // TweenMax.to(currentPageContainer, 0, { autoAlpha: 0 });
+    //     // TweenMax.to(nextPageContainer, 0.5, { autoAlpha: 1, ease: Power2.easeIn });
+    //     flashNextSection();
 
 
-        activePage = pages[name];
+    //     activePage = pages[name];
+    // }
+
+    function navigateTo(position) {
+        var scrollPosition = '#' + position + '-home';
+        console.log('navigating to ' + scrollPosition);
+        var homeContainer = $('#home-container');
+        TweenMax.to(homeContainer, 1, {scrollTo: {y:scrollPosition, autoKill:false}, ease: Power3.easeInOut});
     }
 
     var navLink = $('.nav-link');
@@ -181,9 +192,12 @@ $(function () {
         if (this.id === 'team-button') {
             navigateTo('team');
         }
-        if (this.id === 'vr-button') {
-            navigateTo('vr');
+        if (this.id === 'contact-button') {
+            navigateTo('contact');
         }
+        // if (this.id === 'vr-button') {
+        //     navigateTo('vr');
+        // }
     });
 
     navLink.mousedown(function () {

@@ -1,7 +1,8 @@
-@import 'variables', 'normalize', 'home', 'projectSlider', 'projects', 'team';
+@import 'variables', 'normalize', 'home', 'projectSlider', 'teamSlider', 'projects', 'team';
 
 html {
     height: 100%;
+    width: auto;
     overflow: hidden;
     padding: 0;
     margin: 0;
@@ -9,6 +10,9 @@ html {
     background-color: $blue-light;
     @media screen and (max-width: 375px) {
         font-size: 18px;
+    }
+    @media screen and (max-height: 540px) {
+        font-size: 16px;
     }
 }
 
@@ -30,8 +34,8 @@ html::-webkit-scrollbar { width: 0 !important }
 body {
     padding: 0;
     margin: 0;
-    display: hidden;
     height: 100%;
+    width: auto;
     overflow: hidden;
     -webkit-overflow-scrolling: touch;
     overflow: -moz-scrollbars-none;
@@ -40,11 +44,20 @@ body {
     background-color: $blue-dark;
 }
 
+p {
+    font-size: 1.2em;
+    line-height: 1.3em;
+}
+
 .container {
     height: 100%;
     overflow: hidden;
-    width: 100%;
-    position: relative;
+    width: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 2;
     overflow: -moz-scrollbars-none;
 }
@@ -74,32 +87,22 @@ body {
     width: 100%;
 }
 
-.fixed-canvas, .mobile-canvas {
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-}
-
-.fixed-canvas {
-    position: fixed;
+.header-canvas {
     z-index: 1;
-}
-
-.mobile-canvas {
     position: absolute;
+    height: 100%;
+    width: 100%;
 }
 
 .navigation {
     width: 100vw;
     z-index: 11;
     padding: 1em 10em;
-    position: relative;
     background-color: $near-white;
     border-bottom: 1px solid $button-darken;
     position: fixed;
     left: 0;
-    top: 0;
+    top: inherit;
     ul {
         width: 100vw;
         list-style: none;
@@ -161,10 +164,6 @@ body {
    }
 }
 
-p {
-    line-height: 1.4em;
-}
-
 .one-third {
     width: 33%;
     min-width: 22em;
@@ -205,8 +204,16 @@ h3 {
 
 .link {
     font-weight: bold;
+    &:focus {
+        outline: none;
+    }
     &:hover {
-        color: $bright-yellow;
+        img {
+            color: $bright-yellow;
+        }
+        span {
+            color: $bright-yellow;
+        }
         cursor: pointer;
     }
 }
