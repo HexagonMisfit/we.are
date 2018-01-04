@@ -1,4 +1,4 @@
-@import 'variables', 'normalize', 'home', 'projectSlider', 'teamSlider', 'projects', 'team';
+@import 'variables', 'normalize', 'home', 'projectSlider', 'teamSlider', 'projects', 'team', 'vr';
 
 html {
     height: 100%;
@@ -244,16 +244,16 @@ h3 {
     background-color: rgba(0,0,0,0);
 }
 
-.nav-transition-text-container {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-}
+// .nav-transition-text-container {
+//     height: 100%;
+//     width: 100%;
+//     position: absolute;
+//     left: 0;
+//     top: 0;
+//     align-items: center;
+//     justify-content: center;
+//     z-index: 1;
+// }
 
 .ultra-big-text {
     font-size: 5em;

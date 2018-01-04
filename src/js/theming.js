@@ -1,5 +1,8 @@
 export const brandColors = {
-    magentaLight: 0xFF0066,
+    redBright: 0xF03A47,
+    plumIsh: 0x542344,
+    salmonPink: 0xEA526F,
+    seafoamGreen: 0x119DA4,
     magentaDark: 0xB21252,
     blueLight: 0x14ACCC,
     blueDark: 0x0995B2,

@@ -40155,7 +40155,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 "use strict";
 const brandColors = {
-    magentaLight: 0xFF0066,
+    redBright: 0xF03A47,
+    plumIsh: 0x542344,
+    salmonPink: 0xEA526F,
+    seafoamGreen: 0x119DA4,
     magentaDark: 0xB21252,
     blueLight: 0x14ACCC,
     blueDark: 0x0995B2,
@@ -40203,24 +40206,18 @@ var _ = __webpack_require__(2);
 
 // images
 
-// import * as playButton from '../assets/img/play_svg.svg';
-// $('.play-button')[0].src = playButton;
-// console.log('debug play-button', playButton);
-// console.log('debug play button element', $('.play-button'));
-
 // import our scss last
 
 
 // set images on elements
 
-// console.log('debug mariposaImage', mariposaChandelier);
-
-// var slide1Img = $('#slide-1-img');
-// slide1Img.src = mariposaChandelier;
-
-// console.log('slide1Img', slide1Img);
-
 $(function () {
+
+    /******************/
+    /* Init variables */
+    /******************/
+
+    var vrFlashScreen = $('#vr-flash');
 
     /**************/
     /* UI Stuff */
@@ -40233,129 +40230,18 @@ $(function () {
         return (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(Uagent) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(Uagent.substr(0, 4)));
     };
 
+    function onInit() {
+        __WEBPACK_IMPORTED_MODULE_0__node_modules_gsap_TweenMax_js__["TweenMax"].to(vrFlashScreen, 0, { autoAlpha: 0 });
+    }
+
     /**************/
     /* Navigation */
     /**************/
 
-    // Store info about the various pages. This will be a single page application, 
-    // so all pages except for the active one will need to be hidden.
-
-    // var pages = {
-    //     home: {
-    //         sections: ['hero', 'contact'],
-    //         name: 'home',
-    //         backgroundColor: brandColors.blueDark,
-    //         transitionTextColor: brandColors.nearWhite
-    //     },
-    //     work: {
-    //         sections: ['project1'],
-    //         name: 'work',
-    //         backgroundColor: brandColors.nearBlack,
-    //         transitionTextColor: brandColors.brightYellow
-    //     },
-    //     team: {
-    //         sections: ['team'],
-    //         name: 'team',
-    //         backgroundColor: brandColors.magentaLight,
-    //         transitionTextColor: brandColors.blueLight
-    //     },
-    //     vr: {
-    //         sections: ['vr'],
-    //         name: 'vr',
-    //         backgroundColor: brandColors.brightYellow,
-    //         transitionTextColor: brandColors.magentaLight
-    //     }
-    // };
-
-    // var activePage = pages.home;
-
-    // var viewSection = 0;
-    // var backgroundPlane;
-
-    var scrollControl = new __WEBPACK_IMPORTED_MODULE_2_ScrollMagic___default.a.Controller();
-    var scrollScene = new __WEBPACK_IMPORTED_MODULE_2_ScrollMagic___default.a.Scene({
-        triggerElement: '',
-        triggerHook: 0,
-        reverse: false
-    })
-    .addTo(scrollControl);
-    // function initHome() {
-    //     _.forIn(pages, function (page) {
-    //         TweenMax.to($('#' + page.name + '-container'), 0, { autoAlpha: 0 });
-    //         TweenMax.to($('#' + page.name + '-flash-text'), 0, { autoAlpha: 0 });
-    //         TweenMax.to('.navigation', 0.25, { autoAlpha: 0.97, ease: Power3.easeIn });
-    //         TweenMax.to($('#' + activePage.name + '-container'), 0.25, { autoAlpha: 1, ease: Power3.easeIn });
-    //         TweenMax.to($('#' + activePage.name + '-button'), 0.1, { className: '+= nav-link-active' });
-    //     });
-    // }
-
-    // initHome();
-
-    // Navigate between pages and animate page transitions
-
-    // function navigateTo(name) {
-
-    //     var currentPageContainer = $('#' + activePage.name + '-container');
-    //     var nextPageContainer = $('#' + name + '-container');
-
-    //     var currentActiveNavButton = $('#' + activePage.name + '-button');
-    //     var nextActiveNavButton = $('#' + name + '-button');
-
-    //     var navArray = _.keys(pages);
-
-    //     function flashNextSection() {
-    //         var activeFlashSection = $('#' + name + '-flash');
-    //         var activeFlashText = $('#' + name + '-flash-text');
-
-    //         console.log(activeFlashSection);
-    //         console.log(activeFlashText);
-
-    //         var tl = new TimelineLite();
-
-    //         // set flash container background color and text color
-
-    //         tl.to(activeFlashSection, 0, { backgroundColor: activePage.backgroundColor })
-    //             .to(activeFlashText, 0, { color: activePage.transitionTextColor })
-
-    //             // show flash container and hide current page/nav
-
-    //             .to(currentPageContainer, 0, { autoAlpha: 0 }, 0)
-    //             .to(activeFlashSection, 0, { autoAlpha: 1 }, 0)
-    //             .to(activeFlashText, 0, { autoAlpha: 1 }, 0)
-
-    //             // flash through some different colors
-
-    //             .to(activeFlashSection, 0, { backgroundColor: activePage.transitionTextColor }, 0.5)
-    //             .to(activeFlashText, 0, { color: activePage.backgroundColor }, 0.5)
-    //             .to(activeFlashSection, 0, { backgroundColor: pages[name].backgroundColor }, 1)
-    //             .to(activeFlashText, 0, { color: pages[name].transitionTextColor }, 1)
-
-    //             // hide flash section, show next section
-
-    //             .to(activeFlashSection, 0, { autoAlpha: 0 }, 1.5)
-    //             .to(activeFlashText, 0, { autoAlpha: 0 }, 1.5)
-    //             .to(nextPageContainer, 0, { autoAlpha: 1 }, 1.5);
-    //     }
-
-    //     // Apply active nav button class to next active nav, remove it from current one
-
-    //     removeActiveNavClass(currentActiveNavButton);
-    //     addActiveNavClass(nextActiveNavButton);
-
-    //     // Determine index of active page and next page in navArray.
-    //     // TweenMax.to(currentPageContainer, 0, { autoAlpha: 0 });
-    //     // TweenMax.to(nextPageContainer, 0.5, { autoAlpha: 1, ease: Power2.easeIn });
-    //     flashNextSection();
-
-
-    //     activePage = pages[name];
-    // }
-
     function navigateTo(position) {
         var scrollPosition = '#' + position + '-home';
-        console.log('navigating to ' + scrollPosition);
         var homeContainer = $('#home-container');
-        __WEBPACK_IMPORTED_MODULE_0__node_modules_gsap_TweenMax_js__["TweenMax"].to(homeContainer, 1, {scrollTo: {y:scrollPosition, autoKill:false}, ease: Power3.easeInOut});
+        __WEBPACK_IMPORTED_MODULE_0__node_modules_gsap_TweenMax_js__["TweenMax"].to(homeContainer, 1, { scrollTo: { y: scrollPosition, autoKill: false }, ease: Power3.easeInOut });
     }
 
     var navLink = $('.nav-link');
@@ -40368,8 +40254,16 @@ $(function () {
         element.removeClass('nav-link-active');
     }
 
+    function showComingSoon() {
+        var vrFlashText = $('#vr-flash-text');
+        var tl = new __WEBPACK_IMPORTED_MODULE_0__node_modules_gsap_TweenMax_js__["TimelineLite"]();
+        tl.to(vrFlashScreen, 0, { autoAlpha: 1, backgroundColor: __WEBPACK_IMPORTED_MODULE_4__theming_js__["a" /* brandColors */].seafoamGreen })
+            .to(vrFlashScreen, 0, { backgroundColor: __WEBPACK_IMPORTED_MODULE_4__theming_js__["a" /* brandColors */].salmonPink }, 0.5)
+            .to(vrFlashScreen, 0, { backgroundColor: __WEBPACK_IMPORTED_MODULE_4__theming_js__["a" /* brandColors */].plumIsh }, 1)
+            .to(vrFlashScreen, 0, { autoAlpha: 0 }, 1.5);
+    }
+
     navLink.click(function () {
-        console.log('clicked navLink', this.id);
 
         if (this.id === 'home-button') {
             navigateTo('home');
@@ -40383,9 +40277,10 @@ $(function () {
         if (this.id === 'contact-button') {
             navigateTo('contact');
         }
-        // if (this.id === 'vr-button') {
-        //     navigateTo('vr');
-        // }
+        if (this.id === 'vr-button') {
+            showComingSoon();
+        }
+
     });
 
     navLink.mousedown(function () {
@@ -40400,6 +40295,11 @@ $(function () {
     /* Home page UI stuff */
     /**********************/
 
+    /**********************/
+    /* Call Init Function */
+    /**********************/
+
+    onInit();
 });
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
