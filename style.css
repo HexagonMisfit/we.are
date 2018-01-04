@@ -1069,6 +1069,12 @@ div.contact-row {
 #chris-r-img {
   background-image: url(e394c99acdf894af394b0cd8b0f71967-chris_r_prof_crop.png); }
 
+#quin-k-img {
+  background-image: url(12b98c6607061733b9265dae51c78015-quin_kennedy_prof.png); }
+
+#alex-e-img {
+  background-image: url(0df39c97839a5ac83688fe398308b0a2-big_al.jpg); }
+
 .team-card-info p {
   font-size: 0.8em;
   line-height: 0.9em; }
@@ -1142,6 +1148,18 @@ div.contact-row {
   color: #B21252; }
   .portfolio-link:hover {
     cursor: pointer; }
+
+#vr-flash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  display: hidden;
+  opacity: 0; }
 
 html {
   height: 100%;
@@ -1344,16 +1362,6 @@ h3 {
 
 .transparent-background {
   background-color: transparent; }
-
-.nav-transition-text-container {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  align-items: center;
-  justify-content: center;
-  z-index: 1; }
 
 .ultra-big-text {
   font-size: 5em;
