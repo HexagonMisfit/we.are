@@ -1024,16 +1024,16 @@ div.contact-row {
   color: #060606; }
 
 .slider-full-width #slide-1-img {
-  background-image: url(9ceee0fa748f81374f559ae7f90c0e3d-mariposa_1280x720.jpg); }
+  background-image: url(mariposa_1280x720.jpg); }
 
 .slider-full-width #slide-2-img {
-  background-image: url(9ceee0fa748f81374f559ae7f90c0e3d-mariposa_1280x720.jpg); }
+  background-image: url(mariposa_1280x720.jpg); }
 
 .slider-full-width #slide-3-img {
-  background-image: url(9ceee0fa748f81374f559ae7f90c0e3d-mariposa_1280x720.jpg); }
+  background-image: url(mariposa_1280x720.jpg); }
 
 .slider-full-width #slide-4-img {
-  background-image: url(9ceee0fa748f81374f559ae7f90c0e3d-mariposa_1280x720.jpg); }
+  background-image: url(mariposa_1280x720.jpg); }
 
 #lightbox {
   position: fixed;
@@ -1067,13 +1067,13 @@ div.contact-row {
   background-repeat: no-repeat; }
 
 #chris-r-img {
-  background-image: url(e394c99acdf894af394b0cd8b0f71967-chris_r_prof_crop.png); }
+  background-image: url(chris_r_prof_crop.png); }
 
 #quin-k-img {
-  background-image: url(12b98c6607061733b9265dae51c78015-quin_kennedy_prof.png); }
+  background-image: url(quin_kennedy_prof.png); }
 
 #alex-e-img {
-  background-image: url(0df39c97839a5ac83688fe398308b0a2-big_al.jpg); }
+  background-image: url(big_al.jpg); }
 
 .team-card-info p {
   font-size: 0.8em;
@@ -1149,17 +1149,12 @@ div.contact-row {
   .portfolio-link:hover {
     cursor: pointer; }
 
-#vr-flash {
+#vr-screen {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  height: 100%;
   z-index: 100;
-  display: hidden;
-  opacity: 0; }
+  transform: translateX(100%); }
 
 html {
   height: 100%;
@@ -1240,7 +1235,7 @@ p {
   z-index: 3;
   width: 100%; }
 
-.header-canvas {
+#header-canvas {
   z-index: 1;
   position: absolute;
   height: 100%;

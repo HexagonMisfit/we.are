@@ -14,7 +14,6 @@ $(document).ready(function () {
     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     var cubes = [];
     camera.position.z = 5;
-    var lookAtPosition = new THREE.Vector3();
     var mousePos = new THREE.Vector3();
 
     $('.hero-container').mousemove(_.throttle(onMouseMove, 100));
@@ -79,8 +78,6 @@ $(document).ready(function () {
 
     var animate = function () {
         requestAnimationFrame(animate);
-        lookAtPosition.x = mousePos.x;
-        lookAtPosition.y = mousePos.y;
         for (var i = 0; i < cubes.length; i++) {
             cubes[i].rotate();
         }
@@ -103,5 +100,5 @@ $(document).ready(function () {
         renderer.render(scene, camera);
     }
 
-    $('canvas').addClass('header-canvas');
+    renderer.domElement.id = "header-canvas";
 });

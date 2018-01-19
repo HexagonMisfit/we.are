@@ -40187,8 +40187,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__theming_js__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__anim_js__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__slickCarousels_js__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__sass_main_scss__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__sass_main_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__sass_main_scss__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__aframeScene_js__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__aframeScene_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__aframeScene_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__sass_main_scss__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__sass_main_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__sass_main_scss__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__assets_video_Merica_mp4__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__assets_video_Merica_mp4___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__assets_video_Merica_mp4__);
 // vendor js files
 window.$ = window.jQuery = __webpack_require__(0);
 var _ = __webpack_require__(2);
@@ -40204,12 +40208,16 @@ var _ = __webpack_require__(2);
 
 
 
+
 // images
+// const groundTexture = require('../assets/img/wood_planks_new_0035_02_tiled.jpg')
 
 // import our scss last
 
 
 // set images on elements
+
+
 
 $(function () {
 
@@ -40217,8 +40225,8 @@ $(function () {
     /* Init variables */
     /******************/
 
-    var vrFlashScreen = $('#vr-flash');
-
+    var vrScreen = $('#vr-screen');
+    var vrActive = false;
     /**************/
     /* UI Stuff */
     /**************/
@@ -40231,7 +40239,7 @@ $(function () {
     };
 
     function onInit() {
-        __WEBPACK_IMPORTED_MODULE_0__node_modules_gsap_TweenMax_js__["TweenMax"].to(vrFlashScreen, 0, { autoAlpha: 0 });
+        __WEBPACK_IMPORTED_MODULE_0__node_modules_gsap_TweenMax_js__["TweenMax"].to(vrScreen, 0, { autoAlpha: 0 });
     }
 
     /**************/
@@ -40254,31 +40262,48 @@ $(function () {
         element.removeClass('nav-link-active');
     }
 
-    function showComingSoon() {
-        var vrFlashText = $('#vr-flash-text');
-        var tl = new __WEBPACK_IMPORTED_MODULE_0__node_modules_gsap_TweenMax_js__["TimelineLite"]();
-        tl.to(vrFlashScreen, 0, { autoAlpha: 1, backgroundColor: __WEBPACK_IMPORTED_MODULE_4__theming_js__["a" /* brandColors */].seafoamGreen })
-            .to(vrFlashScreen, 0, { backgroundColor: __WEBPACK_IMPORTED_MODULE_4__theming_js__["a" /* brandColors */].salmonPink }, 0.5)
-            .to(vrFlashScreen, 0, { backgroundColor: __WEBPACK_IMPORTED_MODULE_4__theming_js__["a" /* brandColors */].plumIsh }, 1)
-            .to(vrFlashScreen, 0, { autoAlpha: 0 }, 1.5);
+    function showVrScreen() {
+        __WEBPACK_IMPORTED_MODULE_0__node_modules_gsap_TweenMax_js__["TweenMax"].to(vrScreen, 0, {autoAlpha: 1, transform: 'translateX(0)'});
+    }
+
+    function hideVrScreen() {
+        __WEBPACK_IMPORTED_MODULE_0__node_modules_gsap_TweenMax_js__["TweenMax"].to(vrScreen, 0, {autoAlpha: 0, transform: 'translateX(100%)'});
+        
+    }
+
+    function toggleVr() {
+        vrActive ? hideVrScreen() : showVrScreen();
+        vrActive = !vrActive;
     }
 
     navLink.click(function () {
 
         if (this.id === 'home-button') {
             navigateTo('home');
+            if (vrActive) {
+                toggleVr();
+            }
         }
         if (this.id === 'work-button') {
             navigateTo('work');
+            if (vrActive) {
+                toggleVr();
+            }
         }
         if (this.id === 'team-button') {
             navigateTo('team');
+            if (vrActive) {
+                toggleVr();
+            }
         }
         if (this.id === 'contact-button') {
             navigateTo('contact');
+            if (vrActive) {
+                toggleVr();
+            }
         }
         if (this.id === 'vr-button') {
-            showComingSoon();
+            toggleVr();
         }
 
     });
@@ -40558,7 +40583,6 @@ $(document).ready(function () {
     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     var cubes = [];
     camera.position.z = 5;
-    var lookAtPosition = new THREE.Vector3();
     var mousePos = new THREE.Vector3();
 
     $('.hero-container').mousemove(_.throttle(onMouseMove, 100));
@@ -40623,8 +40647,6 @@ $(document).ready(function () {
 
     var animate = function () {
         requestAnimationFrame(animate);
-        lookAtPosition.x = mousePos.x;
-        lookAtPosition.y = mousePos.y;
         for (var i = 0; i < cubes.length; i++) {
             cubes[i].rotate();
         }
@@ -40647,7 +40669,7 @@ $(document).ready(function () {
         renderer.render(scene, camera);
     }
 
-    $('canvas').addClass('header-canvas');
+    renderer.domElement.id = "header-canvas";
 });
 
 /***/ }),
@@ -43783,7 +43805,37 @@ module.exports = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+Cjxzdmcg
 /* 18 */
 /***/ (function(module, exports) {
 
+var sceneEl = document.querySelector('a-scene');
+console.log('debug sceneEl', sceneEl.hasLoaded);
+
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports) {
+
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */,
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "Merica.mp4";
 
 /***/ })
 /******/ ]);

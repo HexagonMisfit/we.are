@@ -12,13 +12,17 @@ import '../../node_modules/scrollmagic/scrollmagic/minified/plugins/debug.addInd
 import { brandColors } from './theming.js';
 import './anim.js';
 import './slickCarousels.js';
+import './aframeScene.js';
 
 // images
+// const groundTexture = require('../assets/img/wood_planks_new_0035_02_tiled.jpg')
 
 // import our scss last
 import '../sass/main.scss';
 
 // set images on elements
+
+import '../assets/video/Merica.mp4'
 
 $(function () {
 
@@ -26,8 +30,8 @@ $(function () {
     /* Init variables */
     /******************/
 
-    var vrFlashScreen = $('#vr-flash');
-
+    var vrScreen = $('#vr-screen');
+    var vrActive = false;
     /**************/
     /* UI Stuff */
     /**************/
@@ -40,7 +44,7 @@ $(function () {
     };
 
     function onInit() {
-        TweenMax.to(vrFlashScreen, 0, { autoAlpha: 0 });
+        TweenMax.to(vrScreen, 0, { autoAlpha: 0 });
     }
 
     /**************/
@@ -63,31 +67,48 @@ $(function () {
         element.removeClass('nav-link-active');
     }
 
-    function showComingSoon() {
-        var vrFlashText = $('#vr-flash-text');
-        var tl = new TimelineLite();
-        tl.to(vrFlashScreen, 0, { autoAlpha: 1, backgroundColor: brandColors.seafoamGreen })
-            .to(vrFlashScreen, 0, { backgroundColor: brandColors.salmonPink }, 0.5)
-            .to(vrFlashScreen, 0, { backgroundColor: brandColors.plumIsh }, 1)
-            .to(vrFlashScreen, 0, { autoAlpha: 0 }, 1.5);
+    function showVrScreen() {
+        TweenMax.to(vrScreen, 0, {autoAlpha: 1, transform: 'translateX(0)'});
+    }
+
+    function hideVrScreen() {
+        TweenMax.to(vrScreen, 0, {autoAlpha: 0, transform: 'translateX(100%)'});
+        
+    }
+
+    function toggleVr() {
+        vrActive ? hideVrScreen() : showVrScreen();
+        vrActive = !vrActive;
     }
 
     navLink.click(function () {
 
         if (this.id === 'home-button') {
             navigateTo('home');
+            if (vrActive) {
+                toggleVr();
+            }
         }
         if (this.id === 'work-button') {
             navigateTo('work');
+            if (vrActive) {
+                toggleVr();
+            }
         }
         if (this.id === 'team-button') {
             navigateTo('team');
+            if (vrActive) {
+                toggleVr();
+            }
         }
         if (this.id === 'contact-button') {
             navigateTo('contact');
+            if (vrActive) {
+                toggleVr();
+            }
         }
         if (this.id === 'vr-button') {
-            showComingSoon();
+            toggleVr();
         }
 
     });

@@ -20,7 +20,7 @@ module.exports = {
                 })
             },
             {
-                test: /.(ttf|otf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
+                test: /.(ttf|mp4|otf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
                 use: [{
                     loader: 'file-loader',
                     options: {
@@ -35,7 +35,7 @@ module.exports = {
                         loader: 'url-loader',
                         options: {
                             limit: 8000,
-                            name: '[hash]-[name].[ext]'
+                            name: '[name].[ext]'
                         }
                     }
                 ]
@@ -44,7 +44,7 @@ module.exports = {
     },
     plugins: [
         new ExtractTextPlugin('style.css'),
-        new HtmlWebpackPlugin({ template: './index.html' }),
+        new HtmlWebpackPlugin({ template: './index.html', filename: 'index.html' }),
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"
