@@ -10,49 +10,50 @@ import venobox from 'venobox';
 
 var playButton = require('../assets/img/play_svg.svg');
 
-$('.play-button')[0].src = playButton; 
+$(function () {
+    $('.play-button')[0].src = playButton;
 
-$('#home-projects-container').slick({
-    dots: true,
-    slidesToShow: 1,
-    arrows: true,
-    infinite: false
+    $('#home-projects-container').slick({
+        dots: true,
+        slidesToShow: 1,
+        arrows: true,
+        infinite: false
+    });
+
+    $('#team-slider').slick({
+        dots: false,
+        slidesToShow: 4,
+        arrows: true,
+        infinite: false,
+        responsive: [
+            {
+                breakpoint: 1440,
+                settings: {
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 733,
+                settings: {
+                    slidesToShow: 1,
+                    centerMode: true
+                }
+            },
+            {
+                breakpoint: 490,
+                settings: {
+                    slidesToShow: 1,
+                    centerMode: false
+                }
+            }
+        ]
+    });
+    $('.venobox').venobox();
 });
-
-$('#team-slider').slick({
-    dots: false,
-    slidesToShow: 4,
-    arrows: true,
-    infinite: false,
-    responsive: [
-        {
-            breakpoint: 1440,
-            settings: {
-                slidesToShow: 3
-            }
-        },
-        {
-            breakpoint: 1024,
-            settings: {
-                slidesToShow: 2,
-            }
-        },
-        {
-            breakpoint: 733,
-            settings: {
-                slidesToShow: 1,
-                centerMode: true
-            }
-        },
-        {
-            breakpoint: 490,
-            settings: {
-                slidesToShow: 1,
-                centerMode: false
-            }
-        }
-    ]
-});
-
-$('.venobox').venobox();
 

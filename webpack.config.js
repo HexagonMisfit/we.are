@@ -44,7 +44,7 @@ module.exports = {
     },
     plugins: [
         new ExtractTextPlugin('style.css'),
-        new HtmlWebpackPlugin({ template: './index.html', filename: 'index.html' }),
+        new HtmlWebpackPlugin({ template: './index.html', filename: 'index.html', inject: 'head' }),
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"

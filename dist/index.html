@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/89/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.7.1/aframe.js"></script>
-<link href="style.css" rel="stylesheet"></head>
+<link href="style.css" rel="stylesheet"><script type="text/javascript" src="bundle.js"></script></head>
 
 <body>
     <nav class="navigation home-nav row" id="main-nav">
@@ -238,21 +238,22 @@
             <a-scene>
                 <a-assets>
                     <img id="groundTexture" src="./wood_planks_new_0035_02_tiled.jpg">
-                    <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg" crossorigin="anonymous">
-                    <video id="mariposaChandelier" autoplay src="Merica.mp4" type="video/mp4">
+                    <video id="mariposa-chandelier" src="Merica.mp4" type="video/mp4">
                 </a-assets>
 
-                <a-video src="#mariposaChandelier" width="8" height="4.5" position="0 2.5 -8"></a-video>
+                <a-entity id="foo" foo></a-entity>
+                
+                <a-video id="video-left" src="#mariposa-chandelier" width="8" height="4.5" position="-5 2.5 -8"></a-video>
+                <a-video id="video-right" src="#mariposa-chandelier" width="8" height="4.5" position="5 2.5 -8"></a-video>
 
-                <a-sky height="2048" radius="30" src="#skyTexture" theta-length="90" width="2048"></a-sky>
-
+                <a-sky height="2048" radius="30" color="#14ACCC" theta-length="90" width="2048"></a-sky>
                 <a-plane src="#groundTexture" height="60" width="60" rotation="-90 0 0" repeat="120 120" metalness="0.25"></a-plane>
 
-                <a-entity id="leftHand" hand-controls="left"></a-entity>
-                <a-entity id="rightHand" hand-controls="right"></a-entity>
+                <a-entity laser-controls="hand: left"></a-entity>
+                <a-entity laser-controls="hand: right"></a-entity>
 
             </a-scene>
         </div>
-<script type="text/javascript" src="bundle.js"></script></body>
+</body>
 
 </html>

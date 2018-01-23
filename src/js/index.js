@@ -22,7 +22,7 @@ import '../sass/main.scss';
 
 // set images on elements
 
-import '../assets/video/Merica.mp4'
+
 
 $(function () {
 
