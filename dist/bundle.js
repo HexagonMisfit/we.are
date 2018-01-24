@@ -43812,21 +43812,29 @@ module.exports = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+Cjxzdmcg
 
 AFRAME.registerComponent('foo', {
     init: function() {
-        console.log('debug foo component');
+        
     }
 });
 
 $(function () {
     var sceneEl = document.querySelector('a-scene');
-    var videoLeft = document.querySelector('#video-left');
-    var videoRight = document.querySelector('#video-right');
+    var videoBottomLeft = document.querySelector('#video-bottom-left');
+    var videoBottomCenter = document.querySelector('#video-bottom-center');
+    var videoBottomRight = document.querySelector('#video-bottom-right');
+    var videoTopLeft = document.querySelector('#video-top-left');
+    var videoTopCenter = document.querySelector('#video-top-center');
+    var videoTopRight = document.querySelector('#video-top-right');
     var mariposaVid = document.querySelector('#mariposa-chandelier');
 
     var fooComponent = document.querySelector('#foo');
     fooComponent.setAttribute('foo');
     
-    videoLeft.addEventListener('click', playVideo);
-    videoRight.addEventListener('click', playVideo);
+    videoBottomLeft.addEventListener('click', playVideo);
+    videoBottomCenter.addEventListener('click', playVideo);
+    videoBottomRight.addEventListener('click', playVideo);
+    videoTopLeft.addEventListener('click', playVideo);
+    videoTopCenter.addEventListener('click', playVideo);
+    videoTopRight.addEventListener('click', playVideo);
 
     function playVideo(video) {
         if (mariposaVid.paused === true) {
