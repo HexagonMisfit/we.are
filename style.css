@@ -901,7 +901,12 @@ div.contact-row {
       height: 14em; } }
 
 #contact-home {
-  background-color: #14ACCC; }
+  background-color: #14ACCC;
+  padding: 2em 0; }
+
+#map {
+  height: 400px;
+  width: 100%; }
 
 .contact-input, .contact-textarea {
   padding: 0.5em;
@@ -1030,7 +1035,7 @@ div.contact-row {
   background-image: url(mariposa_1280x720.jpg); }
 
 .slider-full-width #slide-3-img {
-  background-image: url(mariposa_1280x720.jpg); }
+  background-image: url(daniel_sierra_project.jpg); }
 
 .slider-full-width #slide-4-img {
   background-image: url(mariposa_1280x720.jpg); }
@@ -1074,6 +1079,9 @@ div.contact-row {
 
 #alex-e-img {
   background-image: url(big_al.jpg); }
+
+#daniel-s-img {
+  background-image: url(d_sierra.png); }
 
 .team-card-info p {
   font-size: 0.8em;
@@ -1305,10 +1313,13 @@ p {
 
 .one-half {
   width: 50%;
-  justify-content: center; }
+  min-height: 400px; }
 
 .two-thirds {
   width: 67%; }
+
+.justify-center {
+  justify-content: center; }
 
 @media screen and (max-width: 900px) {
   .one-third, .one-half, .two-thirds {
