@@ -9,7 +9,12 @@
     <title>HexagonMis.fit</title>
     <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/89/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.7.1/aframe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/plugins/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+    </script>
 <link href="style.css" rel="stylesheet"><script type="text/javascript" src="bundle.js"></script></head>
 
 <body>
@@ -30,9 +35,6 @@
                 <a class="nav-link" id="contact-button">
                     <span>Contact</span>
                 </a>
-                <a class="nav-link" id="vr-button">
-                    <span>VR</span>
-                </a>
             </div>
         </ul>
     </nav>
@@ -45,13 +47,11 @@
                             <h1 class="light-text ultra-big-text">HEXAGONMIS.FIT</h1>
                             <h2 class="light-text">A technical artists' guild with
                                 <span class="zazz">zazz</span>.
-                                </h1>
                         </div>
                     </div>
                 </header>
             </div>
             <section id="work-home" class="home-section full-height">
-                <!-- <h1 class="projects-slider-header light-text">Projects</h1> -->
                 <div id="home-projects-container" class="home-section-container slider-full-width">
                     <!-- Slider #1 -->
                     <div id="slide-1" class="slide">
@@ -92,17 +92,22 @@
                     </div>
 
                     <!-- Slider #3 -->
-                    <div id="slide-3" class="slide slide-3">
+                    <div id="slide-3" class="slide">
                         <div class="slide-container">
                             <div class="slide-content hero-padding-responsive row">
                                 <div class="slide-info column">
-                                    <h2 class="light-text">Mariposa Chandelier</h4>
-                                        <p class="light-text">This project attempts to make taking the stairs more appealing than the elevator,
-                                            promoting health and engaging viewers by allowing them to trigger animations
-                                            and sounds that flow throughout the entire installation.</p>
-                                        <a class="link light-text">See more</a>
+                                    <h2 class="light-text">VJ Tool - minim</h4>
+                                        <p class="light-text">Ever-improving real-time 2D mograph system for doing live visuals for music. The
+                                            concept is to trigger black-and-white animated 2D shapes (whether procedural
+                                            or pre-animated), pass them through a gradient color mapper, then through some
+                                            custom post processing effects, put them on a background and then map a midi
+                                            controller to trigger the different clips and alter the parameters.</p>
+                                        <a class="link play-link venobox row" title="VJ Tool - minim" data-autoplay="true" data-vbtype="video" href="https://vimeo.com/244757902">
+                                            <img class="play-button" />
+                                            <span class="light-text">Play Video</span>
+                                        </a>
                                 </div>
-                                <div class="slide-img-container">
+                                <div id="slide-3-img-container" class="slide-img-container">
                                     <div id="slide-3-img" class="slide-img"></div>
                                 </div>
                             </div>
@@ -177,6 +182,21 @@
                             </div>
                             <div class="team-card-container column">
                                 <div class="team-card">
+                                    <div id="daniel-s-img" class="team-prof-pic"></div>
+                                    <div class="team-card-title">
+                                        <h3 class="team-card-name">
+                                            Daniel Sierra
+                                        </h3>
+                                        <div class="team-card-info">
+                                            <p>Multi-disciplined digital artist who has worked in the areas of mixed reality,
+                                                music technology, visual effects and audio-visualizations. Loves making beautiful
+                                                things and pushing the boundaries on how we create.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-card-container column">
+                                <div class="team-card">
                                     <div id="alex-e-img" class="team-prof-pic"></div>
                                     <div class="team-card-title">
                                         <h3 class="team-card-name">
@@ -195,13 +215,14 @@
             </section>
             <section id="contact-home" class="home-section">
                 <div class="home-contact-container home-section-container hero-padding-responsive">
-                    <div class="section-header-wrapper column">
-                        <h1 class="light-text section-header">Get In Touch</h1>
-                    </div>
+                    <!-- <div class="section-header-wrapper column">
+                        
+                    </div> -->
                     <div class="contact-row row">
-                        <div class="one-half column">
+                        <div class="one-half justify-center column">
                             <div class="contact-container column">
                                 <div class="contact-text-container column">
+                                    <h1 class="light-text section-header">Get In Touch</h1>
                                     <h3 class="light-text">
                                         We weren't kidding when we said to hit us up!
                                     </h3>
@@ -218,13 +239,7 @@
                             </div>
                         </div>
                         <div class="one-half column">
-                            <div class="contact-container column">
-                                <div class="contact-input-container column">
-                                    <input class="contact-input name" placeholder="Name">
-                                    <input class="contact-input" placeholder="Email">
-                                    <textarea class="contact-textarea" placeholder="What's on your mind?" rows=5></textarea>
-                                </div>
-                            </div>
+                            <div id="map"></div>
                         </div>
                     </div>
                 </div>
@@ -234,31 +249,20 @@
                 <p>Site by Alex Erickson</p>
             </footer>
         </div>
-        <div id="vr-screen">
-            <a-scene>
-                <a-assets>
-                    <img id="groundTexture" src="./wood_planks_new_0035_02_tiled.jpg">
-                    <video id="mariposa-chandelier" src="Merica.mp4" type="video/mp4">
-                </a-assets>
-
-                <a-entity id="foo" foo></a-entity>
-                
-                <a-video id="video-bottom-left" src="#mariposa-chandelier" width="2.66666667" height="1.5" position="-4 0.8 -1.2"></a-video>
-                <a-video id="video-bottom-center" src="#mariposa-chandelier" width="2.66666667" height="1.5" position="-1 0.8 -1.2"></a-video>
-                <a-video id="video-bottom-right" src="#mariposa-chandelier" width="2.66666667" height="1.5" position="2 0.8 -1.2"></a-video>
-                <a-video id="video-top-left" src="#mariposa-chandelier" width="2.66666667" height="1.5" position="-4 2.5 -1.2"></a-video>
-                <a-video id="video-top-center" src="#mariposa-chandelier" width="2.66666667" height="1.5" position="-1 2.5 -1.2"></a-video>
-                <a-video id="video-top-right" src="#mariposa-chandelier" width="2.66666667" height="1.5" position="2 2.5 -1.2"></a-video>
-
-
-                <a-sky height="2048" radius="30" color="#14ACCC" theta-length="90" width="2048"></a-sky>
-                <a-plane src="#groundTexture" height="60" width="60" rotation="-90 0 0" repeat="120 120" metalness="0.25"></a-plane>
-
-                <a-entity laser-controls="hand: left"></a-entity>
-                <a-entity laser-controls="hand: right"></a-entity>
-
-            </a-scene>
-        </div>
+        <script>
+            function initMap() {
+                var headquarters = { lat: 47.6562533, lng: -122.3614647 };
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 16,
+                    center: headquarters
+                });
+                var marker = new google.maps.Marker({
+                    position: headquarters,
+                    map: map
+                });
+            }
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkhE1HeuvjOHVhQt_WokpQ61VLHXi2lTM&callback=initMap"></script>
 </body>
 
 </html>

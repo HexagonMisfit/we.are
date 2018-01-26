@@ -130,8 +130,14 @@ div.contact-row {
 
 #contact-home {
     background-color: $blue-light;
-
+    padding: 2em 0;
 }
+
+#map {
+    height: 400px;
+    width: 100%;
+   }
+
 
 .contact-input, .contact-textarea {
     padding: 0.5em;

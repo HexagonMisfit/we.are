@@ -1,28 +1,23 @@
 // vendor js files
-window.$ = window.jQuery = require('jquery');
-var _ = require('lodash');
-import { TweenMax, TimelineLite } from '../../node_modules/gsap/TweenMax.js';
-import ScrollToPlugin from 'gsap/ScrollToPlugin'
-import ScrollMagic from 'ScrollMagic';
+// window.$ = window.jQuery = require('jquery');
+// var _ = require('lodash');
+// import { TweenMax, TimelineLite } from '../../node_modules/gsap/TweenMax.js';
+// import ScrollToPlugin from 'gsap/ScrollToPlugin';
+// import ScrollMagic from 'ScrollMagic';
 
-// DEV-ONLY
-import '../../node_modules/scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min.js';
+
+
+//TODO: restrict google maps API key to this domain before using this site in production
 
 // our scripts
 import { brandColors } from './theming.js';
 import './anim.js';
 import './slickCarousels.js';
-import './aframeScene.js';
 
 // images
-// const groundTexture = require('../assets/img/wood_planks_new_0035_02_tiled.jpg')
 
 // import our scss last
 import '../sass/main.scss';
-
-// set images on elements
-
-
 
 $(function () {
 
@@ -67,50 +62,33 @@ $(function () {
         element.removeClass('nav-link-active');
     }
 
-    function showVrScreen() {
-        TweenMax.to(vrScreen, 0, {autoAlpha: 1, transform: 'translateX(0)'});
-    }
+    // function showVrScreen() {
+    //     TweenMax.to(vrScreen, 0, {autoAlpha: 1, transform: 'translateX(0)'});
+    // }
 
-    function hideVrScreen() {
-        TweenMax.to(vrScreen, 0, {autoAlpha: 0, transform: 'translateX(100%)'});
-        
-    }
+    // function hideVrScreen() {
+    //     TweenMax.to(vrScreen, 0, {autoAlpha: 0, transform: 'translateX(100%)'});
+    // }
 
-    function toggleVr() {
-        vrActive ? hideVrScreen() : showVrScreen();
-        vrActive = !vrActive;
-    }
+    // function toggleVr() {
+    //     vrActive ? hideVrScreen() : showVrScreen();
+    //     vrActive = !vrActive;
+    // }
 
     navLink.click(function () {
 
         if (this.id === 'home-button') {
             navigateTo('home');
-            if (vrActive) {
-                toggleVr();
-            }
         }
         if (this.id === 'work-button') {
             navigateTo('work');
-            if (vrActive) {
-                toggleVr();
-            }
         }
         if (this.id === 'team-button') {
             navigateTo('team');
-            if (vrActive) {
-                toggleVr();
-            }
         }
         if (this.id === 'contact-button') {
             navigateTo('contact');
-            if (vrActive) {
-                toggleVr();
-            }
         }
-        if (this.id === 'vr-button') {
-            toggleVr();
-        }
-
     });
 
     navLink.mousedown(function () {
@@ -120,10 +98,6 @@ $(function () {
     navLink.mouseup(function () {
         TweenMax.to(this, 0.1, { className: '-=nav-link-clicked' });
     });
-
-    /**********************/
-    /* Home page UI stuff */
-    /**********************/
 
     /**********************/
     /* Call Init Function */

@@ -171,11 +171,15 @@ p {
 
 .one-half {
     width: 50%;
-    justify-content: center;
+    min-height: 400px;
 }
 
 .two-thirds {
     width: 67%;
+}
+
+.justify-center {
+    justify-content: center;
 }
 
 .one-third, .one-half, .two-thirds {
