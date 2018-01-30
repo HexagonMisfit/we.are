@@ -1,5 +1,5 @@
 import { brandColors } from './theming.js';
-// import { TweenMax } from '../../node_modules/gsap/TweenMax';
+// import { TweenMax, TimelineLite } from '../../node_modules/gsap/TweenMax';
 // var $ = require('jquery');
 // var _ = require('lodash');
 
@@ -16,6 +16,8 @@ $(document).ready(function () {
     var width = window.innerWidth;
     var height = window.innerHeight;
 
+    var startPos = 30;
+
     // copy initial camera rotation so we can tween from it to a new one in slo mo based on mouse movement
 
     function onMouseMove(event) {
@@ -25,6 +27,12 @@ $(document).ready(function () {
             onUpdate: function () {
                 camera.lookAt(mousePos);
             }
+        });
+    }
+
+    function toPositions() {
+        cubes.forEach(function(cube) {
+            TweenMax.to(cube.position, 7.5, {x: cube.position.x, y: cube.position.y + startPos, z: cube.position.z, ease: Power4.easeOut});
         });
     }
 
@@ -43,7 +51,7 @@ $(document).ready(function () {
         cube.add(cubeMesh);
 
         cube.position.x = (Math.random() * 26) - 13;
-        cube.position.y = (Math.random() * 26) - 13;
+        cube.position.y = (Math.random() * 26) - 13 - startPos;
         cube.position.z = (Math.random() * 8) - 9;
 
         var cubeScale = Math.random() / 3 + 0.35;
@@ -81,6 +89,7 @@ $(document).ready(function () {
     };
 
     animate();
+    toPositions();
 
     // Draw it in the dom and add resize event listener
 

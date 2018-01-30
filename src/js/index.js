@@ -28,6 +28,7 @@ $(function () {
     // var vrScreen = $('#vr-screen');
     // var vrActive = false;
     var body = $('body');
+    var ascend1 = $('.ascend-1');
 
     /**************/
     /* UI Stuff */
@@ -42,7 +43,11 @@ $(function () {
 
     function onInit() {
         // TweenMax.to(vrScreen, 0, { autoAlpha: 0 });
-        TweenMax.to(body, 1.0, {autoAlpha: 1, ease: Power2.easeOut});
+        var tl = new TimelineLite();
+        var tl2 = new TimelineLite();
+        console.log('debug ascend-1', ascend1);
+        TweenMax.to(body, 0.75, { autoAlpha: 1, ease: Power2.easeOut });
+        tl.staggerTo(ascend1, 1, { autoAlpha: 1,transform: 'translateY(0)', ease: Power2.easeOut }, 0.1);
     }
 
     /**************/
@@ -108,7 +113,7 @@ $(function () {
         triggerElement: '#home-home'
     })
 
-    .addTo(scrollControl);
+        .addTo(scrollControl);
 
     /**********************/
     /* Call Init Function */
