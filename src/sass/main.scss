@@ -42,11 +42,17 @@ body {
     // touch-action: none;
     position: relative;
     background-color: $blue-dark;
+    opacity: 0;
+    visibility: hidden;
 }
 
 p {
     font-size: 1.2em;
     line-height: 1.3em;
+    @media screen and (max-width: 400px) {
+        font-size: 1em;
+        line-height: 1.1em;
+    }
 }
 
 .container {
