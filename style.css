@@ -1164,6 +1164,11 @@ div.contact-row {
   z-index: 100;
   transform: translateX(100%); }
 
+.ascend-1 {
+  transform: translateY(75px);
+  opacity: 0;
+  display: hidden; }
+
 html {
   height: 100%;
   width: auto;
