@@ -10382,8 +10382,10 @@ $(function () {
     /* Init variables */
     /******************/
 
-    var vrScreen = $('#vr-screen');
-    var vrActive = false;
+    // var vrScreen = $('#vr-screen');
+    // var vrActive = false;
+    var body = $('body');
+
     /**************/
     /* UI Stuff */
     /**************/
@@ -10396,7 +10398,8 @@ $(function () {
     };
 
     function onInit() {
-        TweenMax.to(vrScreen, 0, { autoAlpha: 0 });
+        // TweenMax.to(vrScreen, 0, { autoAlpha: 0 });
+        TweenMax.to(body, 1.0, {autoAlpha: 1, ease: Power2.easeOut});
     }
 
     /**************/
@@ -10448,13 +10451,21 @@ $(function () {
         }
     });
 
-    navLink.mousedown(function () {
-        this.add
-    });
-
     navLink.mouseup(function () {
         TweenMax.to(this, 0.1, { className: '-=nav-link-clicked' });
     });
+
+    /************************/
+    /* Scrolling Animations */
+    /************************/
+
+    var scrollControl = new ScrollMagic.Controller();
+
+    var pinIntroScene = new ScrollMagic.Scene({
+        triggerElement: '#home-home'
+    })
+
+    .addTo(scrollControl);
 
     /**********************/
     /* Call Init Function */
@@ -10476,10 +10487,6 @@ $(function () {
 // var _ = require('lodash');
 
 $(document).ready(function () {
-
-    /**********************************************************************/
-    /* THREE.JS code initialize scene, draw basic floating blueLight cube */
-    /**********************************************************************/
 
     //init variables
     var scene = new THREE.Scene();
