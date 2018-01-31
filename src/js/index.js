@@ -47,7 +47,7 @@ $(function () {
         var tl2 = new TimelineLite();
         console.log('debug ascend-1', ascend1);
         TweenMax.to(body, 0.75, { autoAlpha: 1, ease: Power2.easeOut });
-        tl.staggerTo(ascend1, 1, { autoAlpha: 1,transform: 'translateY(0)', ease: Power2.easeOut }, 0.1);
+        tl.staggerTo(ascend1, 1, { autoAlpha: 1, transform: 'translateY(0)', ease: Power3.easeOut }, 0.1);
     }
 
     /**************/
