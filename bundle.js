@@ -10404,7 +10404,7 @@ $(function () {
         var tl2 = new TimelineLite();
         console.log('debug ascend-1', ascend1);
         TweenMax.to(body, 0.75, { autoAlpha: 1, ease: Power2.easeOut });
-        tl.staggerTo(ascend1, 1, { autoAlpha: 1,transform: 'translateY(0)', ease: Power2.easeOut }, 0.1);
+        tl.staggerTo(ascend1, 1, { autoAlpha: 1, transform: 'translateY(0)', ease: Power3.easeOut }, 0.1);
     }
 
     /**************/
@@ -10497,6 +10497,7 @@ $(document).ready(function () {
     var scene = new THREE.Scene();
     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     var cubes = [];
+    var cubePositions = [];
     camera.position.z = 5;
     var mousePos = new THREE.Vector3();
 
@@ -10509,9 +10510,11 @@ $(document).ready(function () {
     // copy initial camera rotation so we can tween from it to a new one in slo mo based on mouse movement
 
     function onMouseMove(event) {
+        var tempX = (event.clientX / width) * 2 - 1;
+        var tempY = -((event.clientY / height) * 2 - 1);
         TweenMax.to(mousePos, 5, {
-            x: (event.clientX / width) * 2 - 1,
-            y: -((event.clientY / height) * 2 - 1),
+            x: tempX,
+            y: tempY,
             onUpdate: function () {
                 camera.lookAt(mousePos);
             }
@@ -10519,9 +10522,7 @@ $(document).ready(function () {
     }
 
     function toPositions() {
-        cubes.forEach(function(cube) {
-            TweenMax.to(cube.position, 7.5, {x: cube.position.x, y: cube.position.y + startPos, z: cube.position.z, ease: Power4.easeOut});
-        });
+        TweenMax.staggerTo(cubePositions, 2.5, { y: '+=' + startPos, ease: Power4.easeOut }, 0.1);
     }
 
     var renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -10541,6 +10542,8 @@ $(document).ready(function () {
         cube.position.x = (Math.random() * 26) - 13;
         cube.position.y = (Math.random() * 26) - 13 - startPos;
         cube.position.z = (Math.random() * 8) - 9;
+
+        cubePositions.push(cube.position);
 
         var cubeScale = Math.random() / 3 + 0.35;
 
