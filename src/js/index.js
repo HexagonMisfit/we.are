@@ -28,7 +28,6 @@ $(function () {
     // var vrScreen = $('#vr-screen');
     // var vrActive = false;
     var body = $('body');
-    var ascend1 = $('.ascend-1');
 
     /**************/
     /* UI Stuff */
@@ -43,11 +42,9 @@ $(function () {
 
     function onInit() {
         // TweenMax.to(vrScreen, 0, { autoAlpha: 0 });
-        var tl = new TimelineLite();
-        var tl2 = new TimelineLite();
-        console.log('debug ascend-1', ascend1);
+        var ascend1 = $('.ascend-1');
         TweenMax.to(body, 0.75, { autoAlpha: 1, ease: Power2.easeOut });
-        tl.staggerTo(ascend1, 1, { autoAlpha: 1, transform: 'translateY(0)', ease: Power3.easeOut }, 0.1);
+        TweenMax.staggerTo(ascend1, 1, { autoAlpha: 1, y: 0, ease: Power3.easeOut }, 0.1);
     }
 
     /**************/
@@ -109,10 +106,31 @@ $(function () {
 
     var scrollControl = new ScrollMagic.Controller();
 
-    var pinIntroScene = new ScrollMagic.Scene({
-        triggerElement: '#home-home'
+    var fadeAndRiseTween1 = TweenMax.staggerTo('.fade-1', 0.8, { autoAlpha: 1, y: 0, ease: Power4.easeOut }, 0.1);
+    var fadeAndRiseScene1 = new ScrollMagic.Scene({
+        triggerHook: 0.85,
+        triggerElement: '#trigger-1',
+        reverse: false
     })
+        .setTween(fadeAndRiseTween1)
+        .addTo(scrollControl);
 
+    var fadeAndRiseTween2 = TweenMax.staggerTo('.fade-2', 0.8, { autoAlpha: 1, y: 0, ease: Power4.easeOut }, 0.1);
+    var fadeAndRiseScene2 = new ScrollMagic.Scene({
+        triggerHook: 0.85,
+        triggerElement: '#trigger-2',
+        reverse: false
+    })
+        .setTween(fadeAndRiseTween2)
+        .addTo(scrollControl);
+
+    var fadeAndRiseTween3 = TweenMax.staggerTo('.fade-3', 0.8, { autoAlpha: 1, y: 0, ease: Power4.easeOut }, 0.1);
+    var fadeAndRiseScene3 = new ScrollMagic.Scene({
+        triggerHook: 0.85,
+        triggerElement: '#trigger-3',
+        reverse: false
+    })
+        .setTween(fadeAndRiseTween3)
         .addTo(scrollControl);
 
     /**********************/

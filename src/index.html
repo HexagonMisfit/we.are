@@ -13,6 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/plugins/ScrollToPlugin.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
     </script>
@@ -59,12 +60,12 @@
                     <div id="slide-1" class="slide">
                         <div class="slide-container">
                             <div class="slide-content hero-padding-responsive row">
-                                <div class="slide-info column">
-                                    <h2 class="light-text">Mariposa Chandelier</h2>
-                                        <p class="light-text">This project attempts to make taking the stairs more appealing than the elevator,
+                                <div id="trigger-1" class="slide-info column">
+                                    <h2 class="light-text fade-1">Mariposa Chandelier</h2>
+                                        <p class="light-text fade-1">This project attempts to make taking the stairs more appealing than the elevator,
                                             promoting health and engaging viewers by allowing them to trigger animations
                                             and sounds that flow throughout the entire installation.</p>
-                                        <a class="link play-link venobox row" title="Mariposa Chandelier" data-autoplay="true" data-vbtype="video" href="https://vimeo.com/116297443">
+                                        <a class="link play-link fade-1 venobox row" title="Mariposa Chandelier" data-autoplay="true" data-vbtype="video" href="https://vimeo.com/116297443">
                                             <img class="play-button" />
                                             <span class="light-text">Play Video</span>
                                         </a>
@@ -137,22 +138,22 @@
             <section id="team-home">
                 <div class="home-team-container home-section-container">
                     <div class="home-team-info-container hero-padding-responsive">
-                        <div class="section-header-wrapper column">
-                            <h1 class="section-header">Who Are We?</h1>
+                        <div id="trigger-2" class="section-header-wrapper column">
+                            <h1 class="section-header fade-2">Who Are We?</h1>
                         </div>
-                        <p>
+                        <p class="fade-2">
                             Based in rainy Seattle, Washington, we are an interaction design studio that uses technology to build experiences that astonish
                             and delight. Our specialty is that we all have different specialties! Hit us up if you wanna
                             collaborate on something dope.
                         </p>
-                        <h2 class="section-header">
+                        <h2 class="section-header fade-2">
                             Meet The Team
                         </h2>
                     </div>
                     <div id="team-slider-container">
                         <div id="team-slider">
                             <div class="team-card-container column">
-                                <div class="team-card">
+                                <div class="team-card fade-2">
                                     <div id="chris-r-img" class="team-prof-pic"></div>
                                     <div class="team-card-title">
                                         <h3 class="team-card-name">
@@ -167,7 +168,7 @@
                                 </div>
                             </div>
                             <div class="team-card-container column">
-                                <div class="team-card">
+                                <div class="team-card fade-2">
                                     <div id="quin-k-img" class="team-prof-pic"></div>
                                     <div class="team-card-title">
                                         <h3 class="team-card-name">
@@ -182,7 +183,7 @@
                                 </div>
                             </div>
                             <div class="team-card-container column">
-                                <div class="team-card">
+                                <div class="team-card fade-2">
                                     <div id="daniel-s-img" class="team-prof-pic"></div>
                                     <div class="team-card-title">
                                         <h3 class="team-card-name">
@@ -197,7 +198,7 @@
                                 </div>
                             </div>
                             <div class="team-card-container column">
-                                <div class="team-card">
+                                <div class="team-card fade-2">
                                     <div id="alex-e-img" class="team-prof-pic"></div>
                                     <div class="team-card-title">
                                         <h3 class="team-card-name">
@@ -215,39 +216,36 @@
                 </div>
             </section>
             <section id="contact-home" class="home-section">
-                <div class="home-contact-container home-section-container hero-padding-responsive">
-                    <!-- <div class="section-header-wrapper column">
-                        
-                    </div> -->
+                <div id="trigger-3" class="home-contact-container home-section-container hero-padding-responsive">
                     <div class="contact-row row">
                         <div class="one-half justify-center column">
                             <div class="contact-container column">
                                 <div class="contact-text-container column">
-                                    <h1 class="light-text section-header">Get In Touch</h1>
-                                    <h3 class="light-text">
+                                    <h1 class="light-text section-header fade-3">Get In Touch</h1>
+                                    <h3 class="light-text fade-3">
                                         We weren't kidding when we said to hit us up!
                                     </h3>
                                     <ul class="contact-list">
-                                        <p class="light-text">
+                                        <p class="light-text fade-3">
                                             310 NW 40th St. Seattle, WA 98107
                                         </p>
-                                        <p class="light-text">
+                                        <p class="light-text fade-3">
                                             sup@hexagonmis.fit
                                         </p>
-                                        <p class="light-text">555-555-5555</p>
+                                        <p class="light-text fade-3">555-555-5555</p>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="one-half column">
-                            <div id="map"></div>
+                            <div id="map" class="fade-3"></div>
                         </div>
                     </div>
                 </div>
             </section>
             <footer id="footer" class="hero-padding-responsive">
-                <p>Copyright 2018 HexagonMix.fit</p>
-                <p>Site by Alex Erickson</p>
+                <p class="fade-3">Copyright 2018 HexagonMix.fit</p>
+                <p class="fade-3">Site by Alex Erickson</p>
             </footer>
         </div>
         <script>
