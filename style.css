@@ -926,7 +926,8 @@ div.contact-row {
 #footer {
   background-color: #fafafa;
   padding-top: 2em;
-  padding-bottom: 2em; }
+  padding-bottom: 2em;
+  overflow: hidden; }
   #footer p {
     font-size: 0.8em; }
 
@@ -1164,7 +1165,7 @@ div.contact-row {
   z-index: 100;
   transform: translateX(100%); }
 
-.ascend-1 {
+.ascend-1, .fade-1, .fade-2, .fade-3 {
   transform: translateY(75px);
   opacity: 0;
   display: hidden; }
