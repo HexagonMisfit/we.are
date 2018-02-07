@@ -3,21 +3,23 @@ import { brandColors } from './theming.js';
 // var $ = require('jquery');
 // var _ = require('lodash');
 
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+var cube;
+var cubeMesh;
+var cubePositions = [];
+var cubeRotationVelocities = [];
+var cubeScale;
+camera.position.z = 5;
+var mousePos = new THREE.Vector3();
+
+var width = window.innerWidth;
+var height = window.innerHeight;
+var yOffset = 30;
+
 $(document).ready(function () {
 
-    //init variables
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    var cubes = [];
-    var cubePositions = [];
-    camera.position.z = 5;
-    var mousePos = new THREE.Vector3();
-
     $('.hero-container').mousemove(_.throttle(onMouseMove, 100));
-    var width = window.innerWidth;
-    var height = window.innerHeight;
-
-    var startPos = 30;
 
     // copy initial camera rotation so we can tween from it to a new one in slo mo based on mouse movement
 
@@ -34,7 +36,12 @@ $(document).ready(function () {
     }
 
     function toPositions() {
-        TweenMax.staggerTo(cubePositions, 2.5, { y: '+=' + startPos, ease: Power4.easeOut }, 0.1);
+        TweenMax.staggerTo(cubePositions, 2, { y: '+=' + yOffset, ease: Power4.easeOut }, 0.01);
+    }
+
+    function rotate(object, speed) {
+        object.rotation.x += speed[0];
+        object.rotation.y += speed[1];
     }
 
     var renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -43,50 +50,41 @@ $(document).ready(function () {
     renderer.setClearColor(brandColors.blueLight, 1);
 
     var cubeGeometry = new THREE.BoxGeometry(3, 3, 3);
+    var cubeMaterial = new THREE.MeshBasicMaterial({ color: brandColors.magentaDark });
+    var cubeGroup = new THREE.Group();
 
     for (var i = 0; i < 30; i++) {
 
-        var cubeMaterial = new THREE.MeshBasicMaterial({ color: brandColors.magentaDark });
-        var cubeMesh = new THREE.Mesh(cubeGeometry, cubeMaterial);
-        var cube = new THREE.Object3D();
+        cubeMesh = new THREE.Mesh(cubeGeometry, cubeMaterial);
+        cube = new THREE.Object3D();
         cube.add(cubeMesh);
 
-        cube.position.x = (Math.random() * 26) - 13;
-        cube.position.y = (Math.random() * 26) - 13 - startPos;
-        cube.position.z = (Math.random() * 8) - 9;
-
-        cubePositions.push(cube.position);
-
-        var cubeScale = Math.random() / 3 + 0.35;
-
+        cubeScale = Math.random() / 3 + 0.35;
         cube.scale.x = cubeScale;
         cube.scale.y = cubeScale;
         cube.scale.z = cubeScale;
 
+        cube.position.x = (Math.random() * 26) - 13;
+        cube.position.y = (Math.random() * 26) - 13 - yOffset;
+        cube.position.z = (Math.random() * 8) - 9;
+
+        cubePositions.push(cube.position);
+
         cube.rotation.y = Math.random();
         cube.rotation.x = Math.random();
 
-        cube.yVelocity = (0.5 - Math.random()) / 1000;
-        cube.xVelocity = (0.5 - Math.random()) / 1000;
-
-        cube.xRotationRate = Math.random() / 400;
-        cube.yRotationRate = Math.random() / 400;
-
-        cube.rotate = function () {
-            this.rotation.x += this.xRotationRate;
-            this.rotation.y += this.yRotationRate;
-        }
-
-        cubes.push(cube);
-        scene.add(cube);
+        cubeGroup.add(cube);
+        cubeRotationVelocities.push([ Math.random() / 400, Math.random() / 400 ]);
     }
+
+    scene.add(cubeGroup);
 
     // Animate the scene
 
     var animate = function () {
         requestAnimationFrame(animate);
-        for (var i = 0; i < cubes.length; i++) {
-            cubes[i].rotate();
+        for (var i = 0; i < cubeGroup.children.length; i++) {
+            rotate(cubeGroup.children[i], cubeRotationVelocities[i]);
         }
         renderer.render(scene, camera);
     };

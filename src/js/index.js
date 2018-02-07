@@ -108,7 +108,7 @@ $(function () {
 
     var fadeAndRiseTween1 = TweenMax.staggerTo('.fade-1', 0.8, { autoAlpha: 1, y: 0, ease: Power4.easeOut }, 0.1);
     var fadeAndRiseScene1 = new ScrollMagic.Scene({
-        triggerHook: 0.85,
+        triggerHook: 0.8,
         triggerElement: '#trigger-1',
         reverse: false
     })
@@ -117,7 +117,7 @@ $(function () {
 
     var fadeAndRiseTween2 = TweenMax.staggerTo('.fade-2', 0.8, { autoAlpha: 1, y: 0, ease: Power4.easeOut }, 0.1);
     var fadeAndRiseScene2 = new ScrollMagic.Scene({
-        triggerHook: 0.85,
+        triggerHook: 0.8,
         triggerElement: '#trigger-2',
         reverse: false
     })
@@ -126,7 +126,7 @@ $(function () {
 
     var fadeAndRiseTween3 = TweenMax.staggerTo('.fade-3', 0.8, { autoAlpha: 1, y: 0, ease: Power4.easeOut }, 0.1);
     var fadeAndRiseScene3 = new ScrollMagic.Scene({
-        triggerHook: 0.85,
+        triggerHook: 0.8,
         triggerElement: '#trigger-3',
         reverse: false
     })
