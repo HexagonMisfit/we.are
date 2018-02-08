@@ -36,7 +36,7 @@ $(document).ready(function () {
     }
 
     function toPositions() {
-        TweenMax.staggerTo(cubePositions, 2, { y: '+=' + yOffset, ease: Power4.easeOut }, 0.01);
+        TweenMax.staggerTo(cubePositions, 1.5, { y: '+=' + yOffset, ease: Power4.easeOut }, 0.02);
     }
 
     function rotate(object, speed) {
