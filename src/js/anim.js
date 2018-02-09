@@ -10,7 +10,7 @@ var cubeMesh;
 var cubePositions = [];
 var cubeRotationVelocities = [];
 var cubeScale;
-camera.position.z = 6;
+camera.position.z = 5;
 var target = new THREE.Object3D();
 target.position.set(0,0,-15);
 var width = window.innerWidth;
@@ -27,7 +27,7 @@ var yOffset = 30;
 
 $(document).ready(function () {
 
-    $('.hero-container').mousemove(_.throttle(onMouseMove, 100));
+    $('.hero-container').mousemove(onMouseMove);
 
     // copy initial camera rotation so we can tween from it to a new one in slo mo based on mouse movement
 
@@ -102,10 +102,10 @@ $(document).ready(function () {
             rotate(cubeGroup.children[i], cubeRotationVelocities[i]);
         }
         if(target.position.x + tempX <= maxX && target.position.x + tempX >= -maxX) {
-            target.position.x += (mouseX - target.position.x) * 0.00002;
+            target.position.x += (mouseX - target.position.x) * 0.00001 * Math.abs(maxX - Math.abs(target.position.x));
         }
         if(target.position.y - tempY <= maxY && target.position.y + tempY >= -maxY) {
-            target.position.y -= (mouseY - target.position.y) * 0.00002;
+            target.position.y -= (mouseY - target.position.y) * 0.00001 * Math.abs(maxY - Math.abs(target.position.y));
         }        
         camera.lookAt(target.position);
 

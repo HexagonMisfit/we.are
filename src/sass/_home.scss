@@ -66,6 +66,7 @@
 .hero-text {
     display: inline-block;
     min-width: 30em;
+    text-align: center;
     @media screen and (max-width: 1024px) {
         width: 100%;
         min-width: 0;

@@ -42,8 +42,8 @@ body {
     // touch-action: none;
     position: relative;
     background-color: $blue-dark;
-    opacity: 0;
-    visibility: hidden;
+    // opacity: 0;
+    // visibility: hidden;
 }
 
 p {
@@ -186,6 +186,9 @@ p {
 
 .justify-center {
     justify-content: center;
+}
+.align-center {
+    align-content: center;
 }
 
 .one-third, .one-half, .two-thirds {
