@@ -12,15 +12,11 @@ var cubeRotationVelocities = [];
 var cubeScale;
 camera.position.z = 6;
 var target = new THREE.Object3D();
-target.position.set(0,0,-15);
+target.position.set(0, 0, -15);
 var width = window.innerWidth;
 var height = window.innerHeight;
 var mouseX = 0;
 var mouseY = 0;
-var maxX = 7;
-var maxY = 7;
-var tempX = 0;
-var tempY = 0;
 var halfWidth = width / 2;
 var halfHeight = height / 2;
 var yOffset = 30;
@@ -43,8 +39,6 @@ $(document).ready(function () {
         // });
         mouseX = event.clientX - halfWidth;
         mouseY = event.clientY - halfHeight;
-        tempX = (mouseX - target.position.x) * 0.00002;
-        tempY = (mouseY - target.position.y) * 0.00002;
     }
 
     function toPositions() {
@@ -101,12 +95,11 @@ $(document).ready(function () {
         for (var i = 0; i < cubeGroup.children.length; i++) {
             rotate(cubeGroup.children[i], cubeRotationVelocities[i]);
         }
-        if(target.position.x + tempX <= maxX && target.position.x + tempX >= -maxX) {
-            target.position.x += (mouseX - target.position.x) * 0.00002;
-        }
-        if(target.position.y - tempY <= maxY && target.position.y + tempY >= -maxY) {
-            target.position.y -= (mouseY - target.position.y) * 0.00002;
-        }        
+
+        target.position.x += (mouseX - target.position.x) * 0.00002;
+
+        target.position.y -= (mouseY - target.position.y) * 0.00002;
+
         camera.lookAt(target.position);
 
         renderer.render(scene, camera);
