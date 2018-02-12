@@ -4,45 +4,53 @@ import { brandColors } from './theming.js';
 // var _ = require('lodash');
 
 var scene = new THREE.Scene();
+
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.set(0, 0, 3);
+
+var target = new THREE.Object3D();
+var targetZ = -15;
+target.position.set(0, 0, targetZ);
+var temp = target.position.clone();
+
 var cube;
 var cubeMesh;
 var cubePositions = [];
 var cubeRotationVelocities = [];
 var cubeScale;
-camera.position.z = 6;
-var target = new THREE.Object3D();
-target.position.set(0, 0, -15);
+
 var width = window.innerWidth;
 var height = window.innerHeight;
+
 var mouseX = 0;
 var mouseY = 0;
 var halfWidth = width / 2;
 var halfHeight = height / 2;
+
 var yOffset = 30;
+
+var lerpRate = 1/250;
+
+var stats = new Stats();
 
 $(document).ready(function () {
 
-    $('.hero-container').mousemove(_.throttle(onMouseMove, 100));
+    $('.hero-container').mousemove(onMouseMove);
 
     // copy initial camera rotation so we can tween from it to a new one in slo mo based on mouse movement
 
     function onMouseMove(event) {
-        // var tempX = (event.clientX / width) * 2 - 1;
-        // var tempY = -((event.clientY / height) * 2 - 1);
-        // TweenMax.to(mousePos, 5, {
-        //     x: tempX,
-        //     y: tempY,
-        //     onUpdate: function () {
-        //         camera.lookAt(mousePos);
-        //     }
-        // });
         mouseX = event.clientX - halfWidth;
         mouseY = event.clientY - halfHeight;
+        temp.set(mouseX / 100, -mouseY / 100, targetZ);
+    }
+
+    function lerpCameraTarget() {
+        target.position.lerp(temp, lerpRate);
     }
 
     function toPositions() {
-        TweenMax.staggerTo(cubePositions, 1.5, { y: '+=' + yOffset, ease: Power4.easeOut }, 0.02);
+        TweenMax.staggerTo(cubePositions, 2, { y: '+=' + yOffset, ease: Power4.easeOut }, 0.02);
     }
 
     function rotate(object, speed) {
@@ -70,9 +78,11 @@ $(document).ready(function () {
         cube.scale.y = cubeScale;
         cube.scale.z = cubeScale;
 
-        cube.position.x = (Math.random() * 26) - 13;
-        cube.position.y = (Math.random() * 26) - 13 - yOffset;
-        cube.position.z = (Math.random() * 8) - 9;
+        var x = Math.random() * 20 - 10;
+        var y = Math.random() * 20 - 10 - yOffset;
+        var z = Math.random() * -15;
+
+        cube.position.set(x, y, z);
 
         cubePositions.push(cube.position);
 
@@ -85,23 +95,20 @@ $(document).ready(function () {
 
     scene.add(cubeGroup);
 
-
     // Animate the scene
 
-
-
     var animate = function () {
-        requestAnimationFrame(animate);
+        stats.begin();
+
         for (var i = 0; i < cubeGroup.children.length; i++) {
             rotate(cubeGroup.children[i], cubeRotationVelocities[i]);
         }
-
-        target.position.x += (mouseX - target.position.x) * 0.00002;
-
-        target.position.y -= (mouseY - target.position.y) * 0.00002;
-
+        lerpCameraTarget();
         camera.lookAt(target.position);
 
+        stats.end();
+
+        requestAnimationFrame(animate);
         renderer.render(scene, camera);
     };
 
