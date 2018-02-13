@@ -10504,41 +10504,63 @@ $(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__theming_js__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax__);
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__theming_js__ = __webpack_require__(1);
 
+// import { TweenMax, TimelineLite } from '../../node_modules/gsap/TweenMax';
+// var $ = require('jquery');
+// var _ = require('lodash');
 
-var $ = __webpack_require__(0);
-var _ = __webpack_require__(30);
+var scene = new THREE.Scene();
+
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.set(0, 0, 3);
+
+var target = new THREE.Object3D();
+var targetZ = -15;
+target.position.set(0, 0, targetZ);
+var temp = target.position.clone();
+
+var cube;
+var cubeMesh;
+var cubePositions = [];
+var cubeRotationVelocities = [];
+var cubeScale;
+
+var width = window.innerWidth;
+var height = window.innerHeight;
+
+var mouseX = 0;
+var mouseY = 0;
+var halfWidth = width / 2;
+var halfHeight = height / 2;
+
+var yOffset = 30;
+
+var lerpRate = 1/250;
 
 $(document).ready(function () {
 
-    /**********************************************************************/
-    /* THREE.JS code initialize scene, draw basic floating blueLight cube */
-    /**********************************************************************/
-
-    //init variables
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    var cubes = [];
-    camera.position.z = 5;
-    var mousePos = new THREE.Vector3();
-
-    $('.hero-container').mousemove(_.throttle(onMouseMove, 100));
-    var width = window.innerWidth;
-    var height = window.innerHeight;
+    $('.hero-container').mousemove(onMouseMove);
 
     // copy initial camera rotation so we can tween from it to a new one in slo mo based on mouse movement
 
     function onMouseMove(event) {
-        __WEBPACK_IMPORTED_MODULE_1__node_modules_gsap_TweenMax__["TweenMax"].to(mousePos, 5, {
-            x: (event.clientX / width) * 2 - 1,
-            y: -((event.clientY / height) * 2 - 1),
-            onUpdate: function () {
-                camera.lookAt(mousePos);
-            }
-        });
+        mouseX = event.clientX - halfWidth;
+        mouseY = event.clientY - halfHeight;
+        temp.set(mouseX / 100, -mouseY / 100, targetZ);
+    }
+
+    function lerpCameraTarget() {
+        target.position.lerp(temp, lerpRate);
+    }
+
+    function toPositions() {
+        TweenMax.staggerTo(cubePositions, 2, { y: '+=' + yOffset, ease: Power4.easeOut }, 0.02);
+    }
+
+    function rotate(object, speed) {
+        object.rotation.x += speed[0];
+        object.rotation.y += speed[1];
     }
 
     var renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -10547,53 +10569,52 @@ $(document).ready(function () {
     renderer.setClearColor(__WEBPACK_IMPORTED_MODULE_0__theming_js__["a" /* brandColors */].blueLight, 1);
 
     var cubeGeometry = new THREE.BoxGeometry(3, 3, 3);
+    var cubeMaterial = new THREE.MeshBasicMaterial({ color: __WEBPACK_IMPORTED_MODULE_0__theming_js__["a" /* brandColors */].magentaDark });
+    var cubeGroup = new THREE.Group();
 
     for (var i = 0; i < 30; i++) {
 
-        var cubeMaterial = new THREE.MeshBasicMaterial({ color: __WEBPACK_IMPORTED_MODULE_0__theming_js__["a" /* brandColors */].magentaDark });
-        var cubeMesh = new THREE.Mesh(cubeGeometry, cubeMaterial);
-        var cube = new THREE.Object3D();
+        cubeMesh = new THREE.Mesh(cubeGeometry, cubeMaterial);
+        cube = new THREE.Object3D();
         cube.add(cubeMesh);
 
-        cube.position.x = (Math.random() * 26) - 13;
-        cube.position.y = (Math.random() * 26) - 13;
-        cube.position.z = (Math.random() * 8) - 9;
-
-        var cubeScale = Math.random() / 3 + 0.35;
-
+        cubeScale = Math.random() / 3 + 0.35;
         cube.scale.x = cubeScale;
         cube.scale.y = cubeScale;
         cube.scale.z = cubeScale;
 
+        var x = Math.random() * 20 - 10;
+        var y = Math.random() * 20 - 10 - yOffset;
+        var z = Math.random() * -15;
+
+        cube.position.set(x, y, z);
+
+        cubePositions.push(cube.position);
+
         cube.rotation.y = Math.random();
         cube.rotation.x = Math.random();
 
-        cube.yVelocity = (0.5 - Math.random()) / 1000;
-        cube.xVelocity = (0.5 - Math.random()) / 1000;
-
-        cube.xRotationRate = Math.random() / 400;
-        cube.yRotationRate = Math.random() / 400;
-
-        cube.rotate = function () {
-            this.rotation.x += this.xRotationRate;
-            this.rotation.y += this.yRotationRate;
-        }
-
-        cubes.push(cube);
-        scene.add(cube);
+        cubeGroup.add(cube);
+        cubeRotationVelocities.push([Math.random() / 400, Math.random() / 400]);
     }
+
+    scene.add(cubeGroup);
 
     // Animate the scene
 
     var animate = function () {
         requestAnimationFrame(animate);
-        for (var i = 0; i < cubes.length; i++) {
-            cubes[i].rotate();
-        }
-        renderer.render(scene, camera);
+        render();
     };
 
-    animate();
+    var render = function() {
+        for (var i = 0; i < cubeGroup.children.length; i++) {
+            rotate(cubeGroup.children[i], cubeRotationVelocities[i]);
+        }
+        lerpCameraTarget();
+        camera.lookAt(target.position);
+        renderer.render(scene, camera);
+    }
 
     // Draw it in the dom and add resize event listener
 
@@ -10610,7 +10631,11 @@ $(document).ready(function () {
     }
 
     renderer.domElement.id = "header-canvas";
+
+    animate();
+    toPositions();
 });
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
 /***/ }),
 /* 4 */
@@ -13740,7 +13765,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /* 9 */
 /***/ (function(module, exports) {
 
-module.exports = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDMwLjA1MSAzMC4wNTEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDMwLjA1MSAzMC4wNTE7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiIGNsYXNzPSIiPjxnPjxnPgoJPHBhdGggZD0iTTE5Ljk4MiwxNC40MzhsLTYuMjQtNC41MzZjLTAuMjI5LTAuMTY2LTAuNTMzLTAuMTkxLTAuNzg0LTAuMDYyYy0wLjI1MywwLjEyOC0wLjQxMSwwLjM4OC0wLjQxMSwwLjY2OXY5LjA2OSAgIGMwLDAuMjg0LDAuMTU4LDAuNTQzLDAuNDExLDAuNjcxYzAuMTA3LDAuMDU0LDAuMjI0LDAuMDgxLDAuMzQyLDAuMDgxYzAuMTU0LDAsMC4zMS0wLjA0OSwwLjQ0Mi0wLjE0Nmw2LjI0LTQuNTMyICAgYzAuMTk3LTAuMTQ1LDAuMzEyLTAuMzY5LDAuMzEyLTAuNjA3QzIwLjI5NSwxNC44MDMsMjAuMTc3LDE0LjU4LDE5Ljk4MiwxNC40Mzh6IiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIGRhdGEtb2xkX2NvbG9yPSIjZWNlY2VjIiBmaWxsPSIjZWNlY2VjIi8+Cgk8cGF0aCBkPSJNMTUuMDI2LDAuMDAyQzYuNzI2LDAuMDAyLDAsNi43MjgsMCwxNS4wMjhjMCw4LjI5Nyw2LjcyNiwxNS4wMjEsMTUuMDI2LDE1LjAyMWM4LjI5OCwwLDE1LjAyNS02LjcyNSwxNS4wMjUtMTUuMDIxICAgQzMwLjA1Miw2LjcyOCwyMy4zMjQsMC4wMDIsMTUuMDI2LDAuMDAyeiBNMTUuMDI2LDI3LjU0MmMtNi45MTIsMC0xMi41MTYtNS42MDEtMTIuNTE2LTEyLjUxNGMwLTYuOTEsNS42MDQtMTIuNTE4LDEyLjUxNi0xMi41MTggICBjNi45MTEsMCwxMi41MTQsNS42MDcsMTIuNTE0LDEyLjUxOEMyNy41NDEsMjEuOTQxLDIxLjkzNywyNy41NDIsMTUuMDI2LDI3LjU0MnoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgZGF0YS1vbGRfY29sb3I9IiNlY2VjZWMiIGZpbGw9IiNlY2VjZWMiLz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KPC9nPjwvZz4gPC9zdmc+Cg=="
+module.exports = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+DQo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgaWQ9IkNhcGFfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCAzMC4wNTEgMzAuMDUxIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAzMC4wNTEgMzAuMDUxOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4IiBjbGFzcz0iIj48Zz48Zz4NCgk8cGF0aCBkPSJNMTkuOTgyLDE0LjQzOGwtNi4yNC00LjUzNmMtMC4yMjktMC4xNjYtMC41MzMtMC4xOTEtMC43ODQtMC4wNjJjLTAuMjUzLDAuMTI4LTAuNDExLDAuMzg4LTAuNDExLDAuNjY5djkuMDY5ICAgYzAsMC4yODQsMC4xNTgsMC41NDMsMC40MTEsMC42NzFjMC4xMDcsMC4wNTQsMC4yMjQsMC4wODEsMC4zNDIsMC4wODFjMC4xNTQsMCwwLjMxLTAuMDQ5LDAuNDQyLTAuMTQ2bDYuMjQtNC41MzIgICBjMC4xOTctMC4xNDUsMC4zMTItMC4zNjksMC4zMTItMC42MDdDMjAuMjk1LDE0LjgwMywyMC4xNzcsMTQuNTgsMTkuOTgyLDE0LjQzOHoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgZGF0YS1vbGRfY29sb3I9IiNlY2VjZWMiIGZpbGw9IiNlY2VjZWMiLz4NCgk8cGF0aCBkPSJNMTUuMDI2LDAuMDAyQzYuNzI2LDAuMDAyLDAsNi43MjgsMCwxNS4wMjhjMCw4LjI5Nyw2LjcyNiwxNS4wMjEsMTUuMDI2LDE1LjAyMWM4LjI5OCwwLDE1LjAyNS02LjcyNSwxNS4wMjUtMTUuMDIxICAgQzMwLjA1Miw2LjcyOCwyMy4zMjQsMC4wMDIsMTUuMDI2LDAuMDAyeiBNMTUuMDI2LDI3LjU0MmMtNi45MTIsMC0xMi41MTYtNS42MDEtMTIuNTE2LTEyLjUxNGMwLTYuOTEsNS42MDQtMTIuNTE4LDEyLjUxNi0xMi41MTggICBjNi45MTEsMCwxMi41MTQsNS42MDcsMTIuNTE0LDEyLjUxOEMyNy41NDEsMjEuOTQxLDIxLjkzNywyNy41NDIsMTUuMDI2LDI3LjU0MnoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgZGF0YS1vbGRfY29sb3I9IiNlY2VjZWMiIGZpbGw9IiNlY2VjZWMiLz4NCgk8Zz4NCgk8L2c+DQoJPGc+DQoJPC9nPg0KCTxnPg0KCTwvZz4NCgk8Zz4NCgk8L2c+DQoJPGc+DQoJPC9nPg0KCTxnPg0KCTwvZz4NCgk8Zz4NCgk8L2c+DQoJPGc+DQoJPC9nPg0KCTxnPg0KCTwvZz4NCgk8Zz4NCgk8L2c+DQoJPGc+DQoJPC9nPg0KCTxnPg0KCTwvZz4NCgk8Zz4NCgk8L2c+DQoJPGc+DQoJPC9nPg0KCTxnPg0KCTwvZz4NCjwvZz48L2c+IDwvc3ZnPg0K"
 
 /***/ }),
 /* 10 */

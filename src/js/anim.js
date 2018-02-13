@@ -1,35 +1,59 @@
 import { brandColors } from './theming.js';
-import { TweenMax } from '../../node_modules/gsap/TweenMax';
-var $ = require('jquery');
-var _ = require('lodash');
+// import { TweenMax, TimelineLite } from '../../node_modules/gsap/TweenMax';
+// var $ = require('jquery');
+// var _ = require('lodash');
+
+var scene = new THREE.Scene();
+
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.set(0, 0, 3);
+
+var target = new THREE.Object3D();
+var targetZ = -15;
+target.position.set(0, 0, targetZ);
+var temp = target.position.clone();
+
+var cube;
+var cubeMesh;
+var cubePositions = [];
+var cubeRotationVelocities = [];
+var cubeScale;
+
+var width = window.innerWidth;
+var height = window.innerHeight;
+
+var mouseX = 0;
+var mouseY = 0;
+var halfWidth = width / 2;
+var halfHeight = height / 2;
+
+var yOffset = 30;
+
+var lerpRate = 1/250;
 
 $(document).ready(function () {
 
-    /**********************************************************************/
-    /* THREE.JS code initialize scene, draw basic floating blueLight cube */
-    /**********************************************************************/
-
-    //init variables
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    var cubes = [];
-    camera.position.z = 5;
-    var mousePos = new THREE.Vector3();
-
-    $('.hero-container').mousemove(_.throttle(onMouseMove, 100));
-    var width = window.innerWidth;
-    var height = window.innerHeight;
+    $('.hero-container').mousemove(onMouseMove);
 
     // copy initial camera rotation so we can tween from it to a new one in slo mo based on mouse movement
 
     function onMouseMove(event) {
-        TweenMax.to(mousePos, 5, {
-            x: (event.clientX / width) * 2 - 1,
-            y: -((event.clientY / height) * 2 - 1),
-            onUpdate: function () {
-                camera.lookAt(mousePos);
-            }
-        });
+        mouseX = event.clientX - halfWidth;
+        mouseY = event.clientY - halfHeight;
+        temp.set(mouseX / 100, -mouseY / 100, targetZ);
+    }
+
+    function lerpCameraTarget() {
+        target.position.lerp(temp, lerpRate);
+    }
+
+    function toPositions() {
+        TweenMax.staggerTo(cubePositions, 2, { y: '+=' + yOffset, ease: Power4.easeOut }, 0.02);
+    }
+
+    function rotate(object, speed) {
+        object.rotation.x += speed[0];
+        object.rotation.y += speed[1];
     }
 
     var renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -38,53 +62,52 @@ $(document).ready(function () {
     renderer.setClearColor(brandColors.blueLight, 1);
 
     var cubeGeometry = new THREE.BoxGeometry(3, 3, 3);
+    var cubeMaterial = new THREE.MeshBasicMaterial({ color: brandColors.magentaDark });
+    var cubeGroup = new THREE.Group();
 
     for (var i = 0; i < 30; i++) {
 
-        var cubeMaterial = new THREE.MeshBasicMaterial({ color: brandColors.magentaDark });
-        var cubeMesh = new THREE.Mesh(cubeGeometry, cubeMaterial);
-        var cube = new THREE.Object3D();
+        cubeMesh = new THREE.Mesh(cubeGeometry, cubeMaterial);
+        cube = new THREE.Object3D();
         cube.add(cubeMesh);
 
-        cube.position.x = (Math.random() * 26) - 13;
-        cube.position.y = (Math.random() * 26) - 13;
-        cube.position.z = (Math.random() * 8) - 9;
-
-        var cubeScale = Math.random() / 3 + 0.35;
-
+        cubeScale = Math.random() / 3 + 0.35;
         cube.scale.x = cubeScale;
         cube.scale.y = cubeScale;
         cube.scale.z = cubeScale;
 
+        var x = Math.random() * 20 - 10;
+        var y = Math.random() * 20 - 10 - yOffset;
+        var z = Math.random() * -15;
+
+        cube.position.set(x, y, z);
+
+        cubePositions.push(cube.position);
+
         cube.rotation.y = Math.random();
         cube.rotation.x = Math.random();
 
-        cube.yVelocity = (0.5 - Math.random()) / 1000;
-        cube.xVelocity = (0.5 - Math.random()) / 1000;
-
-        cube.xRotationRate = Math.random() / 400;
-        cube.yRotationRate = Math.random() / 400;
-
-        cube.rotate = function () {
-            this.rotation.x += this.xRotationRate;
-            this.rotation.y += this.yRotationRate;
-        }
-
-        cubes.push(cube);
-        scene.add(cube);
+        cubeGroup.add(cube);
+        cubeRotationVelocities.push([Math.random() / 400, Math.random() / 400]);
     }
+
+    scene.add(cubeGroup);
 
     // Animate the scene
 
     var animate = function () {
         requestAnimationFrame(animate);
-        for (var i = 0; i < cubes.length; i++) {
-            cubes[i].rotate();
-        }
-        renderer.render(scene, camera);
+        render();
     };
 
-    animate();
+    var render = function() {
+        for (var i = 0; i < cubeGroup.children.length; i++) {
+            rotate(cubeGroup.children[i], cubeRotationVelocities[i]);
+        }
+        lerpCameraTarget();
+        camera.lookAt(target.position);
+        renderer.render(scene, camera);
+    }
 
     // Draw it in the dom and add resize event listener
 
@@ -101,4 +124,7 @@ $(document).ready(function () {
     }
 
     renderer.domElement.id = "header-canvas";
+
+    animate();
+    toPositions();
 });
