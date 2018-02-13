@@ -31,8 +31,6 @@ var yOffset = 30;
 
 var lerpRate = 1/250;
 
-var stats = new Stats();
-
 $(document).ready(function () {
 
     $('.hero-container').mousemove(onMouseMove);
@@ -98,19 +96,18 @@ $(document).ready(function () {
     // Animate the scene
 
     var animate = function () {
-        stats.begin();
+        requestAnimationFrame(animate);
+        render();
+    };
 
+    var render = function() {
         for (var i = 0; i < cubeGroup.children.length; i++) {
             rotate(cubeGroup.children[i], cubeRotationVelocities[i]);
         }
         lerpCameraTarget();
         camera.lookAt(target.position);
-
-        stats.end();
-
-        requestAnimationFrame(animate);
         renderer.render(scene, camera);
-    };
+    }
 
     // Draw it in the dom and add resize event listener
 
