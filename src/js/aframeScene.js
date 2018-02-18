@@ -18,27 +18,26 @@ varying vec2 vUv;
 uniform float time;
 
 float plot(vec2 st, float pct){
-    return  smoothstep( pct-0.2, pct, st.y) -
-            smoothstep( pct, pct+0.2, st.y);
+    return  smoothstep( pct-0.5, pct, st.y) -
+            smoothstep( pct, pct+0.5, st.y);
   }
   
   void main()
   {
-      vec2 st = vUv.xy;
+    vec2 st = vUv.xy;
   
-      float y = sin(st.x * time) + 0.5;
-      float x = abs(tan(st.y * time) * 0.10);
-      float z = cos(st.x/st.y * time) * 0.1;
-      vec3 color = vec3(y,x,z);
-  
-      // Plot a line
-      float pct = plot(st,y )+0.6;
-      color = (pct)*color+pct*vec3(1.0,0.6,0.8);
-      gl_FragColor = vec4(color, 1.0);
+    float x = fract( (st.y + time * 0.1) * 20.0) * 10.0 - 5.0;    
+    float y = x;
+    float z = x;
+    vec3 color = vec3(y,x,z);
+
+    // Plot a line
+    float pct = plot(st,x);
+    color = (pct)*color+pct*vec3(0.5,0.25,0.4);
+
+	gl_FragColor = vec4(color,1.0);
   }
 `;
-
-
 
 AFRAME.registerComponent('material-grid-glitch', {
     schema: { color: { type: 'color' } },
