@@ -22,6 +22,11 @@
     margin: 1.5em 0;
 }
 
+#map {
+    height: 400px;
+    width: 100%;
+}
+
 .full-height {
     width: 100%;
     min-height: 100%;
@@ -130,7 +135,7 @@ div.contact-row {
 
 #contact-home {
     background-color: $blue-light;
-
+    padding: 1em;
 }
 
 .contact-input, .contact-textarea {
@@ -146,8 +151,11 @@ div.contact-row {
     }
 }
 
-.contact-textarea {
+.overflow-hidden {
     overflow: hidden;
+}
+
+.contact-textarea {
     resize: none;
 }
 

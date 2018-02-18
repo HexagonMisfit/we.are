@@ -1,12 +1,13 @@
 // vendor js files
 window.$ = window.jQuery = require('jquery');
 var _ = require('lodash');
-import { TweenMax, TimelineLite } from '../../node_modules/gsap/TweenMax.js';
-import ScrollToPlugin from 'gsap/ScrollToPlugin'
-import ScrollMagic from 'ScrollMagic';
+// import { TweenMax, TimelineLite } from '../../node_modules/gsap/TweenMax.js';
+// import ScrollToPlugin from 'gsap/ScrollToPlugin'
+// import ScrollMagic from 'ScrollMagic';
+
 
 // DEV-ONLY
-import '../../node_modules/scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min.js';
+// import '../../node_modules/scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min.js';
 
 // our scripts
 import { brandColors } from './theming.js';
@@ -20,9 +21,7 @@ import './aframeScene.js';
 // import our scss last
 import '../sass/main.scss';
 
-// set images on elements
-
-
+var body = $('body');
 
 $(function () {
 
@@ -45,6 +44,9 @@ $(function () {
 
     function onInit() {
         TweenMax.to(vrScreen, 0, { autoAlpha: 0 });
+        var ascend1 = $('.ascend-1');
+        TweenMax.to(body, 0.75, { autoAlpha: 1, ease: Power2.easeOut });
+        TweenMax.staggerTo(ascend1, 1, { autoAlpha: 1, y: 0, ease: Power3.easeOut }, 0.1);
     }
 
     /**************/
@@ -68,12 +70,12 @@ $(function () {
     }
 
     function showVrScreen() {
-        TweenMax.to(vrScreen, 0, {autoAlpha: 1, transform: 'translateX(0)'});
+        TweenMax.to(vrScreen, 0, { autoAlpha: 1, transform: 'translateX(0)' });
     }
 
     function hideVrScreen() {
-        TweenMax.to(vrScreen, 0, {autoAlpha: 0, transform: 'translateX(100%)'});
-        
+        TweenMax.to(vrScreen, 0, { autoAlpha: 0, transform: 'translateX(100%)' });
+
     }
 
     function toggleVr() {
@@ -113,21 +115,34 @@ $(function () {
 
     });
 
-    navLink.mousedown(function () {
-        this.add
-    });
+    var scrollControl = new ScrollMagic.Controller();
 
-    navLink.mouseup(function () {
-        TweenMax.to(this, 0.1, { className: '-=nav-link-clicked' });
-    });
+    var fadeAndRiseTween1 = TweenMax.staggerTo('.fade-1', 0.8, { autoAlpha: 1, y: 0, ease: Power4.easeOut }, 0.1);
+    var fadeAndRiseScene1 = new ScrollMagic.Scene({
+        triggerHook: 0.8,
+        triggerElement: '#trigger-1',
+        reverse: false
+    })
+        .setTween(fadeAndRiseTween1)
+        .addTo(scrollControl);
 
-    /**********************/
-    /* Home page UI stuff */
-    /**********************/
+    var fadeAndRiseTween2 = TweenMax.staggerTo('.fade-2', 0.8, { autoAlpha: 1, y: 0, ease: Power4.easeOut }, 0.1);
+    var fadeAndRiseScene2 = new ScrollMagic.Scene({
+        triggerHook: 0.8,
+        triggerElement: '#trigger-2',
+        reverse: false
+    })
+        .setTween(fadeAndRiseTween2)
+        .addTo(scrollControl);
 
-    /**********************/
-    /* Call Init Function */
-    /**********************/
+    var fadeAndRiseTween3 = TweenMax.staggerTo('.fade-3', 0.8, { autoAlpha: 1, y: 0, ease: Power4.easeOut }, 0.1);
+    var fadeAndRiseScene3 = new ScrollMagic.Scene({
+        triggerHook: 0.8,
+        triggerElement: '#trigger-3',
+        reverse: false
+    })
+        .setTween(fadeAndRiseTween3)
+        .addTo(scrollControl);
 
     onInit();
 });

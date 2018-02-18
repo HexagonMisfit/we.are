@@ -11,7 +11,7 @@ import venobox from 'venobox';
 var playButton = require('../assets/img/play_svg.svg');
 
 $(function () {
-    $('.play-button')[0].src = playButton;
+    $('.play-button').attr('src', playButton);
 
     $('#home-projects-container').slick({
         dots: true,

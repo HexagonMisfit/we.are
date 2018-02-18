@@ -10,9 +10,15 @@
     <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/89/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.7.1/aframe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/plugins/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
 </head>
 
-<body>
+<body class="overflow-hidden">
     <nav class="navigation home-nav row" id="main-nav">
         <ul>
             <div>
@@ -42,30 +48,35 @@
                 <header class="hero hero-padding-responsive column space-around full-height" id="section0">
                     <div class="home-text-container row">
                         <div class="hero-text column">
-                            <h1 class="light-text ultra-big-text">HEXAGONMIS.FIT</h1>
-                            <h2 class="light-text">A technical artists' guild with
-                                <span class="zazz">zazz</span>.
-                                </h1>
+                            <h1 class="light-text ultra-big-text ascend-1">HEXAGONMISFIT</h1>
+                            <h2>
+                                <span class="light-text ascend-1">A</span>
+                                <span class=" light-text ascend-1">technical</span>
+                                <span class="light-text ascend-1">artists'</span>
+                                <span class="light-text ascend-1">guild</span>
+                                <span class="light-text ascend-1">with</span>
+                                <span class="zazz ascend-1">zazz</span>
+                                <span class="light-text ascend-1">.</span>
+                            </h2>
                         </div>
                     </div>
                 </header>
             </div>
             <section id="work-home" class="home-section full-height">
-                <!-- <h1 class="projects-slider-header light-text">Projects</h1> -->
                 <div id="home-projects-container" class="home-section-container slider-full-width">
                     <!-- Slider #1 -->
                     <div id="slide-1" class="slide">
                         <div class="slide-container">
                             <div class="slide-content hero-padding-responsive row">
-                                <div class="slide-info column">
-                                    <h2 class="light-text">Mariposa Chandelier</h4>
-                                        <p class="light-text">This project attempts to make taking the stairs more appealing than the elevator,
-                                            promoting health and engaging viewers by allowing them to trigger animations
-                                            and sounds that flow throughout the entire installation.</p>
-                                        <a class="link play-link venobox row" title="Mariposa Chandelier" data-autoplay="true" data-vbtype="video" href="https://vimeo.com/116297443">
-                                            <img class="play-button" />
-                                            <span class="light-text">Play Video</span>
-                                        </a>
+                                <div id="trigger-1" class="slide-info column">
+                                    <h2 class="light-text fade-1">Mariposa Chandelier</h2>
+                                    <p class="light-text fade-1">This project attempts to make taking the stairs more appealing than the elevator, promoting
+                                        health and engaging viewers by allowing them to trigger animations and sounds that
+                                        flow throughout the entire installation.</p>
+                                    <a class="link play-link fade-1 venobox row" title="Mariposa Chandelier" data-autoplay="true" data-vbtype="video" href="https://vimeo.com/116297443">
+                                        <img class="play-button" />
+                                        <span class="light-text">Play Video</span>
+                                    </a>
                                 </div>
                                 <div id="slide-1-img-container" class="slide-img-container">
                                     <div id="slide-1-img" class="slide-img"></div>
@@ -79,10 +90,10 @@
                         <div class="slide-container">
                             <div class="slide-content hero-padding-responsive row">
                                 <div class="slide-info column">
-                                    <h2 class="light-text">Coachella VIP Party</h4>
-                                        <p class="light-text">Using the Intel Realsense 3D Camera and Unity, we worked with Phantogram and Republic
-                                            Records to create live audio reactive visuals for their VIP Party at Coachella.</p>
-                                        <a class="link light-text">See more</a>
+                                    <h2 class="light-text">Coachella VIP Party</h2>
+                                    <p class="light-text">Using the Intel Realsense 3D Camera and Unity, we worked with Phantogram and Republic
+                                        Records to create live audio reactive visuals for their VIP Party at Coachella.</p>
+                                    <a class="link light-text">See more</a>
                                 </div>
                                 <div class="slide-img-container">
                                     <div id="slide-2-img" class="slide-img"></div>
@@ -92,17 +103,21 @@
                     </div>
 
                     <!-- Slider #3 -->
-                    <div id="slide-3" class="slide slide-3">
+                    <div id="slide-3" class="slide">
                         <div class="slide-container">
                             <div class="slide-content hero-padding-responsive row">
                                 <div class="slide-info column">
-                                    <h2 class="light-text">Mariposa Chandelier</h4>
-                                        <p class="light-text">This project attempts to make taking the stairs more appealing than the elevator,
-                                            promoting health and engaging viewers by allowing them to trigger animations
-                                            and sounds that flow throughout the entire installation.</p>
-                                        <a class="link light-text">See more</a>
+                                    <h2 class="light-text">VJ Tool - minim</h2>
+                                    <p class="light-text">Real-time 2D mograph system for doing live visuals for music. The concept is to trigger
+                                        black-and-white animated 2D shapes, pass them through a gradient color mapper, then
+                                        through some custom post processing effects, put them on a background, and then map
+                                        a midi controller to trigger the different clips and alter the parameters.</p>
+                                    <a class="link play-link venobox row" title="VJ Tool - minim" data-autoplay="true" data-vbtype="video" href="https://vimeo.com/244757902">
+                                        <img class="play-button" />
+                                        <span class="light-text">Play Video</span>
+                                    </a>
                                 </div>
-                                <div class="slide-img-container">
+                                <div id="slide-3-img-container" class="slide-img-container">
                                     <div id="slide-3-img" class="slide-img"></div>
                                 </div>
                             </div>
@@ -131,22 +146,22 @@
             <section id="team-home">
                 <div class="home-team-container home-section-container">
                     <div class="home-team-info-container hero-padding-responsive">
-                        <div class="section-header-wrapper column">
-                            <h1 class="section-header">Who Are We?</h1>
+                        <div id="trigger-2" class="section-header-wrapper column">
+                            <h1 class="section-header fade-2">Who Are We?</h1>
                         </div>
-                        <p>
+                        <p class="fade-2">
                             Based in rainy Seattle, Washington, we are an interaction design studio that uses technology to build experiences that astonish
                             and delight. Our specialty is that we all have different specialties! Hit us up if you wanna
                             collaborate on something dope.
                         </p>
-                        <h2 class="section-header">
+                        <h2 class="section-header fade-2">
                             Meet The Team
                         </h2>
                     </div>
                     <div id="team-slider-container">
                         <div id="team-slider">
                             <div class="team-card-container column">
-                                <div class="team-card">
+                                <div class="team-card fade-2">
                                     <div id="chris-r-img" class="team-prof-pic"></div>
                                     <div class="team-card-title">
                                         <h3 class="team-card-name">
@@ -161,7 +176,7 @@
                                 </div>
                             </div>
                             <div class="team-card-container column">
-                                <div class="team-card">
+                                <div class="team-card fade-2">
                                     <div id="quin-k-img" class="team-prof-pic"></div>
                                     <div class="team-card-title">
                                         <h3 class="team-card-name">
@@ -176,14 +191,29 @@
                                 </div>
                             </div>
                             <div class="team-card-container column">
-                                <div class="team-card">
+                                <div class="team-card fade-2">
+                                    <div id="daniel-s-img" class="team-prof-pic"></div>
+                                    <div class="team-card-title">
+                                        <h3 class="team-card-name">
+                                            Daniel Sierra
+                                        </h3>
+                                        <div class="team-card-info">
+                                            <p>Multi-disciplined digital artist who has worked in the areas of mixed reality,
+                                                music technology, visual effects and audio-visualizations. Loves making beautiful
+                                                things and pushing the boundaries of how we create.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-card-container column">
+                                <div class="team-card fade-2">
                                     <div id="alex-e-img" class="team-prof-pic"></div>
                                     <div class="team-card-title">
                                         <h3 class="team-card-name">
                                             Alex Erickson
                                         </h3>
                                         <div class="team-card-info">
-                                            <p>Front-end web application developer exploring web design, WebGL and WebVR technologies,
+                                            <p>Front-end web application developer exploring design, WebGL and WebVR technologies,
                                                 the Unity engine, and the creative side of coding in general.</p>
                                         </div>
                                     </div>
@@ -194,44 +224,36 @@
                 </div>
             </section>
             <section id="contact-home" class="home-section">
-                <div class="home-contact-container home-section-container hero-padding-responsive">
-                    <div class="section-header-wrapper column">
-                        <h1 class="light-text section-header">Get In Touch</h1>
-                    </div>
+                <div id="trigger-3" class="home-contact-container home-section-container hero-padding-responsive">
                     <div class="contact-row row">
                         <div class="one-half column">
                             <div class="contact-container column">
-                                <div class="contact-text-container column">
-                                    <h3 class="light-text">
+                                <div class="contact-text-container  justify-center column">
+                                    <h1 class="light-text section-header fade-3">Get In Touch</h1>
+                                    <h3 class="light-text fade-3">
                                         We weren't kidding when we said to hit us up!
                                     </h3>
                                     <ul class="contact-list">
-                                        <p class="light-text">
+                                        <p class="light-text fade-3">
                                             310 NW 40th St. Seattle, WA 98107
                                         </p>
-                                        <p class="light-text">
-                                            sup@hexagonmis.fit
+                                        <p class="light-text fade-3">
+                                            sup@hexagonmisfit.com
                                         </p>
-                                        <p class="light-text">555-555-5555</p>
+                                        <p class="light-text fade-3">555-555-5555</p>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="one-half column">
-                            <div class="contact-container column">
-                                <div class="contact-input-container column">
-                                    <input class="contact-input name" placeholder="Name">
-                                    <input class="contact-input" placeholder="Email">
-                                    <textarea class="contact-textarea" placeholder="What's on your mind?" rows=5></textarea>
-                                </div>
-                            </div>
+                        <div class="one-half justify-center column fade-3">
+                            <div id="map"></div>
                         </div>
                     </div>
                 </div>
             </section>
-            <footer id="footer" class="hero-padding-responsive">
-                <p>Copyright 2018 HexagonMix.fit</p>
-                <p>Site by Alex Erickson</p>
+            <footer id="footer" class="hero-padding-responsive overflow-hidden">
+                <p class="fade-3">Copyright 2018 HexagonMisfit</p>
+                <p class="fade-3">Site by Alex Erickson</p>
             </footer>
         </div>
         <div id="vr-screen">
@@ -251,7 +273,7 @@
                 <a-video id="video-top-right" src="#mariposa-chandelier" width="2.66666667" height="1.5" position="2 2.5 -4"></a-video>
 
 
-                <a-sky  material-grid-glitch height="2048" radius="8" color="#14ACCC" theta-length="90" width="2048"></a-sky>
+                <a-sky material-grid-glitch height="2048" radius="8" color="#14ACCC" theta-length="90" width="2048"></a-sky>
 
                 <a-plane src="#groundTexture" height="16" width="16" rotation="-90 0 0" repeat="20 20" metalness="0.25"></a-plane>
 
@@ -260,6 +282,20 @@
 
             </a-scene>
         </div>
+        <script>
+            function initMap() {
+                var headquarters = { lat: 47.6562533, lng: -122.3614647 };
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 16,
+                    center: headquarters
+                });
+                var marker = new google.maps.Marker({
+                    position: headquarters,
+                    map: map
+                });
+            }
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkhE1HeuvjOHVhQt_WokpQ61VLHXi2lTM&callback=initMap"></script>
 </body>
 
 </html>

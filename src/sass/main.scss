@@ -1,9 +1,8 @@
-@import 'variables', 'normalize', 'home', 'projectSlider', 'teamSlider', 'projects', 'team', 'vr';
+@import 'variables', 'normalize', 'home', 'projectSlider', 'teamSlider', 'projects', 'team', 'vr', 'initialState';
 
 html {
     height: 100%;
     width: auto;
-    overflow: hidden;
     padding: 0;
     margin: 0;
     font-size: 20px;
@@ -36,7 +35,6 @@ body {
     margin: 0;
     height: 100%;
     width: auto;
-    overflow: hidden;
     -webkit-overflow-scrolling: touch;
     overflow: -moz-scrollbars-none;
     // touch-action: none;
@@ -51,7 +49,6 @@ p {
 
 .container {
     height: 100%;
-    overflow: hidden;
     width: auto;
     position: absolute;
     top: 0;
@@ -238,6 +235,10 @@ h3 {
     @media screen and (max-width: 900px) {
         display: none;
     }
+}
+
+.justify-center {
+    justify-content: center;
 }
 
 .transparent-background {

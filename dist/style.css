@@ -814,6 +814,10 @@ textarea {
 .section-header {
   margin: 1.5em 0; }
 
+#map {
+  height: 400px;
+  width: 100%; }
+
 .full-height {
   width: 100%;
   min-height: 100%; }
@@ -901,7 +905,8 @@ div.contact-row {
       height: 14em; } }
 
 #contact-home {
-  background-color: #14ACCC; }
+  background-color: #14ACCC;
+  padding: 1em; }
 
 .contact-input, .contact-textarea {
   padding: 0.5em;
@@ -914,8 +919,10 @@ div.contact-row {
   .contact-input:focus, .contact-textarea:focus {
     outline: none; }
 
+.overflow-hidden {
+  overflow: hidden; }
+
 .contact-textarea {
-  overflow: hidden;
   resize: none; }
 
 #footer {
@@ -1030,7 +1037,7 @@ div.contact-row {
   background-image: url(mariposa_1280x720.jpg); }
 
 .slider-full-width #slide-3-img {
-  background-image: url(mariposa_1280x720.jpg); }
+  background-image: url(daniel_sierra_project.jpg); }
 
 .slider-full-width #slide-4-img {
   background-image: url(mariposa_1280x720.jpg); }
@@ -1074,6 +1081,9 @@ div.contact-row {
 
 #alex-e-img {
   background-image: url(big_al.jpg); }
+
+#daniel-s-img {
+  background-image: url(d_sierra.png); }
 
 .team-card-info p {
   font-size: 0.8em;
@@ -1156,10 +1166,14 @@ div.contact-row {
   z-index: 100;
   transform: translateX(100%); }
 
+.ascend-1, .fade-1, .fade-2, .fade-3 {
+  transform: translateY(75px);
+  opacity: 0;
+  display: hidden; }
+
 html {
   height: 100%;
   width: auto;
-  overflow: hidden;
   padding: 0;
   margin: 0;
   font-size: 20px;
@@ -1191,7 +1205,6 @@ body {
   margin: 0;
   height: 100%;
   width: auto;
-  overflow: hidden;
   -webkit-overflow-scrolling: touch;
   overflow: -moz-scrollbars-none;
   position: relative;
@@ -1203,7 +1216,6 @@ p {
 
 .container {
   height: 100%;
-  overflow: hidden;
   width: auto;
   position: absolute;
   top: 0;
@@ -1354,6 +1366,9 @@ h3 {
 @media screen and (max-width: 900px) {
   .hidden-narrow {
     display: none; } }
+
+.justify-center {
+  justify-content: center; }
 
 .transparent-background {
   background-color: transparent; }
