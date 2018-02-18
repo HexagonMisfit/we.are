@@ -1,11 +1,86 @@
 import { brandColors } from './theming.js';
 import '../assets/video/Merica.mp4';
 
-AFRAME.registerComponent('foo', {
-    init: function() {
-        
+const vertexShader = `
+
+varying vec2 vUv;
+
+void main() {
+    vUv = uv;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+  }
+
+`
+
+const fragmentShader = `
+
+varying vec2 vUv;
+uniform float time;
+
+float plot(vec2 st, float pct){
+    return  smoothstep( pct-0.2, pct, st.y) -
+            smoothstep( pct, pct+0.2, st.y);
+  }
+  
+  void main()
+  {
+      vec2 st = vUv.xy;
+  
+      float y = sin(st.x * time) + 0.5;
+      float x = abs(tan(st.y * time) * 0.10);
+      float z = cos(st.x/st.y * time) * 0.1;
+      vec3 color = vec3(y,x,z);
+  
+      // Plot a line
+      float pct = plot(st,y )+0.6;
+      color = (pct)*color+pct*vec3(1.0,0.6,0.8);
+      gl_FragColor = vec4(color, 1.0);
+  }
+`;
+
+
+
+AFRAME.registerComponent('material-grid-glitch', {
+    schema: { color: { type: 'color' } },
+    /**
+     * Creates a new THREE.ShaderMaterial using the two shaders defined
+     * in vertex.glsl and fragment.glsl.
+     */
+    init: function () {
+        const data = this.data;
+        this.material = new THREE.ShaderMaterial({
+            uniforms: {
+                time: { value: 0.0 },
+                color: { value: new THREE.Color(data.color) }
+            },
+            vertexShader,
+            fragmentShader
+        });
+        this.applyToMesh();
+        this.el.addEventListener('model-loaded', () => this.applyToMesh());
+    },
+    /**
+     * Update the ShaderMaterial when component data changes.
+     */
+    update: function () {
+        this.material.uniforms.color.value.set(this.data.color);
+    },
+    /**
+     * Apply the material to the current entity.
+     */
+    applyToMesh: function () {
+        const mesh = this.el.getObject3D('mesh');
+        if (mesh) {
+            mesh.material = this.material;
+        }
+    },
+    /**
+     * On each frame, update the 'time' uniform in the shaders.
+     */
+    tick: function (t) {
+        this.material.uniforms.time.value = t / 1000;
     }
-});
+})
 
 $(function () {
     var sceneEl = document.querySelector('a-scene');
@@ -19,7 +94,7 @@ $(function () {
 
     var fooComponent = document.querySelector('#foo');
     fooComponent.setAttribute('foo');
-    
+
     videoBottomLeft.addEventListener('click', playVideo);
     videoBottomCenter.addEventListener('click', playVideo);
     videoBottomRight.addEventListener('click', playVideo);
