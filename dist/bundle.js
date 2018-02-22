@@ -30943,7 +30943,7 @@ void main() {
 
 `
 
-const fragmentShader = `
+const skyShader = `
 
 varying vec2 vUv;
 uniform float time;
@@ -30977,9 +30977,8 @@ float plot2(vec2 st, float pct){
     color = mix(color, color2, 0.5);
 	gl_FragColor = vec4(vec3(st.y) + (color * (1.0 - st.y)),1.0);
   }
-`;
-
-AFRAME.registerComponent('material-grid-glitch', {
+`
+AFRAME.registerComponent('globe-sky', {
     schema: { color: { type: 'color' } },
     /**
      * Creates a new THREE.ShaderMaterial using the two shaders defined
@@ -30992,8 +30991,8 @@ AFRAME.registerComponent('material-grid-glitch', {
                 time: { value: 0.0 },
                 colorIn: { value: new THREE.Color(data.color) }
             },
-            vertexShader,
-            fragmentShader
+            vertexShader: vertexShader,
+            fragmentShader: skyShader
         });
         this.applyToMesh();
         this.el.addEventListener('model-loaded', () => this.applyToMesh());
@@ -31019,7 +31018,41 @@ AFRAME.registerComponent('material-grid-glitch', {
     tick: function (t) {
         this.material.uniforms.time.value = t / 1000;
     }
-})
+});
+
+const groundShader = `
+
+varying vec2 vUv;
+
+void main()
+{
+    vec3 col = vec3(1.0, 1.0, 1.0);
+    float pct = distance(vUv, vec2(0.5, 0.5));
+    col -= pct;
+
+    gl_FragColor = vec4(col,1.0);
+}
+
+`
+
+AFRAME.registerComponent('ground-gradient', {
+    schema: {color: {type: 'color'} },
+    init: function() {
+        this.material = new THREE.ShaderMaterial({
+            uniforms: {},
+            vertexShader,
+            fragmentShader: groundShader
+        });
+        this.applyToMesh();
+        this.el.addEventListener('model-loaded', () => this.applyToMesh());
+    },
+    applyToMesh: function() {
+        const mesh = this.el.getObject3D('mesh');
+        if(mesh) {
+            mesh.material = this.material;
+        }
+    }
+});
 
 $(function () {
     var sceneEl = document.querySelector('a-scene');
