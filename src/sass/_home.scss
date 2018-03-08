@@ -1,5 +1,3 @@
-//general styles for home page
-
 #home-container {
     height: 100vh;
     width: auto;
@@ -22,49 +20,41 @@
     margin: 1.5em 0;
 }
 
-#map {
-    height: 400px;
-    width: 100%;
+.hero {
+    align-items: flex-start;
+    height: 100% !important;
+    border-bottom: 2px solid $near-white;
 }
 
-.full-height {
-    width: 100%;
-    min-height: 100%;
-    @media screen and (max-height: 812px) {
-        height: 100%;
+.hero-padding-responsive {
+    padding: 0 13em;
+    @media screen and (min-width: 1600px) {
+        padding: 0 18%;
+    }
+    @media screen and (max-width: 1400px) {
+        padding: 0 7em;
+    }
+    @media only screen 
+    and (max-width: 768px){
+        padding: 0 6em;
+    }
+    @media screen and (max-width: 600px) {
+        padding: 0 3em;
+    }
+    @media screen and (max-width: 400px) {
+        padding: 0 1.75em;
     }
 }
 
-#work-home {
-    background-color: $near-black;
-}
-
-#about-home, #team-home, #contact-home {
-    background-color: $near-white;
-}
-
-#team-home {
-    padding-bottom: 1.5em;
-}
-
-//general styles for carousel
-
-.slick-next:before, .slick-prev:before {
-    color: rgba(8,8,8,0.85);
-  }
-
-// hero styles
-
-.hero {
-    justify-content: center;
-    height: 100%;
-    border-bottom: 2px solid $near-white;
-}
 
 .hero, .home-section {
     display: flex;
     position: relative;
     z-index: 8;
+}
+
+.hero-container {
+    height: 100vh;
 }
 
 .hero-text {
@@ -80,92 +70,5 @@
         @media screen and (max-width: 1024px) {
             line-height: 1em;
         }
-    }
-}
-
-// contact styles
-
-.contact {
-    min-height: 100vh;
-    padding: 0 10em;
-    justify-content: center;
-    @media screen and (max-width: 1400px) {
-        padding: 0 7em;
-    }
-    @media screen and (max-width: 900px) {
-        padding: 3em;
-        justify-content: center;
-    }
-    @media screen and (max-width: 500px) {
-        padding: 1em;
-    }
-}
-
-div.contact-row {
-    width: 100%;
-    max-width: 60em;
-    justify-content: space-between;
-    @media screen and (max-width: 800px) {
-        flex-direction: column;
-        justify-content: center;
-    }
-}
-
-.contact-text-container, .contact-input-container {
-    height: 20em;
-    background-color: $blue-light;
-    justify-content: flex-start;
-    h1 {
-        margin-top: 0;
-    }
-    .name {
-        margin-top: 0;
-    }
-    @media screen and (min-width: 901px) {
-        max-width: 22em;
-    }
-    @media screen and (max-width: 900px) {
-        width: 100%;
-        padding: 0 1em;
-    }
-    @media screen and (max-width: 800px) {
-        height: 14em;
-    }
-}
-
-#contact-home {
-    background-color: $blue-light;
-    padding: 1em;
-}
-
-.contact-input, .contact-textarea {
-    padding: 0.5em;
-    margin: 0.5em 0;
-    width: 100%;
-    color: $near-white;
-    background-color: $blue-dark;
-    border: none;
-    border-bottom: solid 2px $near-white;
-    &:focus {
-        outline: none;
-    }
-}
-
-.overflow-hidden {
-    overflow: hidden;
-}
-
-.contact-textarea {
-    resize: none;
-}
-
-// footer
-
-#footer {
-    background-color: $near-white;
-    padding-top: 2em;
-    padding-bottom: 2em;
-    p {
-        font-size: 0.8em;
     }
 }

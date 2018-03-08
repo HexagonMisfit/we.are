@@ -1,36 +1,19 @@
 // vendor js files
 window.$ = window.jQuery = require('jquery');
-var _ = require('lodash');
-// import { TweenMax, TimelineLite } from '../../node_modules/gsap/TweenMax.js';
-// import ScrollToPlugin from 'gsap/ScrollToPlugin'
-// import ScrollMagic from 'ScrollMagic';
-
-
-// DEV-ONLY
-// import '../../node_modules/scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min.js';
 
 // our scripts
-import { brandColors } from './theming.js';
+import { brandColors } from './shared/theming.js';
 import './anim.js';
-import './slickCarousels.js';
-import './aframeScene.js';
-
-// images
-// const groundTexture = require('../assets/img/wood_planks_new_0035_02_tiled.jpg')
+import './shared/nav.js';
+import './shared/fancyCursor.js';
 
 // import our scss last
-import '../sass/main.scss';
+import './sass/main.scss';
 
 var body = $('body');
 
 $(function () {
 
-    /******************/
-    /* Init variables */
-    /******************/
-
-    var vrScreen = $('#vr-screen');
-    var vrActive = false;
     /**************/
     /* UI Stuff */
     /**************/
@@ -43,81 +26,14 @@ $(function () {
     };
 
     function onInit() {
-        TweenMax.to(vrScreen, 0, { autoAlpha: 0 });
         var ascend1 = $('.ascend-1');
         TweenMax.to(body, 0.75, { autoAlpha: 1, ease: Power2.easeOut });
         TweenMax.staggerTo(ascend1, 1, { autoAlpha: 1, y: 0, ease: Power3.easeOut }, 0.1);
     }
 
-    /**************/
-    /* Navigation */
-    /**************/
-
-    function navigateTo(position) {
-        var scrollPosition = '#' + position + '-home';
-        var homeContainer = $('#home-container');
-        TweenMax.to(homeContainer, 1, { scrollTo: { y: scrollPosition, autoKill: false }, ease: Power3.easeInOut });
-    }
-
-    var navLink = $('.nav-link');
-
-    function addActiveNavClass(element) {
-        element.addClass('nav-link-active');
-    }
-
-    function removeActiveNavClass(element) {
-        element.removeClass('nav-link-active');
-    }
-
-    function showVrScreen() {
-        TweenMax.to(vrScreen, 0, { autoAlpha: 1, transform: 'translateX(0)' });
-    }
-
-    function hideVrScreen() {
-        TweenMax.to(vrScreen, 0, { autoAlpha: 0, transform: 'translateX(100%)' });
-
-    }
-
-    function toggleVr() {
-        vrActive ? hideVrScreen() : showVrScreen();
-        vrActive = !vrActive;
-    }
-
-    navLink.click(function () {
-
-        if (this.id === 'home-button') {
-            navigateTo('home');
-            if (vrActive) {
-                toggleVr();
-            }
-        }
-        if (this.id === 'work-button') {
-            navigateTo('work');
-            if (vrActive) {
-                toggleVr();
-            }
-        }
-        if (this.id === 'team-button') {
-            navigateTo('team');
-            if (vrActive) {
-                toggleVr();
-            }
-        }
-        if (this.id === 'contact-button') {
-            navigateTo('contact');
-            if (vrActive) {
-                toggleVr();
-            }
-        }
-        if (this.id === 'vr-button') {
-            toggleVr();
-        }
-
-    });
-
     var scrollControl = new ScrollMagic.Controller();
 
-    var fadeAndRiseTween1 = TweenMax.staggerTo('.fade-1', 0.8, { autoAlpha: 1, y: 0, ease: Power4.easeOut }, 0.1);
+    var fadeAndRiseTween1 = TweenMax.staggerTo('.fade-1', 0.8, {autoAlpha: 1, y: 0, ease: Power4.easeOut }, 0.1);
     var fadeAndRiseScene1 = new ScrollMagic.Scene({
         triggerHook: 0.8,
         triggerElement: '#trigger-1',

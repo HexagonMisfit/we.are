@@ -1,7 +1,4 @@
-import { brandColors } from './theming.js';
-// import { TweenMax, TimelineLite } from '../../node_modules/gsap/TweenMax';
-// var $ = require('jquery');
-// var _ = require('lodash');
+import { brandColors } from './shared/theming.js';
 
 var scene = new THREE.Scene();
 

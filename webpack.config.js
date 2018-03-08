@@ -5,10 +5,16 @@ var webpack = require("webpack");
 
 module.exports = {
     context: __dirname + '/src',
-    entry: './js/index.js',
+    entry: {
+        app: './index.js',
+        team: './team/team.js',
+        work: './work/work.js',
+        contact: './contact/contact.js',
+        vr: './vr/aframeScene.js'
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: '[name].bundle.js'
     },
     module: {
         rules: [
@@ -24,7 +30,7 @@ module.exports = {
                 use: [{
                     loader: 'file-loader',
                     options: {
-                        name: '[name].[ext]',
+                        name: 'assets/[name].[ext]',
                     }
                 }]
             },
@@ -35,7 +41,7 @@ module.exports = {
                         loader: 'url-loader',
                         options: {
                             limit: 8000,
-                            name: '[name].[ext]'
+                            name: 'assets/[name].[ext]'
                         }
                     }
                 ]
@@ -44,7 +50,31 @@ module.exports = {
     },
     plugins: [
         new ExtractTextPlugin('style.css'),
-        new HtmlWebpackPlugin({ template: './index.html', filename: 'index.html', inject: 'head' }),
+        new HtmlWebpackPlugin({ 
+            template: './index.html', 
+            filename: './index.html', 
+            chunks: ['app']    
+        }),
+        new HtmlWebpackPlugin({
+            template: './team/team.html',
+            filename: './team.html',
+            chunks: ['team']
+        }),
+        new HtmlWebpackPlugin({
+            template: './work/work.html',
+            filename: './work.html',
+            chunks: ['work']
+        }),
+        new HtmlWebpackPlugin({
+            template: './vr/vr.html',
+            filename: './vr.html',
+            chunks: ['vr']
+        }),
+        new HtmlWebpackPlugin({
+            template: './contact/contact.html',
+            filename: './contact.html',
+            chunks: ['contact']
+        }),
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"

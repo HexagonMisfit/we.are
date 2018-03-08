@@ -6,7 +6,7 @@
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HexagonMis.fit</title>
+    <title>HexagonMisfit</title>
     <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/89/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.7.1/aframe.js"></script>
@@ -22,22 +22,22 @@
     <nav class="navigation home-nav row" id="main-nav">
         <ul>
             <div>
-                <a class="nav-link" id="home-button">
-                    <span>HexagonMis.fit</span>
+                <a class="nav-link" id="home-button" href="/">
+                    <span class="light-text">HexagonMisfit</span>
                 </a>
             </div>
             <div>
-                <a class="nav-link" id="work-button">
-                    <span>Work</span>
+                <a class="nav-link" id="work-button" href="/work">
+                    <span class="light-text">Work</span>
                 </a>
-                <a class="nav-link" id="team-button">
-                    <span>Team</span>
+                <a class="nav-link" id="team-button" href="/team">
+                    <span class="light-text">Team</span>
                 </a>
-                <a class="nav-link" id="contact-button">
-                    <span>Contact</span>
+                <a class="nav-link" id="contact-button" href="/contact">
+                    <span class="light-text">Contact</span>
                 </a>
-                <a class="nav-link" id="vr-button">
-                    <span>VR</span>
+                <a class="nav-link" id="vr-button" href="/vr">
+                    <span class="light-text">VR</span>
                 </a>
             </div>
         </ul>
@@ -45,8 +45,8 @@
     <div class="container">
         <div id="home-container">
             <div id="home-home" class="hero-container home-section-container">
-                <header class="hero hero-padding-responsive column space-around full-height" id="section0">
-                    <div class="home-text-container row">
+                <header id="section0" class="hero hero-padding-responsive column space-around full-height">
+                    <div class="home-text-container row justify-center">
                         <div class="hero-text column">
                             <h1 class="light-text ultra-big-text ascend-1">HEXAGONMISFIT</h1>
                             <h2>
@@ -61,251 +61,9 @@
                     </div>
                 </header>
             </div>
-            <section id="work-home" class="home-section full-height">
-                <div id="home-projects-container" class="home-section-container slider-full-width">
-                    <!-- Slider #1 -->
-                    <div id="slide-1" class="slide">
-                        <div class="slide-container">
-                            <div class="slide-content hero-padding-responsive row">
-                                <div id="trigger-1" class="slide-info column">
-                                    <h2 class="light-text fade-1">Mariposa Chandelier</h2>
-                                    <p class="light-text fade-1">This project attempts to make taking the stairs more appealing than the elevator, promoting
-                                        health and engaging viewers by allowing them to trigger animations and sounds that
-                                        flow throughout the entire installation.</p>
-                                    <a class="link play-link fade-1 venobox row" title="Mariposa Chandelier" data-autoplay="true" data-vbtype="video" href="https://vimeo.com/116297443">
-                                        <img class="play-button" />
-                                        <span class="light-text">Play Video</span>
-                                    </a>
-                                </div>
-                                <div id="slide-1-img-container" class="slide-img-container">
-                                    <div id="slide-1-img" class="slide-img"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slider #2 -->
-                    <div id="slide-2" class="slide slide-2">
-                        <div class="slide-container">
-                            <div class="slide-content hero-padding-responsive row">
-                                <div class="slide-info column">
-                                    <h2 class="light-text">Coachella VIP Party</h2>
-                                    <p class="light-text">Using the Intel Realsense 3D Camera and Unity, we worked with Phantogram and Republic
-                                        Records to create live audio reactive visuals for their VIP Party at Coachella.</p>
-                                    <a class="link light-text">See more</a>
-                                </div>
-                                <div class="slide-img-container">
-                                    <div id="slide-2-img" class="slide-img"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slider #3 -->
-                    <div id="slide-3" class="slide">
-                        <div class="slide-container">
-                            <div class="slide-content hero-padding-responsive row">
-                                <div class="slide-info column">
-                                    <h2 class="light-text">VJ Tool - minim</h2>
-                                    <p class="light-text">Real-time 2D mograph system for doing live visuals for music. The concept is to trigger
-                                        black-and-white animated 2D shapes, pass them through a gradient color mapper, then
-                                        through some custom post processing effects, put them on a background, and then map
-                                        a midi controller to trigger the different clips and alter the parameters.</p>
-                                    <a class="link play-link venobox row" title="VJ Tool - minim" data-autoplay="true" data-vbtype="video" href="https://vimeo.com/244757902">
-                                        <img class="play-button" />
-                                        <span class="light-text">Play Video</span>
-                                    </a>
-                                </div>
-                                <div id="slide-3-img-container" class="slide-img-container">
-                                    <div id="slide-3-img" class="slide-img"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slider #4 -->
-                    <div id="slide-4" class="slide slide-4">
-                        <div class="slide-container">
-                            <div class="slide-content hero-padding-responsive row">
-                                <div class="slide-info column">
-                                    <h2 class="light-text">Mariposa Chandelier</h4>
-                                        <p class="light-text">This project attempts to make taking the stairs more appealing than the elevator,
-                                            promoting health and engaging viewers by allowing them to trigger animations
-                                            and sounds that flow throughout the entire installation.</p>
-                                        <a class="link light-text">See more</a>
-                                </div>
-                                <div class="slide-img-container">
-                                    <div id="slide-4-img" class="slide-img"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section id="team-home">
-                <div class="home-team-container home-section-container">
-                    <div class="home-team-info-container hero-padding-responsive">
-                        <div id="trigger-2" class="section-header-wrapper column">
-                            <h1 class="section-header fade-2">Who Are We?</h1>
-                        </div>
-                        <p class="fade-2">
-                            Based in rainy Seattle, Washington, we are an interaction design studio that uses technology to build experiences that astonish
-                            and delight. Our specialty is that we all have different specialties! Hit us up if you wanna
-                            collaborate on something dope.
-                        </p>
-                        <h2 class="section-header fade-2">
-                            Meet The Team
-                        </h2>
-                    </div>
-                    <div id="team-slider-container">
-                        <div id="team-slider">
-                            <div class="team-card-container column">
-                                <div class="team-card fade-2">
-                                    <div id="chris-r-img" class="team-prof-pic"></div>
-                                    <div class="team-card-title">
-                                        <h3 class="team-card-name">
-                                            Chris Rojas
-                                        </h3>
-                                        <div class="team-card-info">
-                                            <p>Digital Artist, VR/AR/MR Developer, Climber. Experienced with Unity, Processing,
-                                                and the intersection of hardware and software.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="team-card-container column">
-                                <div class="team-card fade-2">
-                                    <div id="quin-k-img" class="team-prof-pic"></div>
-                                    <div class="team-card-title">
-                                        <h3 class="team-card-name">
-                                            Quin Kennedy
-                                        </h3>
-                                        <div class="team-card-info">
-                                            <p>Digital artist, creative technologist, prototyper and developer. Lighting designer
-                                                for dance and theater. Also creates and distributes zines.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="team-card-container column">
-                                <div class="team-card fade-2">
-                                    <div id="daniel-s-img" class="team-prof-pic"></div>
-                                    <div class="team-card-title">
-                                        <h3 class="team-card-name">
-                                            Daniel Sierra
-                                        </h3>
-                                        <div class="team-card-info">
-                                            <p>Multi-disciplined digital artist who has worked in the areas of mixed reality,
-                                                music technology, visual effects and audio-visualizations. Loves making beautiful
-                                                things and pushing the boundaries of how we create.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="team-card-container column">
-                                <div class="team-card fade-2">
-                                    <div id="alex-e-img" class="team-prof-pic"></div>
-                                    <div class="team-card-title">
-                                        <h3 class="team-card-name">
-                                            Alex Erickson
-                                        </h3>
-                                        <div class="team-card-info">
-                                            <p>Front-end web application developer exploring design, WebGL and WebVR technologies,
-                                                the Unity engine, and the creative side of coding in general.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section id="contact-home" class="home-section">
-                <div id="trigger-3" class="home-contact-container home-section-container hero-padding-responsive">
-                    <div class="contact-row row">
-                        <div class="one-half column">
-                            <div class="contact-container column">
-                                <div class="contact-text-container  justify-center column">
-                                    <h1 class="light-text section-header fade-3">Get In Touch</h1>
-                                    <h3 class="light-text fade-3">
-                                        We weren't kidding when we said to hit us up!
-                                    </h3>
-                                    <ul class="contact-list">
-                                        <p class="light-text fade-3">
-                                            310 NW 40th St. Seattle, WA 98107
-                                        </p>
-                                        <p class="light-text fade-3">
-                                            sup@hexagonmisfit.com
-                                        </p>
-                                        <p class="light-text fade-3">555-555-5555</p>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="one-half justify-center column fade-3">
-                            <div id="map"></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <footer id="footer" class="hero-padding-responsive overflow-hidden">
-                <p class="fade-3">Copyright 2018 HexagonMisfit</p>
-                <p class="fade-3">Site by Alex Erickson</p>
-            </footer>
         </div>
-        <div id="vr-screen">
-            <a-scene>
-                <a-assets>
-                    <img id="groundTexture" src="./wood_planks_new_0035_02_tiled.jpg">
-                    <video id="mariposa-chandelier" src="Merica.mp4" type="video/mp4">
-                </a-assets>
-
-                <a-entity id="foo" foo></a-entity>
-
-                <a-video id="video-top-left" src="#mariposa-chandelier" width="2" height="1.125" position="-3.3 2.5 -2" rotation="0 45 0"></a-video>
-                <a-text value="Hello text!" font="dejavu" width="5" height="5" position="-3.3 2 -1.6" rotation="0 45 0"></a-text>
-
-                <a-video id="video-bottom-left" src="#mariposa-chandelier" width="2" height="1.125" position="-3.3 0.8 -2" rotation="0 45 0"></a-video>
-                <a-text value="Hello text!" font="dejavu" width="5" height="5" position="-3.3 0.4 -1.6" rotation="-45 45 0"></a-text>
-
-                <a-video id="video-top-center" src="#mariposa-chandelier" width="2" height="1.125" position="-1 2.5 -3"></a-video>
-                <a-text value="Hello text!" font="dejavu" width="5" height="5" position="-1.2 2 -2.6"></a-text>
-
-                <a-video id="video-bottom-center" src="#mariposa-chandelier" width="2" height="1.125" position="-1 0.8 -3"></a-video>
-                <a-text value="Hello text!" font="dejavu" width="5" height="5" position="-1.2 0.4 -2.6" rotation="-45 0 0"></a-text>
-            
-
-                <a-video id="video-top-right" src="#mariposa-chandelier" width="2" height="1.125" position="1.7 2.5 -2" rotation="0 -45 0"></a-video>
-                <a-text value="Hello text!" font="dejavu" width="5" height="5" position="1.5 2 -1.9" rotation="0 -45 0"></a-text>
-
-                <a-video id="video-bottom-right" src="#mariposa-chandelier" width="2" height="1.125" position="1.7 0.8 -2" rotation="0 -45 0"></a-video>
-                <a-text value="Hello text!" font="dejavu" width="5" height="5" position="1.5 0.4 -1.9"  rotation="-45 -45 0"></a-text>
-
-                <a-sky globe-sky="color: #0995B2" height="2048" radius="12" color="#14ACCC" theta-length="90" width="2048"></a-sky>
-
-                <a-plane ground-gradient color="#fafafa" height="24" width="24" rotation="-90 0 0" repeat="20 20" metalness="0.25"></a-plane>
-
-                <a-entity laser-controls="hand: left"></a-entity>
-                <a-entity laser-controls="hand: right"></a-entity>
-
-            </a-scene>
-        </div>
-        <script>
-            function initMap() {
-                var headquarters = { lat: 47.6562533, lng: -122.3614647 };
-                var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 16,
-                    center: headquarters
-                });
-                var marker = new google.maps.Marker({
-                    position: headquarters,
-                    map: map
-                });
-            }
-        </script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkhE1HeuvjOHVhQt_WokpQ61VLHXi2lTM&callback=initMap"></script>
+    </div>
+    <div id="fancy-cursor"></div>
 </body>
 
 </html>

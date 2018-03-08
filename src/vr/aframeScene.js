@@ -1,5 +1,5 @@
-import { brandColors } from './theming.js';
-import '../assets/video/Merica.mp4';
+import { brandColors } from '../shared/theming.js';
+import './assets/Merica.mp4';
 
 const vertexShader = `
 
@@ -37,7 +37,6 @@ float plot2(vec2 st, float pct){
     float z = x;
     vec3 color, color2 = vec3(y,x,z);
 
-    // Plot a line
     float pct = plot(st,x);
     float pct2 = plot2(st, y);
     color = (pct)*color+pct*vec3(1.0,1.0,1.0);
@@ -49,10 +48,6 @@ float plot2(vec2 st, float pct){
 `
 AFRAME.registerComponent('globe-sky', {
     schema: { color: { type: 'color' } },
-    /**
-     * Creates a new THREE.ShaderMaterial using the two shaders defined
-     * in vertex.glsl and fragment.glsl.
-     */
     init: function () {
         const data = this.data;
         this.material = new THREE.ShaderMaterial({
@@ -66,24 +61,18 @@ AFRAME.registerComponent('globe-sky', {
         this.applyToMesh();
         this.el.addEventListener('model-loaded', () => this.applyToMesh());
     },
-    /**
-     * Update the ShaderMaterial when component data changes.
-     */
+    
     update: function () {
         this.material.uniforms.colorIn.value.set(this.data.color);
     },
-    /**
-     * Apply the material to the current entity.
-     */
+    
     applyToMesh: function () {
         const mesh = this.el.getObject3D('mesh');
         if (mesh) {
             mesh.material = this.material;
         }
     },
-    /**
-     * On each frame, update the 'time' uniform in the shaders.
-     */
+    
     tick: function (t) {
         this.material.uniforms.time.value = t / 1000;
     }
@@ -105,8 +94,8 @@ void main()
 `
 
 AFRAME.registerComponent('ground-gradient', {
-    schema: {color: {type: 'color'} },
-    init: function() {
+    schema: { color: { type: 'color' } },
+    init: function () {
         this.material = new THREE.ShaderMaterial({
             uniforms: {},
             vertexShader,
@@ -115,9 +104,9 @@ AFRAME.registerComponent('ground-gradient', {
         this.applyToMesh();
         this.el.addEventListener('model-loaded', () => this.applyToMesh());
     },
-    applyToMesh: function() {
+    applyToMesh: function () {
         const mesh = this.el.getObject3D('mesh');
-        if(mesh) {
+        if (mesh) {
             mesh.material = this.material;
         }
     }
