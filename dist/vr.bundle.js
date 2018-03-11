@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 17);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -10335,6 +10335,7 @@ const brandColors = {
     plumIsh: 0x542344,
     salmonPink: 0xEA526F,
     seafoamGreen: 0x119DA4,
+    lavendarIsh: 0xB7C3F3,
     magentaDark: 0xB21252,
     blueLight: 0x14ACCC,
     blueDark: 0x0995B2,
@@ -10348,13 +10349,13 @@ const brandColors = {
 
 /***/ }),
 
-/***/ 12:
+/***/ 17:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_theming_js__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_Merica_mp4__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_Merica_mp4__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_Merica_mp4___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__assets_Merica_mp4__);
 
 
@@ -10503,7 +10504,7 @@ $(function () {
 
 /***/ }),
 
-/***/ 13:
+/***/ 18:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/Merica.mp4";

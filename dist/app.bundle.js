@@ -10333,6 +10333,7 @@ const brandColors = {
     plumIsh: 0x542344,
     salmonPink: 0xEA526F,
     seafoamGreen: 0x119DA4,
+    lavendarIsh: 0xB7C3F3,
     magentaDark: 0xB21252,
     blueLight: 0x14ACCC,
     blueDark: 0x0995B2,
@@ -10346,42 +10347,67 @@ const brandColors = {
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {/**************/
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__theming_js__ = __webpack_require__(1);
+
+// vendor files
+window.$ = window.jQuery = __webpack_require__(0);
+
+// our scripts
+
+
+
+/**************/
 /* Navigation */
 /**************/
 
-function navigateTo(position) {
-    //transition out of current page and navigate to other pages
-}
+$(document).ready(function () {
+    var pageWipe = $('#page-wipe');
 
-var navLink = $('.nav-link');
+    function wipeIn() {
+        // TweenMax.to(pageWipe, 0, {backgroundColor: brandColors.nearWhite});
+        TweenMax.to(pageWipe, 0.75, { width: 0, bottom: '100%', left: '100%', ease: Power4.easeIn });
+    };
 
-function addActiveNavClass(element) {
-    element.addClass('nav-link-active');
-}
-
-function removeActiveNavClass(element) {
-    element.removeClass('nav-link-active');
-}
-
-navLink.click(function () {
-
-    if (this.id === 'home-button') {
-        navigateTo('home');
+    function wipeOut(ev) {
+        function navigate() {
+            window.location = ev.currentTarget.href;
+        }
+        TweenMax.to(pageWipe, 0, {top: 0, left: 0, bottom: 0, height: '100%', width: 0});
+        TweenMax.to(pageWipe, 0.75, {right: 0, width: '100%', ease: Power4.easeIn, onComplete: navigate});
     }
-    if (this.id === 'work-button') {
-        navigateTo('work');
+
+    function onInit() {
+        wipeIn();
     }
-    if (this.id === 'team-button') {
-        navigateTo('team');
+
+    onInit();
+
+    function navigateTo(position) {
+        //transition out of current page and navigate to other pages
+
     }
-    if (this.id === 'contact-button') {
-        navigateTo('contact');
+
+    var navLink = $('.nav-link');
+
+    function addActiveNavClass(element) {
+        element.addClass('nav-link-active');
     }
+
+    function removeActiveNavClass(element) {
+        element.removeClass('nav-link-active');
+    }
+
+    navLink.click(function (ev) {
+        ev.preventDefault();
+        wipeOut(ev);
+    });
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
 /***/ }),
 /* 3 */
@@ -10417,7 +10443,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_theming_js__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__anim_js__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_nav_js__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_nav_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__shared_nav_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_fancyCursor_js__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_fancyCursor_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__shared_fancyCursor_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__sass_main_scss__ = __webpack_require__(4);

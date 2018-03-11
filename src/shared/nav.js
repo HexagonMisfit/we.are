@@ -1,33 +1,55 @@
+
+// vendor files
+window.$ = window.jQuery = require('jquery');
+
+// our scripts
+import { brandColors } from './theming.js';
+
+
 /**************/
 /* Navigation */
 /**************/
 
-function navigateTo(position) {
-    //transition out of current page and navigate to other pages
-}
+$(document).ready(function () {
+    var pageWipe = $('#page-wipe');
 
-var navLink = $('.nav-link');
+    function wipeIn() {
+        // TweenMax.to(pageWipe, 0, {backgroundColor: brandColors.nearWhite});
+        TweenMax.to(pageWipe, 0.75, { width: 0, bottom: '100%', left: '100%', ease: Power4.easeIn });
+    };
 
-function addActiveNavClass(element) {
-    element.addClass('nav-link-active');
-}
-
-function removeActiveNavClass(element) {
-    element.removeClass('nav-link-active');
-}
-
-navLink.click(function () {
-
-    if (this.id === 'home-button') {
-        navigateTo('home');
+    function wipeOut(ev) {
+        function navigate() {
+            window.location = ev.currentTarget.href;
+        }
+        TweenMax.to(pageWipe, 0, {top: 0, left: 0, bottom: 0, height: '100%', width: 0});
+        TweenMax.to(pageWipe, 0.75, {right: 0, width: '100%', ease: Power4.easeIn, onComplete: navigate});
     }
-    if (this.id === 'work-button') {
-        navigateTo('work');
+
+    function onInit() {
+        wipeIn();
     }
-    if (this.id === 'team-button') {
-        navigateTo('team');
+
+    onInit();
+
+    function navigateTo(position) {
+        //transition out of current page and navigate to other pages
+
     }
-    if (this.id === 'contact-button') {
-        navigateTo('contact');
+
+    var navLink = $('.nav-link');
+
+    function addActiveNavClass(element) {
+        element.addClass('nav-link-active');
     }
+
+    function removeActiveNavClass(element) {
+        element.removeClass('nav-link-active');
+    }
+
+    navLink.click(function (ev) {
+        ev.preventDefault();
+        wipeOut(ev);
+    });
 });
+

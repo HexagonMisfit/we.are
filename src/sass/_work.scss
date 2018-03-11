@@ -1,0 +1,151 @@
+@import 'variables';
+
+#work-container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    padding: 7em 0;
+}
+
+.work-header {
+    position: absolute;
+    left: 19%;
+    z-index: 5;
+    padding-top: 1em;
+    @media screen and (max-width: 634px) {
+        left: 10%;
+        padding-top: 0;
+    }
+}
+
+.work-body {
+    z-index: 5;
+    height: 67%;
+    display: flex;
+    justify-content: center;
+}
+
+.projects-list {
+    list-style-type: none;
+    position: absolute;
+    left: 19%;
+    @media screen and (max-width: 634px) {
+        left: 10%;
+    }
+    .project-li {
+        min-height: 45px;
+        transition: all 0.2s ease;
+        span {
+            transition: all 0.2s ease;
+            position: relative;
+            ::before {
+                content: '';
+                transition: all 0.2s ease;
+                width: 0;
+                display: flex;
+                justify-content: flex-end;
+            }
+            ::after {
+                content: '';
+                transition: all 0.2s ease;
+                width: 0;
+            }
+        }
+    }
+
+    .project-li.active {
+        margin-top: -17px;
+        span {
+            font-weight: bolder;
+            font-size: 125%;
+            margin-top: -10px;
+            ::before {
+                content:"";
+                width: 25px;
+                position: absolute;
+                left: -28px;
+                top: 49%;
+                height: 3px;
+                background-color: $near-black;
+                @media screen and (max-width: 433px) {
+                    width: 0;
+                    display: hidden;
+                }
+            } 
+            ::after {          
+                content:"";
+                width: 25px;
+                position: absolute;
+                left: calc(100% + 3px);
+                top: 49%;
+                height: 3px;
+                background-color: $near-black;
+                @media screen and (max-width: 433px) {
+                    width: 0;
+                    display: hidden;
+                }
+            }
+        }   
+    }
+}
+
+@keyframes activate {
+    from {
+        font-size: 100%;
+        font-weight: normal;
+        ::before {
+            width: 0;
+        }
+        ::after {
+            width: 0;
+        }
+    }
+    to {
+        font-size: 175%;
+        font-weight: bolder;
+        ::before {
+            width: 25px;
+        }
+        ::after  {
+            width: 25px;
+        }
+    }
+}
+
+.work-background {
+    width: 100%;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+}
+
+.project-background-img {
+    width: 67%;
+    max-width: 800px;
+    left: 25%;
+    top: 27.5%;
+    z-index: 2;
+    position: absolute;
+}
+.project-background-color-panel {
+    z-index: 1;
+    width: 400px;
+    height: 70%;
+    opacity: 0.5;
+    position: absolute;
+    left: 15%;
+    top: 15%;
+    bottom: 15%;
+    background-color: $salmon-pink;
+    @media screen and (max-width: 550px) {
+        width: 70%;
+    }
+}

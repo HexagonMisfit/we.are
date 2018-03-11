@@ -92,7 +92,7 @@ p {
     position: fixed;
     left: 0;
     top: 0;
-    background-color: $near-white;
+    background-color: lighten($near-white, 20%);
     mix-blend-mode: exclusion;
     z-index: 999;
     pointer-events: none;
@@ -194,6 +194,14 @@ h3 {
     @media screen and (max-width: 750px) {
         font-size: 3.5em;
     }
+    @media screen and (max-width: 600px) {
+        font-size: 2em;
+    }
+}
+
+.really-big-text {
+    font-size: 3em;
+    margin: 0;
     @media screen and (max-width: 600px) {
         font-size: 2em;
     }
