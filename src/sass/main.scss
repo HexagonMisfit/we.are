@@ -1,25 +1,5 @@
 @import 'normalize', 'variables', 'initialState', 'shared', 'nav', 'home', 'team', 'contact', 'vr', 'work';
 
-// footer
-
-#footer {
-    background-color: $near-white;
-    padding-top: 2em;
-    padding-bottom: 2em;
-    display: flex;
-    width: 100%;
-    p {
-        font-size: 0.8em;
-    }
-    @media screen and (max-width: 1200px) {
-        padding-left: 1em;
-    }
-    @media screen and (max-width: 720px) {
-        padding-left: 0;
-        justify-content: center;
-    }
-}
-
 .flex-1 {
     order: 1
 }

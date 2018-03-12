@@ -76,13 +76,12 @@ p {
     width: 100%;
 }
 
-.footer {
-    height: 2em;
+#footer {
+    display: flex;
     width: 100%;
-    text-align: center;
-    padding: 2em 0;
-    opacity: 0.6;
-    font-weight: bolder;
+    padding: 1em 0;
+    height: 3em;
+    font-size: 14px;
 }
 
 #fancy-cursor {
@@ -92,10 +91,12 @@ p {
     position: fixed;
     left: 0;
     top: 0;
-    background-color: lighten($near-white, 20%);
-    mix-blend-mode: exclusion;
+    background-color: $near-white;
+    border: 2px solid $near-black;
+    mix-blend-mode: difference;
     z-index: 999;
     pointer-events: none;
+    visibility: hidden;
 }
 
 .one-third {
@@ -122,7 +123,7 @@ h3 {
     margin: 0 0 1em;
 }
 
-.light-text {
+.light-text, .light-text > * {
     color: $near-white;
 }
 
