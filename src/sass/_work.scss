@@ -1,36 +1,42 @@
 @import 'variables';
 
 #work-container {
-    height: 100vh;
+    height: calc(100% - 3em);
     width: 100%;
     display: flex;
-    padding: 5em 0;
-    @media screen and (max-height: 700px) {
-        padding: 4em 0;
-        font-size: 75%;
-    }
-    @media screen and (max-height: 400px) {
-        padding: 3em 0 0;
-    }
-    @media screen and (orientation: portrait) {
-        padding: 3em 0 0;
-    }
+    padding: 62px 0 0;
+    position: relative;
+    flex-direction: column;
 }
 
 .work-header {
     position: relative;
     z-index: 5;
-    margin-bottom: 2em;
+    justify-content: center;
     align-items: center;
 }
 
 .work-header.wide-only {
     height: 7em;
+    position: relative;
+    width: 100%;
+}
+
+.work-header-text.wide-only {
+    width: 100%;
+    justify-content: flex-start;
 }
 
 .work-header.narrow-only {
-    margin: 1em 0;
-    height: 5.2em;
+    padding: 0 1em;
+    width: 100%;
+    h1 {
+        margin: 0;
+        width: 100%;
+        height: 2.5em;
+        align-items: center;
+        justify-content: flex-start;
+    }
 }
 
 .wide-only {
@@ -56,24 +62,17 @@
 
 .work-body {
     z-index: 5;
-    height: 100%;
-    justify-content: center;
+    align-items: center;
     position: relative;
-    background-color: $salmon-pink;
+    background-color: lighten($salmon-pink, 10);
     overflow-y: scroll;
-}
-
-.work-footer-container, .work-body {
     display: flex;
-    padding: 0 19%;
-    @media screen and (min-width: 1400px) {
-        padding: 0 22%;
-    }
-    @media screen and (max-width: 1023px) {
-        padding: 0 10%;
-    }
-    @media screen and (orientation: portrait) {
-        justify-content: flex-start;
+    height: 100%;
+    flex-direction: column;
+    @media screen and (orientation: landscape) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
     }
 }
 
@@ -81,12 +80,22 @@
     justify-content: space-around;
     position: relative;
     align-items: center;
+    max-width: 1200px;
     @media screen and (orientation: portrait) {
         flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
     }
     @media screen and (orientation: landscape) {
         height: 100%;
+        width: 100%;
+        padding: 0 2em;
     }
+}
+
+.projects-inner-container {
+    max-height: 368px;
+    justify-content: flex-start;
 }
 
 .projects-img-container {
@@ -97,18 +106,22 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     padding-left: 0.5em;
-    min-height: 275px;
     @media screen and (orientation: portrait) {
         order: 1;
         width: 100%;
         padding: 0;
     }
+    @media screen and (orientation: landscape) {
+        height: 100%;
+        justify-content: center;
+    }
 }
 
 .project-blurb {
     padding: 1em;
+    height: 9em;
 }
 
 .project-img {
@@ -126,6 +139,9 @@
         width: 100%;
         order: 2;
     }
+    @media screen and (orientation: landscape) {
+        height: 100%;
+    }
 }
 
 .projects-list {
@@ -141,6 +157,9 @@
         display: flex;
         align-items: center;
         padding: 0 3px;
+        @media screen and (orientation: portrait) {
+            padding-left: 1em;
+        }
         ::before {
             content: '';
             width: 20px;
@@ -148,6 +167,9 @@
             left: -25px;
             position: absolute;
             background-color: $near-black;
+            @media screen and (orientation: portrait) {
+                visibility: hidden;
+            }
         }
         span {
             transition: all 0.2s ease;
@@ -163,6 +185,14 @@
         span {
             font-weight: bolder;
         }   
+    }
+}
+
+.project-stats {
+    font-size: 0.75em;
+    padding: 1em;
+    ul {
+        list-style-type: none;
     }
 }
 

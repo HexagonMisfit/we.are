@@ -79,9 +79,12 @@ p {
 #footer {
     display: flex;
     width: 100%;
-    padding: 1em 0;
+    padding: 1em 2em;
     height: 3em;
-    font-size: 14px;
+    font-weight: bold;
+    @media screen and (max-width: 767px) {
+        padding-left: 0.5em;
+    }
 }
 
 #fancy-cursor {
@@ -117,6 +120,10 @@ p {
     @media screen and (max-width: 900px) {
         width: 100%;
     }
+}
+
+.white-background {
+    background-color: $near-white;
 }
 
 h3 {

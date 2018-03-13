@@ -1,7 +1,10 @@
 .navigation {
-    width: 100vw;
+    width: 100%;
     z-index: 11;
-    padding: 2em 8em;
+    padding: 0 1em;
+    align-content: center;
+    justify-content: center;
+    height: 62px;
     position: fixed;
     left: 0;
     top: inherit;
@@ -9,34 +12,12 @@
         width: 100vw;
         list-style: none;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
         align-items: center;
         height: 100%;
     }
-    @media screen and (max-width: 1400px) {
-        padding: 1em 7em;
-    }
-    @media screen and (max-width: 1000px) {
-        padding: 1em 4em;
-    }
-    // @media screen and (max-width: 900px) {
-    //     padding: 1em;
-    //     ul {
-    //         justify-content: space-around;
-    //     }
-    // }
     @media screen and (max-width: 767px) {
-        ul {
-            width: 100vw;
-            div {
-                justify-content: center;
-            }
-        }
-    }
-    @media screen and (max-width: 720px) {
-        padding: 1em 5px;
-        font-size: 0.7em;
-        height: 3em;
+        padding: 0;
         ul {
             justify-content: center;
         }
@@ -44,41 +25,42 @@
 }
 
 .nav-link {
-    margin-left: 1em;
+    padding: 1em;
     font-weight: bolder;
     text-align: center;
     position: relative;
+    &:hover {
+        span::after {
+            right: 1em;
+            @media screen and (max-width: 767px) {
+                right: 0.5em;
+            }
+        }
+    }
     span::after{
         content: "";
         display: block;
         position: absolute;
-        left: 0;
+        left: 1em;
         right: 100%;
         transition: right 200ms;
         height: 2px;
-        bottom: -3px;
+        bottom: calc(1em - 3px);
         background-color: $near-black;
+        @media screen and (max-width: 767px) {
+            left: 0.5em;
+            bottom: calc(0.5em - 3px);
+        }
     }
     span.light-text::after {
-        content: "";
-        display: block;
-        position: absolute;
-        left: 0;
-        right: 100%;
-        transition: right 200ms;
-        height: 2px;
-        bottom: -3px;
-        background-color: $near-white;
+        background-color: $near-white !important;
     }
     span {
         text-align: center;
-        &:hover::after {
-            right: 9px;
-        } 
     }
     span.active {
         ::after {
-            right: 9px;
+            right: 0;
         }
     }
     @media screen and (max-width: 767px) {
@@ -87,8 +69,6 @@
     }
 }
 
-.nav-link.nav-link-active {
-   span {
-       color: $magenta-dark;
-   }
+#home-button {
+    margin-right: auto;
 }

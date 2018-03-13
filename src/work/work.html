@@ -15,69 +15,88 @@
 </head>
 
 <body class="overflow-hidden">
-    <nav class="navigation home-nav row" id="main-nav">
+    <nav class="navigation white-background home-nav row" id="main-nav">
         <ul>
-            <div>
-                <a class="nav-link" id="home-button" href="/">
-                    <span>HexagonMisfit</span>
-                </a>
-            </div>
-            <div class="nav-right">
-                <a class="nav-link" id="work-button" href="/work">
-                    <span>Work</span>
-                </a>
-                <a class="nav-link" id="team-button" href="/team">
-                    <span>Team</span>
-                </a>
-                <a class="nav-link" id="contact-button" href="/contact">
-                    <span>Contact</span>
-                </a>
-                <a class="nav-link" id="vr-button" href="/vr">
-                    <span>VR</span>
-                </a>
-            </div>
+            <a class="nav-link" id="home-button" href="/">
+                <span>HexagonMisfit</span>
+            </a>
+            <a class="nav-link" id="work-button" href="/work">
+                <span>Work</span>
+            </a>
+            <a class="nav-link" id="team-button" href="/team">
+                <span>Team</span>
+            </a>
+            <a class="nav-link" id="contact-button" href="/contact">
+                <span>Contact</span>
+            </a>
+            <a class="nav-link" id="vr-button" href="/vr">
+                <span>VR</span>
+            </a>
         </ul>
     </nav>
-    <div id="work-container" class="column">
-        <div class="work-body column">
+    <div id="work-container">
+        <div class="work-body">
             <div class="work-header narrow-only">
-                <h1 class="really-big-text work-header-text">Projects</h1>
+                <h1 class="work-header-text row">Projects</h1>
             </div>
             <div class="projects-container row">
                 <div class="projects-img-container">
-                    <img class="project-img" id="project-img">
-                    <div class="project-blurb"></div>
+                    <div class="projects-inner-container column">
+                        <img class="project-img" id="project-img">
+                        <div class="project-blurb"></div>
+                    </div>
                 </div>
                 <div class="projects-list-container column">
-                    <div class="work-header wide-only">
-                        <h1 class="really-big-text work-header-text">Projects</h1>
+                    <div class="projects-inner-container column">
+                        <div class="work-header wide-only">
+                            <h1 class="really-big-text work-header-text wide-only">Projects</h1>
+                        </div>
+                        <div class="project-stats" class="column wide-only">
+                            <ul>
+                                <li>
+                                    <strong>Location:</strong>
+                                    <span>Denver, CO</span>
+                                </li>
+                                <li>
+                                    <strong>Year: </strong>
+                                    <span>2013</span>
+                                </li>
+                                <li>
+                                    <strong>Technologies used: </strong>
+                                    <span>Processing, Unity, custom-built LED arrays</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <ul class="projects-list column">
+                            <li class="project-li active light-text row" data="0">
+                                <span class="project-name">
+                                </span>
+                            </li>
+                            <li class="project-li row" data="1">
+                                <span class="project-name">
+                                </span>
+                            </li>
+                            <li class="project-li row" data="2">
+                                <span class="project-name">
+                                </span>
+                            </li>
+                            <li class="project-li row" data="3">
+                                <span class="project-name">
+                                </span>
+                            </li>
+                            <li class="project-li row" data="4">
+                                <span class="project-name">
+                                </span>
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="projects-list column">
-                        <li class="project-li active light-text row" data="0">
-                            <span class="project-name"></p>
-                        </li>
-                        <li class="project-li row" data="1">
-                            <span class="project-name"></p>
-                        </li>
-                        <li class="project-li row" data="2">
-                            <span class="project-name"></p>
-                        </li>
-                        <li class="project-li row" data="3">
-                            <span class="project-name"></p>
-                        </li>
-                        <li class="project-li row" data="4">
-                            <span class="project-name"></p>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
-        <div class="work-footer-container">
-            <footer id="footer">
-                <span>&copy;HEXAGONMISFIT 2018</span>
-            </footer>
-        </div>
     </div>
+    <footer id="footer">
+        <span>&copy;HexagonMisfit 2018</span>
+    </footer>
     <div id="fancy-cursor"></div>
     <div id="page-wipe"></div>
 </body>
