@@ -17,7 +17,7 @@
 }
 
 .work-header.wide-only {
-    height: 7em;
+    height: 14em;
     position: relative;
     width: 100%;
 }
@@ -25,6 +25,7 @@
 .work-header-text.wide-only {
     width: 100%;
     justify-content: flex-start;
+    padding-left: 10px;
 }
 
 .work-header.narrow-only {
@@ -64,11 +65,12 @@
     z-index: 5;
     align-items: center;
     position: relative;
-    background-color: lighten($salmon-pink, 10);
+    background-color: lighten($salmon-pink, 15);
     overflow-y: scroll;
     display: flex;
     height: 100%;
     flex-direction: column;
+    padding-bottom: 2em;
     @media screen and (orientation: landscape) {
         flex-direction: row;
         align-items: center;
@@ -94,13 +96,13 @@
 }
 
 .projects-inner-container {
-    max-height: 368px;
     justify-content: flex-start;
+    width: 100%;
 }
 
 .projects-img-container {
     order: 2;
-    width: 50%;
+    width: calc(50% - 1em);
     max-width: 700px;
     min-width: 320px;
     position: relative;
@@ -121,7 +123,7 @@
 
 .project-blurb {
     padding: 1em;
-    height: 9em;
+    height: 10em;
 }
 
 .project-img {
@@ -130,7 +132,7 @@
 
 .projects-list-container {
     height: 100%;
-    width: 50%;
+    width: calc(50% - 1em);
     align-items: flex-start;
     order: 1;
     padding-right: 0.5em;
@@ -141,6 +143,7 @@
     }
     @media screen and (orientation: landscape) {
         height: 100%;
+        justify-content: flex-start;
     }
 }
 
@@ -159,17 +162,6 @@
         padding: 0 3px;
         @media screen and (orientation: portrait) {
             padding-left: 1em;
-        }
-        ::before {
-            content: '';
-            width: 20px;
-            height: 1px;
-            left: -25px;
-            position: absolute;
-            background-color: $near-black;
-            @media screen and (orientation: portrait) {
-                visibility: hidden;
-            }
         }
         span {
             transition: all 0.2s ease;
@@ -191,6 +183,8 @@
 .project-stats {
     font-size: 0.75em;
     padding: 1em;
+    height: 6em;
+
     ul {
         list-style-type: none;
     }
