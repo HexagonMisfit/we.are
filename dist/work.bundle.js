@@ -10392,16 +10392,9 @@ $(document).ready(function () {
 
     var navLink = $('.nav-link');
 
-    function addActiveNavClass(element) {
-        element.addClass('nav-link-active');
-    }
-
-    function removeActiveNavClass(element) {
-        element.removeClass('nav-link-active');
-    }
-
     navLink.click(function (ev) {
         ev.preventDefault();
+        console.log($(this));
         wipeOut(ev);
     });
 });

@@ -383,6 +383,10 @@ textarea {
 * {
   cursor: none !important; }
 
+@font-face {
+  font-family: 'Inconsolata';
+  src: url(assets/Inconsolata.otf); }
+
 html {
   height: 100%;
   width: auto;
@@ -554,14 +558,16 @@ h3 {
 
 .really-big-text {
   font-size: 3em;
-  margin: 0; }
+  margin: 0;
+  font-weight: bolder; }
   @media screen and (max-width: 600px) {
     .really-big-text {
       font-size: 2em; } }
 
 .really-really-big-text {
   font-size: 9em;
-  margin: 0; }
+  margin: 0;
+  font-weight: bolder; }
   @media screen and (max-width: 600px) {
     .really-really-big-text {
       font-size: 5em; } }
@@ -605,7 +611,8 @@ h3 {
   padding: 1em;
   font-weight: bolder;
   text-align: center;
-  position: relative; }
+  position: relative;
+  height: 62px; }
   .nav-link:hover span::after {
     right: 1em; }
     @media screen and (max-width: 767px) {
@@ -629,12 +636,18 @@ h3 {
     background-color: #fafafa !important; }
   .nav-link span {
     text-align: center; }
-  .nav-link span.active ::after {
-    right: 0; }
+  .nav-link span.active {
+    background-color: #060606;
+    color: #fafafa; }
   @media screen and (max-width: 767px) {
     .nav-link {
       padding: 0.5em;
       margin-right: 0; } }
+
+.active-nav-link {
+  background-color: #060606; }
+  .active-nav-link span {
+    color: #fafafa; }
 
 #home-button {
   margin-right: auto; }
@@ -809,6 +822,28 @@ h3 {
   @media screen and (max-width: 720px) {
     .team-member-blurb {
       padding: 1em 0; } }
+
+#contact-container {
+  height: calc(100% - 3em);
+  padding: 2em;
+  position: relative;
+  align-items: center;
+  background: #9de6f5; }
+
+.contact-left {
+  width: 50%;
+  padding-right: 1em; }
+
+.contact-right {
+  width: 50%;
+  justify-content: center;
+  padding-top: 3em; }
+
+.contact-info {
+  padding: 0.5em; }
+
+.contact-copy {
+  padding-bottom: 1em; }
 
 #map {
   height: 400px;

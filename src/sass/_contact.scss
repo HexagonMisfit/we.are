@@ -1,3 +1,30 @@
+#contact-container {
+    height: calc(100% - 3em);
+    padding: 2em;
+    position: relative;
+    align-items: center;
+    background: lighten($blue-light,35);
+}
+
+.contact-left {
+    width: 50%;
+    padding-right: 1em;
+}
+
+.contact-right {
+    width: 50%;
+    justify-content: center;
+    padding-top: 3em;
+}
+
+.contact-info {
+    padding: 0.5em;
+}
+
+.contact-copy {
+    padding-bottom: 1em;
+}
+
 #map {
     height: 400px;
     width: 100%;

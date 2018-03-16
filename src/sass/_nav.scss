@@ -29,6 +29,7 @@
     font-weight: bolder;
     text-align: center;
     position: relative;
+    height: 62px;
     &:hover {
         span::after {
             right: 1em;
@@ -59,13 +60,19 @@
         text-align: center;
     }
     span.active {
-        ::after {
-            right: 0;
-        }
+         background-color: $near-black;
+         color: $near-white;
     }
     @media screen and (max-width: 767px) {
         padding: 0.5em;
         margin-right: 0;
+    }
+}
+
+.active-nav-link {
+    background-color: $near-black;
+    span {
+        color: $near-white;
     }
 }
 
