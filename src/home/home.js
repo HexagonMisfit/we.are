@@ -1,4 +1,6 @@
-import { brandColors } from './shared/theming.js';
+window.$ = window.jQuery = require('jquery');
+
+import {brandColors} from '../shared/theming.js';
 
 var scene = new THREE.Scene();
 
@@ -29,6 +31,15 @@ var yOffset = 30;
 var lerpRate = 1/250;
 
 $(document).ready(function () {
+
+    console.log('anim.js ready function');
+
+    function onInitHome() {
+        console.log('onInit');
+        var ascend1 = $('.ascend-1');
+        TweenMax.to($('body'), 0.75, { autoAlpha: 1, ease: Power2.easeOut });
+        TweenMax.staggerTo(ascend1, 1, { autoAlpha: 1, y: 0, ease: Power3.easeOut }, 0.1);
+    }
 
     $('.hero-container').mousemove(onMouseMove);
 
@@ -122,6 +133,7 @@ $(document).ready(function () {
 
     renderer.domElement.id = "header-canvas";
 
+    onInitHome();
     animate();
     toPositions();
 });

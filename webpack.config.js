@@ -9,6 +9,7 @@ module.exports = {
         app: './index.js',
         team: './team/team.js',
         work: './work/work.js',
+        home: './home/home.js',
         contact: './contact/contact.js',
         vr: './vr/aframeScene.js'
     },
@@ -53,12 +54,17 @@ module.exports = {
         new HtmlWebpackPlugin({ 
             template: './index.html', 
             filename: './index.html', 
-            chunks: ['app']    
+            inject: 'head'
         }),
         new HtmlWebpackPlugin({
             template: './team/team.html',
             filename: './team.html',
             chunks: ['team']
+        }),
+        new HtmlWebpackPlugin({
+            template: './home/home.html',
+            filename: './home.html',
+            chunks: ['home']
         }),
         new HtmlWebpackPlugin({
             template: './work/work.html',

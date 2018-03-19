@@ -1,4 +1,3 @@
-import { brandColors } from '../shared/theming.js';
 import './assets/Merica.mp4';
 
 const vertexShader = `

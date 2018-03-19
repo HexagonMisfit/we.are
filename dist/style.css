@@ -432,7 +432,7 @@ p {
   font-size: 1.2em;
   line-height: 1.3em; }
 
-.container {
+#container {
   height: 100%;
   width: auto;
   position: absolute;
@@ -590,6 +590,7 @@ h3 {
   padding: 0 1em;
   align-content: center;
   justify-content: center;
+  background-color: #fafafa;
   height: 62px;
   position: fixed;
   left: 0;
@@ -649,7 +650,7 @@ h3 {
   .active-nav-link span {
     color: #fafafa; }
 
-#home-button {
+#home {
   margin-right: auto; }
 
 #home-container {
@@ -742,7 +743,8 @@ h3 {
 #team-header {
   justify-content: center;
   height: 14em;
-  padding: 0 0 6em 0; }
+  padding: 0 0 6em 0;
+  width: 100%; }
   @media screen and (max-width: 1100px) {
     #team-header {
       padding: 0 1em 6em; } }
@@ -772,7 +774,6 @@ h3 {
 
 .team-member-container {
   width: 100%;
-  padding-left: 3em;
   margin-bottom: 6em; }
   @media screen and (max-width: 1100px) {
     .team-member-container {

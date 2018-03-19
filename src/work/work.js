@@ -1,5 +1,6 @@
 // vendor js files
 window.$ = window.jQuery = require('jquery');
+window._ = require('lodash');
 
 // assets
 require('./assets/daniel_sierra_project.jpg');
@@ -8,11 +9,6 @@ require('./assets/play_svg.svg');
 
 // our scripts
 import { brandColors } from '../shared/theming.js';
-import '../shared/nav.js';
-import '../shared/fancyCursor.js';
-
-// sass
-import '../sass/main.scss';
 
 var projects = [
     {
