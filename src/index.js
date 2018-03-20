@@ -75,7 +75,7 @@ $(function () {
     //**********/
     //Navigation
     //**********/
-    console.log('nav');
+    
     var pageWipe = $('#page-wipe');
     function wipeIn() {
         TweenMax.to(pageWipe, 0.75, { width: 0, bottom: '100%', left: '100%', ease: Power4.easeIn });
@@ -85,7 +85,6 @@ $(function () {
         function loadNext() {
             $('#container').empty();
             $('#container').load('./' + ev.currentTarget.id + '.html', function() {
-                $('#' + ev.currentTarget.id).addClass('active-nav-link');
                 wipeIn();
             });
         }
@@ -104,6 +103,9 @@ $(function () {
     navLink.click(function (ev) {
         console.log(ev);
         ev.preventDefault();
+        var activeNavLink = $('.active-nav-link');
+        activeNavLink.removeClass('active-nav-link');
+        $('#' + ev.currentTarget.id).addClass('active-nav-link');
         wipeOut(ev);
     });
 });
