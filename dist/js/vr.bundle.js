@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 18);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -10326,175 +10326,163 @@ return jQuery;
 
 /***/ }),
 
-/***/ 1:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-const brandColors = {
-    redBright: 0xF03A47,
-    plumIsh: 0x542344,
-    salmonPink: 0xEA526F,
-    seafoamGreen: 0x119DA4,
-    lavendarIsh: 0xB7C3F3,
-    magentaDark: 0xB21252,
-    blueLight: 0x14ACCC,
-    blueDark: 0x0995B2,
-    brightYellow: 0xFFE919,
-    nearWhite: 0xfafafa,
-    nearBlack: 0x060606,
-    buttonDarken: 0xf7f7f7
-};
-/* harmony export (immutable) */ __webpack_exports__["a"] = brandColors;
-
-
-/***/ }),
-
-/***/ 10:
+/***/ 18:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_theming_js__ = __webpack_require__(1);
-window.$ = window.jQuery = __webpack_require__(0);
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_Merica_mp4__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_Merica_mp4___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__assets_Merica_mp4__);
 
 
+const vertexShader = `
 
-var scene = new THREE.Scene();
+varying vec2 vUv;
 
-var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(0, 0, 3);
+void main() {
+    vUv = uv;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+  }
 
-var target = new THREE.Object3D();
-var targetZ = -15;
-target.position.set(0, 0, targetZ);
-var temp = target.position.clone();
+`
 
-var cube;
-var cubeMesh;
-var cubePositions = [];
-var cubeRotationVelocities = [];
-var cubeScale;
+const skyShader = `
 
-var width = window.innerWidth;
-var height = window.innerHeight;
+varying vec2 vUv;
+uniform float time;
+uniform vec3 colorIn;
 
-var mouseX = 0;
-var mouseY = 0;
-var halfWidth = width / 2;
-var halfHeight = height / 2;
+float plot(vec2 st, float pct){
+    return  smoothstep( pct-0.2, pct, st.y) -
+            smoothstep( pct, pct+0.2, st.y);
+  }
 
-var yOffset = 30;
+float plot2(vec2 st, float pct){
+    return  smoothstep( pct-0.1, pct, st.x) -
+            smoothstep( pct, pct+0.1, st.x);
+  }
+  
+  void main()
+  {
+    vec2 st = vUv.xy;
+  
+    float x = fract( (st.y + time * 0.05) * 20.0) * 10.0 - 5.0;    
+    float y = fract(st.x * 20.0) * 10.0 / 2.0 - 3.9;
+    float z = x;
+    vec3 color, color2 = vec3(y,x,z);
 
-var lerpRate = 1/250;
-
-$(document).ready(function () {
-
-    console.log('anim.js ready function');
-
-    function onInitHome() {
-        console.log('onInit');
-        var ascend1 = $('.ascend-1');
-        TweenMax.to($('body'), 0.75, { autoAlpha: 1, ease: Power2.easeOut });
-        TweenMax.staggerTo(ascend1, 1, { autoAlpha: 1, y: 0, ease: Power3.easeOut }, 0.1);
-    }
-
-    $('.hero-container').mousemove(onMouseMove);
-
-    // copy initial camera rotation so we can tween from it to a new one in slo mo based on mouse movement
-
-    function onMouseMove(event) {
-        mouseX = event.clientX - halfWidth;
-        mouseY = event.clientY - halfHeight;
-        temp.set(mouseX / 100, -mouseY / 100, targetZ);
-    }
-
-    function lerpCameraTarget() {
-        target.position.lerp(temp, lerpRate);
-    }
-
-    function toPositions() {
-        TweenMax.staggerTo(cubePositions, 2, { y: '+=' + yOffset, ease: Power4.easeOut }, 0.02);
-    }
-
-    function rotate(object, speed) {
-        object.rotation.x += speed[0];
-        object.rotation.y += speed[1];
-    }
-
-    var renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setClearColor(__WEBPACK_IMPORTED_MODULE_0__shared_theming_js__["a" /* brandColors */].blueLight, 1);
-
-    var cubeGeometry = new THREE.BoxGeometry(3, 3, 3);
-    var cubeMaterial = new THREE.MeshBasicMaterial({ color: __WEBPACK_IMPORTED_MODULE_0__shared_theming_js__["a" /* brandColors */].magentaDark });
-    var cubeGroup = new THREE.Group();
-
-    for (var i = 0; i < 30; i++) {
-
-        cubeMesh = new THREE.Mesh(cubeGeometry, cubeMaterial);
-        cube = new THREE.Object3D();
-        cube.add(cubeMesh);
-
-        cubeScale = Math.random() / 3 + 0.35;
-        cube.scale.x = cubeScale;
-        cube.scale.y = cubeScale;
-        cube.scale.z = cubeScale;
-
-        var x = Math.random() * 20 - 10;
-        var y = Math.random() * 20 - 10 - yOffset;
-        var z = Math.random() * -15;
-
-        cube.position.set(x, y, z);
-
-        cubePositions.push(cube.position);
-
-        cube.rotation.y = Math.random();
-        cube.rotation.x = Math.random();
-
-        cubeGroup.add(cube);
-        cubeRotationVelocities.push([Math.random() / 400, Math.random() / 400]);
-    }
-
-    scene.add(cubeGroup);
-
-    // Animate the scene
-
-    var animate = function () {
-        requestAnimationFrame(animate);
-        render();
-    };
-
-    var render = function() {
-        for (var i = 0; i < cubeGroup.children.length; i++) {
-            rotate(cubeGroup.children[i], cubeRotationVelocities[i]);
+    float pct = plot(st,x);
+    float pct2 = plot2(st, y);
+    color = (pct)*color+pct*vec3(1.0,1.0,1.0);
+    color2 = (pct2)*color+pct2*vec3(1.0,1.0,1.0);
+    color = mix(color, colorIn, abs(sin(time)) * 0.4 + 0.4);
+    color = mix(color, color2, 0.5);
+	gl_FragColor = vec4(vec3(st.y) + (color * (1.0 - st.y)),1.0);
+  }
+`
+AFRAME.registerComponent('globe-sky', {
+    schema: { color: { type: 'color' } },
+    init: function () {
+        const data = this.data;
+        this.material = new THREE.ShaderMaterial({
+            uniforms: {
+                time: { value: 0.0 },
+                colorIn: { value: new THREE.Color(data.color) }
+            },
+            vertexShader: vertexShader,
+            fragmentShader: skyShader
+        });
+        this.applyToMesh();
+        this.el.addEventListener('model-loaded', () => this.applyToMesh());
+    },
+    
+    update: function () {
+        this.material.uniforms.colorIn.value.set(this.data.color);
+    },
+    
+    applyToMesh: function () {
+        const mesh = this.el.getObject3D('mesh');
+        if (mesh) {
+            mesh.material = this.material;
         }
-        lerpCameraTarget();
-        camera.lookAt(target.position);
-        renderer.render(scene, camera);
+    },
+    
+    tick: function (t) {
+        this.material.uniforms.time.value = t / 1000;
     }
-
-    // Draw it in the dom and add resize event listener
-
-    $('#home-home').prepend(renderer.domElement);
-
-    window.addEventListener('resize', onWindowResize, false);
-    window.addEventListener('deviceorientation', onWindowResize, false);
-
-    function onWindowResize() {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.render(scene, camera);
-    }
-
-    renderer.domElement.id = "header-canvas";
-
-    onInitHome();
-    animate();
-    toPositions();
 });
+
+const groundShader = `
+
+varying vec2 vUv;
+
+void main()
+{
+    vec3 col = vec3(1.0, 1.0, 1.0);
+    float pct = distance(vUv, vec2(0.5, 0.5));
+    col -= pct;
+
+    gl_FragColor = vec4(col,1.0);
+}
+
+`
+
+AFRAME.registerComponent('ground-gradient', {
+    schema: { color: { type: 'color' } },
+    init: function () {
+        this.material = new THREE.ShaderMaterial({
+            uniforms: {},
+            vertexShader,
+            fragmentShader: groundShader
+        });
+        this.applyToMesh();
+        this.el.addEventListener('model-loaded', () => this.applyToMesh());
+    },
+    applyToMesh: function () {
+        const mesh = this.el.getObject3D('mesh');
+        if (mesh) {
+            mesh.material = this.material;
+        }
+    }
+});
+
+$(function () {
+    var sceneEl = document.querySelector('a-scene');
+    var videoBottomLeft = document.querySelector('#video-bottom-left');
+    var videoBottomCenter = document.querySelector('#video-bottom-center');
+    var videoBottomRight = document.querySelector('#video-bottom-right');
+    var videoTopLeft = document.querySelector('#video-top-left');
+    var videoTopCenter = document.querySelector('#video-top-center');
+    var videoTopRight = document.querySelector('#video-top-right');
+    var mariposaVid = document.querySelector('#mariposa-chandelier');
+
+    var fooComponent = document.querySelector('#foo');
+    fooComponent.setAttribute('foo');
+
+    videoBottomLeft.addEventListener('click', playVideo);
+    videoBottomCenter.addEventListener('click', playVideo);
+    videoBottomRight.addEventListener('click', playVideo);
+    videoTopLeft.addEventListener('click', playVideo);
+    videoTopCenter.addEventListener('click', playVideo);
+    videoTopRight.addEventListener('click', playVideo);
+
+    function playVideo(video) {
+        if (mariposaVid.paused === true) {
+            mariposaVid.play();
+        } else {
+            mariposaVid.pause();
+        }
+    }
+});
+
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
+
+/***/ }),
+
+/***/ 19:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/Merica.mp4";
 
 /***/ })
 

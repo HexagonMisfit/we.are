@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -27493,132 +27493,160 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 5 */
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_theming_js__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__sass_main_scss__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__sass_main_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__sass_main_scss__);
 // vendor js files
 window.$ = window.jQuery = __webpack_require__(0);
 window._ = __webpack_require__(2);
 
+// assets
+__webpack_require__(13);
+__webpack_require__(14);
+__webpack_require__(15);
+
 // our scripts
 
 
-// import our scss last
-
-
-
-$(function () {
-
-    /************/
-    /* UI Stuff */
-    /************/
-
-    // var body = $('body');
-    // console.log(body);
-
-    var scrollControl = new ScrollMagic.Controller();
-
-    var fadeAndRiseTween1 = TweenMax.staggerTo('.fade-1', 0.8, { autoAlpha: 1, y: 0, ease: Power4.easeOut }, 0.1);
-    var fadeAndRiseScene1 = new ScrollMagic.Scene({
-        triggerHook: 0.8,
-        triggerElement: '#trigger-1',
-        reverse: false
-    })
-        .setTween(fadeAndRiseTween1)
-        .addTo(scrollControl);
-
-    var fadeAndRiseTween2 = TweenMax.staggerTo('.fade-2', 0.8, { autoAlpha: 1, y: 0, ease: Power4.easeOut }, 0.1);
-    var fadeAndRiseScene2 = new ScrollMagic.Scene({
-        triggerHook: 0.8,
-        triggerElement: '#trigger-2',
-        reverse: false
-    })
-        .setTween(fadeAndRiseTween2)
-        .addTo(scrollControl);
-
-    var fadeAndRiseTween3 = TweenMax.staggerTo('.fade-3', 0.8, { autoAlpha: 1, y: 0, ease: Power4.easeOut }, 0.1);
-    var fadeAndRiseScene3 = new ScrollMagic.Scene({
-        triggerHook: 0.8,
-        triggerElement: '#trigger-3',
-        reverse: false
-    })
-        .setTween(fadeAndRiseTween3)
-        .addTo(scrollControl);
-    $('#container').load('./home.html', function (res) {
-        console.log('hallow arld');
-    });
-
-    //**********/
-    // JS Cursor
-    //**********/
-    var fancyCursor = $('#fancy-cursor');
-
-    function isMobile() {
-        var Uagent = navigator.userAgent || navigator.vendor || window.opera;
-        return (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(Uagent) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(Uagent.substr(0, 4)));
-    };
-
-    if (!isMobile()) {
-        console.log('not mobile');
-        fancyCursor.css('visibility', 'visible');
-    }
-
-    $('html').mousemove(function (ev) {
-        fancyCursor.css({
-            left: ev.pageX - 7,
-            top: ev.pageY - 7
-        });
-    });
-
-    //**********/
-    //Navigation
-    //**********/
-    
-    var pageWipe = $('#page-wipe');
-    function wipeIn() {
-        TweenMax.to(pageWipe, 0.75, { width: 0, bottom: '100%', left: '100%', ease: Power4.easeIn });
-    };
-
-    function wipeOut(ev) {
-        function loadNext() {
-            $('#container').empty();
-            $('#container').load('./' + ev.currentTarget.id + '.html', function() {
-                wipeIn();
-            });
+var projects = [
+    {
+        title: 'Mariposa Chandelier',
+        id: '01',
+        backgroundColor: __WEBPACK_IMPORTED_MODULE_0__shared_theming_js__["a" /* brandColors */].brightYellow,
+        img: './assets/mariposa_1280x720.jpg',
+        blurb: 'Ecteturn chendelier cool apartment complex have fun with it. Gibberish filler content to look real and explain space taken up by blurb element. Life is much better when spent with brothers from other mothers, is what they say.',
+        stats: {
+            "Location": "Denver, CO",
+            "Technologies used": "Unity, Processing, Custom-built LED arrays",
+            "Year": "2014"
         }
-        TweenMax.to(pageWipe, 0, {top: 0, left: 0, bottom: 0, height: '100%', width: 0});
-        TweenMax.to(pageWipe, 0.75, {right: 0, width: '100%', ease: Power4.easeIn, onComplete: loadNext});
+    },
+    {
+        title: 'Music Visualizer',
+        id: '02',
+        backgroundColor: __WEBPACK_IMPORTED_MODULE_0__shared_theming_js__["a" /* brandColors */].salmonPink,
+        img: './assets/daniel_sierra_project.jpg',
+        blurb: 'In the champagne room with the models is not really the time or place for ideological battles. And then taking from his wallet an old schedule of trains he\'ll say "I told you when I came I was a stranger".',
+        stats: {
+            "Location": "Anywhere and everywhere",
+            "Technologies used": "Processing, MIDI Controllers",
+            "Year": "Ongoing"
+        }
+    },
+    {
+        title: 'Coachella VIP Party',
+        id: '03',
+        backgroundColor: __WEBPACK_IMPORTED_MODULE_0__shared_theming_js__["a" /* brandColors */].lavendarIsh,
+        img: './assets/mariposa_1280x720.jpg',
+        blurb: 'Rock climbing can be a very challenging and rewarding adventure, but the risks are multiplied to the extent that intoxicants are involved. Having fun with technology is a likely outcome of learning to write code.',
+        stats: {
+            "Location": "Indio, CA",
+            "Technologies used": "Xbox Kinect, Processing, Computer vision software",
+            "Year": "2015"
+        }
+    },
+    {
+        title: 'VR Ballet Experience',
+        id: '04',
+        backgroundColor: __WEBPACK_IMPORTED_MODULE_0__shared_theming_js__["a" /* brandColors */].seafoamGreen,
+        img: './assets/daniel_sierra_project.jpg',
+        blurb: 'Ballet fun is great in love with the modern age, office of smellography kicks in when you know your time is right to get level-headed and exit stage left. Smoking prohibited in cockpit of spacecraft.',
+        stats: {
+            "Location": "Seattle, WA",
+            "Technologies Used": "Unity, HTC Vive, Cinema 4D, Motion capture",
+            "Year": "2017"
+        }
+    },
+    {
+        title: 'Digital Fish Tank',
+        id: '05',
+        backgroundColor: __WEBPACK_IMPORTED_MODULE_0__shared_theming_js__["a" /* brandColors */].blueLight,
+        img: './assets/mariposa_1280x720.jpg',
+        blurb: 'Lorem ipsum consectetur halogen ipso facto. And then taking from his wallet an old schedule of trains, a big sandwich made of cookie dough deep fried in fat carved from last night\'s roast. Billy Grippo top eastside producer.',
+        stats: {
+            "Location": "Hillsboro, OR",
+            "Technologies Used": "Unity, Computer vision technology",
+            "Year": "2017"
+        }
+    }
+];
+
+$(document).ready(function () {
+    var projectLinks = $('.project-li');
+
+    var activeProject = projects[0];
+
+    projects.forEach(function (project) {
+        projectLinks.each(function (link) {
+            console.log();
+            if ($(projectLinks[link]).attr('data') === project.id) {
+                $(projectLinks[link]).children().text(project.title);
+            }
+        });
+    })
+
+    function setActiveProject(id) {
+        activeProject = _.find(projects, { id: id });
+        $('.work-header-text').fadeOut('fast', function() {
+            $('.work-header-text').text(activeProject.title);
+            $('.work-header-text').fadeIn();
+        });
+        $('.project-number').text(activeProject.id);
+        $('.project-blurb').fadeOut('fast', function () {
+            $('.project-blurb').text(activeProject.blurb);
+            $('.project-blurb').fadeIn();
+        });
+        $('#project-img').fadeOut('fast', function () {
+            $('#project-img').attr('src', activeProject.img);
+            $('#project-img').fadeIn();
+        });
+        $('.project-stats').fadeOut('fast', function () {
+            var keys = Object.keys(activeProject.stats);
+            for (var i = 0; i < keys.length; i++) {
+                $('#stat-' + i.toString() + '-key').text(keys[i]);
+                $('#stat-' + i.toString() + '-value').text(activeProject.stats[keys[i]]);
+            }
+            $('.project-stats').fadeIn();
+        });
     }
 
-    function onInit() {
-        wipeIn();
-    }
-
-    onInit();
-
-    var navLink = $('.nav-link');
-
-    navLink.click(function (ev) {
-        console.log(ev);
-        ev.preventDefault();
-        var activeNavLink = $('.active-nav-link');
-        activeNavLink.removeClass('active-nav-link');
-        $('#' + ev.currentTarget.id).addClass('active-nav-link');
-        wipeOut(ev);
+    projectLinks.on('mouseenter', function (ev) {
+        projectLinks.removeClass('active light-text');
+        $(this).addClass('active light-text');
+        setActiveProject($(this).attr('data'));
     });
+    setActiveProject('01');
 });
+
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
 /***/ }),
-/* 6 */
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/daniel_sierra_project.jpg";
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/mariposa_1280x720.jpg";
+
+/***/ }),
+/* 15 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+module.exports = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+DQo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgaWQ9IkNhcGFfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCAzMC4wNTEgMzAuMDUxIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAzMC4wNTEgMzAuMDUxOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4IiBjbGFzcz0iIj48Zz48Zz4NCgk8cGF0aCBkPSJNMTkuOTgyLDE0LjQzOGwtNi4yNC00LjUzNmMtMC4yMjktMC4xNjYtMC41MzMtMC4xOTEtMC43ODQtMC4wNjJjLTAuMjUzLDAuMTI4LTAuNDExLDAuMzg4LTAuNDExLDAuNjY5djkuMDY5ICAgYzAsMC4yODQsMC4xNTgsMC41NDMsMC40MTEsMC42NzFjMC4xMDcsMC4wNTQsMC4yMjQsMC4wODEsMC4zNDIsMC4wODFjMC4xNTQsMCwwLjMxLTAuMDQ5LDAuNDQyLTAuMTQ2bDYuMjQtNC41MzIgICBjMC4xOTctMC4xNDUsMC4zMTItMC4zNjksMC4zMTItMC42MDdDMjAuMjk1LDE0LjgwMywyMC4xNzcsMTQuNTgsMTkuOTgyLDE0LjQzOHoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgZGF0YS1vbGRfY29sb3I9IiNlY2VjZWMiIGZpbGw9IiNlY2VjZWMiLz4NCgk8cGF0aCBkPSJNMTUuMDI2LDAuMDAyQzYuNzI2LDAuMDAyLDAsNi43MjgsMCwxNS4wMjhjMCw4LjI5Nyw2LjcyNiwxNS4wMjEsMTUuMDI2LDE1LjAyMWM4LjI5OCwwLDE1LjAyNS02LjcyNSwxNS4wMjUtMTUuMDIxICAgQzMwLjA1Miw2LjcyOCwyMy4zMjQsMC4wMDIsMTUuMDI2LDAuMDAyeiBNMTUuMDI2LDI3LjU0MmMtNi45MTIsMC0xMi41MTYtNS42MDEtMTIuNTE2LTEyLjUxNGMwLTYuOTEsNS42MDQtMTIuNTE4LDEyLjUxNi0xMi41MTggICBjNi45MTEsMCwxMi41MTQsNS42MDcsMTIuNTE0LDEyLjUxOEMyNy41NDEsMjEuOTQxLDIxLjkzNywyNy41NDIsMTUuMDI2LDI3LjU0MnoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgZGF0YS1vbGRfY29sb3I9IiNlY2VjZWMiIGZpbGw9IiNlY2VjZWMiLz4NCgk8Zz4NCgk8L2c+DQoJPGc+DQoJPC9nPg0KCTxnPg0KCTwvZz4NCgk8Zz4NCgk8L2c+DQoJPGc+DQoJPC9nPg0KCTxnPg0KCTwvZz4NCgk8Zz4NCgk8L2c+DQoJPGc+DQoJPC9nPg0KCTxnPg0KCTwvZz4NCgk8Zz4NCgk8L2c+DQoJPGc+DQoJPC9nPg0KCTxnPg0KCTwvZz4NCgk8Zz4NCgk8L2c+DQoJPGc+DQoJPC9nPg0KCTxnPg0KCTwvZz4NCjwvZz48L2c+IDwvc3ZnPg0K"
 
 /***/ })
 /******/ ]);

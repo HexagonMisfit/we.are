@@ -32,8 +32,6 @@ var lerpRate = 1/250;
 
 $(document).ready(function () {
 
-    console.log('anim.js ready function');
-
     function onInitHome() {
         console.log('onInit');
         var ascend1 = $('.ascend-1');

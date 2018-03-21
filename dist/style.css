@@ -458,7 +458,8 @@ p {
   width: 100%;
   padding: 1em 2em;
   height: 3em;
-  font-weight: bold; }
+  font-weight: bold;
+  bottom: 0; }
   @media screen and (max-width: 767px) {
     #footer {
       padding-left: 0.5em; } }
@@ -650,7 +651,7 @@ h3 {
   .active-nav-link span {
     color: #fafafa; }
 
-#home {
+#home-button {
   margin-right: auto; }
 
 #home-container {

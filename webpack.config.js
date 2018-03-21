@@ -15,7 +15,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].bundle.js'
+        filename: 'js/[name].bundle.js'
     },
     module: {
         rules: [
@@ -58,27 +58,27 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: './team/team.html',
-            filename: './team.html',
+            filename: 'templates/team.html',
             chunks: ['team']
         }),
         new HtmlWebpackPlugin({
             template: './home/home.html',
-            filename: './home.html',
+            filename: 'templates/home.html',
             chunks: ['home']
         }),
         new HtmlWebpackPlugin({
             template: './work/work.html',
-            filename: './work.html',
+            filename: 'templates/work.html',
             chunks: ['work']
         }),
         new HtmlWebpackPlugin({
             template: './vr/vr.html',
-            filename: './vr.html',
+            filename: 'templates/vr.html',
             chunks: ['vr']
         }),
         new HtmlWebpackPlugin({
             template: './contact/contact.html',
-            filename: './contact.html',
+            filename: 'templates/contact.html',
             chunks: ['contact']
         }),
         new webpack.ProvidePlugin({

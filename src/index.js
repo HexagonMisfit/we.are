@@ -4,6 +4,7 @@ window._ = require('lodash');
 
 // our scripts
 import { brandColors } from './shared/theming.js';
+import './shared/nav.js';
 
 // import our scss last
 import './sass/main.scss';
@@ -46,9 +47,6 @@ $(function () {
     })
         .setTween(fadeAndRiseTween3)
         .addTo(scrollControl);
-    $('#container').load('./home.html', function (res) {
-        console.log('hallow arld');
-    });
 
     //**********/
     // JS Cursor
@@ -70,42 +68,5 @@ $(function () {
             left: ev.pageX - 7,
             top: ev.pageY - 7
         });
-    });
-
-    //**********/
-    //Navigation
-    //**********/
-    
-    var pageWipe = $('#page-wipe');
-    function wipeIn() {
-        TweenMax.to(pageWipe, 0.75, { width: 0, bottom: '100%', left: '100%', ease: Power4.easeIn });
-    };
-
-    function wipeOut(ev) {
-        function loadNext() {
-            $('#container').empty();
-            $('#container').load('./' + ev.currentTarget.id + '.html', function() {
-                wipeIn();
-            });
-        }
-        TweenMax.to(pageWipe, 0, {top: 0, left: 0, bottom: 0, height: '100%', width: 0});
-        TweenMax.to(pageWipe, 0.75, {right: 0, width: '100%', ease: Power4.easeIn, onComplete: loadNext});
-    }
-
-    function onInit() {
-        wipeIn();
-    }
-
-    onInit();
-
-    var navLink = $('.nav-link');
-
-    navLink.click(function (ev) {
-        console.log(ev);
-        ev.preventDefault();
-        var activeNavLink = $('.active-nav-link');
-        activeNavLink.removeClass('active-nav-link');
-        $('#' + ev.currentTarget.id).addClass('active-nav-link');
-        wipeOut(ev);
-    });
+    });    
 });
