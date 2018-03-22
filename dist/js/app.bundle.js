@@ -63,9 +63,8 @@
 /******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 0:
+/******/ ([
+/* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10325,8 +10324,7 @@ return jQuery;
 
 
 /***/ }),
-
-/***/ 1:
+/* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10348,8 +10346,7 @@ const brandColors = {
 
 
 /***/ }),
-
-/***/ 2:
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -27441,73 +27438,7 @@ const brandColors = {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(4)(module)))
 
 /***/ }),
-
-/***/ 25:
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function($) {var routes = ['home', 'team', 'work', 'contact', 'vr'];
-
-$(document).ready(function () {
-
-    function loadAll() {
-        routes.forEach(function (route) {
-            var routeContainer = $('#' + route + '-container');
-            routeContainer.hide();
-            return routeContainer.load('./templates/' + route + '.html');
-        });
-    }
-
-    var navLink = $('.nav-link');
-
-    var pageWipe = $('#page-wipe');
-    function wipeIn() {
-        TweenMax.to(pageWipe, 0.75, { width: 0, bottom: '100%', left: '100%', ease: Power4.easeIn });
-    };
-
-    function wipeOut(current, next) {
-        function loadNext() {
-            $('#' + current + '-container').hide();
-            $('#' + next + '-container').show();
-            wipeIn();
-        }
-        TweenMax.to(pageWipe, 0, { top: 0, left: 0, bottom: 0, height: '100%', width: 0 });
-        TweenMax.to(pageWipe, 0.75, { right: 0, width: '100%', ease: Power4.easeIn, onComplete: loadNext });
-    }
-
-    window.onhashchange = function (ev) {
-        let current = ev.oldURL.split('#')[1];
-        let next = ev.newURL.split('#')[1];
-
-        var activeNavLink = $('.active-nav-link');
-        activeNavLink.removeClass('active-nav-link');
-        $('#' + next + '-button').addClass('active-nav-link');
-
-        wipeOut(current, next);
-    }
-
-    function onInit() {
-        $.when(loadAll()).then(function () {
-            if (!window.location.hash) {
-                window.location = '#home';
-                $('#home-button').addClass('active-nav-link');
-                $('#home-container').show();
-            }
-            else {
-                var hash = window.location.hash.split('#')[1];
-                $('#' + hash + '-button').addClass('active-nav-link');
-                $('#' + hash + '-container').show();
-            }
-            wipeIn();
-        });
-    }
-
-    onInit();
-});
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-
-/***/ 3:
+/* 3 */
 /***/ (function(module, exports) {
 
 var g;
@@ -27534,8 +27465,7 @@ module.exports = g;
 
 
 /***/ }),
-
-/***/ 4:
+/* 4 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -27563,16 +27493,15 @@ module.exports = function(module) {
 
 
 /***/ }),
-
-/***/ 5:
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_theming_js__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_nav_js__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_nav_js__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_nav_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__shared_nav_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__sass_main_scss__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__sass_main_scss__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__sass_main_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__sass_main_scss__);
 // vendor js files
 window.$ = window.jQuery = __webpack_require__(0);
@@ -27649,12 +27578,76 @@ $(function () {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
 /***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-/***/ 6:
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {var routes = ['home', 'team', 'work', 'contact'];
+
+$(document).ready(function () {
+
+    var navLink = $('.nav-link');
+    var pageWipe = $('#page-wipe');
+
+    function loadAll() {
+        TweenMax.to(pageWipe, 0, { width: '100%', bottom: 0, left: 0, top: 0, right: 0 });
+        routes.forEach(function (route) {
+            var routeContainer = $('#' + route + '-container');
+            routeContainer.hide();
+            return routeContainer.load('./templates/' + route + '.html');
+        });
+    }
+
+    function wipeIn(current, next) {
+        $('#' + current + '-container').hide();
+        $('#' + next + '-container').show();
+        TweenMax.to(pageWipe, 0.65, { width: 0, bottom: '100%', left: '100%', ease: Power4.easeIn });
+    };
+
+    function wipeOut(current, next) {
+        function loadNext() {
+            wipeIn(current, next);
+        }
+        TweenMax.to(pageWipe, 0, { top: 0, left: 0, bottom: 0, height: '100%', width: 0 });
+        TweenMax.to(pageWipe, 0.65, { right: 0, width: '100%', ease: Power4.easeIn, onComplete: loadNext });
+    }
+
+    window.onhashchange = function (ev) {
+        let current = ev.oldURL.split('#')[1];
+        let next = ev.newURL.split('#')[1];
+        if(!current) {
+            current = 'home';
+        }
+        var activeNavLink = $('.active-nav-link');
+        activeNavLink.removeClass('active-nav-link');
+        $('#' + next + '-button').addClass('active-nav-link');
+
+        wipeOut(current, next);
+    }
+
+    function onInit() {
+        $.when(loadAll()).then(function () {
+            var hash = window.location.hash.split('#')[1];
+            if (hash) {
+                $('#' + hash + '-button').addClass('active-nav-link');
+                $('#' + hash + '-container').show();
+                wipeIn('home', hash);
+            } else {
+                wipeIn('home', 'home');
+            }
+        });
+    }
+
+    onInit();
+
+});
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ })
-
-/******/ });
+/******/ ]);
