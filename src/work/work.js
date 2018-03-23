@@ -10,6 +10,8 @@ require('./assets/play_svg.svg');
 // our scripts
 import { brandColors } from '../shared/theming.js';
 
+console.log('2');
+
 var projects = [
     {
         title: 'Mariposa Chandelier',

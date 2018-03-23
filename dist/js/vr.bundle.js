@@ -10333,6 +10333,9 @@ return jQuery;
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_Merica_mp4__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_Merica_mp4___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__assets_Merica_mp4__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_wood_planks_new_0035_02_tiled_jpg__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_wood_planks_new_0035_02_tiled_jpg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__assets_wood_planks_new_0035_02_tiled_jpg__);
+
 
 
 const vertexShader = `
@@ -10380,6 +10383,8 @@ float plot2(vec2 st, float pct){
 	gl_FragColor = vec4(vec3(st.y) + (color * (1.0 - st.y)),1.0);
   }
 `
+
+console.log('1');
 AFRAME.registerComponent('globe-sky', {
     schema: { color: { type: 'color' } },
     init: function () {
@@ -10446,7 +10451,8 @@ AFRAME.registerComponent('ground-gradient', {
     }
 });
 
-$(function () {
+$(window).on('load', function () {
+    console.log('all loaded');
     var sceneEl = document.querySelector('a-scene');
     var videoBottomLeft = document.querySelector('#video-bottom-left');
     var videoBottomCenter = document.querySelector('#video-bottom-center');
@@ -10455,9 +10461,6 @@ $(function () {
     var videoTopCenter = document.querySelector('#video-top-center');
     var videoTopRight = document.querySelector('#video-top-right');
     var mariposaVid = document.querySelector('#mariposa-chandelier');
-
-    var fooComponent = document.querySelector('#foo');
-    fooComponent.setAttribute('foo');
 
     videoBottomLeft.addEventListener('click', playVideo);
     videoBottomCenter.addEventListener('click', playVideo);
@@ -10483,6 +10486,13 @@ $(function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/Merica.mp4";
+
+/***/ }),
+
+/***/ 21:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/wood_planks_new_0035_02_tiled.jpg";
 
 /***/ })
 

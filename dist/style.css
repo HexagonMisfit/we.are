@@ -999,6 +999,7 @@ h3 {
       width: 100%; } }
   .projects-list .project-li {
     min-height: 30px;
+    max-width: 350px;
     transition: font-size 0.2s ease;
     display: flex;
     align-items: center;
@@ -1063,3 +1064,9 @@ h3 {
   @media screen and (max-width: 720px) {
     .flex-2 {
       order: 1; } }
+
+.hidden {
+  visibility: hidden; }
+
+.visible {
+  visibility: visible; }

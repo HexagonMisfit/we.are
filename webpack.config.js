@@ -7,11 +7,11 @@ module.exports = {
     context: __dirname + '/src',
     entry: {
         app: './index.js',
-        team: './team/team.js',
-        work: './work/work.js',
         home: './home/home.js',
+        work: './work/work.js',
+        team: './team/team.js',
         contact: './contact/contact.js',
-        vr: './vr/aframeScene.js'
+        vr: './vr/vr.js'
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -54,6 +54,7 @@ module.exports = {
         new HtmlWebpackPlugin({ 
             template: './index.html', 
             filename: './index.html', 
+            excludeChunks: ['home','team','work','contact','vr'],
             inject: 'head'
         }),
         new HtmlWebpackPlugin({
@@ -73,7 +74,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: './vr/vr.html',
-            filename: 'templates/vr.html',
+            filename: 'vr.html',
             chunks: ['vr']
         }),
         new HtmlWebpackPlugin({

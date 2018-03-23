@@ -30,6 +30,8 @@ var yOffset = 30;
 
 var lerpRate = 1/250;
 
+console.log('3');
+
 $(document).ready(function () {
 
     function onInitHome() {

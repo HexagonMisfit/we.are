@@ -1,4 +1,6 @@
-var routes = ['home', 'team', 'work', 'contact'];
+var routes = ['home', 'team', 'work', 'contact', 'vr'];
+
+import {initHome} from '../home/home.js';
 
 $(document).ready(function () {
 
@@ -53,7 +55,5 @@ $(document).ready(function () {
             }
         });
     }
-
     onInit();
-
 });
