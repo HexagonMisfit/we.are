@@ -9,8 +9,7 @@ require('./assets/play_svg.svg');
 
 // our scripts
 import { brandColors } from '../shared/theming.js';
-
-console.log('2');
+import { workAnimation } from './workAnimation.js';
 
 var projects = [
     {

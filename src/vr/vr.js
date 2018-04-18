@@ -46,8 +46,6 @@ float plot2(vec2 st, float pct){
 	gl_FragColor = vec4(vec3(st.y) + (color * (1.0 - st.y)),1.0);
   }
 `
-
-console.log('1');
 AFRAME.registerComponent('globe-sky', {
     schema: { color: { type: 'color' } },
     init: function () {
@@ -115,7 +113,6 @@ AFRAME.registerComponent('ground-gradient', {
 });
 
 $(window).on('load', function () {
-    console.log('all loaded');
     var sceneEl = document.querySelector('a-scene');
     var videoBottomLeft = document.querySelector('#video-bottom-left');
     var videoBottomCenter = document.querySelector('#video-bottom-center');

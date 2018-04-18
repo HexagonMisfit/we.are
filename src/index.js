@@ -16,9 +16,6 @@ $(function () {
     /* UI Stuff */
     /************/
 
-    // var body = $('body');
-    // console.log(body);
-
     var scrollControl = new ScrollMagic.Controller();
 
     var fadeAndRiseTween1 = TweenMax.staggerTo('.fade-1', 0.8, { autoAlpha: 1, y: 0, ease: Power4.easeOut }, 0.1);
@@ -70,5 +67,3 @@ $(function () {
         });
     });    
 });
-
-console.log('6');

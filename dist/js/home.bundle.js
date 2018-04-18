@@ -10400,19 +10400,23 @@ $(document).ready(function () {
 
     $('.hero-container').mousemove(onMouseMove);
 
-    // copy initial camera rotation so we can tween from it to a new one in slo mo based on mouse movement
-
     function onMouseMove(event) {
+
+        //set the temp position to a value based on mouse position
+
         mouseX = event.clientX - halfWidth;
         mouseY = event.clientY - halfHeight;
         temp.set(mouseX / 100, -mouseY / 100, targetZ);
     }
 
-    function lerpCameraTarget() {
+    function lerpCameraTarget(){
         target.position.lerp(temp, lerpRate);
     }
 
     function toPositions() {
+
+        //bring the cubes into view
+
         TweenMax.staggerTo(cubePositions, 2, { y: '+=' + yOffset, ease: Power4.easeOut }, 0.02);
     }
 
@@ -10431,6 +10435,8 @@ $(document).ready(function () {
     var cubeGroup = new THREE.Group();
 
     for (var i = 0; i < 30; i++) {
+
+        //make 30 cubes of random sizes and place them randomly with a y-offset
 
         cubeMesh = new THREE.Mesh(cubeGeometry, cubeMaterial);
         cube = new THREE.Object3D();

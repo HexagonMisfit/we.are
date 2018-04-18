@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 14);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -77,18 +77,19 @@
 /* 10 */,
 /* 11 */,
 /* 12 */,
-/* 13 */
+/* 13 */,
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_big_al_jpg__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_big_al_jpg__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_big_al_jpg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__assets_big_al_jpg__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_chris_r_prof_crop_png__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_chris_r_prof_crop_png__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_chris_r_prof_crop_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__assets_chris_r_prof_crop_png__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_d_sierra_png__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_d_sierra_png__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_d_sierra_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__assets_d_sierra_png__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_quin_kennedy_prof_png__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_quin_kennedy_prof_png__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_quin_kennedy_prof_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__assets_quin_kennedy_prof_png__);
 
 
@@ -98,25 +99,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 console.log('4');
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/big_al.jpg";
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/chris_r_prof_crop.png";
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/d_sierra.png";
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/quin_kennedy_prof.png";
