@@ -385,7 +385,7 @@ textarea {
 
 @font-face {
   font-family: 'Inconsolata';
-  src: url(assets/Inconsolata.otf); }
+  src: url(/hexmisfitsite/assets/Inconsolata.otf); }
 
 html {
   height: 100%;
