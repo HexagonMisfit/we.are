@@ -27685,6 +27685,7 @@ $(function () {
     })
         .setTween(fadeAndRiseTween1)
         .addTo(scrollControl);
+        
 
     var fadeAndRiseTween2 = TweenMax.staggerTo('.fade-2', 0.8, { autoAlpha: 1, y: 0, ease: Power4.easeOut }, 0.1);
     var fadeAndRiseScene2 = new ScrollMagic.Scene({
