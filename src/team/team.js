@@ -15,7 +15,6 @@ import { noise } from '../shared/noise.js';
 //     var time = 0;
 //     var gridSize = 17
 //     var p = 0;
-
 //     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 //     var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 //     renderer.setSize(window.innerWidth, window.innerHeight);
