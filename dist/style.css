@@ -460,7 +460,7 @@ p {
   height: 3em;
   font-weight: bold;
   bottom: 0;
-  z-index: 5;
+  z-index: 2;
   position: absolute; }
   @media screen and (max-width: 767px) {
     #footer {
@@ -775,6 +775,10 @@ h3 {
     #team-scroll-container {
       align-items: center; } }
 
+#team-background-scene {
+  position: absolute;
+  z-index: 0; }
+
 .team-section {
   width: 100%;
   justify-content: space-around;
@@ -926,16 +930,17 @@ h3 {
   align-items: center;
   position: relative;
   background-color: #f296a8;
-  overflow-y: scroll;
   display: flex;
   height: 100%;
+  overflow-y: scroll;
   flex-direction: column;
   padding-bottom: 2em; }
   @media screen and (orientation: landscape) {
     #work-body {
       flex-direction: row;
       align-items: center;
-      justify-content: center; } }
+      justify-content: center;
+      overflow-y: hidden; } }
 
 .projects-container {
   justify-content: space-around;
@@ -1071,8 +1076,8 @@ h3 {
   height: 100%;
   top: 0;
   left: 0;
-  z-index: 1;
-  position: fixed; }
+  z-index: 0;
+  position: absolute; }
 
 .flex-1 {
   order: 1; }

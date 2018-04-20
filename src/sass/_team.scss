@@ -48,6 +48,11 @@
     }
 }
 
+#team-background-scene{
+    position: absolute;
+    z-index: 0;
+}
+
 .team-section {
     width: 100%; 
     justify-content: space-around;

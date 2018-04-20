@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 20);
+/******/ 	return __webpack_require__(__webpack_require__.s = 21);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -10326,14 +10326,14 @@ return jQuery;
 
 /***/ }),
 
-/***/ 20:
+/***/ 21:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_Merica_mp4__ = __webpack_require__(21);
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_Merica_mp4__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_Merica_mp4___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__assets_Merica_mp4__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_wood_planks_new_0035_02_tiled_jpg__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_wood_planks_new_0035_02_tiled_jpg__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_wood_planks_new_0035_02_tiled_jpg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__assets_wood_planks_new_0035_02_tiled_jpg__);
 
 
@@ -10479,14 +10479,14 @@ $(window).on('load', function () {
 
 /***/ }),
 
-/***/ 21:
+/***/ 22:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/Merica.mp4";
 
 /***/ }),
 
-/***/ 22:
+/***/ 23:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/wood_planks_new_0035_02_tiled.jpg";
