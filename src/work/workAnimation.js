@@ -8,40 +8,48 @@ import { noise } from '../shared/noise.js';
     var geometry;
     var clock = new THREE.Clock();
     var time = 0;
-    var gridSize = 17
+    var gridSize = 60;
+    var gridRes = 30;
     var p = 0;
+    var vertHeight = 0;
+    var salt = 3;
 
-    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2500);
     var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
 
     function updateVertices() {
-        geometry.verticesNeedUpdate = true;
-        geometry.vertices.forEach(function (vertex) {
-            p = noise.perlin3(vertex.x, vertex.z, Math.sin(time));
-            vertex.y += p;
-            if (vertex.y >= 20 || vertex.y < -20) {
-                p = -p;
-                // console.log(vertex.y);
+        var index = 0;
+        for (var i = 0; i <= gridRes; i++) {
+            for (var j = 0; j <= gridRes; j++) {
+                var vert = mesh.geometry.vertices[index];
+                var iTime = Math.cos(i + time);
+                var jTime = Math.cos(j + time);
+                vertHeight = ((iTime * 0.5) * 20 * salt) + ((jTime * 0.5) * 20 * salt);
+                vert.y = vertHeight;
+                vert.z += 1/10 * jTime;
+                // vert.z += 1/10 * jTime;
+                index++;
             }
-        });
+        }
+        mesh.geometry.verticesNeedUpdate = true;
     }
 
     function makeTile(size, res) {
         geometry = new THREE.Geometry();
 
         for (var i = 0; i <= res; i++) {
-
             for (var j = 0; j <= res; j++) {
-                var z = j * size + (Math.random() - 0.5) * size;
-                var x = i * size + (Math.random() - 0.5) * size;
-                var position = new THREE.Vector3(x, noise.perlin3(x, z, time) * size, z);
+                var z = j * size;
+                var x = i * size;
+                var position = new THREE.Vector3(x, Math.cos(x * Math.PI * size) + Math.cos(z * Math.PI * size), z);
                 var addFace = (i > 0) && (j > 0);
                 makeQuad(geometry, position, addFace, res + 1);
             }
 
         }
+        console.log(geometry);
         return geometry;
     }
 
@@ -59,20 +67,15 @@ import { noise } from '../shared/noise.js';
         }
     }
 
-    var geometry = makeTile(gridSize, 50);
+    var geometry = makeTile(gridSize, gridRes);
 
     var material = new THREE.MeshBasicMaterial({ color: brandColors.lavendarIsh, wireframe: true });
     var mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
-    mesh.position.set(-400, -55, 0);
+    mesh.position.set(-800, 600, -800);
     scene.add(camera);
-    camera.position.set(0, 10, -20);
+    camera.position.set(600, 900, 500);
     camera.lookAt(scene.position);
-
-    function rotate(object, speed) {
-        object.rotation.x += speed[0];
-        object.rotation.y += speed[1];
-    }
 
     $(document).ready(function () {
 
@@ -92,14 +95,15 @@ import { noise } from '../shared/noise.js';
         //animate the scene
 
         function animate() {
-            requestAnimationFrame(animate);
             render();
+            requestAnimationFrame(animate, renderer.canvas);
         };
 
         function render() {
-
-            time = clock.getDelta();
-            // updateVertices();
+            time += clock.getDelta();
+            var index = 0;
+            updateVertices();
+            mesh.geometry.verticesNeedUpdate = true;
             renderer.render(scene, camera);
         }
 
