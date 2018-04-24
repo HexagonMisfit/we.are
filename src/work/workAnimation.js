@@ -8,14 +8,16 @@ import { noise } from '../shared/noise.js';
     var geometry;
     var clock = new THREE.Clock();
     var time = 0;
-    var gridSize = 60;
-    var gridRes = 30;
+    var gridSize = 30;
+    var gridRes = 150;
     var p = 0;
     var vertHeight = 0;
     var salt = 3;
 
     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2500);
-    var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    var renderer = new THREE.WebGLRenderer({ alpha: true });
+    // var pointLight = new THREE.PointLight(0xFFFFFF, 1, 2000);
+
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
 
@@ -49,7 +51,6 @@ import { noise } from '../shared/noise.js';
             }
 
         }
-        console.log(geometry);
         return geometry;
     }
 
@@ -71,11 +72,16 @@ import { noise } from '../shared/noise.js';
 
     var material = new THREE.MeshBasicMaterial({ color: brandColors.lavendarIsh, wireframe: true });
     var mesh = new THREE.Mesh(geometry, material);
+    
+    mesh.position.set(-700, 300, -700);
     scene.add(mesh);
-    mesh.position.set(-800, 600, -800);
-    scene.add(camera);
-    camera.position.set(600, 900, 500);
+
+    camera.position.set(600, 900, 600);
     camera.lookAt(scene.position);
+    scene.add(camera);
+
+    // pointLight.position.set(400,600, 0);
+    // scene.add(pointLight);
 
     $(document).ready(function () {
 
@@ -101,7 +107,6 @@ import { noise } from '../shared/noise.js';
 
         function render() {
             time += clock.getDelta();
-            var index = 0;
             updateVertices();
             mesh.geometry.verticesNeedUpdate = true;
             renderer.render(scene, camera);

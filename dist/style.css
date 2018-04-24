@@ -380,9 +380,6 @@ textarea {
   bottom: 0;
   right: 0; }
 
-* {
-  cursor: none !important; }
-
 @font-face {
   font-family: 'Inconsolata';
   src: url(assets/Inconsolata.otf); }
@@ -770,14 +767,12 @@ h3 {
       padding: 1em 0 3em; } }
 
 #team-scroll-container {
-  max-width: 60em; }
+  max-width: 60em;
+  position: relative;
+  z-index: 1; }
   @media screen and (max-width: 720px) {
     #team-scroll-container {
       align-items: center; } }
-
-#team-background-scene {
-  position: absolute;
-  z-index: 0; }
 
 .team-section {
   width: 100%;
@@ -838,6 +833,14 @@ h3 {
   @media screen and (max-width: 720px) {
     .team-member-blurb {
       padding: 1em 0; } }
+
+#team-background-scene {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  z-index: 0; }
 
 #contact-container {
   height: calc(100% - 3em);

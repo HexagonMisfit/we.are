@@ -10687,8 +10687,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_quin_kennedy_prof_png__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_quin_kennedy_prof_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__assets_quin_kennedy_prof_png__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_theming_js__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_noise_js__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_noise_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__shared_noise_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__teamAnimation_js__ = __webpack_require__(29);
 
 
 
@@ -10698,110 +10697,6 @@ window.$ = window.jQuery = __webpack_require__(0);
 
 
 
-
-// (function () {
-//     var scene = new THREE.Scene();
-//     var geometry;
-//     var clock = new THREE.Clock();
-//     var time = 0;
-//     var gridSize = 17
-//     var p = 0;
-
-//     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-//     var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-//     renderer.setSize(window.innerWidth, window.innerHeight);
-//     renderer.setPixelRatio(window.devicePixelRatio);
-
-//     function updateVertices() {
-//         geometry.verticesNeedUpdate = true;
-//         geometry.vertices.forEach(function (vertex) {
-//             p = noise.perlin3(vertex.x, vertex.z, Math.sin(time));
-//             vertex.y += p;
-//             if (vertex.y >= 20 || vertex.y < -20) {
-//                 p = -p;
-//                 // console.log(vertex.y);
-//             }
-//         });
-//     }
-
-//     function makeTile(size, res) {
-//         geometry = new THREE.Geometry();
-
-//         for (var i = 0; i <= res; i++) {
-
-//             for (var j = 0; j <= res; j++) {
-//                 var z = j * size + (Math.random() - 0.5) * size;
-//                 var x = i * size + (Math.random() - 0.5) * size;
-//                 var position = new THREE.Vector3(x, noise.perlin3(x, z, time) * size, z);
-//                 var addFace = (i > 0) && (j > 0);
-//                 makeQuad(geometry, position, addFace, res + 1);
-//             }
-
-//         }
-//         return geometry;
-//     }
-
-//     function makeQuad(geometry, position, addFace, verts) {
-//         geometry.vertices.push(position);
-//         if (addFace) {
-
-//             var index1 = geometry.vertices.length - 1;
-//             var index2 = index1 - 1;
-//             var index3 = index1 - verts;
-//             var index4 = index1 - verts - 1;
-
-//             geometry.faces.push(new THREE.Face3(index2, index3, index1));
-//             geometry.faces.push(new THREE.Face3(index2, index4, index3));
-//         }
-//     }
-
-//     var geometry = makeTile(gridSize, 50);
-
-//     var material = new THREE.MeshBasicMaterial({ color: brandColors.salmonPink, wireframe: true });
-//     var mesh = new THREE.Mesh(geometry, material);
-//     scene.add(mesh);
-//     mesh.position.set(-400, -55, 0);
-//     scene.add(camera);
-//     camera.position.set(0, 10, -20);
-//     camera.lookAt(scene.position);
-
-//     function rotate(object, speed) {
-//         object.rotation.x += speed[0];
-//         object.rotation.y += speed[1];
-//     }
-
-//     $(document).ready(function () {
-
-//         window.addEventListener('resize', onWindowResize, false);
-//         window.addEventListener('deviceorientation', onWindowResize, false);
-
-//         function onWindowResize() {
-//             camera.aspect = window.innerWidth / window.innerHeight;
-//             camera.updateProjectionMatrix();
-//             renderer.setSize(window.innerWidth, window.innerHeight);
-//             renderer.render(scene, camera);
-//         }
-
-//         $('#team-scroll-container').prepend(renderer.domElement);
-//         renderer.domElement.id = 'team-background-scene';
-
-//         //animate the scene
-
-//         function animate() {
-//             requestAnimationFrame(animate);
-//             render();
-//         };
-
-//         function render() {
-
-//             time = clock.getDelta();
-//             updateVertices();
-//             renderer.render(scene, camera);
-//         }
-
-//         animate();
-//     });
-// })();
 
 /***/ }),
 /* 16 */
@@ -10826,6 +10721,96 @@ module.exports = __webpack_require__.p + "assets/d_sierra.png";
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/quin_kennedy_prof.png";
+
+/***/ }),
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_theming_js__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_noise_js__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_noise_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__shared_noise_js__);
+window.$ = window.jQuery = __webpack_require__(0);
+
+
+
+
+(function () {
+    var scene = new THREE.Scene();
+    var geometry;
+    var clock = new THREE.Clock();
+    var time = 0;
+
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+
+    scene.add(camera);
+    camera.position.set(0, 0, -3);
+    camera.lookAt(scene.position);
+
+    var pointLight = new THREE.PointLight(0xFFFFFF, 1, 100);
+    pointLight.position.set(2,3,-2);
+    scene.add(pointLight);
+
+    $(document).ready(function () {
+
+        window.addEventListener('resize', onWindowResize, false);
+        window.addEventListener('deviceorientation', onWindowResize, false);
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.render(scene, camera);
+        }
+
+        var sphereGeometry = new THREE.SphereGeometry(1,128,128);
+        var material = new THREE.MeshBasicMaterial({wireframe: true});
+        var sphere = new THREE.Mesh(sphereGeometry, material);
+        scene.add(sphere);
+
+        var k = 3;
+
+        function update() {
+            time += clock.getDelta();
+            for(var i = 0; i < sphere.geometry.vertices.length; i++) {
+                var p = sphere.geometry.vertices[i];
+                p.normalize().multiplyScalar(1+0.3 * __WEBPACK_IMPORTED_MODULE_1__shared_noise_js__["noise"].perlin3(p.x * k + time/2, p.y * k, p.z * k));
+            }
+            sphere.geometry.computeVertexNormals();
+            sphere.geometry.verticesNeedUpdate = true;
+        };
+
+        $('#team-container').prepend(renderer.domElement);
+        renderer.domElement.id = 'team-background-scene';
+
+        //animate the scene
+
+        function animate() {
+            render();
+            requestAnimationFrame(animate, renderer.canvas);
+        };
+
+        function render() {
+            update();
+            renderer.render(scene, camera);
+        }
+
+        animate();
+    });
+})();
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
 /***/ })
 /******/ ]);

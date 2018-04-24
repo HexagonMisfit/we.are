@@ -27987,7 +27987,9 @@ window.$ = window.jQuery = __webpack_require__(0);
     var salt = 3;
 
     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2500);
-    var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    var renderer = new THREE.WebGLRenderer({ alpha: true });
+    // var pointLight = new THREE.PointLight(0xFFFFFF, 1, 2000);
+
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
 
@@ -28021,7 +28023,6 @@ window.$ = window.jQuery = __webpack_require__(0);
             }
 
         }
-        console.log(geometry);
         return geometry;
     }
 
@@ -28043,11 +28044,16 @@ window.$ = window.jQuery = __webpack_require__(0);
 
     var material = new THREE.MeshBasicMaterial({ color: __WEBPACK_IMPORTED_MODULE_0__shared_theming_js__["a" /* brandColors */].lavendarIsh, wireframe: true });
     var mesh = new THREE.Mesh(geometry, material);
+    
+    mesh.position.set(-700, 300, -700);
     scene.add(mesh);
-    mesh.position.set(-800, 600, -800);
-    scene.add(camera);
-    camera.position.set(600, 900, 500);
+
+    camera.position.set(600, 900, 600);
     camera.lookAt(scene.position);
+    scene.add(camera);
+
+    // pointLight.position.set(400,600, 0);
+    // scene.add(pointLight);
 
     $(document).ready(function () {
 
@@ -28073,7 +28079,6 @@ window.$ = window.jQuery = __webpack_require__(0);
 
         function render() {
             time += clock.getDelta();
-            var index = 0;
             updateVertices();
             mesh.geometry.verticesNeedUpdate = true;
             renderer.render(scene, camera);
