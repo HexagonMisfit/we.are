@@ -57,7 +57,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/hexmisfitsite/";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 10);
@@ -27987,7 +27987,7 @@ window.$ = window.jQuery = __webpack_require__(0);
     var salt = 3;
 
     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2500);
-    var renderer = new THREE.WebGLRenderer({ alpha: true });
+    var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     // var pointLight = new THREE.PointLight(0xFFFFFF, 1, 2000);
 
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -28003,7 +28003,6 @@ window.$ = window.jQuery = __webpack_require__(0);
                 vertHeight = ((iTime * 0.5) * 20 * salt) + ((jTime * 0.5) * 20 * salt);
                 vert.y = vertHeight;
                 vert.z += 1/10 * jTime;
-                // vert.z += 1/10 * jTime;
                 index++;
             }
         }

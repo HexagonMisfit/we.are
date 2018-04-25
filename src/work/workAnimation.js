@@ -8,14 +8,14 @@ import { noise } from '../shared/noise.js';
     var geometry;
     var clock = new THREE.Clock();
     var time = 0;
-    var gridSize = 30;
-    var gridRes = 150;
+    var gridSize = 60;
+    var gridRes = 30;
     var p = 0;
     var vertHeight = 0;
     var salt = 3;
 
     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2500);
-    var renderer = new THREE.WebGLRenderer({ alpha: true });
+    var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     // var pointLight = new THREE.PointLight(0xFFFFFF, 1, 2000);
 
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -31,7 +31,6 @@ import { noise } from '../shared/noise.js';
                 vertHeight = ((iTime * 0.5) * 20 * salt) + ((jTime * 0.5) * 20 * salt);
                 vert.y = vertHeight;
                 vert.z += 1/10 * jTime;
-                // vert.z += 1/10 * jTime;
                 index++;
             }
         }

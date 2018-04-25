@@ -57,7 +57,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/hexmisfitsite/";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 15);
@@ -10687,13 +10687,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_quin_kennedy_prof_png__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_quin_kennedy_prof_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__assets_quin_kennedy_prof_png__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_theming_js__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__teamAnimation_js__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__teamAnimation_js__ = __webpack_require__(20);
 
 
 
 
 
 window.$ = window.jQuery = __webpack_require__(0);
+
 
 
 
@@ -10723,16 +10724,7 @@ module.exports = __webpack_require__.p + "assets/d_sierra.png";
 module.exports = __webpack_require__.p + "assets/quin_kennedy_prof.png";
 
 /***/ }),
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */,
-/* 25 */,
-/* 26 */,
-/* 27 */,
-/* 28 */,
-/* 29 */
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10749,7 +10741,6 @@ window.$ = window.jQuery = __webpack_require__(0);
     var geometry;
     var clock = new THREE.Clock();
     var time = 0;
-
     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
