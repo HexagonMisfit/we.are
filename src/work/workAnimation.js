@@ -3,19 +3,25 @@ window.$ = window.jQuery = require('jquery');
 import { brandColors } from '../shared/theming.js';
 import { noise } from '../shared/noise.js';
 
+import 'three';
+import 'three/AnaglyphEffect';
+/*global THREE'*/
+
 (function () {
     var scene = new THREE.Scene();
+    var effect;
     var geometry;
     var clock = new THREE.Clock();
     var time = 0;
-    var gridSize = 30;
-    var gridRes = 150;
+    var gridSize = 60;
+    var gridRes = 60;
     var p = 0;
     var vertHeight = 0;
     var salt = 3;
 
     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2500);
     var renderer = new THREE.WebGLRenderer({ alpha: true });
+    effect = new THREE.AnaglyphEffect(renderer);
     // var pointLight = new THREE.PointLight(0xFFFFFF, 1, 2000);
 
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -70,13 +76,14 @@ import { noise } from '../shared/noise.js';
 
     var geometry = makeTile(gridSize, gridRes);
 
-    var material = new THREE.MeshBasicMaterial({ color: brandColors.lavendarIsh, wireframe: true });
+    var material = new THREE.MeshBasicMaterial({ color: brandColors.nearWhite, wireframe: true });
     var mesh = new THREE.Mesh(geometry, material);
     
-    mesh.position.set(-700, 300, -700);
+    mesh.rotation.set(0,45,0);
+    mesh.position.set(-1200, 300, 0);
     scene.add(mesh);
 
-    camera.position.set(600, 900, 600);
+    camera.position.set(0, 900, 0);
     camera.lookAt(scene.position);
     scene.add(camera);
 
@@ -92,6 +99,7 @@ import { noise } from '../shared/noise.js';
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
+            effect.setSize( window.innerWidth, window.innerHeight );
             renderer.render(scene, camera);
         }
 
@@ -110,6 +118,7 @@ import { noise } from '../shared/noise.js';
             updateVertices();
             mesh.geometry.verticesNeedUpdate = true;
             renderer.render(scene, camera);
+            effect.render(scene, camera);
         }
 
         animate();

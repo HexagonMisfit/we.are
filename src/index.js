@@ -2,6 +2,8 @@
 window.$ = window.jQuery = require('jquery');
 window._ = require('lodash');
 
+require('three');
+
 // our scripts
 import { brandColors } from './shared/theming.js';
 import './shared/nav.js';

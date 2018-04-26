@@ -1,8 +1,14 @@
 window.$ = window.jQuery = require('jquery');
 
+import 'three';
+import 'three/AnaglyphEffect';
+
+/* global THREE */
+
 import {brandColors} from '../shared/theming.js';
 
 var scene = new THREE.Scene();
+var effect;
 
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.set(0, 0, 3);
@@ -29,8 +35,6 @@ var halfHeight = height / 2;
 var yOffset = 30;
 
 var lerpRate = 1/250;
-
-console.log('3');
 
 $(document).ready(function () {
 
@@ -72,6 +76,8 @@ $(document).ready(function () {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setClearColor(brandColors.blueLight, 1);
+
+    effect = new THREE.AnaglyphEffect(renderer);
 
     var cubeGeometry = new THREE.BoxGeometry(3, 3, 3);
     var cubeMaterial = new THREE.MeshBasicMaterial({ color: brandColors.magentaDark });
@@ -121,6 +127,7 @@ $(document).ready(function () {
         lerpCameraTarget();
         camera.lookAt(target.position);
         renderer.render(scene, camera);
+        effect.render(scene, camera);
     }
 
     // Draw it in the dom and add resize event listener
@@ -133,7 +140,9 @@ $(document).ready(function () {
     function onWindowResize() {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
+        
         renderer.setSize(window.innerWidth, window.innerHeight);
+        effect.setSize(window.innerWidth, window.innerHeight);
         renderer.render(scene, camera);
     }
 

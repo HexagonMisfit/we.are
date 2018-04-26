@@ -17,6 +17,11 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'js/[name].bundle.js'
     },
+    resolve: {
+        alias: {
+            'three/AnaglyphEffect': path.join(__dirname, 'node_modules/three/examples/js/effects/AnaglyphEffect.js')
+        }
+    },
     module: {
         rules: [
             {
@@ -51,10 +56,10 @@ module.exports = {
     },
     plugins: [
         new ExtractTextPlugin('style.css'),
-        new HtmlWebpackPlugin({ 
-            template: './index.html', 
-            filename: './index.html', 
-            excludeChunks: ['home','team','work','contact','vr'],
+        new HtmlWebpackPlugin({
+            template: './index.html',
+            filename: './index.html',
+            excludeChunks: ['home', 'team', 'work', 'contact', 'vr'],
             inject: 'head'
         }),
         new HtmlWebpackPlugin({
@@ -85,6 +90,9 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"
+        }),
+        new webpack.ProvidePlugin({
+            'THREE': 'three'
         })
     ]
 };
