@@ -1,7 +1,6 @@
 window.$ = window.jQuery = require('jquery');
 
 import 'three';
-import 'three/AnaglyphEffect';
 
 import { brandColors } from '../shared/theming.js';
 import { noise } from '../shared/noise.js';
@@ -9,7 +8,6 @@ import { noise } from '../shared/noise.js';
 (function () {
     var scene = new THREE.Scene();
     var geometry;
-    var effect;
     var clock = new THREE.Clock();
     var time = 0;
 
@@ -17,8 +15,6 @@ import { noise } from '../shared/noise.js';
     var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
-
-    effect = new THREE.AnaglyphEffect(renderer);
 
     scene.add(camera);
     camera.position.set(0, 0, -3);
@@ -36,7 +32,6 @@ import { noise } from '../shared/noise.js';
         function onWindowResize() {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
-            effect.setSize(window.innerWidth, window.innerHeight);
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.render(scene, camera);
         }
@@ -71,7 +66,6 @@ import { noise } from '../shared/noise.js';
         function render() {
             update();
             renderer.render(scene, camera);
-            effect.render(scene, camera);
         }
 
         animate();

@@ -4,25 +4,29 @@ import { brandColors } from '../shared/theming.js';
 import { noise } from '../shared/noise.js';
 
 import 'three';
-import 'three/AnaglyphEffect';
+import 'three/CopyShader';
+import 'three/EffectComposer';
+import 'three/HorizontalBlur';
+import 'three/VerticalBlur';
+import 'three/RenderPass';
+import 'three/ShaderPass';
+import 'three/ConvolutionShader';
+import 'three/BloomPass';
 /*global THREE'*/
 
 (function () {
     var scene = new THREE.Scene();
-    var effect;
     var geometry;
     var clock = new THREE.Clock();
     var time = 0;
-    var gridSize = 60;
-    var gridRes = 60;
+    var gridSize = 10;
+    var gridRes = 360;
     var p = 0;
     var vertHeight = 0;
-    var salt = 3;
+    var salt = 0.01;
 
     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2500);
-    var renderer = new THREE.WebGLRenderer({ alpha: true });
-    effect = new THREE.AnaglyphEffect(renderer);
-    // var pointLight = new THREE.PointLight(0xFFFFFF, 1, 2000);
+    var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
 
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -34,10 +38,9 @@ import 'three/AnaglyphEffect';
                 var vert = mesh.geometry.vertices[index];
                 var iTime = Math.cos(i + time);
                 var jTime = Math.cos(j + time);
-                vertHeight = ((iTime * 0.5) * 20 * salt) + ((jTime * 0.5) * 20 * salt);
+                vertHeight = ((iTime * 0.2) * 20 * salt) + ((jTime * 0.2) * 20 * salt);
                 vert.y = vertHeight;
-                vert.z += 1/10 * jTime;
-                // vert.z += 1/10 * jTime;
+                vert.z += 1 / 100 * jTime;
                 index++;
             }
         }
@@ -76,19 +79,16 @@ import 'three/AnaglyphEffect';
 
     var geometry = makeTile(gridSize, gridRes);
 
-    var material = new THREE.MeshBasicMaterial({ color: brandColors.nearWhite, wireframe: true });
+    var material = new THREE.MeshBasicMaterial({ color: brandColors.salmonPink, wireframe: true });
     var mesh = new THREE.Mesh(geometry, material);
-    
-    mesh.rotation.set(0,45,0);
+
+    mesh.rotation.set(0, 45, 0);
     mesh.position.set(-1200, 300, 0);
     scene.add(mesh);
 
-    camera.position.set(0, 900, 0);
-    camera.lookAt(scene.position);
+    camera.position.set(0, 800, 0);
+    camera.rotateX(-90 * Math.PI / 180);
     scene.add(camera);
-
-    // pointLight.position.set(400,600, 0);
-    // scene.add(pointLight);
 
     $(document).ready(function () {
 
@@ -99,7 +99,6 @@ import 'three/AnaglyphEffect';
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
-            effect.setSize( window.innerWidth, window.innerHeight );
             renderer.render(scene, camera);
         }
 
@@ -118,9 +117,7 @@ import 'three/AnaglyphEffect';
             updateVertices();
             mesh.geometry.verticesNeedUpdate = true;
             renderer.render(scene, camera);
-            effect.render(scene, camera);
         }
-
         animate();
     });
 })();

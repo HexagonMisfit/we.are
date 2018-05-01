@@ -1,12 +1,16 @@
 @import 'variables';
 
 #work-container {
-    height: calc(100% - 3em);
     width: 100%;
     display: flex;
     padding: 62px 0 0;
     position: relative;
     flex-direction: column;
+    @media screen and (min-width: 1024px) {
+        @media screen and (min-height: 768px) {
+            height: calc(100% - 3em);
+        }
+    }
 }
 
 .work-header {
@@ -17,7 +21,6 @@
 }
 
 .work-header.wide-only {
-    height: 14em;
     position: relative;
     width: 100%;
 }
@@ -41,23 +44,20 @@
 }
 
 .wide-only {
-    visibility: visible;
-    display: flex;
-    @media screen and (orientation: portrait) {
-        visibility: hidden;
-        display: none;
-        width: 0;
-        height: 0;
-        opacity: 0;
+    visibility: hidden;
+    display: none; 
+    @media screen and (min-width: 1024px) {
+        visibility: visible;
+        display: flex;
     }
 }
 
 .narrow-only {
-    visibility: hidden;
-    display: none;
-    @media screen and (orientation: portrait) {
-        visibility: visible;
-        display: flex;
+    visibility: visible;
+    display: flex;
+    @media screen and (min-width: 1024px) {
+        visibility: hidden;
+        display: none;
     }
 }
 
@@ -65,16 +65,20 @@
     z-index: 5;
     align-items: center;
     position: relative;
-    background-color: $plum-ish;
+    background: linear-gradient(to right, lighten($salmon-pink, 10), $near-white);
     display: flex;
-    height: 100%;
     overflow-y: scroll;
     flex-direction: column;
-    padding-bottom: 2em;
-    @media screen and (orientation: landscape) {
+    @media screen and (min-width: 1024px) {
         flex-direction: row;
         align-items: center;
         justify-content: center;
+        height: 100%;
+        @media screen and (min-height: 768px) {
+            overflow-y: hidden;
+        }
+    }
+    @media screen and (min-height: 1024px) {
         overflow-y: hidden;
     }
 }
@@ -83,42 +87,40 @@
     justify-content: space-around;
     position: relative;
     align-items: center;
-    max-width: 1200px;
-    @media screen and (orientation: portrait) {
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-    }
-    @media screen and (orientation: landscape) {
-        height: 100%;
+    max-width: 1200px;    
+    flex-direction: column;
+    align-items: flex-start;
+    @media screen and (min-width: 1024px) {
         width: 100%;
-        padding: 0 2em;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
     }
 }
 
 .projects-inner-container {
     justify-content: flex-start;
     width: 100%;
+    background: $near-white;
+    padding: 0.5em
 }
 
 .projects-img-container {
-    order: 2;
     width: calc(50% - 1em);
-    max-width: 700px;
     min-width: 320px;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     padding-left: 0.5em;
-    @media screen and (orientation: portrait) {
-        order: 1;
-        width: 100%;
-        padding: 0;
-    }
-    @media screen and (orientation: landscape) {
+    order: 1;
+    width: 100%;
+    padding: 0;
+    @media screen and (min-width: 1024px) {
         height: 100%;
+        order: 2;
         justify-content: center;
+        margin-left: 0.5em;
     }
 }
 
@@ -132,19 +134,18 @@
 }
 
 .projects-list-container {
-    height: 100%;
     width: calc(50% - 1em);
     align-items: flex-start;
-    order: 1;
-    padding-right: 0.5em;
+    padding-bottom: 1em;
     justify-content: center;
-    @media screen and (orientation: portrait) {
-        width: 100%;
-        order: 2;
-    }
-    @media screen and (orientation: landscape) {
+    // background: $salmon-pink;
+    width: 100%;
+    order: 2;
+    @media screen and (min-width: 1024px) {
         height: 100%;
+        order: 1;
         justify-content: flex-start;
+        margin-right: 0.5em;
     }
 }
 
@@ -152,9 +153,7 @@
     list-style-type: none;
     position: relative;
     justify-content: space-between;
-    @media screen and (orientation: portrait) {
-        width: 100%;
-    }
+    width: 100%;
     .project-li {
         min-height: 30px;
         max-width: 350px;
@@ -162,9 +161,7 @@
         display: flex;
         align-items: center;
         padding: 0 3px;
-        @media screen and (orientation: portrait) {
-            padding-left: 1em;
-        }
+        padding-left: 1em;
         span {
             transition: all 0.2s ease;
             position: relative;
@@ -185,8 +182,6 @@
 .project-stats {
     font-size: 0.75em;
     padding: 1em;
-    height: 6em;
-
     ul {
         list-style-type: none;
     }
@@ -209,7 +204,6 @@
 .project-background-color-panel {
     z-index: 1;
     width: 70%;
-    height: 70%;
     opacity: 0.8;
     position: absolute;
     left: 15%;
@@ -218,10 +212,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: $salmon-pink;
-    @media screen and (max-width: 550px) {
-        width: 70%;
-    }
+    background-color: lighten($salmon-pink, 10);
 }
 
 #work-background-scene {
