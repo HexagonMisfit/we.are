@@ -19,11 +19,11 @@ import 'three/BloomPass';
     var geometry;
     var clock = new THREE.Clock();
     var time = 0;
-    var gridSize = 10;
+    var gridSize = 12.5;
     var gridRes = 360;
     var p = 0;
     var vertHeight = 0;
-    var salt = 0.01;
+    var salt = 0.75;
 
     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2500);
     var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
@@ -38,9 +38,9 @@ import 'three/BloomPass';
                 var vert = mesh.geometry.vertices[index];
                 var iTime = Math.cos(i + time);
                 var jTime = Math.cos(j + time);
-                vertHeight = ((iTime * 0.2) * 20 * salt) + ((jTime * 0.2) * 20 * salt);
+                vertHeight = ((iTime * 0.2) * 12.5 * salt) + ((jTime * 0.2) * 12.5 * salt);
                 vert.y = vertHeight;
-                vert.z += 1 / 100 * jTime;
+                vert.z += 1 / 50 * jTime;
                 index++;
             }
         }
