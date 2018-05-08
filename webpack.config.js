@@ -17,18 +17,6 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'js/[name].bundle.js'
     },
-    resolve: {
-        alias: {
-            'three/HorizontalBlur': path.join(__dirname, 'node_modules/three/examples/js/shaders/HorizontalBlurShader.js'),
-            'three/VerticalBlur': path.join(__dirname, 'node_modules/three/examples/js/shaders/VerticalBlurShader.js'),
-            'three/EffectComposer': path.join(__dirname, 'node_modules/three/examples/js/postprocessing/EffectComposer.js'),
-            'three/ShaderPass': path.join(__dirname, 'node_modules/three/examples/js/postprocessing/ShaderPass.js'),
-            'three/RenderPass': path.join(__dirname, 'node_modules/three/examples/js/postprocessing/RenderPass.js'),
-            'three/CopyShader': path.join(__dirname, 'node_modules/three/examples/js/shaders/CopyShader.js'),
-            'three/ConvolutionShader': path.join(__dirname, 'node_modules/three/examples/js/shaders/ConvolutionShader.js'),
-            'three/BloomPass' : path.join(__dirname, 'node_modules/three/examples/js/postprocessing/BloomPass.js')
-        }
-    },
     module: {
         rules: [
             {

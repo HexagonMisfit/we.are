@@ -4,14 +4,6 @@ import { brandColors } from '../shared/theming.js';
 import { noise } from '../shared/noise.js';
 
 import 'three';
-import 'three/CopyShader';
-import 'three/EffectComposer';
-import 'three/HorizontalBlur';
-import 'three/VerticalBlur';
-import 'three/RenderPass';
-import 'three/ShaderPass';
-import 'three/ConvolutionShader';
-import 'three/BloomPass';
 /*global THREE'*/
 
 (function () {
@@ -23,29 +15,13 @@ import 'three/BloomPass';
     var gridRes = 360;
     var p = 0;
     var vertHeight = 0;
-    var salt = 0.75;
+    var amplitude = 0.75;
 
     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2500);
     var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
 
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
-
-    function updateVertices() {
-        var index = 0;
-        for (var i = 0; i <= gridRes; i++) {
-            for (var j = 0; j <= gridRes; j++) {
-                var vert = mesh.geometry.vertices[index];
-                var iTime = Math.cos(i + time);
-                var jTime = Math.cos(j + time);
-                vertHeight = ((iTime * 0.2) * 12.5 * salt) + ((jTime * 0.2) * 12.5 * salt);
-                vert.y = vertHeight;
-                vert.z += 1 / 50 * jTime;
-                index++;
-            }
-        }
-        mesh.geometry.verticesNeedUpdate = true;
-    }
 
     function makeTile(size, res) {
         geometry = new THREE.Geometry();
@@ -54,7 +30,7 @@ import 'three/BloomPass';
             for (var j = 0; j <= res; j++) {
                 var z = j * size;
                 var x = i * size;
-                var position = new THREE.Vector3(x, Math.cos(x * Math.PI * size) + Math.cos(z * Math.PI * size), z);
+                var position = new THREE.Vector3(x, 0, z);
                 var addFace = (i > 0) && (j > 0);
                 makeQuad(geometry, position, addFace, res + 1);
             }
@@ -79,8 +55,50 @@ import 'three/BloomPass';
 
     var geometry = makeTile(gridSize, gridRes);
 
-    var material = new THREE.MeshBasicMaterial({ color: brandColors.salmonPink, wireframe: true });
-    var mesh = new THREE.Mesh(geometry, material);
+    // var material = new THREE.MeshBasicMaterial({ color: brandColors.salmonPink, wireframe: true });
+
+    var vertexShader = `
+        uniform float time;
+        varying vec3 vNormal;
+
+        float PI = 3.14159;
+        float amplitude = 10.0;
+        float tightness = 4.5;
+        float speed = 0.3;
+        void main() {
+
+            vNormal = normal;
+            float y = (cos(position.x * tightness + time * speed) * amplitude) + (cos(position.z * tightness + time * speed) * amplitude);
+
+            vec3 newPosition = position + vec3(1.0, y, 1.0); 
+
+            gl_Position = projectionMatrix *
+                          modelViewMatrix *
+                          vec4(newPosition + normal, 1.0);
+        }
+    `;
+
+    var fragmentShader = `
+        uniform float time;
+        void main() {
+            gl_FragColor = vec4(0.917, 0.321, 0.435,1.0);
+        }
+    `;
+
+    var uniforms = {
+        time: {
+            value: time
+        }
+    }
+
+    var shaderMaterial = new THREE.ShaderMaterial({
+        uniforms: uniforms,
+        vertexShader: vertexShader,
+        fragmentShader: fragmentShader,
+        wireframe: true
+    });
+
+    var mesh = new THREE.Mesh(geometry, shaderMaterial);
 
     mesh.rotation.set(0, 45, 0);
     mesh.position.set(-1200, 300, 0);
@@ -114,8 +132,7 @@ import 'three/BloomPass';
 
         function render() {
             time += clock.getDelta();
-            updateVertices();
-            mesh.geometry.verticesNeedUpdate = true;
+            uniforms.time.value = time;
             renderer.render(scene, camera);
         }
         animate();

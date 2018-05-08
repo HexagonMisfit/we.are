@@ -612,6 +612,7 @@ h3 {
   font-weight: bolder;
   text-align: center;
   position: relative;
+  justify-content: center;
   height: 62px;
   display: flex; }
   .nav-link:hover span::after {
@@ -644,7 +645,11 @@ h3 {
   @media screen and (max-width: 767px) {
     .nav-link {
       padding: 1em 0.5em;
-      margin-right: 0; } }
+      margin-right: 0;
+      min-width: 4em; } }
+  @media screen and (max-width: 767px) and (max-width: 400px) {
+    .nav-link {
+      font-size: 0.75em; } }
 
 .active-nav-link {
   background-color: #060606; }
@@ -729,10 +734,6 @@ h3 {
   padding: 10em;
   background: linear-gradient(to right, #e3e7fa, #cdd5f7);
   opacity: 0.95; }
-
-@media screen and (orientation: landscape) and (min-height: 768px) {
-  #team-container {
-    height: calc(100% - 3em); } }
   @media screen and (max-width: 1200px) {
     #team-container {
       padding: 7em; } }

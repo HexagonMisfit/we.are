@@ -9,11 +9,6 @@
     padding: 10em;
     background: linear-gradient(to right, lighten($lavendar-ish, 10), lighten($lavendar-ish, 5));
     opacity: 0.95;
-    @media screen and (orientation: landscape) {
-        @media screen and (min-height: 768px) {
-            height: calc(100% - 3em);
-        }
-    }
     @media screen and (max-width: 1200px) {
         padding: 7em;
     }
