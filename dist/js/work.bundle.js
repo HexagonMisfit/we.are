@@ -74287,22 +74287,20 @@ window.$ = window.jQuery = __webpack_require__(0);
 
     var geometry = makeTile(gridSize, gridRes);
 
-    // var material = new THREE.MeshBasicMaterial({ color: brandColors.salmonPink, wireframe: true });
-
     var vertexShader = `
         uniform float time;
         varying vec3 vNormal;
 
         float PI = 3.14159;
         float amplitude = 10.0;
-        float tightness = 4.5;
+        float repetition = 6.5;
         float speed = 0.3;
         void main() {
 
             vNormal = normal;
-            float y = (cos(position.x * tightness + time * speed) * amplitude) + (cos(position.z * tightness + time * speed) * amplitude);
+            float y = (cos(position.x * repetition + time * speed) * amplitude) + (cos(position.z * repetition + time * speed) * amplitude);
 
-            vec3 newPosition = position + vec3(1.0, y, 1.0); 
+            vec3 newPosition = position + vec3(-y / 2.0, y, y / 2.0); 
 
             gl_Position = projectionMatrix *
                           modelViewMatrix *
