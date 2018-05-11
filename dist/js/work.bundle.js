@@ -57,10 +57,10 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/hexmisfitsite/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 11);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -73758,7 +73758,306 @@ module.exports = function(module) {
 
 /***/ }),
 /* 6 */,
-/* 7 */
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_theming_js__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__workAnimation_js__ = __webpack_require__(14);
+// vendor js files
+window.$ = window.jQuery = __webpack_require__(0);
+window._ = __webpack_require__(3);
+
+// assets
+__webpack_require__(11);
+__webpack_require__(12);
+__webpack_require__(13);
+
+// our scripts
+
+
+
+var projects = [
+    {
+        title: 'Mariposa Chandelier',
+        id: '01',
+        img: './assets/mariposa_1280x720.jpg',
+        blurb: 'Ecteturn chendelier cool apartment complex have fun with it. Gibberish filler content to look real and explain space taken up by blurb element. Life is much better when spent with brothers from other mothers, is what they say.',
+        stats: {
+            "Location": "Denver, CO",
+            "Technologies used": "Unity, Processing, Custom-built LED arrays",
+            "Year": "2014"
+        }
+    },
+    {
+        title: 'Music Visualizer',
+        id: '02',
+        img: './assets/daniel_sierra_project.jpg',
+        blurb: 'In the champagne room with the models is not really the time or place for ideological battles. And then taking from his wallet an old schedule of trains he\'ll say "I told you when I came I was a stranger".',
+        stats: {
+            "Location": "Anywhere and everywhere",
+            "Technologies used": "Processing, MIDI Controllers",
+            "Year": "Ongoing"
+        }
+    },
+    {
+        title: 'Coachella VIP Party',
+        id: '03',
+        img: './assets/mariposa_1280x720.jpg',
+        blurb: 'Rock climbing can be a very challenging and rewarding adventure, but the risks are multiplied to the extent that intoxicants are involved. Having fun with technology is a likely outcome of learning to write code.',
+        stats: {
+            "Location": "Indio, CA",
+            "Technologies used": "Xbox Kinect, Processing, Computer vision software",
+            "Year": "2015"
+        }
+    },
+    {
+        title: 'VR Ballet Experience',
+        id: '04',
+        img: './assets/daniel_sierra_project.jpg',
+        blurb: 'Ballet fun is great in love with the modern age, office of smellography kicks in when you know your time is right to get level-headed and exit stage left. Smoking prohibited in cockpit of spacecraft.',
+        stats: {
+            "Location": "Seattle, WA",
+            "Technologies Used": "Unity, HTC Vive, Cinema 4D, Motion capture",
+            "Year": "2017"
+        }
+    },
+    {
+        title: 'Digital Fish Tank',
+        id: '05',
+        img: './assets/mariposa_1280x720.jpg',
+        blurb: 'Lorem ipsum consectetur halogen ipso facto. And then taking from his wallet an old schedule of trains, a big sandwich made of cookie dough deep fried in fat carved from last night\'s roast. Billy Grippo top eastside producer.',
+        stats: {
+            "Location": "Hillsboro, OR",
+            "Technologies Used": "Unity, Computer vision technology",
+            "Year": "2017"
+        }
+    }
+];
+
+$(document).ready(function () {
+    var projectLinks = $('.project-li');
+
+    var activeProject = projects[0];
+
+    projects.forEach(function (project) {
+        projectLinks.each(function (link) {
+            console.log();
+            if ($(projectLinks[link]).attr('data') === project.id) {
+                $(projectLinks[link]).children().text(project.title);
+            }
+        });
+    })
+
+    function setActiveProject(id) {
+        activeProject = _.find(projects, { id: id });
+        $('.work-header-text').fadeOut('fast', function() {
+            $('.work-header-text').text(activeProject.title);
+            $('.work-header-text').fadeIn();
+        });
+        $('.project-number').text(activeProject.id);
+        $('.project-blurb').fadeOut('fast', function () {
+            $('.project-blurb').text(activeProject.blurb);
+            $('.project-blurb').fadeIn();
+        });
+        $('#project-img').fadeOut('fast', function () {
+            $('#project-img').attr('src', activeProject.img);
+            $('#project-img').fadeIn();
+        });
+        $('.project-stats').fadeOut('fast', function () {
+            var keys = Object.keys(activeProject.stats);
+            for (var i = 0; i < keys.length; i++) {
+                $('#stat-' + i.toString() + '-key').text(keys[i]);
+                $('#stat-' + i.toString() + '-value').text(activeProject.stats[keys[i]]);
+            }
+            $('.project-stats').fadeIn();
+        });
+    }
+
+    projectLinks.on('mouseenter', function (ev) {
+        projectLinks.removeClass('active light-text');
+        $(this).addClass('active light-text');
+        setActiveProject($(this).attr('data'));
+    });
+    setActiveProject('01');
+});
+
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/daniel_sierra_project.jpg";
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/mariposa_1280x720.jpg";
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+DQo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgaWQ9IkNhcGFfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCAzMC4wNTEgMzAuMDUxIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAzMC4wNTEgMzAuMDUxOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4IiBjbGFzcz0iIj48Zz48Zz4NCgk8cGF0aCBkPSJNMTkuOTgyLDE0LjQzOGwtNi4yNC00LjUzNmMtMC4yMjktMC4xNjYtMC41MzMtMC4xOTEtMC43ODQtMC4wNjJjLTAuMjUzLDAuMTI4LTAuNDExLDAuMzg4LTAuNDExLDAuNjY5djkuMDY5ICAgYzAsMC4yODQsMC4xNTgsMC41NDMsMC40MTEsMC42NzFjMC4xMDcsMC4wNTQsMC4yMjQsMC4wODEsMC4zNDIsMC4wODFjMC4xNTQsMCwwLjMxLTAuMDQ5LDAuNDQyLTAuMTQ2bDYuMjQtNC41MzIgICBjMC4xOTctMC4xNDUsMC4zMTItMC4zNjksMC4zMTItMC42MDdDMjAuMjk1LDE0LjgwMywyMC4xNzcsMTQuNTgsMTkuOTgyLDE0LjQzOHoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgZGF0YS1vbGRfY29sb3I9IiNlY2VjZWMiIGZpbGw9IiNlY2VjZWMiLz4NCgk8cGF0aCBkPSJNMTUuMDI2LDAuMDAyQzYuNzI2LDAuMDAyLDAsNi43MjgsMCwxNS4wMjhjMCw4LjI5Nyw2LjcyNiwxNS4wMjEsMTUuMDI2LDE1LjAyMWM4LjI5OCwwLDE1LjAyNS02LjcyNSwxNS4wMjUtMTUuMDIxICAgQzMwLjA1Miw2LjcyOCwyMy4zMjQsMC4wMDIsMTUuMDI2LDAuMDAyeiBNMTUuMDI2LDI3LjU0MmMtNi45MTIsMC0xMi41MTYtNS42MDEtMTIuNTE2LTEyLjUxNGMwLTYuOTEsNS42MDQtMTIuNTE4LDEyLjUxNi0xMi41MTggICBjNi45MTEsMCwxMi41MTQsNS42MDcsMTIuNTE0LDEyLjUxOEMyNy41NDEsMjEuOTQxLDIxLjkzNywyNy41NDIsMTUuMDI2LDI3LjU0MnoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgZGF0YS1vbGRfY29sb3I9IiNlY2VjZWMiIGZpbGw9IiNlY2VjZWMiLz4NCgk8Zz4NCgk8L2c+DQoJPGc+DQoJPC9nPg0KCTxnPg0KCTwvZz4NCgk8Zz4NCgk8L2c+DQoJPGc+DQoJPC9nPg0KCTxnPg0KCTwvZz4NCgk8Zz4NCgk8L2c+DQoJPGc+DQoJPC9nPg0KCTxnPg0KCTwvZz4NCgk8Zz4NCgk8L2c+DQoJPGc+DQoJPC9nPg0KCTxnPg0KCTwvZz4NCgk8Zz4NCgk8L2c+DQoJPGc+DQoJPC9nPg0KCTxnPg0KCTwvZz4NCjwvZz48L2c+IDwvc3ZnPg0K"
+
+/***/ }),
+/* 14 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(THREE, $) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_theming_js__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_noise_js__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_noise_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__shared_noise_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_three__ = __webpack_require__(1);
+window.$ = window.jQuery = __webpack_require__(0);
+
+
+
+
+
+/*global THREE'*/
+
+(function () {
+    var scene = new THREE.Scene();
+    var geometry;
+    var clock = new THREE.Clock();
+    var time = 0;
+    var gridSize = 12.5;
+    var gridRes = 360;
+    var p = 0;
+    var vertHeight = 0;
+    var amplitude = 0.75;
+
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2500);
+    var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+
+    function makeTile(size, res) {
+        geometry = new THREE.Geometry();
+
+        for (var i = 0; i <= res; i++) {
+            for (var j = 0; j <= res; j++) {
+                var z = j * size;
+                var x = i * size;
+                var position = new THREE.Vector3(x, 0, z);
+                var addFace = (i > 0) && (j > 0);
+                makeQuad(geometry, position, addFace, res + 1);
+            }
+
+        }
+        return geometry;
+    }
+
+    function makeQuad(geometry, position, addFace, verts) {
+        geometry.vertices.push(position);
+        if (addFace) {
+
+            var index1 = geometry.vertices.length - 1;
+            var index2 = index1 - 1;
+            var index3 = index1 - verts;
+            var index4 = index1 - verts - 1;
+
+            geometry.faces.push(new THREE.Face3(index2, index3, index1));
+            geometry.faces.push(new THREE.Face3(index2, index4, index3));
+        }
+    }
+
+    var geometry = makeTile(gridSize, gridRes);
+
+    var vertexShader = `
+        uniform float time;
+        varying vec3 vNormal;
+
+        float PI = 3.14159;
+        float amplitude = 10.0;
+        float repetition = 6.5;
+        float speed = 0.3;
+        void main() {
+
+            vNormal = normal;
+            float y = (cos(position.x * repetition + time * speed) * amplitude) + (cos(position.z * repetition + time * speed) * amplitude);
+
+            vec3 newPosition = position + vec3(-y / 2.0, y, y / 2.0); 
+
+            gl_Position = projectionMatrix *
+                          modelViewMatrix *
+                          vec4(newPosition + normal, 1.0);
+        }
+    `;
+
+    var fragmentShader = `
+        uniform float time;
+        void main() {
+            gl_FragColor = vec4(0.917, 0.321, 0.435,1.0);
+        }
+    `;
+
+    var uniforms = {
+        time: {
+            value: time
+        }
+    }
+
+    var shaderMaterial = new THREE.ShaderMaterial({
+        uniforms: uniforms,
+        vertexShader: vertexShader,
+        fragmentShader: fragmentShader,
+        wireframe: true
+    });
+
+    var mesh = new THREE.Mesh(geometry, shaderMaterial);
+
+    mesh.rotation.set(0, 45, 0);
+    mesh.position.set(-1200, 300, 0);
+    scene.add(mesh);
+
+    camera.position.set(0, 800, 0);
+    camera.rotateX(-90 * Math.PI / 180);
+    scene.add(camera);
+
+    $(document).ready(function () {
+
+        window.addEventListener('resize', onWindowResize, false);
+        window.addEventListener('deviceorientation', onWindowResize, false);
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.render(scene, camera);
+        }
+
+        $('#work-body').prepend(renderer.domElement);
+        renderer.domElement.id = 'work-background-scene';
+
+        //animate the scene
+
+        function animate() {
+            render();
+            requestAnimationFrame(animate, renderer.canvas);
+        };
+
+        function render() {
+            time += clock.getDelta();
+            uniforms.time.value = time;
+            renderer.render(scene, camera);
+        }
+        animate();
+    });
+})();
+
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1), __webpack_require__(0)))
+
+/***/ }),
+/* 15 */
 /***/ (function(module, exports) {
 
 /*
@@ -74071,305 +74370,6 @@ module.exports = function(module) {
     };
   
   })(this);
-
-/***/ }),
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_theming_js__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__workAnimation_js__ = __webpack_require__(15);
-// vendor js files
-window.$ = window.jQuery = __webpack_require__(0);
-window._ = __webpack_require__(3);
-
-// assets
-__webpack_require__(12);
-__webpack_require__(13);
-__webpack_require__(14);
-
-// our scripts
-
-
-
-var projects = [
-    {
-        title: 'Mariposa Chandelier',
-        id: '01',
-        img: './assets/mariposa_1280x720.jpg',
-        blurb: 'Ecteturn chendelier cool apartment complex have fun with it. Gibberish filler content to look real and explain space taken up by blurb element. Life is much better when spent with brothers from other mothers, is what they say.',
-        stats: {
-            "Location": "Denver, CO",
-            "Technologies used": "Unity, Processing, Custom-built LED arrays",
-            "Year": "2014"
-        }
-    },
-    {
-        title: 'Music Visualizer',
-        id: '02',
-        img: './assets/daniel_sierra_project.jpg',
-        blurb: 'In the champagne room with the models is not really the time or place for ideological battles. And then taking from his wallet an old schedule of trains he\'ll say "I told you when I came I was a stranger".',
-        stats: {
-            "Location": "Anywhere and everywhere",
-            "Technologies used": "Processing, MIDI Controllers",
-            "Year": "Ongoing"
-        }
-    },
-    {
-        title: 'Coachella VIP Party',
-        id: '03',
-        img: './assets/mariposa_1280x720.jpg',
-        blurb: 'Rock climbing can be a very challenging and rewarding adventure, but the risks are multiplied to the extent that intoxicants are involved. Having fun with technology is a likely outcome of learning to write code.',
-        stats: {
-            "Location": "Indio, CA",
-            "Technologies used": "Xbox Kinect, Processing, Computer vision software",
-            "Year": "2015"
-        }
-    },
-    {
-        title: 'VR Ballet Experience',
-        id: '04',
-        img: './assets/daniel_sierra_project.jpg',
-        blurb: 'Ballet fun is great in love with the modern age, office of smellography kicks in when you know your time is right to get level-headed and exit stage left. Smoking prohibited in cockpit of spacecraft.',
-        stats: {
-            "Location": "Seattle, WA",
-            "Technologies Used": "Unity, HTC Vive, Cinema 4D, Motion capture",
-            "Year": "2017"
-        }
-    },
-    {
-        title: 'Digital Fish Tank',
-        id: '05',
-        img: './assets/mariposa_1280x720.jpg',
-        blurb: 'Lorem ipsum consectetur halogen ipso facto. And then taking from his wallet an old schedule of trains, a big sandwich made of cookie dough deep fried in fat carved from last night\'s roast. Billy Grippo top eastside producer.',
-        stats: {
-            "Location": "Hillsboro, OR",
-            "Technologies Used": "Unity, Computer vision technology",
-            "Year": "2017"
-        }
-    }
-];
-
-$(document).ready(function () {
-    var projectLinks = $('.project-li');
-
-    var activeProject = projects[0];
-
-    projects.forEach(function (project) {
-        projectLinks.each(function (link) {
-            console.log();
-            if ($(projectLinks[link]).attr('data') === project.id) {
-                $(projectLinks[link]).children().text(project.title);
-            }
-        });
-    })
-
-    function setActiveProject(id) {
-        activeProject = _.find(projects, { id: id });
-        $('.work-header-text').fadeOut('fast', function() {
-            $('.work-header-text').text(activeProject.title);
-            $('.work-header-text').fadeIn();
-        });
-        $('.project-number').text(activeProject.id);
-        $('.project-blurb').fadeOut('fast', function () {
-            $('.project-blurb').text(activeProject.blurb);
-            $('.project-blurb').fadeIn();
-        });
-        $('#project-img').fadeOut('fast', function () {
-            $('#project-img').attr('src', activeProject.img);
-            $('#project-img').fadeIn();
-        });
-        $('.project-stats').fadeOut('fast', function () {
-            var keys = Object.keys(activeProject.stats);
-            for (var i = 0; i < keys.length; i++) {
-                $('#stat-' + i.toString() + '-key').text(keys[i]);
-                $('#stat-' + i.toString() + '-value').text(activeProject.stats[keys[i]]);
-            }
-            $('.project-stats').fadeIn();
-        });
-    }
-
-    projectLinks.on('mouseenter', function (ev) {
-        projectLinks.removeClass('active light-text');
-        $(this).addClass('active light-text');
-        setActiveProject($(this).attr('data'));
-    });
-    setActiveProject('01');
-});
-
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/daniel_sierra_project.jpg";
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/mariposa_1280x720.jpg";
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+DQo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgaWQ9IkNhcGFfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCAzMC4wNTEgMzAuMDUxIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAzMC4wNTEgMzAuMDUxOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4IiBjbGFzcz0iIj48Zz48Zz4NCgk8cGF0aCBkPSJNMTkuOTgyLDE0LjQzOGwtNi4yNC00LjUzNmMtMC4yMjktMC4xNjYtMC41MzMtMC4xOTEtMC43ODQtMC4wNjJjLTAuMjUzLDAuMTI4LTAuNDExLDAuMzg4LTAuNDExLDAuNjY5djkuMDY5ICAgYzAsMC4yODQsMC4xNTgsMC41NDMsMC40MTEsMC42NzFjMC4xMDcsMC4wNTQsMC4yMjQsMC4wODEsMC4zNDIsMC4wODFjMC4xNTQsMCwwLjMxLTAuMDQ5LDAuNDQyLTAuMTQ2bDYuMjQtNC41MzIgICBjMC4xOTctMC4xNDUsMC4zMTItMC4zNjksMC4zMTItMC42MDdDMjAuMjk1LDE0LjgwMywyMC4xNzcsMTQuNTgsMTkuOTgyLDE0LjQzOHoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgZGF0YS1vbGRfY29sb3I9IiNlY2VjZWMiIGZpbGw9IiNlY2VjZWMiLz4NCgk8cGF0aCBkPSJNMTUuMDI2LDAuMDAyQzYuNzI2LDAuMDAyLDAsNi43MjgsMCwxNS4wMjhjMCw4LjI5Nyw2LjcyNiwxNS4wMjEsMTUuMDI2LDE1LjAyMWM4LjI5OCwwLDE1LjAyNS02LjcyNSwxNS4wMjUtMTUuMDIxICAgQzMwLjA1Miw2LjcyOCwyMy4zMjQsMC4wMDIsMTUuMDI2LDAuMDAyeiBNMTUuMDI2LDI3LjU0MmMtNi45MTIsMC0xMi41MTYtNS42MDEtMTIuNTE2LTEyLjUxNGMwLTYuOTEsNS42MDQtMTIuNTE4LDEyLjUxNi0xMi41MTggICBjNi45MTEsMCwxMi41MTQsNS42MDcsMTIuNTE0LDEyLjUxOEMyNy41NDEsMjEuOTQxLDIxLjkzNywyNy41NDIsMTUuMDI2LDI3LjU0MnoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgZGF0YS1vbGRfY29sb3I9IiNlY2VjZWMiIGZpbGw9IiNlY2VjZWMiLz4NCgk8Zz4NCgk8L2c+DQoJPGc+DQoJPC9nPg0KCTxnPg0KCTwvZz4NCgk8Zz4NCgk8L2c+DQoJPGc+DQoJPC9nPg0KCTxnPg0KCTwvZz4NCgk8Zz4NCgk8L2c+DQoJPGc+DQoJPC9nPg0KCTxnPg0KCTwvZz4NCgk8Zz4NCgk8L2c+DQoJPGc+DQoJPC9nPg0KCTxnPg0KCTwvZz4NCgk8Zz4NCgk8L2c+DQoJPGc+DQoJPC9nPg0KCTxnPg0KCTwvZz4NCjwvZz48L2c+IDwvc3ZnPg0K"
-
-/***/ }),
-/* 15 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(THREE, $) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_theming_js__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_noise_js__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_noise_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__shared_noise_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_three__ = __webpack_require__(1);
-window.$ = window.jQuery = __webpack_require__(0);
-
-
-
-
-
-/*global THREE'*/
-
-(function () {
-    var scene = new THREE.Scene();
-    var geometry;
-    var clock = new THREE.Clock();
-    var time = 0;
-    var gridSize = 12.5;
-    var gridRes = 360;
-    var p = 0;
-    var vertHeight = 0;
-    var amplitude = 0.75;
-
-    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2500);
-    var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
-
-    function makeTile(size, res) {
-        geometry = new THREE.Geometry();
-
-        for (var i = 0; i <= res; i++) {
-            for (var j = 0; j <= res; j++) {
-                var z = j * size;
-                var x = i * size;
-                var position = new THREE.Vector3(x, 0, z);
-                var addFace = (i > 0) && (j > 0);
-                makeQuad(geometry, position, addFace, res + 1);
-            }
-
-        }
-        return geometry;
-    }
-
-    function makeQuad(geometry, position, addFace, verts) {
-        geometry.vertices.push(position);
-        if (addFace) {
-
-            var index1 = geometry.vertices.length - 1;
-            var index2 = index1 - 1;
-            var index3 = index1 - verts;
-            var index4 = index1 - verts - 1;
-
-            geometry.faces.push(new THREE.Face3(index2, index3, index1));
-            geometry.faces.push(new THREE.Face3(index2, index4, index3));
-        }
-    }
-
-    var geometry = makeTile(gridSize, gridRes);
-
-    var vertexShader = `
-        uniform float time;
-        varying vec3 vNormal;
-
-        float PI = 3.14159;
-        float amplitude = 10.0;
-        float repetition = 6.5;
-        float speed = 0.3;
-        void main() {
-
-            vNormal = normal;
-            float y = (cos(position.x * repetition + time * speed) * amplitude) + (cos(position.z * repetition + time * speed) * amplitude);
-
-            vec3 newPosition = position + vec3(-y / 2.0, y, y / 2.0); 
-
-            gl_Position = projectionMatrix *
-                          modelViewMatrix *
-                          vec4(newPosition + normal, 1.0);
-        }
-    `;
-
-    var fragmentShader = `
-        uniform float time;
-        void main() {
-            gl_FragColor = vec4(0.917, 0.321, 0.435,1.0);
-        }
-    `;
-
-    var uniforms = {
-        time: {
-            value: time
-        }
-    }
-
-    var shaderMaterial = new THREE.ShaderMaterial({
-        uniforms: uniforms,
-        vertexShader: vertexShader,
-        fragmentShader: fragmentShader,
-        wireframe: true
-    });
-
-    var mesh = new THREE.Mesh(geometry, shaderMaterial);
-
-    mesh.rotation.set(0, 45, 0);
-    mesh.position.set(-1200, 300, 0);
-    scene.add(mesh);
-
-    camera.position.set(0, 800, 0);
-    camera.rotateX(-90 * Math.PI / 180);
-    scene.add(camera);
-
-    $(document).ready(function () {
-
-        window.addEventListener('resize', onWindowResize, false);
-        window.addEventListener('deviceorientation', onWindowResize, false);
-
-        function onWindowResize() {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.render(scene, camera);
-        }
-
-        $('#work-body').prepend(renderer.domElement);
-        renderer.domElement.id = 'work-background-scene';
-
-        //animate the scene
-
-        function animate() {
-            render();
-            requestAnimationFrame(animate, renderer.canvas);
-        };
-
-        function render() {
-            time += clock.getDelta();
-            uniforms.time.value = time;
-            renderer.render(scene, camera);
-        }
-        animate();
-    });
-})();
-
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1), __webpack_require__(0)))
 
 /***/ })
 /******/ ]);
