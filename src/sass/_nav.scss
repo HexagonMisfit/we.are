@@ -4,11 +4,12 @@
     padding: 0 1em;
     align-content: center;
     justify-content: center;
-    background-color: $near-white;
+    background-color: $white;
     height: 62px;
     position: fixed;
     left: 0;
     top: inherit;
+    font-family: $varela-round;
     ul {
         width: 100vw;
         list-style: none;
@@ -50,22 +51,22 @@
         transition: right 200ms;
         height: 2px;
         bottom: calc(1em - 3px);
-        background-color: $near-black;
+        background-color: $dark-gray;
         @media screen and (max-width: 767px) {
             left: 0.5em;
             bottom: calc(0.5em - 3px);
         }
     }
     span.light-text::after {
-        background-color: $near-white !important;
+        background-color: $white !important;
     }
     span {
         text-align: center;
         align-self: center;
     }
     span.active {
-         background-color: $near-black;
-         color: $near-white;
+         background-color: $dark-gray;
+         color: $white;
     }
     @media screen and (max-width: 767px) {
         padding: 1em 0.5em;
@@ -78,9 +79,9 @@
 }
 
 .active-nav-link {
-    background-color: $near-black;
+    background-color: $dark-gray;
     span {
-        color: $near-white;
+        color: $white;
     }
 }
 

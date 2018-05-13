@@ -56589,28 +56589,70 @@ function LensFlare() {
 
 /***/ }),
 /* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-const brandColors = {
-    redBright: 0xF03A47,
-    plumIsh: 0x542344,
-    salmonPink: 0xEA526F,
-    seafoamGreen: 0x119DA4,
-    lavendarIsh: 0xB7C3F3,
-    magentaDark: 0xB21252,
-    blueLight: 0x14ACCC,
-    blueDark: 0x0995B2,
-    brightYellow: 0xFFE919,
-    nearWhite: 0xfafafa,
-    nearBlack: 0x060606,
-    buttonDarken: 0xf7f7f7
-};
-/* harmony export (immutable) */ __webpack_exports__["a"] = brandColors;
+/* WEBPACK VAR INJECTION */(function($) {$(document).ready(function () {
 
+    var body = $('body');
+    var navLink = $('.nav-link');
+    var pageWipe = $('#page-wipe');
+    var currentPage = location.href;
+    var activeNavItem;
+
+    function setActiveNavItem(url) {
+        var current = currentPage.split('/');
+        currentNavItem = current[current.length - 1];
+        if(currentNavItem) {
+            thisButton = $('#' + currentNavItem + '-button');
+            thisButton.removeClass('active-nav-link');
+        }
+
+        var next = url.split('/');
+        activeNavItem = next[next.length - 1];
+        if(activeNavItem) {
+            var activeButton = $('#'+ activeNavItem + '-button');
+            activeButton.addClass('active-nav-link');
+        }
+    }
+
+    function wipeIn() {
+        TweenMax.to(body, 0.0, {autoAlpha: 1});
+        setActiveNavItem(currentPage);
+        TweenMax.to(pageWipe, 0.65, { width: 0, bottom: '100%', left: '100%', ease: Power4.easeIn });
+    };
+
+    function wipeOut(next) {
+        function loadNext() {
+            location.href = next;
+        }
+        setActiveNavItem(next);
+        TweenMax.to(pageWipe, 0, { top: 0, left: 0, bottom: 0, width: 0 });
+        TweenMax.to(pageWipe, 0.65, { top: 0, left: 0, bottom: 0, right: 0, width: '100%', ease: Power4.easeIn, onComplete: loadNext });
+    }
+
+    function onInit() {
+        wipeIn();
+    }
+
+    navLink.on('click', function (ev) {
+        console.log(ev);
+        ev.preventDefault();
+        if (currentPage !== ev.currentTarget.href) {
+            wipeOut(ev.currentTarget.href);
+        }
+    });
+    onInit();
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -73699,10 +73741,10 @@ const brandColors = {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(5)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(6)(module)))
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
 var g;
@@ -73729,7 +73771,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -73757,179 +73799,39 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function(THREE, $) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_three__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_theming_js__ = __webpack_require__(2);
-window.$ = window.jQuery = __webpack_require__(0);
+const brandColors = {
+    hotPink: 0xfc1c6a,
+    aqua: 0x3ff6ff,
+    limeGreen: 0xbcff4f,
+    darkTeal: 0x248886,
+    darkGray: 0x2b2b2b,
+    warmGray: 0x766969
+};
+/* harmony export (immutable) */ __webpack_exports__["a"] = brandColors;
 
-
-
-/* global THREE */
-
-
-
-var scene = new THREE.Scene();
-
-var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(0, 0, 3);
-
-var target = new THREE.Object3D();
-var targetZ = -15;
-target.position.set(0, 0, targetZ);
-var temp = target.position.clone();
-
-var cube;
-var cubeMesh;
-var cubePositions = [];
-var cubeRotationVelocities = [];
-var cubeScale;
-
-var width = window.innerWidth;
-var height = window.innerHeight;
-
-var mouseX = 0;
-var mouseY = 0;
-var halfWidth = width / 2;
-var halfHeight = height / 2;
-
-var yOffset = 30;
-
-var lerpRate = 1/250;
-
-$(document).ready(function () {
-
-    function onInitHome() {
-        console.log('onInit');
-        var ascend1 = $('.ascend-1');
-        TweenMax.to($('body'), 0.75, { autoAlpha: 1, ease: Power2.easeOut });
-        TweenMax.staggerTo(ascend1, 1, { autoAlpha: 1, y: 0, ease: Power3.easeOut }, 0.1);
-    }
-
-    $('.hero-container').mousemove(onMouseMove);
-
-    function onMouseMove(event) {
-
-        //set the temp position to a value based on mouse position
-
-        mouseX = event.clientX - halfWidth;
-        mouseY = event.clientY - halfHeight;
-        temp.set(mouseX / 100, -mouseY / 100, targetZ);
-    }
-
-    function lerpCameraTarget(){
-        target.position.lerp(temp, lerpRate);
-    }
-
-    function toPositions() {
-
-        //bring the cubes into view
-
-        TweenMax.staggerTo(cubePositions, 2, { y: '+=' + yOffset, ease: Power4.easeOut }, 0.02);
-    }
-
-    function rotate(object, speed) {
-        object.rotation.x += speed[0];
-        object.rotation.y += speed[1];
-    }
-
-    var renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setClearColor(__WEBPACK_IMPORTED_MODULE_1__shared_theming_js__["a" /* brandColors */].blueLight, 1);
-
-    var cubeGeometry = new THREE.BoxGeometry(3, 3, 3);
-    var cubeMaterial = new THREE.MeshBasicMaterial({ color: __WEBPACK_IMPORTED_MODULE_1__shared_theming_js__["a" /* brandColors */].magentaDark });
-    var cubeGroup = new THREE.Group();
-
-    for (var i = 0; i < 30; i++) {
-
-        //make 30 cubes of random sizes and place them randomly with a y-offset
-
-        cubeMesh = new THREE.Mesh(cubeGeometry, cubeMaterial);
-        cube = new THREE.Object3D();
-        cube.add(cubeMesh);
-
-        cubeScale = Math.random() / 3 + 0.35;
-        cube.scale.x = cubeScale;
-        cube.scale.y = cubeScale;
-        cube.scale.z = cubeScale;
-
-        var x = Math.random() * 20 - 10;
-        var y = Math.random() * 20 - 10 - yOffset;
-        var z = Math.random() * -15;
-
-        cube.position.set(x, y, z);
-
-        cubePositions.push(cube.position);
-
-        cube.rotation.y = Math.random();
-        cube.rotation.x = Math.random();
-
-        cubeGroup.add(cube);
-        cubeRotationVelocities.push([Math.random() / 400, Math.random() / 400]);
-    }
-
-    scene.add(cubeGroup);
-
-    // Animate the scene
-
-    var animate = function () {
-        requestAnimationFrame(animate);
-        render();
-    };
-
-    var render = function() {
-        for (var i = 0; i < cubeGroup.children.length; i++) {
-            rotate(cubeGroup.children[i], cubeRotationVelocities[i]);
-        }
-        lerpCameraTarget();
-        camera.lookAt(target.position);
-        renderer.render(scene, camera);
-    }
-
-    // Draw it in the dom and add resize event listener
-
-    $('#home-home').prepend(renderer.domElement);
-
-    window.addEventListener('resize', onWindowResize, false);
-    window.addEventListener('deviceorientation', onWindowResize, false);
-
-    function onWindowResize() {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.render(scene, camera);
-    }
-
-    renderer.domElement.id = "header-canvas";
-
-    onInitHome();
-    animate();
-    toPositions();
-});
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1), __webpack_require__(0)))
 
 /***/ }),
-/* 7 */,
 /* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_theming_js__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_nav_js__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__sass_main_scss__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__sass_main_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__sass_main_scss__);
+/* WEBPACK VAR INJECTION */(function($, THREE) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_three__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_theming_js__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_nav_js__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_nav_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__shared_nav_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sass_main_scss__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sass_main_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__sass_main_scss__);
 // vendor js files
 window.$ = window.jQuery = __webpack_require__(0);
-window._ = __webpack_require__(3);
+window._ = __webpack_require__(4);
 
-__webpack_require__(1);
+
+/* global THREE */
 
 // our scripts
 
@@ -73981,82 +73883,150 @@ $(function () {
 
     if (!isMobile()) {
         console.log('not mobile');
-    } 
-});
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
-
-/***/ }),
-/* 9 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_home_js__ = __webpack_require__(6);
-var routes = ['home', 'team', 'work', 'contact', 'vr'];
-
-
-
-$(document).ready(function () {
-
-    var navLink = $('.nav-link');
-    var pageWipe = $('#page-wipe');
-
-    function loadAll() {
-        TweenMax.to(pageWipe, 0, { width: '100%', bottom: 0, left: 0, top: 0, right: 0 });
-        routes.forEach(function (route) {
-            var routeContainer = $('#' + route + '-container');
-            routeContainer.hide();
-            return routeContainer.load('./templates/' + route + '.html');
-        });
     }
 
-    function wipeIn(current, next) {
-        $('#' + current + '-container').hide();
-        $('#' + next + '-container').show();
-        TweenMax.to(pageWipe, 0.65, { width: 0, bottom: '100%', left: '100%', ease: Power4.easeIn });
-    };
+    /****************/
+    //HOME ANIMATION//
+    /****************/
 
-    function wipeOut(current, next) {
-        function loadNext() {
-            wipeIn(current, next);
+    var scene = new THREE.Scene();
+
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 0, 3);
+
+    var target = new THREE.Object3D();
+    var targetZ = -15;
+    target.position.set(0, 0, targetZ);
+    var temp = target.position.clone();
+
+    var cube;
+    var cubeMesh;
+    var cubePositions = [];
+    var cubeRotationVelocities = [];
+    var cubeScale;
+
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+
+    var mouseX = 0;
+    var mouseY = 0;
+    var halfWidth = width / 2;
+    var halfHeight = height / 2;
+
+    var yOffset = 30;
+
+    var lerpRate = 1 / 250;
+
+        function onInitHome() {
+            var ascend1 = $('.ascend-1');
+            TweenMax.to($('body'), 0.75, { autoAlpha: 1, ease: Power2.easeOut });
+            TweenMax.staggerTo(ascend1, 1, { autoAlpha: 1, y: 0, ease: Power3.easeOut }, 0.1);
         }
-        TweenMax.to(pageWipe, 0, { top: 0, left: 0, bottom: 0, height: '100%', width: 0 });
-        TweenMax.to(pageWipe, 0.65, { right: 0, width: '100%', ease: Power4.easeIn, onComplete: loadNext });
-    }
 
-    window.onhashchange = function (ev) {
-        let current = ev.oldURL.split('#')[1];
-        let next = ev.newURL.split('#')[1];
-        if(!current) {
-            current = 'home';
+        $('.hero-container').mousemove(onMouseMove);
+
+        function onMouseMove(event) {
+
+            //set the temp position to a value based on mouse position
+
+            mouseX = event.clientX - halfWidth;
+            mouseY = event.clientY - halfHeight;
+            temp.set(mouseX / 100, -mouseY / 100, targetZ);
         }
-        var activeNavLink = $('.active-nav-link');
-        activeNavLink.removeClass('active-nav-link');
-        $('#' + next + '-button').addClass('active-nav-link');
 
-        wipeOut(current, next);
-    }
+        function lerpCameraTarget() {
+            target.position.lerp(temp, lerpRate);
+        }
 
-    function onInit() {
-        $.when(loadAll()).then(function () {
-            var hash = window.location.hash.split('#')[1];
-            if (hash) {
-                $('#' + hash + '-button').addClass('active-nav-link');
-                $('#' + hash + '-container').show();
-                wipeIn('home', hash);
-            } else {
-                wipeIn('home', 'home');
+        function toPositions() {
+
+            //bring the cubes into view
+
+            TweenMax.staggerTo(cubePositions, 2, { y: '+=' + yOffset, ease: Power4.easeOut }, 0.02);
+        }
+
+        function rotate(object, speed) {
+            object.rotation.x += speed[0];
+            object.rotation.y += speed[1];
+        }
+
+        var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+
+        var cubeGeometry = new THREE.BoxGeometry(3, 3, 3);
+        var cubeMaterial = new THREE.MeshBasicMaterial({ color: __WEBPACK_IMPORTED_MODULE_1__shared_theming_js__["a" /* brandColors */].aqua });
+        var cubeGroup = new THREE.Group();
+
+        for (var i = 0; i < 30; i++) {
+
+            //make 30 cubes of random sizes and place them randomly with a y-offset
+
+            cubeMesh = new THREE.Mesh(cubeGeometry, cubeMaterial);
+            cube = new THREE.Object3D();
+            cube.add(cubeMesh);
+
+            cubeScale = Math.random() / 3 + 0.35;
+            cube.scale.x = cubeScale;
+            cube.scale.y = cubeScale;
+            cube.scale.z = cubeScale;
+
+            var x = Math.random() * 20 - 10;
+            var y = Math.random() * 20 - 10 - yOffset;
+            var z = Math.random() * -15;
+
+            cube.position.set(x, y, z);
+
+            cubePositions.push(cube.position);
+
+            cube.rotation.y = Math.random();
+            cube.rotation.x = Math.random();
+
+            cubeGroup.add(cube);
+            cubeRotationVelocities.push([Math.random() / 400, Math.random() / 400]);
+        }
+
+        scene.add(cubeGroup);
+
+        // Animate the scene
+
+        var animate = function () {
+            requestAnimationFrame(animate);
+            render();
+        };
+
+        var render = function () {
+            for (var i = 0; i < cubeGroup.children.length; i++) {
+                rotate(cubeGroup.children[i], cubeRotationVelocities[i]);
             }
-        });
-    }
-    onInit();
+            lerpCameraTarget();
+            camera.lookAt(target.position);
+            renderer.render(scene, camera);
+        }
+
+        // Draw it in the dom and add resize event listener
+
+        $('#home-home').prepend(renderer.domElement);
+
+        window.addEventListener('resize', onWindowResize, false);
+        window.addEventListener('deviceorientation', onWindowResize, false);
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.render(scene, camera);
+        }
+
+        renderer.domElement.id = "header-canvas";
+
+        onInitHome();
+        animate();
+        toPositions();
+
 });
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0), __webpack_require__(1)))
 
 /***/ })
 /******/ ]);

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 16);
+/******/ 	return __webpack_require__(__webpack_require__.s = 14);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -56589,28 +56589,69 @@ function LensFlare() {
 
 /***/ }),
 /* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-const brandColors = {
-    redBright: 0xF03A47,
-    plumIsh: 0x542344,
-    salmonPink: 0xEA526F,
-    seafoamGreen: 0x119DA4,
-    lavendarIsh: 0xB7C3F3,
-    magentaDark: 0xB21252,
-    blueLight: 0x14ACCC,
-    blueDark: 0x0995B2,
-    brightYellow: 0xFFE919,
-    nearWhite: 0xfafafa,
-    nearBlack: 0x060606,
-    buttonDarken: 0xf7f7f7
-};
-/* harmony export (immutable) */ __webpack_exports__["a"] = brandColors;
+/* WEBPACK VAR INJECTION */(function($) {$(document).ready(function () {
 
+    var body = $('body');
+    var navLink = $('.nav-link');
+    var pageWipe = $('#page-wipe');
+    var currentPage = location.href;
+    var activeNavItem;
+
+    function setActiveNavItem(url) {
+        var current = currentPage.split('/');
+        currentNavItem = current[current.length - 1];
+        if(currentNavItem) {
+            thisButton = $('#' + currentNavItem + '-button');
+            thisButton.removeClass('active-nav-link');
+        }
+
+        var next = url.split('/');
+        activeNavItem = next[next.length - 1];
+        if(activeNavItem) {
+            var activeButton = $('#'+ activeNavItem + '-button');
+            activeButton.addClass('active-nav-link');
+        }
+    }
+
+    function wipeIn() {
+        TweenMax.to(body, 0.0, {autoAlpha: 1});
+        setActiveNavItem(currentPage);
+        TweenMax.to(pageWipe, 0.65, { width: 0, bottom: '100%', left: '100%', ease: Power4.easeIn });
+    };
+
+    function wipeOut(next) {
+        function loadNext() {
+            location.href = next;
+        }
+        setActiveNavItem(next);
+        TweenMax.to(pageWipe, 0, { top: 0, left: 0, bottom: 0, width: 0 });
+        TweenMax.to(pageWipe, 0.65, { top: 0, left: 0, bottom: 0, right: 0, width: '100%', ease: Power4.easeIn, onComplete: loadNext });
+    }
+
+    function onInit() {
+        wipeIn();
+    }
+
+    navLink.on('click', function (ev) {
+        console.log(ev);
+        ev.preventDefault();
+        if (currentPage !== ev.currentTarget.href) {
+            wipeOut(ev.currentTarget.href);
+        }
+    });
+    onInit();
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 3 */,
+/* 3 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
 /* 4 */,
 /* 5 */,
 /* 6 */,
@@ -56621,23 +56662,24 @@ const brandColors = {
 /* 11 */,
 /* 12 */,
 /* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_big_al_jpg__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_big_al_jpg__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_big_al_jpg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__assets_big_al_jpg__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_chris_r_prof_crop_png__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_chris_r_prof_crop_png__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_chris_r_prof_crop_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__assets_chris_r_prof_crop_png__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_d_sierra_png__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_d_sierra_png__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_d_sierra_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__assets_d_sierra_png__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_quin_kennedy_prof_png__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_quin_kennedy_prof_png__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_quin_kennedy_prof_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__assets_quin_kennedy_prof_png__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_theming_js__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__teamAnimation_js__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_nav_js__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_nav_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__shared_nav_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__teamAnimation_js__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__sass_main_scss__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__sass_main_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__sass_main_scss__);
 
 
 
@@ -56648,40 +56690,40 @@ window.$ = window.jQuery = __webpack_require__(0);
 
 
 
+// import our scss last
+
+
 /***/ }),
-/* 17 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/big_al.jpg";
 
 /***/ }),
-/* 18 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/chris_r_prof_crop.png";
 
 /***/ }),
-/* 19 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/d_sierra.png";
 
 /***/ }),
-/* 20 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/quin_kennedy_prof.png";
 
 /***/ }),
-/* 21 */
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(THREE, $) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_three__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_theming_js__ = __webpack_require__(2);
 window.$ = window.jQuery = __webpack_require__(0);
-
-
 
 
 
@@ -56844,7 +56886,7 @@ window.$ = window.jQuery = __webpack_require__(0);
             varying float noise;
             varying vec3 vNormal;
             void main() {
-                gl_FragColor = vec4(1.0,1.0,1.0,1.0);
+                gl_FragColor = vec4(0.247, 0.964, 1.0, 0.8);
             }
     `;
 

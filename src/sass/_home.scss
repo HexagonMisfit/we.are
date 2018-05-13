@@ -9,6 +9,7 @@
     overflow: -moz-scrollbars-none;
     overflow-y: scroll;
     overflow-x: hidden;
+    background: $dark-gray;
 }
 
 .home-section-container {
@@ -21,9 +22,9 @@
 }
 
 .hero {
-    align-items: flex-start;
     height: 100% !important;
-    border-bottom: 2px solid $near-white;
+    border-bottom: 2px solid $white;
+    text-align: center;
 }
 
 .hero-padding-responsive {

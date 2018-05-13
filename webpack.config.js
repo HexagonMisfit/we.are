@@ -7,7 +7,6 @@ module.exports = {
     context: __dirname + '/src',
     entry: {
         app: './index.js',
-        home: './home/home.js',
         work: './work/work.js',
         team: './team/team.js',
         contact: './contact/contact.js',
@@ -54,32 +53,31 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './index.html',
             filename: './index.html',
-            excludeChunks: ['home', 'team', 'work', 'contact', 'vr'],
-            inject: 'head'
+            inject: 'head',
+            excludeChunks: ['team', 'work', 'vr', 'contact']
         }),
         new HtmlWebpackPlugin({
             template: './team/team.html',
-            filename: 'templates/team.html',
+            filename: 'team.html',
+            inject: 'head',
             chunks: ['team']
         }),
         new HtmlWebpackPlugin({
-            template: './home/home.html',
-            filename: 'templates/home.html',
-            chunks: ['home']
-        }),
-        new HtmlWebpackPlugin({
             template: './work/work.html',
-            filename: 'templates/work.html',
+            filename: 'work.html',
+            inject: 'head',
             chunks: ['work']
         }),
         new HtmlWebpackPlugin({
             template: './vr/vr.html',
             filename: 'vr.html',
+            inject: 'head',
             chunks: ['vr']
         }),
         new HtmlWebpackPlugin({
             template: './contact/contact.html',
-            filename: 'templates/contact.html',
+            filename: 'contact.html',
+            inject: 'head',
             chunks: ['contact']
         }),
         new webpack.ProvidePlugin({

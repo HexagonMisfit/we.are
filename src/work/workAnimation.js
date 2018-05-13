@@ -1,7 +1,6 @@
 window.$ = window.jQuery = require('jquery');
 
 import { brandColors } from '../shared/theming.js';
-import { noise } from '../shared/noise.js';
 
 import 'three';
 /*global THREE'*/
@@ -79,7 +78,9 @@ import 'three';
     var fragmentShader = `
         uniform float time;
         void main() {
-            gl_FragColor = vec4(0.917, 0.321, 0.435,1.0);
+            //gl_FragColor = vec4(0.988, 0.109, 0.415, 1.0);
+            //gl_FragColor = vec4(0.247, 0.964, 1.0, 0.6);
+            gl_FragColor = vec4(1.0);
         }
     `;
 

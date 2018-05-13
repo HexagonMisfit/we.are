@@ -2,8 +2,6 @@ window.$ = window.jQuery = require('jquery');
 
 import 'three';
 
-import { brandColors } from '../shared/theming.js';
-
 (function () {
     var scene = new THREE.Scene();
     var geometry;
@@ -163,7 +161,7 @@ import { brandColors } from '../shared/theming.js';
             varying float noise;
             varying vec3 vNormal;
             void main() {
-                gl_FragColor = vec4(1.0,1.0,1.0,1.0);
+                gl_FragColor = vec4(0.247, 0.964, 1.0, 0.8);
             }
     `;
 

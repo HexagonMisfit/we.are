@@ -8,15 +8,18 @@ require('./assets/mariposa_1280x720.jpg');
 require('./assets/play_svg.svg');
 
 // our scripts
-import { brandColors } from '../shared/theming.js';
+import '../shared/nav.js';
 import { workAnimation } from './workAnimation.js';
+
+// import our scss last
+import '../sass/main.scss';
 
 var projects = [
     {
         title: 'Mariposa Chandelier',
         id: '01',
         img: './assets/mariposa_1280x720.jpg',
-        blurb: 'Ecteturn chendelier cool apartment complex have fun with it. Gibberish filler content to look real and explain space taken up by blurb element. Life is much better when spent with brothers from other mothers, is what they say.',
+        blurb: 'Ecteturn chendelier cool apartment complex have fun with it. Gibberish filler content to look real and explain space taken up by blurb element. Life is much better when spent with friends and close colleagues, is what they say.',
         stats: {
             "Location": "Denver, CO",
             "Technologies used": "Unity, Processing, Custom-built LED arrays",
@@ -27,7 +30,7 @@ var projects = [
         title: 'Music Visualizer',
         id: '02',
         img: './assets/daniel_sierra_project.jpg',
-        blurb: 'In the champagne room with the models is not really the time or place for ideological battles. And then taking from his wallet an old schedule of trains he\'ll say "I told you when I came I was a stranger".',
+        blurb: 'The champagne room on Christmas Eve is not really the time or place for ideological battles. Ok etc, have fun, etc, then taking from his wallet an old schedule of trains he\'ll say "I told you when I came I was a stranger".',
         stats: {
             "Location": "Anywhere and everywhere",
             "Technologies used": "Processing, MIDI Controllers",
@@ -76,7 +79,6 @@ $(document).ready(function () {
 
     projects.forEach(function (project) {
         projectLinks.each(function (link) {
-            console.log();
             if ($(projectLinks[link]).attr('data') === project.id) {
                 $(projectLinks[link]).children().text(project.title);
             }

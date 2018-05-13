@@ -1,6 +1,21 @@
 @font-face {
-    font-family: 'Inconsolata';
-    src: url('../fonts/Inconsolata.otf');
+    font-family: 'Varela Round';
+    src: url('../fonts/VarelaRound-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Open Sans Bold';
+    src: url('../fonts/OpenSans-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/OpenSans-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Open Sans Italic';
+    src: url('../fonts/OpenSans-Italic.ttf');
 }
 
 html {
@@ -32,8 +47,7 @@ html::-webkit-scrollbar { width: 0 !important }
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    color: $near-black;
-    font-family: 'Inconsolata', monospace;
+    color: $dark-gray;
 }
 
 body {
@@ -42,15 +56,38 @@ body {
     height: 100%;
     width: auto;
     -webkit-overflow-scrolling: touch;
-    overflow: -moz-scrollbars-none;
-    // touch-action: none;
     position: relative;
-    background-color: $near-white;
+    background-color: $white;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: $open-sans;
+    font-weight: normal;
 }
 
 p {
     font-size: 1.2em;
     line-height: 1.3em;
+    font-family: 'Open Sans', Helvetica, sans-serif;
+}
+
+.flex-1 {
+    order: 1;
+}
+
+.flex-2 {
+    order: 2;
+    @media screen and (max-width: 720px) {
+        order: 1;
+    }
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
 }
 
 #container {
@@ -62,7 +99,7 @@ p {
     right: 0;
     bottom: 0;
     z-index: 2;
-    overflow: -moz-scrollbars-none;
+    overflow-y: visible;
 }
 
 #home-container {
@@ -85,6 +122,7 @@ p {
     font-weight: bold;
     z-index: 2;
     position: relative;
+    font-family: $varela-round;
     @media screen and (max-width: 767px) {
         padding-left: 0.5em;
     }
@@ -97,12 +135,16 @@ p {
     position: fixed;
     left: 0;
     top: 0;
-    background-color: $near-white;
-    border: 2px solid $near-black;
+    background-color: $white;
+    border: 2px solid $dark-gray;
     mix-blend-mode: difference;
     z-index: 999;
     pointer-events: none;
     visibility: hidden;
+}
+
+#page-wipe {
+    position: fixed;
 }
 
 .one-third {
@@ -126,7 +168,7 @@ p {
 }
 
 .white-background {
-    background-color: $near-white;
+    background-color: $white;
 }
 
 h3 {
@@ -134,7 +176,7 @@ h3 {
 }
 
 .light-text, .light-text > * {
-    color: $near-white;
+    color: $white;
 }
 
 .column {
@@ -147,23 +189,26 @@ h3 {
     flex-direction: row;
 }
 
-.link {
-    font-weight: bold;
-    &:focus {
-        outline: none;
-    }
-    &:hover {
-        img {
-            color: $bright-yellow;
-        }
-        span {
-            color: $bright-yellow;
-        }
-    }
+.zazz {
+    color: $lime-green;
 }
 
-.zazz {
-    color: $bright-yellow;
+.aqua {
+    color: $aqua;
+}
+
+.dark-teal {
+    color: $dark-teal;
+    color: $dark-teal;
+}
+
+.hot-pink {
+    color: $hot-pink;
+}
+
+.varela-light {
+    font-family: $varela-round;
+    font-weight: lighter;
 }
 
 .hidden-wide {
@@ -195,16 +240,11 @@ h3 {
 }
 
 .ultra-big-text {
-    font-size: 5em;
+    font-size: 3em;
     font-weight: 700;
     margin: 0;
     padding: 0;
-    @media screen and (max-width: 960px) {
-        font-size: 4em;
-    }
-    @media screen and (max-width: 750px) {
-        font-size: 3.5em;
-    }
+    font-family: $varela-round;
     @media screen and (max-width: 600px) {
         font-size: 2em;
     }
@@ -214,6 +254,7 @@ h3 {
     font-size: 3em;
     margin: 0;
     font-weight: bolder;
+    font-family: $varela-round;
     @media screen and (max-width: 600px) {
         font-size: 2em;
     }
@@ -223,6 +264,7 @@ h3 {
     font-size: 9em;
     margin: 0;
     font-weight: bolder;
+    font-family: $open-sans;
     @media screen and (max-width: 600px) {
         font-size: 5em;
     }

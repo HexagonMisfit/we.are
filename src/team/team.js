@@ -5,5 +5,8 @@ import './assets/quin_kennedy_prof.png';
 
 window.$ = window.jQuery = require('jquery');
 
-import { brandColors } from '../shared/theming.js';
+import '../shared/nav.js';
 import './teamAnimation.js';
+
+// import our scss last
+import '../sass/main.scss';

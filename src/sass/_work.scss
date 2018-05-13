@@ -65,7 +65,7 @@
     z-index: 5;
     align-items: center;
     position: relative;
-    background: linear-gradient(to right, lighten($salmon-pink, 10), $near-white);
+    background: linear-gradient(to right, lighten($warm-gray, 40), lighten($warm-gray, 30));
     display: flex;
     overflow-y: scroll;
     flex-direction: column;
@@ -75,7 +75,7 @@
         justify-content: center;
         height: 100%;
         @media screen and (min-height: 768px) {
-            overflow-y: hidden;
+            overflow: hidden;
         }
     }
     @media screen and (min-height: 1024px) {
@@ -101,7 +101,7 @@
 .projects-inner-container {
     justify-content: flex-start;
     width: 100%;
-    background: $near-white;
+    background: $white;
     padding: 0.5em
 }
 
@@ -138,7 +138,6 @@
     align-items: flex-start;
     padding-bottom: 1em;
     justify-content: center;
-    // background: $salmon-pink;
     width: 100%;
     order: 2;
     @media screen and (min-width: 1024px) {
@@ -162,6 +161,9 @@
         align-items: center;
         padding: 0 3px;
         padding-left: 1em;
+        &:hover{
+            cursor: pointer;
+        }
         span {
             transition: all 0.2s ease;
             position: relative;
@@ -172,7 +174,7 @@
     }
 
     .project-li.active {
-        background-color: $near-black;
+        background-color: $dark-teal;
         span {
             font-weight: bolder;
         }   
@@ -212,7 +214,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: lighten($salmon-pink, 10);
+    background-color: lighten($hot-pink, 10);
 }
 
 #work-background-scene {

@@ -1,34 +1,79 @@
-<div id="contact-container">
-    <div class="contact-left column">
-        <h1 class="ultra-big-text">
-            SAY HI :)
-        </h1>
-        <div class="contact-info">
-            <p class="contact-copy">
-                For real, we're always looking to collaborate on dope projects, so hit us up if you have an idea you wanna share! We come
-                from a diverse background of digital arts, so all requests are welcome.
-            </p>
-            <p>rojas@HexagonMisfit.com</p>
-            <p>(303) 886-8922</p>
-            <p>310 NW 40th St, Seattle, WA 98107</p>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HexagonMisfit</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+</head>
+
+<body>
+    <nav class="navigation home-nav row" id="main-nav">
+        <ul>
+            <a class="nav-link" id="home-button" href="/">
+                <span>HexagonMisfit</span>
+            </a>
+            <a class="nav-link" id="work-button" href="work">
+                <span>Work</span>
+            </a>
+            <a class="nav-link" id="team-button" href="team">
+                <span>Team</span>
+            </a>
+            <a class="nav-link" id="contact-button" href="contact">
+                <span>Contact</span>
+            </a>
+            <a class="nav-link" id="vr-button" href="vr" target="_blank">
+                <span>VR</span>
+            </a>
+        </ul>
+    </nav>
+    <div id="container">
+        <div id="contact-container">
+            <div class="contact-left column">
+                <h1 class="ultra-big-text hot-pink">
+                    SAY HI :)
+                </h1>
+                <div class="contact-info">
+                    <p class="contact-copy">
+                        For real, we're always looking to collaborate on dope projects, so hit us up if you have an idea you wanna share! We come
+                        from a diverse background of digital arts, so all requests are welcome.
+                    </p>
+                    <p>rojas@HexagonMisfit.com</p>
+                    <p>(303) 886-8922</p>
+                    <p>310 NW 40th St, Seattle, WA 98107</p>
+                </div>
+
+            </div>
+            <div class="contact-right column">
+                <div id="map"></div>
+            </div>
+        </div>
+        <script>
+            function initMap() {
+                var headquarters = { lat: 47.6562533, lng: -122.3614647 };
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 16,
+                    center: headquarters
+                });
+                var marker = new google.maps.Marker({
+                    position: headquarters,
+                    map: map
+                });
+            }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkhE1HeuvjOHVhQt_WokpQ61VLHXi2lTM&callback=initMap"></script>
+        <footer id="footer">
+            <span>&copy;HexagonMisfit 2018</span>
+        </footer>
     </div>
-    <div class="contact-right column">
-        <div id="map"></div>
-    </div>
-</div>
-<script>
-    function initMap() {
-        var headquarters = { lat: 47.6562533, lng: -122.3614647 };
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 16,
-            center: headquarters
-        });
-        var marker = new google.maps.Marker({
-            position: headquarters,
-            map: map
-        });
-    }
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkhE1HeuvjOHVhQt_WokpQ61VLHXi2lTM&callback=initMap"></script>
+    <div id="page-wipe"></div>
+    <div id="fancy-cursor"></div>
+</body>
+
+</html>

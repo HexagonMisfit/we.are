@@ -1,7 +1,7 @@
 #contact-container {
     padding: 2em;
     position: relative;
-    background: linear-gradient(to right, lighten($blue-light,30), lighten($blue-light, 45));
+    background: linear-gradient(to right, lighten($warm-gray, 50), lighten($warm-gray, 40));
     flex-direction: column;
     display: flex;
     @media screen and (min-width: 1024px) {
