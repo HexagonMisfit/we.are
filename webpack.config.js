@@ -52,7 +52,7 @@ module.exports = {
         new ExtractTextPlugin('style.css'),
         new HtmlWebpackPlugin({
             template: './index.html',
-            filename: './index.html',
+            filename: 'index.html',
             inject: 'head',
             excludeChunks: ['team', 'work', 'vr', 'contact']
         }),
