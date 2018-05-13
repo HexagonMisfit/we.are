@@ -713,16 +713,26 @@ h3 {
   overflow-x: hidden;
   background: #2b2b2b; }
 
+.hero-text {
+  font-size: 0.75em; }
+  @media screen and (min-width: 768px) {
+    .hero-text {
+      font-size: 1em; } }
+
 .home-section-container {
   height: 100%;
   width: 100%; }
+
+.home-text-container {
+  padding-top: 6em; }
+  @media screen and (min-width: 768px) {
+    .home-text-container {
+      padding-top: 12em; } }
 
 .section-header {
   margin: 1.5em 0; }
 
 .hero {
-  height: 100% !important;
-  border-bottom: 2px solid white;
   text-align: center; }
 
 .hero-padding-responsive {
@@ -748,6 +758,14 @@ h3 {
   position: relative;
   z-index: 8; }
 
+.hero-logo {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  position: absolute; }
+
 .hero-container {
   height: 100vh; }
 
@@ -758,12 +776,6 @@ h3 {
     .hero-text {
       width: 100%;
       min-width: 0; } }
-  .hero-text h1 {
-    display: inline-block;
-    margin-top: 0; }
-    @media screen and (max-width: 1024px) {
-      .hero-text h1 {
-        line-height: 1em; } }
 
 #team-container {
   width: 100%;
@@ -773,7 +785,7 @@ h3 {
   flex-direction: column;
   overflow: -moz-scrollbars-none;
   padding: 10em;
-  background: linear-gradient(to right, #d8d3d3, #f0eeee);
+  background: #2b2b2b;
   opacity: 0.95; }
   @media screen and (max-width: 1200px) {
     #team-container {
@@ -788,21 +800,22 @@ h3 {
 
 #team-header {
   justify-content: center;
+  text-align: center;
   height: 14em;
-  padding: 0 0 6em 0;
+  padding: 2em 0 6em 0;
   width: 100%; }
   @media screen and (max-width: 1100px) {
     #team-header {
-      padding: 0 1em 6em; } }
+      padding: 2em 1em 6em; } }
   @media screen and (max-width: 900px) {
     #team-header {
       padding-left: 0; } }
   @media screen and (max-width: 720px) {
     #team-header {
-      padding: 1em 3em 3em; } }
+      padding: 2em 3em 3em; } }
   @media screen and (max-width: 400px) {
     #team-header {
-      padding: 1em 0 3em; } }
+      padding: 2em 0 3em; } }
 
 #team-scroll-container {
   max-width: 60em;
@@ -883,7 +896,7 @@ h3 {
 #contact-container {
   padding: 2em;
   position: relative;
-  background: linear-gradient(to right, #f0eeee, #d8d3d3);
+  background: #bcff4f;
   flex-direction: column;
   display: flex; }
   @media screen and (min-width: 1024px) {
@@ -895,13 +908,16 @@ h3 {
       height: calc(100% - 3em); } }
 
 .contact-left {
-  margin-bottom: 1em; }
+  margin-bottom: 1em;
+  padding-top: 2em; }
   .contact-left h1 {
+    text-align: center;
     margin: 1em 0; }
   @media screen and (min-width: 1024px) {
     .contact-left {
       width: 50%;
-      padding-right: 1em; }
+      padding-right: 1em;
+      padding-top: 0; }
       .contact-left h1 {
         margin: 0; } }
 
@@ -985,7 +1001,7 @@ h3 {
   z-index: 5;
   align-items: center;
   position: relative;
-  background: linear-gradient(to right, #d8d3d3, #c0b8b8);
+  background: #2b2b2b;
   display: flex;
   overflow-y: scroll;
   flex-direction: column; }

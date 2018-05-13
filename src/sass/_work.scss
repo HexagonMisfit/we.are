@@ -65,7 +65,7 @@
     z-index: 5;
     align-items: center;
     position: relative;
-    background: linear-gradient(to right, lighten($warm-gray, 40), lighten($warm-gray, 30));
+    background: $dark-gray;
     display: flex;
     overflow-y: scroll;
     flex-direction: column;

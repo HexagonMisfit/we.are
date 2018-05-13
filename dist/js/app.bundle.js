@@ -73809,7 +73809,8 @@ const brandColors = {
     limeGreen: 0xbcff4f,
     darkTeal: 0x248886,
     darkGray: 0x2b2b2b,
-    warmGray: 0x766969
+    warmGray: 0x766969,
+    white: 0xffffff
 };
 /* harmony export (immutable) */ __webpack_exports__["a"] = brandColors;
 
@@ -73824,8 +73825,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_theming_js__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_nav_js__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_nav_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__shared_nav_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sass_main_scss__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sass_main_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__sass_main_scss__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_assets_HM_Logo_final_color_svg__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_assets_HM_Logo_final_color_svg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__shared_assets_HM_Logo_final_color_svg__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__sass_main_scss__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__sass_main_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__sass_main_scss__);
 // vendor js files
 window.$ = window.jQuery = __webpack_require__(0);
 window._ = __webpack_require__(4);
@@ -73834,6 +73837,10 @@ window._ = __webpack_require__(4);
 /* global THREE */
 
 // our scripts
+
+
+
+// image assets
 
 
 
@@ -73955,7 +73962,7 @@ $(function () {
         renderer.setPixelRatio(window.devicePixelRatio);
 
         var cubeGeometry = new THREE.BoxGeometry(3, 3, 3);
-        var cubeMaterial = new THREE.MeshBasicMaterial({ color: __WEBPACK_IMPORTED_MODULE_1__shared_theming_js__["a" /* brandColors */].aqua });
+        var cubeMaterial = new THREE.MeshBasicMaterial({ color: __WEBPACK_IMPORTED_MODULE_1__shared_theming_js__["a" /* brandColors */].darkTeal });
         var cubeGroup = new THREE.Group();
 
         for (var i = 0; i < 30; i++) {
@@ -74027,6 +74034,12 @@ $(function () {
 
 });
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0), __webpack_require__(1)))
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/HM_Logo_final_color.svg";
 
 /***/ })
 /******/ ]);

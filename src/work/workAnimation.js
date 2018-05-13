@@ -78,9 +78,7 @@ import 'three';
     var fragmentShader = `
         uniform float time;
         void main() {
-            //gl_FragColor = vec4(0.988, 0.109, 0.415, 1.0);
-            //gl_FragColor = vec4(0.247, 0.964, 1.0, 0.6);
-            gl_FragColor = vec4(1.0);
+            gl_FragColor = vec4(0.462, 0.411, 0.411, 1.0);
         }
     `;
 

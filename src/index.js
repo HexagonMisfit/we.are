@@ -9,6 +9,10 @@ import 'three';
 import { brandColors } from './shared/theming.js';
 import './shared/nav.js';
 
+// image assets
+
+import './shared/assets/HM_Logo_final_color.svg'
+
 // import our scss last
 import './sass/main.scss';
 
@@ -127,7 +131,7 @@ $(function () {
         renderer.setPixelRatio(window.devicePixelRatio);
 
         var cubeGeometry = new THREE.BoxGeometry(3, 3, 3);
-        var cubeMaterial = new THREE.MeshBasicMaterial({ color: brandColors.aqua });
+        var cubeMaterial = new THREE.MeshBasicMaterial({ color: brandColors.darkTeal });
         var cubeGroup = new THREE.Group();
 
         for (var i = 0; i < 30; i++) {

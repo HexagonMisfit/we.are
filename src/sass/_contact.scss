@@ -1,7 +1,8 @@
 #contact-container {
     padding: 2em;
     position: relative;
-    background: linear-gradient(to right, lighten($warm-gray, 50), lighten($warm-gray, 40));
+    // background: linear-gradient(to right, lighten($warm-gray, 50), lighten($warm-gray, 40));
+    background: $lime-green;
     flex-direction: column;
     display: flex;
     @media screen and (min-width: 1024px) {
@@ -15,12 +16,15 @@
 
 .contact-left {
     h1 {
+        text-align: center;
         margin: 1em 0;
     }
     margin-bottom: 1em;
+    padding-top: 2em;
     @media screen and (min-width: 1024px) {
         width: 50%;
         padding-right: 1em;
+        padding-top: 0;
         h1 {
             margin: 0;
         }

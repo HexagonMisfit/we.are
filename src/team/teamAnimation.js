@@ -161,7 +161,7 @@ import 'three';
             varying float noise;
             varying vec3 vNormal;
             void main() {
-                gl_FragColor = vec4(0.247, 0.964, 1.0, 0.8);
+                gl_FragColor = vec4(0.462, 0.411, 0.411, 1.0);
             }
     `;
 

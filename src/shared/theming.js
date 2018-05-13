@@ -4,5 +4,6 @@ export const brandColors = {
     limeGreen: 0xbcff4f,
     darkTeal: 0x248886,
     darkGray: 0x2b2b2b,
-    warmGray: 0x766969
+    warmGray: 0x766969,
+    white: 0xffffff
 };
