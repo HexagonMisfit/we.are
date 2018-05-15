@@ -63,8 +63,9 @@
 /******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10324,7 +10325,8 @@ return jQuery;
 
 
 /***/ }),
-/* 1 */
+
+/***/ 1:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56588,7 +56590,8 @@ function LensFlare() {
 
 
 /***/ }),
-/* 2 */
+
+/***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {$(document).ready(function () {
@@ -56646,13 +56649,196 @@ function LensFlare() {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 3 */
+
+/***/ 3:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 4 */
+
+/***/ 33:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($, THREE) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_theming__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_three__ = __webpack_require__(1);
+
+
+$(function () {
+    var scene = new THREE.Scene();
+
+    var camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 1000);
+    camera.position.set(0, 0, 3);
+
+    var target = new THREE.Object3D();
+    var targetZ = -200;
+    target.position.set(0, 0, targetZ);
+    var temp = target.position.clone();
+
+    var INTERSECTED;
+
+    var cube;
+    var cubeMesh;
+    var cubePositions = [];
+    var cubeMeshes = [];
+    var cubeRotationVelocities = [];
+    var cubeColors = [__WEBPACK_IMPORTED_MODULE_0__shared_theming__["a" /* brandColors */].hotPink, __WEBPACK_IMPORTED_MODULE_0__shared_theming__["a" /* brandColors */].darkTeal, __WEBPACK_IMPORTED_MODULE_0__shared_theming__["a" /* brandColors */].warmGray];
+    var cubeScale;
+
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+
+    var mouse = new THREE.Vector2();
+    var halfWidth = width / 2;
+    var halfHeight = height / 2;
+
+    var yOffset = 30;
+
+    var lerpRate = 1 / 100;
+
+    function onInitHome() {
+        var ascend1 = $('.ascend-1');
+        TweenMax.to($('body'), 0.75, { autoAlpha: 1, ease: Power2.easeOut });
+        TweenMax.staggerTo(ascend1, 1, { autoAlpha: 1, y: 0, ease: Power3.easeOut }, 0.1);
+    }
+
+    $('.hero-container').mousemove(onMouseMove);
+
+    function onMouseMove(event) {
+
+        //set the temp position to a value based on mouse position
+
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+        temp.set(mouse.x * 100, mouse.y * 100, targetZ);
+    }
+
+    function lerpCameraTarget() {
+        target.position.lerp(temp, lerpRate);
+    }
+
+    function toPositions() {
+
+        //bring the cubes into view
+
+        TweenMax.staggerTo(cubePositions, 2, { y: '+=' + yOffset, ease: Power4.easeOut }, 0.02);
+    }
+
+    function rotate(object, speed) {
+        object.rotation.x += speed[0];
+        object.rotation.y += speed[1];
+    }
+
+    var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+
+    var cubeGeometry, cubeMaterial;
+    var cubeGroup = new THREE.Group();
+
+    var raycaster = new THREE.Raycaster();
+
+    for (var i = 0; i < 45; i++) {
+
+        //make 30 cubes of random sizes and place them randomly with a y-offset
+
+        cubeGeometry = new THREE.BoxGeometry(2, 2, 2);
+        for (var f = 0; f < cubeGeometry.faces.length; f++) {
+            var face = cubeGeometry.faces[f];
+            face.vertexColors[0] = new THREE.Color(cubeColors[2]);
+            face.vertexColors[1] = new THREE.Color(cubeColors[2]);
+            face.vertexColors[2] = new THREE.Color(cubeColors[2]);
+        }
+        cubeMaterial = new THREE.MeshBasicMaterial({ wireframe: true, vertexColors: THREE.VertexColors });
+        cubeMesh = new THREE.Mesh(cubeGeometry, cubeMaterial);
+        cube = new THREE.Object3D();
+        cube.add(cubeMesh);
+
+        cubeMeshes.push(cubeMesh);
+
+        cubeScale = Math.random() / 3 + 0.35;
+        cube.scale.x = cubeScale;
+        cube.scale.y = cubeScale;
+        cube.scale.z = cubeScale;
+
+        var x = Math.random() * 20 - 10;
+        var y = Math.random() * 20 - 10 - yOffset;
+        var z = Math.random() * -15;
+
+        cube.position.set(x, y, z);
+
+        cubePositions.push(cube.position);
+
+        cube.rotation.y = Math.random();
+        cube.rotation.x = Math.random();
+
+        cubeGroup.add(cube);
+        cubeRotationVelocities.push([Math.random() / 300, Math.random() / 300]);
+    }
+
+    scene.add(cubeGroup);
+
+    // Animate the scene
+
+    var animate = function () {
+        requestAnimationFrame(animate);
+        render();
+    };
+
+    var render = function () {
+        for (var i = 0; i < cubeGroup.children.length; i++) {
+            rotate(cubeGroup.children[i], cubeRotationVelocities[i]);
+        }
+
+        raycaster.setFromCamera(mouse, camera);
+        var intersects = raycaster.intersectObjects(cubeMeshes);
+        if (intersects.length > 0) {
+            if (INTERSECTED != intersects[0].object) {
+                if (INTERSECTED) INTERSECTED.material.color.set(INTERSECTED.currentHex);
+                for (var j = 0; j < intersects.length; j++) {
+                    INTERSECTED = intersects[j].object;
+                    INTERSECTED.currentHex = INTERSECTED.material.color.set(0x000000);
+                    INTERSECTED.material.color.set(0x000000);
+                }
+            }
+        } else {
+            if (INTERSECTED) INTERSECTED.material.color.set(INTERSECTED.currentHex);
+            INTERSECTED = null;
+        }
+
+        lerpCameraTarget();
+        camera.lookAt(target.position);
+        renderer.render(scene, camera);
+    }
+
+    // Draw it in the dom and add resize event listener
+
+    $('#home-home').prepend(renderer.domElement);
+
+    window.addEventListener('resize', onWindowResize, false);
+    window.addEventListener('deviceorientation', onWindowResize, false);
+
+    function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.render(scene, camera);
+    }
+
+    renderer.domElement.id = "header-canvas";
+
+    onInitHome();
+    animate();
+    toPositions();
+});
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0), __webpack_require__(1)))
+
+/***/ }),
+
+/***/ 4:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -73744,7 +73930,8 @@ function LensFlare() {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(6)(module)))
 
 /***/ }),
-/* 5 */
+
+/***/ 5:
 /***/ (function(module, exports) {
 
 var g;
@@ -73771,7 +73958,8 @@ module.exports = g;
 
 
 /***/ }),
-/* 6 */
+
+/***/ 6:
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -73799,7 +73987,8 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 7 */
+
+/***/ 7:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73816,19 +74005,21 @@ const brandColors = {
 
 
 /***/ }),
-/* 8 */
+
+/***/ 8:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function($, THREE) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_three__ = __webpack_require__(1);
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_three__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_theming_js__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_nav_js__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_nav_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__shared_nav_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_assets_HM_Logo_final_color_svg__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_assets_HM_Logo_final_color_svg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__shared_assets_HM_Logo_final_color_svg__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__sass_main_scss__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__sass_main_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__sass_main_scss__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__homeAnimation_js__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_assets_HM_Logo_final_color_svg__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_assets_HM_Logo_final_color_svg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__shared_assets_HM_Logo_final_color_svg__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__sass_main_scss__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__sass_main_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__sass_main_scss__);
 // vendor js files
 window.$ = window.jQuery = __webpack_require__(0);
 window._ = __webpack_require__(4);
@@ -73837,6 +74028,7 @@ window._ = __webpack_require__(4);
 /* global THREE */
 
 // our scripts
+
 
 
 
@@ -73891,155 +74083,16 @@ $(function () {
     if (!isMobile()) {
         console.log('not mobile');
     }
-
-    /****************/
-    //HOME ANIMATION//
-    /****************/
-
-    var scene = new THREE.Scene();
-
-    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(0, 0, 3);
-
-    var target = new THREE.Object3D();
-    var targetZ = -15;
-    target.position.set(0, 0, targetZ);
-    var temp = target.position.clone();
-
-    var cube;
-    var cubeMesh;
-    var cubePositions = [];
-    var cubeRotationVelocities = [];
-    var cubeScale;
-
-    var width = window.innerWidth;
-    var height = window.innerHeight;
-
-    var mouseX = 0;
-    var mouseY = 0;
-    var halfWidth = width / 2;
-    var halfHeight = height / 2;
-
-    var yOffset = 30;
-
-    var lerpRate = 1 / 250;
-
-        function onInitHome() {
-            var ascend1 = $('.ascend-1');
-            TweenMax.to($('body'), 0.75, { autoAlpha: 1, ease: Power2.easeOut });
-            TweenMax.staggerTo(ascend1, 1, { autoAlpha: 1, y: 0, ease: Power3.easeOut }, 0.1);
-        }
-
-        $('.hero-container').mousemove(onMouseMove);
-
-        function onMouseMove(event) {
-
-            //set the temp position to a value based on mouse position
-
-            mouseX = event.clientX - halfWidth;
-            mouseY = event.clientY - halfHeight;
-            temp.set(mouseX / 100, -mouseY / 100, targetZ);
-        }
-
-        function lerpCameraTarget() {
-            target.position.lerp(temp, lerpRate);
-        }
-
-        function toPositions() {
-
-            //bring the cubes into view
-
-            TweenMax.staggerTo(cubePositions, 2, { y: '+=' + yOffset, ease: Power4.easeOut }, 0.02);
-        }
-
-        function rotate(object, speed) {
-            object.rotation.x += speed[0];
-            object.rotation.y += speed[1];
-        }
-
-        var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
-
-        var cubeGeometry = new THREE.BoxGeometry(3, 3, 3);
-        var cubeMaterial = new THREE.MeshBasicMaterial({ color: __WEBPACK_IMPORTED_MODULE_1__shared_theming_js__["a" /* brandColors */].darkTeal });
-        var cubeGroup = new THREE.Group();
-
-        for (var i = 0; i < 30; i++) {
-
-            //make 30 cubes of random sizes and place them randomly with a y-offset
-
-            cubeMesh = new THREE.Mesh(cubeGeometry, cubeMaterial);
-            cube = new THREE.Object3D();
-            cube.add(cubeMesh);
-
-            cubeScale = Math.random() / 3 + 0.35;
-            cube.scale.x = cubeScale;
-            cube.scale.y = cubeScale;
-            cube.scale.z = cubeScale;
-
-            var x = Math.random() * 20 - 10;
-            var y = Math.random() * 20 - 10 - yOffset;
-            var z = Math.random() * -15;
-
-            cube.position.set(x, y, z);
-
-            cubePositions.push(cube.position);
-
-            cube.rotation.y = Math.random();
-            cube.rotation.x = Math.random();
-
-            cubeGroup.add(cube);
-            cubeRotationVelocities.push([Math.random() / 400, Math.random() / 400]);
-        }
-
-        scene.add(cubeGroup);
-
-        // Animate the scene
-
-        var animate = function () {
-            requestAnimationFrame(animate);
-            render();
-        };
-
-        var render = function () {
-            for (var i = 0; i < cubeGroup.children.length; i++) {
-                rotate(cubeGroup.children[i], cubeRotationVelocities[i]);
-            }
-            lerpCameraTarget();
-            camera.lookAt(target.position);
-            renderer.render(scene, camera);
-        }
-
-        // Draw it in the dom and add resize event listener
-
-        $('#home-home').prepend(renderer.domElement);
-
-        window.addEventListener('resize', onWindowResize, false);
-        window.addEventListener('deviceorientation', onWindowResize, false);
-
-        function onWindowResize() {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.render(scene, camera);
-        }
-
-        renderer.domElement.id = "header-canvas";
-
-        onInitHome();
-        animate();
-        toPositions();
-
 });
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0), __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
 /***/ }),
-/* 9 */
+
+/***/ 9:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/HM_Logo_final_color.svg";
 
 /***/ })
-/******/ ]);
+
+/******/ });
