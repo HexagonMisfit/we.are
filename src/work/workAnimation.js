@@ -11,7 +11,7 @@ import 'three';
     var clock = new THREE.Clock();
     var time = 0;
     var gridSize = 12.5;
-    var gridRes = 360;
+    var gridRes = 700;
     var p = 0;
     var vertHeight = 0;
     var amplitude = 0.75;
@@ -98,7 +98,7 @@ import 'three';
     var mesh = new THREE.Mesh(geometry, shaderMaterial);
 
     mesh.rotation.set(0, 45, 0);
-    mesh.position.set(-1200, 300, 0);
+    mesh.position.set(-1500, 300, 0);
     scene.add(mesh);
 
     camera.position.set(0, 800, 0);

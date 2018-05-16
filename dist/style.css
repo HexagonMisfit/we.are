@@ -724,10 +724,12 @@ h3 {
   width: 100%; }
 
 .home-text-container {
-  padding-top: 6em; }
-  @media screen and (min-width: 768px) {
-    .home-text-container {
-      padding-top: 12em; } }
+  width: 100%;
+  height: 100%;
+  background: url(assets/HM_Logo_final_color_withtagline.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; }
 
 .section-header {
   margin: 1.5em 0; }
@@ -758,24 +760,8 @@ h3 {
   position: relative;
   z-index: 8; }
 
-.hero-logo {
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  position: absolute; }
-
 .hero-container {
   height: 100vh; }
-
-.hero-text {
-  display: inline-block;
-  min-width: 30em; }
-  @media screen and (max-width: 1024px) {
-    .hero-text {
-      width: 100%;
-      min-width: 0; } }
 
 #team-container {
   width: 100%;

@@ -18,7 +18,6 @@ $(function () {
     var cubePositions = [];
     var cubeMeshes = [];
     var cubeRotationVelocities = [];
-    var cubeColors = [brandColors.hotPink, brandColors.darkTeal, brandColors.warmGray];
     var cubeScale;
 
     var width = window.innerWidth;
@@ -75,18 +74,12 @@ $(function () {
 
     var raycaster = new THREE.Raycaster();
 
-    for (var i = 0; i < 45; i++) {
+    for (var i = 0; i < 60; i++) {
 
         //make 30 cubes of random sizes and place them randomly with a y-offset
 
         cubeGeometry = new THREE.BoxGeometry(2, 2, 2);
-        for (var f = 0; f < cubeGeometry.faces.length; f++) {
-            var face = cubeGeometry.faces[f];
-            face.vertexColors[0] = new THREE.Color(cubeColors[2]);
-            face.vertexColors[1] = new THREE.Color(cubeColors[2]);
-            face.vertexColors[2] = new THREE.Color(cubeColors[2]);
-        }
-        cubeMaterial = new THREE.MeshBasicMaterial({ wireframe: true, vertexColors: THREE.VertexColors });
+        cubeMaterial = new THREE.MeshBasicMaterial({ wireframe: true, color: brandColors.warmGray });
         cubeMesh = new THREE.Mesh(cubeGeometry, cubeMaterial);
         cube = new THREE.Object3D();
         cube.add(cubeMesh);
@@ -122,6 +115,16 @@ $(function () {
         render();
     };
 
+    function setHexColor() {
+        if (INTERSECTED.currentHex !== 0x000000) {
+            INTERSECTED.material.color.set(0x000000);
+            INTERSECTED.currentHex = 0x000000;
+        } else {
+            INTERSECTED.material.color.set(brandColors.warmGray);
+            INTERSECTED.currentHex = brandColors.warmGray;
+        }
+    }
+
     var render = function () {
         for (var i = 0; i < cubeGroup.children.length; i++) {
             rotate(cubeGroup.children[i], cubeRotationVelocities[i]);
@@ -130,16 +133,15 @@ $(function () {
         raycaster.setFromCamera(mouse, camera);
         var intersects = raycaster.intersectObjects(cubeMeshes);
         if (intersects.length > 0) {
-            if (INTERSECTED != intersects[0].object) {
-                if (INTERSECTED) INTERSECTED.material.color.set(INTERSECTED.currentHex);
-                for (var j = 0; j < intersects.length; j++) {
-                    INTERSECTED = intersects[j].object;
-                    INTERSECTED.currentHex = INTERSECTED.material.color.set(0x000000);
-                    INTERSECTED.material.color.set(0x000000);
-                }
+            if (!INTERSECTED) {
+                INTERSECTED = intersects[0].object;
+                setHexColor();
             }
+            else if (INTERSECTED && INTERSECTED.uuid !== intersects[0].object.uuid) {
+                INTERSECTED = intersects[0].object;
+                setHexColor();
+            }  
         } else {
-            if (INTERSECTED) INTERSECTED.material.color.set(INTERSECTED.currentHex);
             INTERSECTED = null;
         }
 

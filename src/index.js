@@ -12,7 +12,7 @@ import './homeAnimation.js';
 
 // image assets
 
-import './shared/assets/HM_Logo_final_color.svg'
+import './shared/assets/HM_Logo_final_color_withtagline.svg'
 
 // import our scss last
 import './sass/main.scss';
