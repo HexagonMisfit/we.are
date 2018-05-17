@@ -700,6 +700,10 @@ h3 {
 #home-button {
   margin-right: auto; }
 
+div {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent; }
+
 #home-container {
   height: 100vh;
   width: auto;

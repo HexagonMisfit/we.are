@@ -11,7 +11,7 @@ import 'three';
     var clock = new THREE.Clock();
     var time = 0;
     var gridSize = 12.5;
-    var gridRes = 700;
+    var gridRes = 400;
     var p = 0;
     var vertHeight = 0;
     var amplitude = 0.75;
