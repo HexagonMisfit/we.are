@@ -10,7 +10,8 @@ module.exports = {
         work: './work/work.js',
         team: './team/team.js',
         contact: './contact/contact.js',
-        vr: './vr/vr.js'
+        vr: './vr/vr.js',
+        secret: './secret/secret.js'
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -54,7 +55,7 @@ module.exports = {
             template: './index.html',
             filename: './index.html',
             inject: 'head',
-            excludeChunks: ['team', 'work', 'vr', 'contact']
+            excludeChunks: ['team', 'work', 'vr', 'contact', 'secret']
         }),
         new HtmlWebpackPlugin({
             template: './team/team.html',
@@ -67,6 +68,12 @@ module.exports = {
             filename: 'work.html',
             inject: 'head',
             chunks: ['work']
+        }),
+        new HtmlWebpackPlugin({
+            template: './secret/secret.html',
+            filename: 'secret.html',
+            inject: 'head',
+            chunks: ['secret']
         }),
         new HtmlWebpackPlugin({
             template: './vr/vr.html',

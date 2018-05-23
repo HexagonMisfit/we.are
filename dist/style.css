@@ -946,6 +946,27 @@ div {
   #work-container {
     height: calc(100% - 3em); } }
 
+#halt {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: #2b2b2b;
+  width: 100%;
+  z-index: 500; }
+
+#password-input {
+  margin-right: 1em;
+  padding-left: 0.5em; }
+
+#password-button {
+  background-color: #248886;
+  padding: 1em;
+  border: none; }
+  #password-button:hover {
+    background-color: #19605e;
+    cursor: pointer; }
+
 .work-header {
   position: relative;
   z-index: 5;

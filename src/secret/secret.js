@@ -9,7 +9,7 @@ require('./assets/play_svg.svg');
 
 // our scripts
 import '../shared/nav.js';
-import './workAnimation.js';
+import './secretAnimation';
 
 // import our scss last
 import '../sass/main.scss';
@@ -73,6 +73,8 @@ var projects = [
 ];
 
 $(document).ready(function () {
+
+
     var projectLinks = $('.project-li');
 
     var activeProject = {};
@@ -118,4 +120,31 @@ $(document).ready(function () {
         setActiveProject($(this).attr('data'));
     });
     setActiveProject('01');
+
+    $('#password-button').click(function (ev) {
+        if ($('#password-input').val() === 'lemme in') {
+            success();
+        } else {
+            fail();
+        }
+    });
+
+    $('#password-input').keypress(function (ev) {
+        if (ev.which === 13) {
+            if ($('#password-input').val() === 'lemme in') {
+                success();
+            } else {
+                fail();
+            }
+        }
+    });
+
+    function success() {
+        $('#halt').remove();
+    }
+
+    function fail() {
+        alert('Try again!');
+    }
+
 });
