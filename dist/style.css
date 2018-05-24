@@ -623,6 +623,14 @@ h3 {
     .full-height {
       height: 100vh; } }
 
+#team-scroll-container, #work-scroll-container {
+  max-width: 60em;
+  position: relative;
+  z-index: 1; }
+  @media screen and (max-width: 720px) {
+    #team-scroll-container, #work-scroll-container {
+      align-items: center; } }
+
 .navigation {
   width: 100%;
   z-index: 11;
@@ -806,14 +814,6 @@ div {
   @media screen and (max-width: 400px) {
     #team-header {
       padding: 2em 0 3em; } }
-
-#team-scroll-container {
-  max-width: 60em;
-  position: relative;
-  z-index: 1; }
-  @media screen and (max-width: 720px) {
-    #team-scroll-container {
-      align-items: center; } }
 
 .team-section {
   width: 100%;

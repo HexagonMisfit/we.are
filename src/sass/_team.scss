@@ -40,15 +40,6 @@
     }
 }
 
-#team-scroll-container {
-    max-width: 60em;
-    position: relative;
-    z-index: 1;
-    @media screen and (max-width: 720px) {
-        align-items: center;
-    }
-}
-
 .team-section {
     width: 100%; 
     justify-content: space-around;

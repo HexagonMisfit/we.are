@@ -60,11 +60,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 18);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10324,7 +10325,8 @@ return jQuery;
 
 
 /***/ }),
-/* 1 */
+
+/***/ 1:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56588,7 +56590,24 @@ function LensFlare() {
 
 
 /***/ }),
-/* 2 */
+
+/***/ 12:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__workAnimation_js__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_nav_js__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_nav_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__shared_nav_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__sass_main_scss__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__sass_main_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__sass_main_scss__);
+
+
+
+
+/***/ }),
+
+/***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {$(document).ready(function () {
@@ -56646,105 +56665,126 @@ function LensFlare() {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 3 */
+
+/***/ 3:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */
+
+/***/ 31:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_big_al_jpg__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_big_al_jpg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__assets_big_al_jpg__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_chris_r_prof_crop_png__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_chris_r_prof_crop_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__assets_chris_r_prof_crop_png__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_d_sierra_png__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_d_sierra_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__assets_d_sierra_png__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_quin_kennedy_prof_png__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_quin_kennedy_prof_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__assets_quin_kennedy_prof_png__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_nav_js__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_nav_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__shared_nav_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__teamAnimation_js__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__sass_main_scss__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__sass_main_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__sass_main_scss__);
-
-
-
-
-
+/* WEBPACK VAR INJECTION */(function(THREE, $) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_theming_js__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_three__ = __webpack_require__(1);
 window.$ = window.jQuery = __webpack_require__(0);
 
 
 
 
-// import our scss last
-
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/big_al.jpg";
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/chris_r_prof_crop.png";
-
-/***/ }),
-/* 21 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/d_sierra.png";
-
-/***/ }),
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/quin_kennedy_prof.png";
-
-/***/ }),
-/* 23 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(THREE, $) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_three__ = __webpack_require__(1);
-window.$ = window.jQuery = __webpack_require__(0);
-
-
+/*global THREE'*/
 
 (function () {
     var scene = new THREE.Scene();
     var geometry;
     var clock = new THREE.Clock();
     var time = 0;
+    var gridSize = 12.5;
+    var gridRes = 400;
+    var p = 0;
+    var vertHeight = 0;
+    var amplitude = 0.75;
 
-    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    var renderer = new THREE.WebGLRenderer({ alpha: true });
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2500);
+    var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
 
+    function makeTile(size, res) {
+        geometry = new THREE.Geometry();
+
+        for (var i = 0; i <= res; i++) {
+            for (var j = 0; j <= res; j++) {
+                var z = j * size;
+                var x = i * size;
+                var position = new THREE.Vector3(x, 0, z);
+                var addFace = (i > 0) && (j > 0);
+                makeQuad(geometry, position, addFace, res + 1);
+            }
+
+        }
+        return geometry;
+    }
+
+    function makeQuad(geometry, position, addFace, verts) {
+        geometry.vertices.push(position);
+        if (addFace) {
+
+            var index1 = geometry.vertices.length - 1;
+            var index2 = index1 - 1;
+            var index3 = index1 - verts;
+            var index4 = index1 - verts - 1;
+
+            geometry.faces.push(new THREE.Face3(index2, index3, index1));
+            geometry.faces.push(new THREE.Face3(index2, index4, index3));
+        }
+    }
+
+    var geometry = makeTile(gridSize, gridRes);
+
+    var vertexShader = `
+        uniform float time;
+        varying vec3 vNormal;
+
+        float PI = 3.14159;
+        float amplitude = 10.0;
+        float repetition = 6.5;
+        float speed = 0.3;
+        void main() {
+
+            vNormal = normal;
+            float y = (cos(position.x * repetition + time * speed) * amplitude) + (cos(position.z * repetition + time * speed) * amplitude);
+
+            vec3 newPosition = position + vec3(-y / 2.0, y, y / 2.0); 
+
+            gl_Position = projectionMatrix *
+                          modelViewMatrix *
+                          vec4(newPosition + normal, 1.0);
+        }
+    `;
+
+    var fragmentShader = `
+        uniform float time;
+        void main() {
+            gl_FragColor = vec4(0.462, 0.411, 0.411, 1.0);
+        }
+    `;
+
+    var uniforms = {
+        time: {
+            value: time
+        }
+    }
+
+    var shaderMaterial = new THREE.ShaderMaterial({
+        uniforms: uniforms,
+        vertexShader: vertexShader,
+        fragmentShader: fragmentShader,
+        wireframe: true
+    });
+
+    var mesh = new THREE.Mesh(geometry, shaderMaterial);
+
+    mesh.rotation.set(0, 45, 0);
+    mesh.position.set(-1500, 300, 0);
+    scene.add(mesh);
+
+    camera.position.set(0, 800, 0);
+    camera.rotateX(-90 * Math.PI / 180);
     scene.add(camera);
-    camera.position.set(0, 0, -2);
-    camera.lookAt(scene.position);
 
     $(document).ready(function () {
 
@@ -56758,166 +56798,8 @@ window.$ = window.jQuery = __webpack_require__(0);
             renderer.render(scene, camera);
         }
 
-        var vertexShader = `
-            uniform float time;
-            varying vec2 vUv;
-            varying vec3 vNormal;
-            varying float noise;
-
-            vec3 mod289(vec3 x) {
-                return x - floor(x * (1.0 / 289.0)) * 289.0;
-            }
-
-            vec4 mod289(vec4 x) {
-                return x - floor(x * (1.0 / 289.0)) * 289.0;
-            }
-
-            vec4 permute(vec4 x) {
-                return mod289(((x*34.0)+1.0)*x);
-            }
-
-            vec4 taylorInvSqrt(vec4 r) {
-                return 1.79284291400159 - 0.85373472095314 * r;
-            }
-
-            vec3 fade(vec3 t) {
-                return t*t*t*(t*(t*6.0-15.0)+10.0);
-            }
-
-            // Classic Perlin noise, periodic variant
-            float pnoise(vec3 P, vec3 rep) {
-                vec3 Pi0 = mod(floor(P), rep); // Integer part, modulo period
-                vec3 Pi1 = mod(Pi0 + vec3(1.0), rep); // Integer part + 1, mod period
-                Pi0 = mod289(Pi0);
-                Pi1 = mod289(Pi1);
-                vec3 Pf0 = fract(P); // Fractional part for interpolation
-                vec3 Pf1 = Pf0 - vec3(1.0); // Fractional part - 1.0
-                vec4 ix = vec4(Pi0.x, Pi1.x, Pi0.x, Pi1.x);
-                vec4 iy = vec4(Pi0.yy, Pi1.yy);
-                vec4 iz0 = Pi0.zzzz;
-                vec4 iz1 = Pi1.zzzz;
-
-                vec4 ixy = permute(permute(ix) + iy);
-                vec4 ixy0 = permute(ixy + iz0);
-                vec4 ixy1 = permute(ixy + iz1);
-
-                vec4 gx0 = ixy0 * (1.0 / 7.0);
-                vec4 gy0 = fract(floor(gx0) * (1.0 / 7.0)) - 0.5;
-                gx0 = fract(gx0);
-                vec4 gz0 = vec4(0.5) - abs(gx0) - abs(gy0);
-                vec4 sz0 = step(gz0, vec4(0.0));
-                gx0 -= sz0 * (step(0.0, gx0) - 0.5);
-                gy0 -= sz0 * (step(0.0, gy0) - 0.5);
-
-                vec4 gx1 = ixy1 * (1.0 / 7.0);
-                vec4 gy1 = fract(floor(gx1) * (1.0 / 7.0)) - 0.5;
-                gx1 = fract(gx1);
-                vec4 gz1 = vec4(0.5) - abs(gx1) - abs(gy1);
-                vec4 sz1 = step(gz1, vec4(0.0));
-                gx1 -= sz1 * (step(0.0, gx1) - 0.5);
-                gy1 -= sz1 * (step(0.0, gy1) - 0.5);
-
-                vec3 g000 = vec3(gx0.x,gy0.x,gz0.x);
-                vec3 g100 = vec3(gx0.y,gy0.y,gz0.y);
-                vec3 g010 = vec3(gx0.z,gy0.z,gz0.z);
-                vec3 g110 = vec3(gx0.w,gy0.w,gz0.w);
-                vec3 g001 = vec3(gx1.x,gy1.x,gz1.x);
-                vec3 g101 = vec3(gx1.y,gy1.y,gz1.y);
-                vec3 g011 = vec3(gx1.z,gy1.z,gz1.z);
-                vec3 g111 = vec3(gx1.w,gy1.w,gz1.w);
-
-                vec4 norm0 = taylorInvSqrt(vec4(dot(g000, g000), dot(g010, g010), dot(g100, g100), dot(g110, g110)));
-                g000 *= norm0.x;
-                g010 *= norm0.y;
-                g100 *= norm0.z;
-                g110 *= norm0.w;
-                vec4 norm1 = taylorInvSqrt(vec4(dot(g001, g001), dot(g011, g011), dot(g101, g101), dot(g111, g111)));
-                g001 *= norm1.x;
-                g011 *= norm1.y;
-                g101 *= norm1.z;
-                g111 *= norm1.w;
-
-                float n000 = dot(g000, Pf0);
-                float n100 = dot(g100, vec3(Pf1.x, Pf0.yz));
-                float n010 = dot(g010, vec3(Pf0.x, Pf1.y, Pf0.z));
-                float n110 = dot(g110, vec3(Pf1.xy, Pf0.z));
-                float n001 = dot(g001, vec3(Pf0.xy, Pf1.z));
-                float n101 = dot(g101, vec3(Pf1.x, Pf0.y, Pf1.z));
-                float n011 = dot(g011, vec3(Pf0.x, Pf1.yz));
-                float n111 = dot(g111, Pf1);
-
-                vec3 fade_xyz = fade(Pf0);
-                vec4 n_z = mix(vec4(n000, n100, n010, n110), vec4(n001, n101, n011, n111), fade_xyz.z);
-                vec2 n_yz = mix(n_z.xy, n_z.zw, fade_xyz.y);
-                float n_xyz = mix(n_yz.x, n_yz.y, fade_xyz.x); 
-                return 2.2 * n_xyz;
-            }
-            
-            float turbulence( vec3 p ) {
-            
-                float w = 100.0;
-                float t = -.5;
-                
-                for (float f = 1.0 ; f <= 10.0 ; f++ ){
-                    float power = pow( 2.0, f );
-                    t += abs( pnoise( vec3( power * p ), vec3( 10.0, 10.0, 10.0 ) ) / power );
-                }
-            
-                return t;
-            
-            }
-            
-            void main() {
-            
-            vUv = uv;
-            
-            // get a turbulent 3d noise using the normal, normal to high freq
-            noise = 0.5 *  -.10 * turbulence( .5 * normal + time / 17.0 );
-            // get a 3d noise using the position, low frequency
-            float b = 1.0 * pnoise( -0.05 * position, vec3( 100.0 ) );
-            // compose both noises
-            float displacement = - 10. * noise + b;
-            
-            // move the position along the normal and transform it
-            vec3 newPosition = position + normal * displacement;
-            gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );
-            
-            }
-    `;
-
-        var fragmentShader = `
-            uniform float time;
-            varying float noise;
-            varying vec3 vNormal;
-            void main() {
-                gl_FragColor = vec4(0.462, 0.411, 0.411, 1.0);
-            }
-    `;
-
-        var sphereGeometry = new THREE.SphereGeometry(1, 128, 128);
-
-        var uniforms = {
-            time: {
-                value: time
-            }
-        }
-
-        var material = new THREE.ShaderMaterial({
-            wireframe: true,
-            uniforms: uniforms,
-            vertexShader: vertexShader,
-            fragmentShader: fragmentShader
-        });
-        var sphere = new THREE.Mesh(sphereGeometry, material);
-        scene.add(sphere);
-
-        function update() {
-            time += clock.getDelta();
-            uniforms.time.value = time;
-        };
-
-        $('#team-container').prepend(renderer.domElement);
-        renderer.domElement.id = 'team-background-scene';
+        $('#work-body').prepend(renderer.domElement);
+        renderer.domElement.id = 'work-background-scene';
 
         //animate the scene
 
@@ -56927,14 +56809,34 @@ window.$ = window.jQuery = __webpack_require__(0);
         };
 
         function render() {
-            update();
+            time += clock.getDelta();
+            uniforms.time.value = time;
             renderer.render(scene, camera);
         }
-
         animate();
     });
 })();
+
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1), __webpack_require__(0)))
 
+/***/ }),
+
+/***/ 4:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const brandColors = {
+    hotPink: 0xfc1c6a,
+    aqua: 0x3ff6ff,
+    limeGreen: 0xbcff4f,
+    darkTeal: 0x248886,
+    darkGray: 0x2b2b2b,
+    warmGray: 0x766969,
+    white: 0xffffff
+};
+/* harmony export (immutable) */ __webpack_exports__["a"] = brandColors;
+
+
 /***/ })
-/******/ ]);
+
+/******/ });

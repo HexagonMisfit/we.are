@@ -17,6 +17,7 @@ import '../sass/main.scss';
 var projects = [
     {
         title: 'Mariposa Chandelier',
+        href: 'work/mariposa.html',
         id: '01',
         img: './assets/mariposa_1280x720.jpg',
         blurb: 'Ecteturn chendelier cool apartment complex have fun with it. Gibberish filler content to look real and explain space taken up by blurb element. Life is much better when spent with friends and close colleagues, is what they say.',
@@ -28,6 +29,7 @@ var projects = [
     },
     {
         title: 'Music Visualizer',
+        href: 'work/music-visualizer.html',
         id: '02',
         img: './assets/daniel_sierra_project.jpg',
         blurb: 'The champagne room on Christmas Eve is not really the time or place for ideological battles. Ok etc, have fun, etc, then taking from his wallet an old schedule of trains he\'ll say "I told you when I came I was a stranger".',
@@ -39,6 +41,7 @@ var projects = [
     },
     {
         title: 'Coachella VIP Party',
+        href: 'work/coachella-vip-party.html',
         id: '03',
         img: './assets/mariposa_1280x720.jpg',
         blurb: 'Rock climbing can be a very challenging and rewarding adventure, but the risks are multiplied to the extent that intoxicants are involved. Having fun with technology is a likely outcome of learning to write code.',
@@ -50,6 +53,7 @@ var projects = [
     },
     {
         title: 'VR Ballet Experience',
+        href: 'work/vr-ballet-experience.html',
         id: '04',
         img: './assets/daniel_sierra_project.jpg',
         blurb: 'Ballet fun is great in love with the modern age, office of smellography kicks in when you know your time is right to get level-headed and exit stage left. Smoking prohibited in cockpit of spacecraft.',
@@ -61,6 +65,7 @@ var projects = [
     },
     {
         title: 'Digital Fish Tank',
+        href: 'work/digital-fish-tank.html',
         id: '05',
         img: './assets/mariposa_1280x720.jpg',
         blurb: 'Lorem ipsum consectetur halogen ipso facto. And then taking from his wallet an old schedule of trains, a big sandwich made of cookie dough deep fried in fat carved from last night\'s roast. Billy Grippo top eastside producer.',
@@ -81,6 +86,7 @@ $(document).ready(function () {
         projectLinks.each(function (link) {
             if ($(projectLinks[link]).attr('data') === project.id) {
                 $(projectLinks[link]).children().text(project.title);
+                $(projectLinks[link]).children().attr('href', project.href);
             }
         });
     });
