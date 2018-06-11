@@ -1,33 +1,42 @@
 {
-  "name": "hexagonmisfit_site",
-  "version": "1.0.0",
-  "description": "Site for hexagonmis.fit",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "start": "webpack --watch"
+  "name": "hexagon-misfit",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "async": "2.1.4",
+    "cloudinary": "^1.11.0",
+    "dotenv": "4.0.0",
+    "express-handlebars": "3.0.0",
+    "handlebars": "4.0.6",
+    "jquery": "^3.2.1",
+    "keystone": "^4.0.0-beta.8",
+    "lodash": "^4.17.10",
+    "moment": "^2.22.2",
+    "node-sass": "^4.9.0",
+    "node-sass-middleware": "0.11.0",
+    "three": "^0.92.0"
   },
-  "author": "Alex Erickson",
-  "license": "ISC",
   "devDependencies": {
     "@drazik/normalize.scss": "^4.1.1",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.7",
-    "extract-text-webpack-plugin": "^3.0.2",
+    "eslint": "3.15.0",
+    "eslint-config-keystone": "3.0.0",
+    "eslint-plugin-react": "^5.1.1",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.6",
-    "html-webpack-plugin": "^2.30.1",
+    "html-webpack-plugin": "^3.2.0",
     "http-server": "^0.11.1",
-    "jquery": "^3.2.1",
-    "lodash": "^4.17.4",
-    "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.1",
     "url-loader": "^0.6.2",
-    "webpack": "^3.10.0"
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.3"
   },
-  "dependencies": {
-    "three": "^0.92.0",
-    "venobox": "^1.8.3"
+  "scripts": {
+    "lint": "eslint .",
+    "build": "webpack",
+    "start-client": "webpack --watch",
+    "start": "node keystone.js"
   }
 }

@@ -12,7 +12,7 @@ import '../shared/nav.js';
 import './workAnimation.js';
 
 // import our scss last
-import '../sass/main.scss';
+import '../styles/main.scss';
 
 var projects = [
     {
