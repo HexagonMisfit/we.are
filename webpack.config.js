@@ -9,8 +9,6 @@ module.exports = {
     entry: {
         app: './home/index.js',
         contact: './contact/contact.js',
-        mariposa: './work/mariposa/mariposa.js',
-        secret: './secret/secret.js',
         team: './team/team.js',
         vr: './vr/vr.js',
         work: './work/work.js'
@@ -55,12 +53,6 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(['client/dist']),
         new ExtractTextPlugin('style.css'),
-        new HtmlWebpackPlugin({
-            template: 'vr/vr.html',
-            filename: 'vr.html',
-            inject: 'head',
-            chunks: ['vr']
-        }),
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"

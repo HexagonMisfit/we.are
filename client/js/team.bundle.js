@@ -120,14 +120,14 @@ eval("/* WEBPACK VAR INJECTION */(function($) {$(document).ready(function () {\n
 
 /***/ }),
 
-/***/ "./styles/main.scss":
-/*!**************************!*\
-  !*** ./styles/main.scss ***!
-  \**************************/
+/***/ "./shared/styles/main.scss":
+/*!*********************************!*\
+  !*** ./shared/styles/main.scss ***!
+  \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./styles/main.scss?");
+eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./shared/styles/main.scss?");
 
 /***/ }),
 
@@ -183,7 +183,7 @@ eval("module.exports = __webpack_require__.p + \"assets/quin_kennedy_prof.png\";
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _assets_big_al_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/big_al.jpg */ \"./team/assets/big_al.jpg\");\n/* harmony import */ var _assets_big_al_jpg__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_assets_big_al_jpg__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _assets_chris_r_prof_crop_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/chris_r_prof_crop.png */ \"./team/assets/chris_r_prof_crop.png\");\n/* harmony import */ var _assets_chris_r_prof_crop_png__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_assets_chris_r_prof_crop_png__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _assets_d_sierra_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./assets/d_sierra.png */ \"./team/assets/d_sierra.png\");\n/* harmony import */ var _assets_d_sierra_png__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_assets_d_sierra_png__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _assets_quin_kennedy_prof_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./assets/quin_kennedy_prof.png */ \"./team/assets/quin_kennedy_prof.png\");\n/* harmony import */ var _assets_quin_kennedy_prof_png__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_assets_quin_kennedy_prof_png__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _shared_nav_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../shared/nav.js */ \"./shared/nav.js\");\n/* harmony import */ var _shared_nav_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_shared_nav_js__WEBPACK_IMPORTED_MODULE_4__);\n/* harmony import */ var _teamAnimation_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./teamAnimation.js */ \"./team/teamAnimation.js\");\n/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../styles/main.scss */ \"./styles/main.scss\");\n/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_styles_main_scss__WEBPACK_IMPORTED_MODULE_6__);\n\n\n\n\n\nwindow.$ = window.jQuery = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\");\n\n\n\n\n// import our scss last\n\n\n//# sourceURL=webpack:///./team/team.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _assets_big_al_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/big_al.jpg */ \"./team/assets/big_al.jpg\");\n/* harmony import */ var _assets_big_al_jpg__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_assets_big_al_jpg__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _assets_chris_r_prof_crop_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/chris_r_prof_crop.png */ \"./team/assets/chris_r_prof_crop.png\");\n/* harmony import */ var _assets_chris_r_prof_crop_png__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_assets_chris_r_prof_crop_png__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _assets_d_sierra_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./assets/d_sierra.png */ \"./team/assets/d_sierra.png\");\n/* harmony import */ var _assets_d_sierra_png__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_assets_d_sierra_png__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _assets_quin_kennedy_prof_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./assets/quin_kennedy_prof.png */ \"./team/assets/quin_kennedy_prof.png\");\n/* harmony import */ var _assets_quin_kennedy_prof_png__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_assets_quin_kennedy_prof_png__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _shared_nav_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../shared/nav.js */ \"./shared/nav.js\");\n/* harmony import */ var _shared_nav_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_shared_nav_js__WEBPACK_IMPORTED_MODULE_4__);\n/* harmony import */ var _teamAnimation_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./teamAnimation.js */ \"./team/teamAnimation.js\");\n/* harmony import */ var _shared_styles_main_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../shared/styles/main.scss */ \"./shared/styles/main.scss\");\n/* harmony import */ var _shared_styles_main_scss__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_shared_styles_main_scss__WEBPACK_IMPORTED_MODULE_6__);\n\n\n\n\n\nwindow.$ = window.jQuery = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\");\n\n\n\n\n// import our scss last\n\n\n//# sourceURL=webpack:///./team/team.js?");
 
 /***/ }),
 

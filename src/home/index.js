@@ -15,7 +15,7 @@ import './homeAnimation.js';
 import '../shared/assets/HM_Logo_final_color_withtagline.svg'
 
 // import our scss last
-import '../styles/main.scss';
+import '../shared/styles/main.scss';
 
 
 $(function () {

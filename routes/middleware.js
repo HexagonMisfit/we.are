@@ -29,6 +29,15 @@ exports.initLocals = function (req, res, next) {
 	next();
 };
 
+exports.trailingSlashes = function (req, res, next) {
+  const test = /\?[^]*\//.test(req.url);
+  if (req.url.substr(-1) === '/' && req.url.length > 1 && !test) {
+  	res.redirect(301, req.url.slice(0, -1));
+  }
+  else
+    next();
+};
+
 
 /**
 	Fetches and clears the flashMessages before a view is rendered
@@ -50,8 +59,11 @@ exports.flashMessages = function (req, res, next) {
  */
 exports.requireUser = function (req, res, next) {
 	if (!req.user) {
-		req.flash('error', 'Please sign in to access this page.');
-		res.redirect('/keystone/signin');
+		if(req.url) {
+            res.redirect('/keystone/signin?from='+req.url);
+        } else {
+            res.redirect('/keystone/signin');
+        }
 	} else {
 		next();
 	}

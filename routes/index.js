@@ -24,16 +24,28 @@ var importRoutes = keystone.importer(__dirname);
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
+keystone.pre('routes', middleware.trailingSlashes);
 keystone.pre('render', middleware.flashMessages);
+
+// Redirect to specified url after signin
+
+keystone.set('signin redirect', function(user, req, res){
+  var url = (user.isAdmin) ? '/keystone' : req.url;
+  console.log('logging url ' + url);
+  res.redirect(url);
+});
 
 // Import Route Controllers
 var routes = {
-	views: importRoutes('./views'),
+	views: importRoutes('./views')
 };
 
 // Setup Route Bindings
 exports = module.exports = function (app) {
+
 	// Views
+
+	app.get('/', routes.views.home);
 
 	app.get('/vr', routes.views.vr);
 
@@ -41,10 +53,16 @@ exports = module.exports = function (app) {
 
 	app.get('/team', routes.views.team);
 
+	app.get('/work/:id', routes.views.project);
+
 	app.get('/work', routes.views.work);
 
-	app.get('/', routes.views.home);
-
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
+
+	app.all('/secret*', middleware.requireUser);
+
+	app.get('/secret/:id', routes.views.project);
+
+	app.get('/secret', routes.views.work);
 
 };

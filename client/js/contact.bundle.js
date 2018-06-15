@@ -105,7 +105,7 @@ eval("var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!\n * jQ
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _shared_nav_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../shared/nav.js */ \"./shared/nav.js\");\n/* harmony import */ var _shared_nav_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_shared_nav_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../styles/main.scss */ \"./styles/main.scss\");\n/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_styles_main_scss__WEBPACK_IMPORTED_MODULE_1__);\n\n\n// import our scss last\n\n\n//# sourceURL=webpack:///./contact/contact.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _shared_nav_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../shared/nav.js */ \"./shared/nav.js\");\n/* harmony import */ var _shared_nav_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_shared_nav_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _shared_styles_main_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/styles/main.scss */ \"./shared/styles/main.scss\");\n/* harmony import */ var _shared_styles_main_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_shared_styles_main_scss__WEBPACK_IMPORTED_MODULE_1__);\n\n\n// import our scss last\n\n\n//# sourceURL=webpack:///./contact/contact.js?");
 
 /***/ }),
 
@@ -120,14 +120,14 @@ eval("/* WEBPACK VAR INJECTION */(function($) {$(document).ready(function () {\n
 
 /***/ }),
 
-/***/ "./styles/main.scss":
-/*!**************************!*\
-  !*** ./styles/main.scss ***!
-  \**************************/
+/***/ "./shared/styles/main.scss":
+/*!*********************************!*\
+  !*** ./shared/styles/main.scss ***!
+  \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./styles/main.scss?");
+eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./shared/styles/main.scss?");
 
 /***/ })
 

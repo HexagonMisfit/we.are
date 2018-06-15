@@ -7,12 +7,12 @@ exports = module.exports = function (req, res) {
 
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
-	locals.section = 'contact';
+	locals.section = 'work';
 
 	// Render the view
-	console.log('rendering contact');
-	view.render('contact', {
+	
+	view.render('project', {
 		layout: 'base',
-		scriptSrc: 'js/contact.bundle.js'
+		scriptSrc: 'js/project.bundle.js'
 	});
 };

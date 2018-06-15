@@ -1,4 +1,5 @@
-var keystone = require('keystone');
+var keystone = require('keystone'),
+	Teammate = keystone.list('Teammate');
 
 exports = module.exports = function (req, res) {
 
@@ -8,8 +9,20 @@ exports = module.exports = function (req, res) {
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
 	locals.section = 'team';
+	locals.data = {};
+
+	view.on('init', function(next) {
+		Teammate.model.find()
+			.exec(function(err, results) {
+				locals.data.teammates = results;
+				next(err);
+			});
+	});
 
 	// Render the view
-	console.log('rendering team');
-	view.render('team', {layout: 'team'});
+	
+	view.render('team', {
+		layout: 'base',
+		scriptSrc: 'js/team.bundle.js'
+	});
 };

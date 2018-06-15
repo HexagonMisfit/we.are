@@ -117,8 +117,9 @@ import 'three';
             renderer.render(scene, camera);
         }
 
-        $('#work-body').prepend(renderer.domElement);
+        $('#work-container').prepend(renderer.domElement);
         renderer.domElement.id = 'work-background-scene';
+        console.log('work container', $('#work-container'));
 
         //animate the scene
 
