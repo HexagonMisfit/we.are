@@ -97,6 +97,7 @@ p {
     left: 0;
     right: 0;
     z-index: 0;
+    bottom: 0;
 }
 
 #home-container {
@@ -291,4 +292,14 @@ h3 {
     @media screen and (max-width: 720px) {
         align-items: center;
     }
+}
+
+#work-container {
+    width: 100%;
+    display: flex;
+    padding: 0;
+    position: relative;
+    flex-direction: column;
+    background-color: $dark-gray;
+    align-items: center;
 }

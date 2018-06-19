@@ -10,7 +10,6 @@ exports = module.exports = function (req, res) {
 	locals.section = 'home';
 
 	// Render the view
-	console.log('rendering home');
 	view.render('home', {
 		layout: 'base',
 		scriptSrc: 'js/app.bundle.js'

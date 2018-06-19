@@ -10,9 +10,9 @@ exports = module.exports = function (req, res) {
 	locals.section = 'contact';
 
 	// Render the view
-	console.log('rendering contact');
 	view.render('contact', {
 		layout: 'base',
-		scriptSrc: 'js/contact.bundle.js'
+		scriptSrc: 'js/contact.bundle.js',
+		stylesSrc: './style.css'
 	});
 };

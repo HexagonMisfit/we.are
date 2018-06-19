@@ -13,8 +13,8 @@ exports = module.exports = function (req, res) {
 	locals.section = 'work';
 
 	view.on('init', function(next) {
-
-		if(req.url.indexOf('secret') > -1) {
+		var urlArr = req.url.split('/');
+		if(urlArr[1] === 'secret') {
 			Project.model.find()
 				.sort('secret')
 				.exec(function(err, results) {
@@ -36,5 +36,6 @@ exports = module.exports = function (req, res) {
 	view.render('work', {
 		layout: 'base',
 		scriptSrc: 'js/work.bundle.js',
+		stylesSrc: './style.css'
 	});
 };

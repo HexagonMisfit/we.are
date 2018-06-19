@@ -6,8 +6,7 @@
     flex-direction: column;
     overflow: -moz-scrollbars-none;
     padding: 10em;
-    background: $dark-gray;
-    opacity: 0.95;
+    background-color: $dark-gray;
     @media screen and (max-width: 1200px) {
         padding: 7em;
     }

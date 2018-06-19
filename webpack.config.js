@@ -11,7 +11,8 @@ module.exports = {
         contact: './contact/contact.js',
         team: './team/team.js',
         vr: './vr/vr.js',
-        work: './work/work.js'
+        work: './work/work.js',
+        project: './project/project.js'
     },
     mode: 'development',
     output: {

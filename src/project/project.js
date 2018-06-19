@@ -4,7 +4,6 @@ window._ = require('lodash');
 
 // assets
 require('./assets/daniel_sierra_project.jpg');
-require('./assets/mariposa_1280x720.jpg');
 
 // our scripts
 import '../shared/nav.js';
@@ -12,3 +11,5 @@ import '../shared/workAnimation.js';
 
 // import our scss last
 import '../shared/styles/main.scss';
+
+console.log('project');

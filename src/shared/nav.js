@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     var body = $('body');
     var navLink = $('.nav-link');
+    var link = $('.link');
     var pageWipe = $('#page-wipe');
     var currentPage = location.href;
     var activeNavItem;
@@ -41,7 +42,7 @@ $(document).ready(function () {
         wipeIn();
     }
 
-    navLink.on('click', function (ev) {
+    link.on('click', function (ev) {
         console.log(ev);
         ev.preventDefault();
         if (currentPage !== ev.currentTarget.href) {

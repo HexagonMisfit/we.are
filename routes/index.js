@@ -31,7 +31,6 @@ keystone.pre('render', middleware.flashMessages);
 
 keystone.set('signin redirect', function(user, req, res){
   var url = (user.isAdmin) ? '/keystone' : req.url;
-  console.log('logging url ' + url);
   res.redirect(url);
 });
 
