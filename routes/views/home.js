@@ -12,6 +12,7 @@ exports = module.exports = function (req, res) {
 	// Render the view
 	view.render('home', {
 		layout: 'base',
-		scriptSrc: 'js/app.bundle.js'
+		scriptSrc: 'js/app.bundle.js',
+		stylesSrc: './style.css'
 	});
 };

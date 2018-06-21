@@ -36,7 +36,8 @@ keystone.set('signin redirect', function(user, req, res){
 
 // Import Route Controllers
 var routes = {
-	views: importRoutes('./views')
+	views: importRoutes('./views'),
+	api: importRoutes('./api')
 };
 
 // Setup Route Bindings
@@ -53,15 +54,18 @@ exports = module.exports = function (app) {
 	app.get('/team', routes.views.team);
 
 	app.get('/work/:id', routes.views.project);
-
 	app.get('/work', routes.views.work);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 
 	app.all('/secret*', middleware.requireUser);
-
 	app.get('/secret/:id', routes.views.project);
+	app.get('/secret', routes.views.secret);
 
-	app.get('/secret', routes.views.work);
+	app.get('/api/fileupload/list', keystone.middleware.api, routes.api.fileupload.list);
+	app.get('/api/fileupload/:id', keystone.middleware.api, routes.api.fileupload.get);
+	app.all('/api/fileupload/:id/update', keystone.middleware.api, routes.api.fileupload.update);
+	app.all('/api/fileupload/create', keystone.middleware.api, routes.api.fileupload.create);
+	app.get('/api/fileupload/:id/remove', keystone.middleware.api, routes.api.fileupload.remove);
 
 };

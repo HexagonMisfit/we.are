@@ -11,33 +11,31 @@ exports = module.exports = function (req, res) {
 	// item in the header navigation.
 	locals.section = 'project';
 
+	var backTo;
+
 	view.on('init', function(next) {
 		var urlArr = req.url.split('/');
 		if(urlArr[1] === 'secret') {
-			Project.model.findOne()
-				.where('slug', urlArr[2])
-				.exec(function(err, results) {
-					if(results && results.length) {
-						locals.data.project = results[0];
-					}
-					next(err);
-				});
-		} else {
-			Project.model.find()
-				.where('secret', false)
-				.where('slug', urlArr[2])
-				.exec(function(err, results) {
-					if(results && results.length) {
-						locals.data.project = results[0];
-					}
-					next(err);
-				});
+			backTo = '../secret';
+		} if (urlArr[1] === 'work') {
+			backTo = '../work';
 		}
+		Project.model.findOne()
+			.where('slug', urlArr[2])
+			.exec(function(err, results) {				
+				if(results) {
+					locals.data.project = results;
+					console.log('the project is ' + locals.data.project);
+					next(err);
+				}
+			});
+		
 	});
 
 	// Render the view
 	view.render('project', {
-		layout: 'base',
+		backTo: backTo,
+		layout: 'project',
 		scriptSrc: '../js/project.bundle.js',
 		stylesSrc: '../style.css'
 	});

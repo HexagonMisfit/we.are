@@ -11,7 +11,8 @@ Teammate.add({
 	name: { type: Types.Name, required: true, index: true },
 	email: { type: Types.Email, initial: true, required: true, unique: true, index: true },
 	role: {type: Types.Text, max: 30, initial: true, required: true, index: true, default: ''},
-	profile: {type: Types.Textarea, max: 400, initial: true, required: true, index: true, default: ''}
+	blurb: {type: Types.Textarea, max: 400},
+	profilePic: {type: Types.Relationship, ref: 'FileUpload', required: true, initial: false}
 });
 
 

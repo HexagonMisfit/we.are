@@ -14,21 +14,13 @@ exports = module.exports = function (req, res) {
 
 	view.on('init', function(next) {
 		var urlArr = req.url.split('/');
-		if(urlArr[1] === 'secret') {
-			Project.model.find()
-				.sort('secret')
-				.exec(function(err, results) {
-					locals.data.projects = results;
-					next(err);
-				});
-		} else {
-			Project.model.find()
-				.where('secret', false)
-				.exec(function(err, results) {
-					locals.data.projects = results;
-					next(err);
-				});
-		}
+		Project.model.find()
+			.where('secret', false)
+			.exec(function(err, results) {
+				locals.data.projects = results;
+				next(err);
+			});
+		
 	});
 
 	// Render the view

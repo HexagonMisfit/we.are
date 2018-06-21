@@ -993,3 +993,7 @@ div {
   left: 0;
   z-index: 0;
   position: fixed; }
+
+#project-container {
+  z-index: 2;
+  padding-top: 2em; }

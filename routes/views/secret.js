@@ -1,29 +1,31 @@
 var keystone = require('keystone'),
-	Teammate = keystone.list('Teammate');
+	Project = keystone.list('Project');
 
 exports = module.exports = function (req, res) {
 
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
+	locals.data = {};
 
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
-	locals.section = 'team';
-	locals.data = {};
+
+	locals.section = 'work';
 
 	view.on('init', function(next) {
-		Teammate.model.find()
+		var urlArr = req.url.split('/');
+		Project.model.find()
 			.exec(function(err, results) {
-				locals.data.teammates = results;
+				locals.data.projects = results;
 				next(err);
 			});
 	});
 
 	// Render the view
 	
-	view.render('team', {
+	view.render('secret', {
 		layout: 'base',
-		scriptSrc: 'js/team.bundle.js',
+		scriptSrc: 'js/work.bundle.js',
 		stylesSrc: './style.css'
 	});
 };
