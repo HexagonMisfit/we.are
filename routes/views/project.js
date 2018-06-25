@@ -35,7 +35,7 @@ exports = module.exports = function (req, res) {
 	// Render the view
 	view.render('project', {
 		backTo: backTo,
-		layout: 'project',
+		layout: 'one-deep',
 		scriptSrc: '../js/project.bundle.js',
 		stylesSrc: '../style.css'
 	});

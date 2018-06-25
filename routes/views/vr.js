@@ -13,6 +13,7 @@ exports = module.exports = function (req, res) {
 	console.log('rendering vr');
 	view.render('vr', {
 		layout: 'vr',
-		scriptSrc: 'js/vr.bundle.js'
+		scriptSrc: 'js/vr.bundle.js',
+		stylesSrc: './style.css'
 	});
 };

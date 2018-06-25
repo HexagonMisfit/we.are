@@ -2,4 +2,26 @@
 	<div id="project-container">
 		<h1 class="really-really-big-text hot-pink">{{data.project.title}}</h1>
 	</div>
+	{{#if data.project.video}}
+	<video src={{data.project.videoSrc}}></video>
+	{{/if}}
+	{{#if data.project.blurb}}
+	<p>{{data.project/blurb}}</p>
+	{{/if}}
+	<img src={{data.project.img1}}/>
+	{{#if data.project.p1}}
+	<p>{{data.project.p1}}</p>
+	{{/if}}
+	{{#if data.project.img2}}
+	<img src={{data.project.img2}}/>
+	{{/if}}
+	{{#if data.project.p2}}
+	<p>{{data.project.p2}}</p>
+	{{/if}}
+	{{#if data.project.img3}}
+	<img src={{data.project.img3}}/>
+	{{/if}}
+	{{#if data.project.p3}}
+	<p>{{data.project.p3}}</p>
+	{{/if}}
 </div>

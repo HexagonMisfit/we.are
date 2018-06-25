@@ -10,6 +10,7 @@ var Project = new keystone.List('Project');
 Project.add({
 	title: {type: String, required: true, initial: true, unique: true, index: true, default: ''},
 	slug: {type: String, required: true, initial: true, unique: true, index: true, default: ''},
+	blurb: {type: Types.Textarea, max: 400, required: true, default: ''},
 	p1: {type: Types.Textarea, max: 400},
 	p2: {type: Types.Textarea, max: 400},
 	p3: {type: Types.Textarea, max: 400},

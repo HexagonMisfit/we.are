@@ -14,6 +14,7 @@ node_modules
 
 # Uploads
 public/uploads/**
+to-upload/**
 
 # Ignore .env configuration files
 .env

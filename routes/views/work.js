@@ -18,6 +18,7 @@ exports = module.exports = function (req, res) {
 			.where('secret', false)
 			.exec(function(err, results) {
 				locals.data.projects = results;
+				console.log(locals.data.projects);
 				next(err);
 			});
 		
