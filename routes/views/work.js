@@ -16,9 +16,11 @@ exports = module.exports = function (req, res) {
 		var urlArr = req.url.split('/');
 		Project.model.find()
 			.where('secret', false)
+			.populate('img1')
 			.exec(function(err, results) {
 				locals.data.projects = results;
-				console.log(locals.data.projects);
+				console.log(results);
+				console.log(results[0].img1);
 				next(err);
 			});
 		

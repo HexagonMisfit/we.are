@@ -21,10 +21,11 @@ FileUpload.add({
   name: { type: Types.Key, index: true},
   file: {
     type: Types.File,
-    storage: myStorage
-  }
+    storage: myStorage,
+  },
+  url: {type: String, default: '/public/uploads/files/'}
 });
 
 
-FileUpload.defaultColumns = 'name';
+FileUpload.defaultColumns = 'name, url';
 FileUpload.register();
