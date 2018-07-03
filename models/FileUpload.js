@@ -23,7 +23,7 @@ FileUpload.add({
     type: Types.File,
     storage: myStorage,
   },
-  url: {type: String, default: '/public/uploads/files/'}
+  url: {type: String, default: '/uploads/files/'}
 });
 
 

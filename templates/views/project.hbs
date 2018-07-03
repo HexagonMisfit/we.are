@@ -1,27 +1,27 @@
 <div id="work-container">
 	<div id="project-container">
-		<h1 class="really-really-big-text hot-pink">{{data.project.title}}</h1>
+		<h1 class="really-big-text hot-pink">{{data.project.title}}</h1>
+		{{#if data.project.video}}
+		<video class="project-video" src="{{data.project.video.url}}{{data.project.video.file.filename}}"></video>
+		{{/if}}
+		{{#if data.project.blurb}}
+		<p class="project-p light-text">{{data.project.blurb}}</p>
+		{{/if}}
+		<img class="project-img" src="{{data.project.img1.url}}{{data.project.img1.file.filename}}"/>
+		{{#if data.project.p1}}
+		<p class="project-p light-text">{{data.project.p1}}</p>
+		{{/if}}
+		{{#if data.project.img2}}
+		<img class="project-img" src="{{data.project.img2.url}}{{data.project.img2.file.filename}}"/>
+		{{/if}}
+		{{#if data.project.p2}}
+		<p class="project-p light-text">{{data.project.p2}}</p>
+		{{/if}}
+		{{#if data.project.img3}}
+		<img class="project-img" src="{{data.project.img3.url}}{{data.project.img3.file.filename}}"/>
+		{{/if}}
+		{{#if data.project.p3}}
+		<p class="project-p light-text">{{data.project.p3}}</p>
+		{{/if}}
 	</div>
-	{{#if data.project.video}}
-	<video src={{data.project.videoSrc}}></video>
-	{{/if}}
-	{{#if data.project.blurb}}
-	<p>{{data.project/blurb}}</p>
-	{{/if}}
-	<img src={{data.project.img1}}/>
-	{{#if data.project.p1}}
-	<p>{{data.project.p1}}</p>
-	{{/if}}
-	{{#if data.project.img2}}
-	<img src={{data.project.img2}}/>
-	{{/if}}
-	{{#if data.project.p2}}
-	<p>{{data.project.p2}}</p>
-	{{/if}}
-	{{#if data.project.img3}}
-	<img src={{data.project.img3}}/>
-	{{/if}}
-	{{#if data.project.p3}}
-	<p>{{data.project.p3}}</p>
-	{{/if}}
 </div>

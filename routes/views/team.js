@@ -13,6 +13,7 @@ exports = module.exports = function (req, res) {
 
 	view.on('init', function(next) {
 		Teammate.model.find()
+			.populate('profilePic')
 			.exec(function(err, results) {
 				locals.data.teammates = results;
 				next(err);

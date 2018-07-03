@@ -1,4 +1,22 @@
 #project-container {
 	z-index: 2;
-	padding-top: 2em;
+	padding: 8em 1em 0 2em;
+	width: 100%;
+	max-width: 1000px;
+}
+
+.project-img {
+	width: 95%;
+	position: relative;
+}
+
+.project-img, .project-p, .project-video {
+	z-index: 10;
+	position: relative;
+	max-width: 1000px;
+	margin: 3em 0;
+}
+
+.project-p {
+	line-height: 2em;
 }

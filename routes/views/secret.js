@@ -15,6 +15,8 @@ exports = module.exports = function (req, res) {
 	view.on('init', function(next) {
 		var urlArr = req.url.split('/');
 		Project.model.find()
+			.where('secret', true)
+			.populate('img1')
 			.exec(function(err, results) {
 				locals.data.projects = results;
 				next(err);

@@ -22,10 +22,12 @@ exports = module.exports = function (req, res) {
 		}
 		Project.model.findOne()
 			.where('slug', urlArr[2])
+			.populate('img1')
+			.populate('img2')
+			.populate('img3')
 			.exec(function(err, results) {				
 				if(results) {
 					locals.data.project = results;
-					console.log('the project is ' + locals.data.project);
 					next(err);
 				}
 			});

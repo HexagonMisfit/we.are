@@ -10,7 +10,6 @@ exports = module.exports = function (req, res) {
 	locals.section = 'vr';
 
 	// Render the view
-	console.log('rendering vr');
 	view.render('vr', {
 		layout: 'vr',
 		scriptSrc: 'js/vr.bundle.js',

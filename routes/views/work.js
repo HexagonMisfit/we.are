@@ -19,8 +19,6 @@ exports = module.exports = function (req, res) {
 			.populate('img1')
 			.exec(function(err, results) {
 				locals.data.projects = results;
-				console.log(results);
-				console.log(results[0].img1);
 				next(err);
 			});
 		

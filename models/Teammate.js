@@ -19,5 +19,5 @@ Teammate.add({
 /**
  * Registration
  */
-Teammate.defaultColumns = 'name, email, role, profile';
+Teammate.defaultColumns = 'name, email, role, blurb';
 Teammate.register();
