@@ -5,7 +5,7 @@
 			<p class="light-text">These are the people who bring technology to life.</p>
 		</div>
 		{{#each data.teammates}}
-		<div class="team-member-container space-around row">
+		<div class="team-member-container space-around row scroll-item" id="{{order}}">
 			<div class="team-member-column column flex-1">
 				<div class="team-member-photo">
 					<img class="team-pic" src="{{profilePic.url}}{{profilePic.file.filename}}">

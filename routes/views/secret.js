@@ -17,6 +17,10 @@ exports = module.exports = function (req, res) {
 		Project.model.find()
 			.where('secret', true)
 			.populate('img1')
+			.sort({sort: {
+				date: 1,
+				secret: 1
+			}})
 			.exec(function(err, results) {
 				locals.data.projects = results;
 				next(err);

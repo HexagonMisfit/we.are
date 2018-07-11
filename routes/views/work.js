@@ -16,12 +16,12 @@ exports = module.exports = function (req, res) {
 		var urlArr = req.url.split('/');
 		Project.model.find()
 			.where('secret', false)
+			.sort('order')
 			.populate('img1')
 			.exec(function(err, results) {
 				locals.data.projects = results;
 				next(err);
 			});
-		
 	});
 
 	// Render the view

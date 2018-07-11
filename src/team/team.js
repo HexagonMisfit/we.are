@@ -7,6 +7,7 @@ window.$ = window.jQuery = require('jquery');
 
 import '../shared/nav.js';
 import './teamAnimation.js';
+import '../shared/scroll.js';
 
 // import our scss last
 import '../shared/styles/main.scss';

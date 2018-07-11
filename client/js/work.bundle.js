@@ -153,6 +153,17 @@ eval("/* WEBPACK VAR INJECTION */(function($) {$(document).ready(function () {\n
 
 /***/ }),
 
+/***/ "./shared/scroll.js":
+/*!**************************!*\
+  !*** ./shared/scroll.js ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("/* WEBPACK VAR INJECTION */(function($) {$(function() {\n\tvar wh = window.innerHeight,\n\t\tscrollItems = $('.scroll-item'),\n\t\tcontroller = new ScrollMagic.Controller()\n\t\tif(scrollItems.length) {\n\t\t\t[...scrollItems].forEach(function(item) {\n\t\t\t\tconsole.log(item);\n\t\t\t\tvar tween = new TweenMax.fromTo(item, 0.5, {opacity: 0}, {opacity: 1});\n\t\t\t\tvar scene = new ScrollMagic.Scene({\n\t\t\t\t\ttriggerElement: item,\n\t\t\t\t\ttriggerHook: 0.95,\n\t\t\t\t\treverse: false\n\t\t\t\t})\n\t\t\t\t.setTween(tween)\n\t\t\t\t.addTo(controller);\n\t\t\t});\n\t\t}\n});\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\")))\n\n//# sourceURL=webpack:///./shared/scroll.js?");
+
+/***/ }),
+
 /***/ "./shared/styles/main.scss":
 /*!*********************************!*\
   !*** ./shared/styles/main.scss ***!
@@ -218,7 +229,7 @@ eval("module.exports = __webpack_require__.p + \"assets/mariposa_1280x720.jpg\";
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _shared_nav_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../shared/nav.js */ \"./shared/nav.js\");\n/* harmony import */ var _shared_nav_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_shared_nav_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _shared_workAnimation_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/workAnimation.js */ \"./shared/workAnimation.js\");\n/* harmony import */ var _shared_styles_main_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/styles/main.scss */ \"./shared/styles/main.scss\");\n/* harmony import */ var _shared_styles_main_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_shared_styles_main_scss__WEBPACK_IMPORTED_MODULE_2__);\n// vendor js files\nwindow.$ = window.jQuery = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\");\nwindow._ = __webpack_require__(/*! lodash */ \"../node_modules/lodash/lodash.js\");\n\n// assets\n__webpack_require__(/*! ./assets/daniel_sierra_project.jpg */ \"./work/assets/daniel_sierra_project.jpg\");\n__webpack_require__(/*! ./assets/mariposa_1280x720.jpg */ \"./work/assets/mariposa_1280x720.jpg\");\n\n// our scripts\n\n\n\n// import our scss last\n\n\n\n//# sourceURL=webpack:///./work/work.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _shared_nav_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../shared/nav.js */ \"./shared/nav.js\");\n/* harmony import */ var _shared_nav_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_shared_nav_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _shared_workAnimation_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/workAnimation.js */ \"./shared/workAnimation.js\");\n/* harmony import */ var _shared_scroll_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/scroll.js */ \"./shared/scroll.js\");\n/* harmony import */ var _shared_scroll_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_shared_scroll_js__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _shared_styles_main_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../shared/styles/main.scss */ \"./shared/styles/main.scss\");\n/* harmony import */ var _shared_styles_main_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_shared_styles_main_scss__WEBPACK_IMPORTED_MODULE_3__);\n// vendor js files\nwindow.$ = window.jQuery = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\");\nwindow._ = __webpack_require__(/*! lodash */ \"../node_modules/lodash/lodash.js\");\n\n// assets\n__webpack_require__(/*! ./assets/daniel_sierra_project.jpg */ \"./work/assets/daniel_sierra_project.jpg\");\n__webpack_require__(/*! ./assets/mariposa_1280x720.jpg */ \"./work/assets/mariposa_1280x720.jpg\");\n\n// our scripts\n\n\n\n\n// import our scss last\n\n\n\n\n//# sourceURL=webpack:///./work/work.js?");
 
 /***/ })
 

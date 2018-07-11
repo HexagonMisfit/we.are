@@ -18,7 +18,8 @@ Project.add({
 	img2: {type: Types.Relationship, ref: 'FileUpload'},
 	img3: {type: Types.Relationship, ref: 'FileUpload'},
 	video: {type: Types.Relationship, ref: 'FileUpload'},
-	secret: {type: Types.Boolean, default: false}
+	secret: {type: Types.Boolean, default: false},
+	order: {type: Number, required: true, initial: true}
 });
 
 

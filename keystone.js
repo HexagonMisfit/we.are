@@ -26,7 +26,6 @@ keystone.init({
 		helpers: new require('./templates/views/helpers')(),
 		extname: '.hbs',
 	}).engine,
-
 	'auto update': true,
 	'session': true,
 	'auth': true,
