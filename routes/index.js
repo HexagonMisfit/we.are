@@ -60,7 +60,7 @@ exports = module.exports = function (app) {
 
 	app.all('/secret*', middleware.requireUser);
 	app.get('/secret/:id', routes.views.project);
-	app.get('/secret', routes.views.secret);
+	app.get('/secret', routes.views.work);
 
 	app.get('/api/fileupload/list', keystone.middleware.api, routes.api.fileupload.list);
 	app.get('/api/fileupload/:id', keystone.middleware.api, routes.api.fileupload.get);

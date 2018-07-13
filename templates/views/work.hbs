@@ -3,8 +3,8 @@
         {{#each data.projects}}
         <div class="project-img-row row scroll-item" id="{{order}}">    
             <article class="project-img-container column">
-                <a class="project-img-link link" href="/work/{{slug}}">
-                    <img src="{{img1.url}}{{img1.file.filename}}"/>
+                <a class="project-img-link link" href="{{../data.url}}{{slug}}">
+                    <img src="{{thumb.url}}{{thumb.file.filename}}"/>
                     <span class="project-name-container light-text">
                         <h2 id="trigger{{order}}">{{title}}</h2>
                     </span>

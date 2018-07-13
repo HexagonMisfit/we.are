@@ -11,27 +11,20 @@ exports = module.exports = function (req, res) {
 	// item in the header navigation.
 	locals.section = 'project';
 
-	var backTo;
-
 	view.on('init', function(next) {
 		var urlArr = req.url.split('/');
-		if(urlArr[1] === 'secret') {
-			backTo = '../secret';
-		} if (urlArr[1] === 'work') {
-			backTo = '../work';
-		}
 		Project.model.findOne()
-			.where('slug', urlArr[2])
+			.where('slug', urlArr[2]) 
+			.where('secret', urlArr[1]==='secret')
 			.populate('img1')
 			.populate('img2')
 			.populate('img3')
 			.exec(function(err, results) {				
 				if(results) {
 					locals.data.project = results;
-					next(err);
 				}
+				next(err);
 			});
-		
 	});
 
 	// Render the view

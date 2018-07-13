@@ -14,7 +14,8 @@ Project.add({
 	p1: {type: Types.Textarea, max: 400},
 	p2: {type: Types.Textarea, max: 400},
 	p3: {type: Types.Textarea, max: 400},
-	img1: {type: Types.Relationship, required: true, initial: true, ref: 'FileUpload'},
+	thumb: {type: Types.Relationship, required: true, initial: true, ref: 'FileUpload'},
+	img1: {type: Types.Relationship, ref: 'FileUpload'},
 	img2: {type: Types.Relationship, ref: 'FileUpload'},
 	img3: {type: Types.Relationship, ref: 'FileUpload'},
 	video: {type: Types.Relationship, ref: 'FileUpload'},
@@ -26,5 +27,5 @@ Project.add({
 /**
  * Registration
  */
-Project.defaultColumns = 'title, secret, slug';
+Project.defaultColumns = 'title, secret, slug, order';
 Project.register();

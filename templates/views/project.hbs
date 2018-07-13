@@ -1,27 +1,34 @@
 <div id="work-container">
 	<div id="project-container">
-		<h1 class="really-big-text hot-pink">{{data.project.title}}</h1>
-		{{#if data.project.video}}
-		<video class="project-video" src="{{data.project.video.url}}{{data.project.video.file.filename}}"></video>
+		{{#if data.project}}
+			<h1 class="really-big-text hot-pink">{{data.project.title}}</h1>
+			{{#if data.project.video}}
+			<video class="project-video" src="{{data.project.video.url}}{{data.project.video.file.filename}}"></video>
+			{{/if}}
+			{{#if data.project.blurb}}
+			<p class="project-p light-text scroll-item" id="1">{{data.project.blurb}}</p>
+			{{/if}}
+			<img class="project-img scroll-item" id="2" src="{{data.project.img1.url}}{{data.project.img1.file.filename}}"/>
+			{{#if data.project.p1}}
+			<p class="project-p light-text scroll-item" id="3">{{data.project.p1}}</p>
+			{{/if}}
+			{{#if data.project.img2}}
+			<img class="project-img scroll-item" id="4" src="{{data.project.img2.url}}{{data.project.img2.file.filename}}"/>
+			{{/if}}
+			{{#if data.project.p2}}
+			<p class="project-p light-text scroll-item" id="5">{{data.project.p2}}</p>
+			{{/if}}
+			{{#if data.project.img3}}
+			<img class="project-img scroll-item" id="6" src="{{data.project.img3.url}}{{data.project.img3.file.filename}}"/>
+			{{/if}}
+			{{#if data.project.p3}}
+			<p class="project-p light-text scroll-item" id="7">{{data.project.p3}}</p>
+			{{/if}}
 		{{/if}}
-		{{#if data.project.blurb}}
-		<p class="project-p light-text scroll-item" id="1">{{data.project.blurb}}</p>
-		{{/if}}
-		<img class="project-img scroll-item" id="2" src="{{data.project.img1.url}}{{data.project.img1.file.filename}}"/>
-		{{#if data.project.p1}}
-		<p class="project-p light-text scroll-item" id="3">{{data.project.p1}}</p>
-		{{/if}}
-		{{#if data.project.img2}}
-		<img class="project-img scroll-item" id="4" src="{{data.project.img2.url}}{{data.project.img2.file.filename}}"/>
-		{{/if}}
-		{{#if data.project.p2}}
-		<p class="project-p light-text scroll-item" id="5">{{data.project.p2}}</p>
-		{{/if}}
-		{{#if data.project.img3}}
-		<img class="project-img scroll-item" id="6" src="{{data.project.img3.url}}{{data.project.img3.file.filename}}"/>
-		{{/if}}
-		{{#if data.project.p3}}
-		<p class="project-p light-text scroll-item" id="7">{{data.project.p3}}</p>
-		{{/if}}
+		{{#unless data.project}}
+			<div class="not-found">
+				<h1 class="really-big-text hot-pink">Not Found :(</h1>
+			</div>
+		{{/unless}}
 	</div>
 </div>

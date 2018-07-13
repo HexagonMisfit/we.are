@@ -1,6 +1,14 @@
 var keystone = require('keystone'),
 	Project = keystone.list('Project');
 
+function getUrl (data) {
+	if(data === 'secret') {
+		return '/secret/'
+	} else {
+		return '/work/'
+	}
+}
+
 exports = module.exports = function (req, res) {
 
 	var view = new keystone.View(req, res);
@@ -15,11 +23,12 @@ exports = module.exports = function (req, res) {
 	view.on('init', function(next) {
 		var urlArr = req.url.split('/');
 		Project.model.find()
-			.where('secret', false)
+			.where('secret', urlArr[1]==='secret')
 			.sort('order')
-			.populate('img1')
+			.populate('thumb')
 			.exec(function(err, results) {
 				locals.data.projects = results;
+				locals.data.url = getUrl(urlArr[1]);
 				next(err);
 			});
 	});
