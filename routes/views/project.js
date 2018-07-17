@@ -19,6 +19,7 @@ exports = module.exports = function (req, res) {
 			.populate('img1')
 			.populate('img2')
 			.populate('img3')
+			.populate('video')
 			.exec(function(err, results) {				
 				if(results) {
 					locals.data.project = results;
