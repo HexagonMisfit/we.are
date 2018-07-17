@@ -22,6 +22,7 @@ FileUpload.add({
   file: {
     type: Types.File,
     storage: myStorage,
+    size: 500000000
   },
   url: {type: String, default: '/uploads/files/'}
 });
