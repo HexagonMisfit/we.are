@@ -160,7 +160,7 @@ eval("/* WEBPACK VAR INJECTION */(function($) {$(document).ready(function () {\n
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("/* WEBPACK VAR INJECTION */(function($) {$(function() {\n\tvar wh = window.innerHeight,\n\t\tscrollItems = $('.scroll-item'),\n\t\tcontroller = new ScrollMagic.Controller()\n\t\tif(scrollItems.length) {\n\t\t\t[...scrollItems].forEach(function(item) {\n\t\t\t\tconsole.log(item);\n\t\t\t\tvar tween = new TweenMax.fromTo(item, 0.5, {opacity: 0}, {opacity: 1});\n\t\t\t\tvar scene = new ScrollMagic.Scene({\n\t\t\t\t\ttriggerElement: item,\n\t\t\t\t\ttriggerHook: 0.95,\n\t\t\t\t\treverse: false\n\t\t\t\t})\n\t\t\t\t.setTween(tween)\n\t\t\t\t.addTo(controller);\n\t\t\t});\n\t\t}\n});\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\")))\n\n//# sourceURL=webpack:///./shared/scroll.js?");
+eval("/* WEBPACK VAR INJECTION */(function($) {$(function() {\n\tvar wh = window.innerHeight,\n\t\tscrollItems = $('.scroll-item'),\n\t\tcontroller = new ScrollMagic.Controller()\n\t\tif(scrollItems.length) {\n\t\t\t[...scrollItems].forEach(function(item) {\n\t\t\t\tvar tween = new TweenMax.fromTo(item, 0.5, {opacity: 0}, {opacity: 1});\n\t\t\t\tvar scene = new ScrollMagic.Scene({\n\t\t\t\t\ttriggerElement: item,\n\t\t\t\t\ttriggerHook: 0.95,\n\t\t\t\t\treverse: false\n\t\t\t\t})\n\t\t\t\t.setTween(tween)\n\t\t\t\t.addTo(controller);\n\t\t\t});\n\t\t}\n});\n\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\")))\n\n//# sourceURL=webpack:///./shared/scroll.js?");
 
 /***/ }),
 

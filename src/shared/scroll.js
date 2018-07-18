@@ -4,7 +4,6 @@ $(function() {
 		controller = new ScrollMagic.Controller()
 		if(scrollItems.length) {
 			[...scrollItems].forEach(function(item) {
-				console.log(item);
 				var tween = new TweenMax.fromTo(item, 0.5, {opacity: 0}, {opacity: 1});
 				var scene = new ScrollMagic.Scene({
 					triggerElement: item,

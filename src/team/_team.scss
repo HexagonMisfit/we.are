@@ -44,6 +44,9 @@
 .team-member-column {
     flex-direction: row;
     width: 100%;
+    @media screen and (max-width: 399px) {
+        flex-direction: column;
+    }
     @media screen and (min-width: 720px) {
         flex-direction: column;
         max-width: 13em;
@@ -84,6 +87,9 @@
     }
     @media screen and (max-width: 720px) {
         padding-left: 2em;
+    }
+    @media screen and (max-width: 400px) {
+        padding-left: 0;
     }
 }
 

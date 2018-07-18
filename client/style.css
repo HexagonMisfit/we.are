@@ -615,7 +615,8 @@ h3 {
 #team-scroll-container, #work-scroll-container {
   max-width: 60em;
   position: relative;
-  z-index: 1; }
+  z-index: 1;
+  width: 100%; }
   @media screen and (max-width: 720px) {
     #team-scroll-container, #work-scroll-container {
       align-items: center; } }
@@ -816,6 +817,9 @@ div {
 .team-member-column {
   flex-direction: row;
   width: 100%; }
+  @media screen and (max-width: 399px) {
+    .team-member-column {
+      flex-direction: column; } }
   @media screen and (min-width: 720px) {
     .team-member-column {
       flex-direction: column;
@@ -852,6 +856,10 @@ div {
 @media screen and (max-width: 720px) {
   .team-member-stats {
     padding-left: 2em; } }
+
+@media screen and (max-width: 400px) {
+  .team-member-stats {
+    padding-left: 0; } }
 
 .team-member-name {
   font-weight: bolder;
