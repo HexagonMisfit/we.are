@@ -5,17 +5,23 @@
     align-items: center;
     flex-direction: column;
     overflow: -moz-scrollbars-none;
-    padding: 10em;
+    padding: 7em 10em 0;
     background-color: $dark-gray;
     @media screen and (max-width: 1200px) {
-        padding: 7em;
+        padding: 7em 7em 0;
     }
     @media screen and (max-width: 900px) {
         align-items: center;
-        padding: 7em 3em;
+        padding: 7em 3em 0;
     }
     @media screen and (max-width: 720px) {
-        padding: 5em 3em 3em;
+        padding: 5em 1em 0;
+    }
+}
+
+#team-scroll-container {
+    @media screen and (max-width: 400px) {
+        padding: 3em 0 0;
     }
 }
 
@@ -44,7 +50,7 @@
 .team-member-column {
     flex-direction: row;
     width: 100%;
-    @media screen and (max-width: 399px) {
+    @media screen and (max-width: 480px) {
         flex-direction: column;
     }
     @media screen and (min-width: 720px) {
@@ -64,6 +70,16 @@
         align-items: flex-start;
         max-width: 25em;
         margin-bottom: 5em;
+    }
+    @media screen and (min-width: 721px) {
+        &:nth-child(odd) {
+            .flex-1 {
+                order: 2;
+            }
+            .flex-2 {
+                order: 1;
+            }
+        }
     }
 }
 
@@ -88,7 +104,7 @@
     @media screen and (max-width: 720px) {
         padding-left: 2em;
     }
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 480px) {
         padding-left: 0;
     }
 }
