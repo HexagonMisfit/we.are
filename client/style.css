@@ -1020,9 +1020,13 @@ div {
 
 #project-container {
   z-index: 2;
-  padding: 8em 1em 0 2em;
+  padding: 8em 1em 0;
   width: 100%;
-  max-width: 1000px; }
+  max-width: 1000px;
+  position: relative; }
+  @media screen and (min-width: 400px) {
+    #project-container {
+      padding: 8em 2em 0; } }
 
 .project-img {
   width: 95%;
@@ -1031,7 +1035,7 @@ div {
 .project-img, .project-p, .project-video {
   z-index: 10;
   position: relative;
-  max-width: 1000px;
+  width: 100%;
   margin: 3em 0; }
 
 .project-p {

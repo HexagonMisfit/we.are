@@ -3,7 +3,9 @@
 		{{#if data.project}}
 			<h1 class="really-big-text hot-pink">{{data.project.title}}</h1>
 			{{#if data.project.video}}
-			<video class="project-video" src="{{data.project.video.url}}{{data.project.video.file.filename}}"></video>
+			<video class="project-video" controls>
+				<source src="{{data.project.video.url}}{{data.project.video.file.filename}}">
+			</video>
 			{{/if}}
 			{{#if data.project.blurb}}
 			<p class="project-p light-text scroll-item" id="1">{{data.project.blurb}}</p>
