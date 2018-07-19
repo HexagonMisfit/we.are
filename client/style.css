@@ -998,16 +998,16 @@ div {
       .projects-container div.project-img-row:nth-child(even) {
         justify-content: flex-end; } }
 
-.project-img-link img {
-  border: 3px solid transparent; }
-
-.project-img-link:hover img {
-  animation: 1s ease-in-out infinite growing; }
-
-.project-img-link:hover span.project-name-container {
-  background: #fafafa; }
-  .project-img-link:hover span.project-name-container h2 {
-    color: #fc1c6a; }
+.project-img-link {
+  width: 100%; }
+  .project-img-link img {
+    border: 3px solid transparent; }
+  .project-img-link:hover img {
+    animation: 1s ease-in-out infinite growing; }
+  .project-img-link:hover span.project-name-container {
+    background: #fafafa; }
+    .project-img-link:hover span.project-name-container h2 {
+      color: #fc1c6a; }
 
 @keyframes grow {
   0% {
