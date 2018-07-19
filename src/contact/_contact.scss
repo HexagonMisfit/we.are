@@ -1,15 +1,26 @@
 #contact-container {
     padding: 3.2em 1em;
-    position: relative;
     background: $lime-green;
-    flex-direction: column;
-    display: flex;
+    height: auto;
     @media screen and (min-width: 1024px) {
-        align-items: center;
-        flex-direction: row;
         @media screen and (min-height: 679px) {
             height: calc(100% - 3em);
         }
+    }
+}
+
+#contact-inner-container {
+    max-width: 1400px;
+}
+
+#contact-inner-container, #contact-container {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    @media screen and (min-width: 1024px) {
+        align-items: center;
+        flex-direction: row;
     }
 }
 
