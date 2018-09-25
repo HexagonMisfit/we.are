@@ -47,7 +47,7 @@ exports = module.exports = function (app) {
 
 	app.get('/', routes.views.home);
 
-	app.get('/vr', routes.views.vr);
+	// app.get('/vr', routes.views.vr);
 
 	app.get('/contact', routes.views.contact);
 

@@ -53,7 +53,8 @@ keystone.set('nav', {
 	users: 'User',
 	teammates: 'Teammate',
 	projects: 'Project',
-	uploads: 'FileUpload'
+	uploads: 'FileUpload',
+	embed: 'Embed'
 });
 
 // Start Keystone to connect to your database and initialise the web server

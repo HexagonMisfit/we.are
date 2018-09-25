@@ -1,5 +1,12 @@
-var keystone = require('keystone');
-Project = keystone.list('Project');
+var keystone = require('keystone'),
+	Project = keystone.list('Project');
+
+// function handleHTML(project) {
+// 	if(project.embed && project.embed.HTML) {
+// 		project.embed.HTML = JSDOM.fragment(project.embed.HTML).firstChild.outerHTML;
+// 		console.log(project.embed.HTML);
+// 	}
+// };
 
 exports = module.exports = function (req, res) {
 
@@ -20,6 +27,7 @@ exports = module.exports = function (req, res) {
 			.populate('img2')
 			.populate('img3')
 			.populate('video')
+			.populate('embed')
 			.exec(function(err, results) {				
 				if(results) {
 					locals.data.project = results;

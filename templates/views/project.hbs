@@ -7,6 +7,11 @@
 				<source src="{{data.project.video.url}}{{data.project.video.file.filename}}">
 			</video>
 			{{/if}}
+			{{#if data.project.embed}}
+			<div class="embed-wrapper">
+				{{{data.project.embed.HTML}}}
+			</div>
+			{{/if}}
 			{{#if data.project.blurb}}
 			<p class="project-p light-text scroll-item" id="1">{{data.project.blurb}}</p>
 			{{/if}}

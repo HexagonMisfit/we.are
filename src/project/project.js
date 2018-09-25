@@ -9,5 +9,3 @@ import '../shared/scroll.js';
 
 // import our scss last
 import '../shared/styles/main.scss';
-
-console.log('project');
