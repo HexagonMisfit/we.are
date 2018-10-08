@@ -4,26 +4,30 @@ $(document).ready(function () {
     var navLink = $('.nav-link');
     var link = $('.link');
     var pageWipe = $('#page-wipe');
-    var currentPage = location.href;
+    var currentPage;
     var activeNavItem;
 
-    function setActiveNavItem(url) {
-        var current = currentPage.split('/');
-        currentNavItem = current[current.length - 1];
-        if(currentNavItem) {
-            thisButton = $('#' + currentNavItem + '-button');
-            thisButton.removeClass('active-nav-link');
-        }
+    function clearActiveLinkClass() {
+        $(navLink).each(function(el) {
+            if($(navLink[el]).hasClass('active-nav-link')) {
+                $(navLink[el]).removeClass('active-nav-link');
+            }
+        })
+    }
 
+    function setActiveNavItem(url) {
+    
         var next = url.split('/');
         activeNavItem = next[next.length - 1];
         if(activeNavItem) {
+            clearActiveLinkClass();
             var activeButton = $('#'+ activeNavItem + '-button');
             activeButton.addClass('active-nav-link');
         }
     }
 
     function wipeIn() {
+        currentPage = location.href;
         TweenMax.to(body, 0.0, {autoAlpha: 1});
         setActiveNavItem(currentPage);
         TweenMax.to(pageWipe, 0.65, { width: 0, bottom: '100%', left: '100%', ease: Power4.easeIn });
@@ -43,11 +47,15 @@ $(document).ready(function () {
     }
 
     link.on('click', function (ev) {
-        console.log(ev);
         ev.preventDefault();
         if (currentPage !== ev.currentTarget.href) {
             wipeOut(ev.currentTarget.href);
         }
     });
     onInit();
+    $(window).bind("pageshow", function(event) {
+        if (event.originalEvent.persisted) {
+            onInit();
+        }
+    });
 });
