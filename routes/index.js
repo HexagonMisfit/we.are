@@ -51,7 +51,7 @@ exports = module.exports = function (app) {
 
 	app.get('/contact', routes.views.contact);
 
-	app.get('/team', routes.views.team);
+	// app.get('/team', routes.views.team);
 
 	app.get('/work/:id', routes.views.project);
 	app.get('/work', routes.views.work);
